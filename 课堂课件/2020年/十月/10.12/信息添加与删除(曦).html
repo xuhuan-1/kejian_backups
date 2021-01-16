@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>删除/添加</title>
+		<style>
+			.playing tr{
+				height:30px;
+			}
+			.playing tr td{
+				width:100px;
+				text-align:center;
+			}
+			.doing{
+				margin-top:30px;
+				margin-bottom:50PX;
+			}
+		</style>
+	</head>
+	<body>
+		<table align="center" border="1" class="doing">
+			<tr>
+				<td colspan="2" align="center">
+					<input type="button" value="提交" onclick="tj()" />
+					<button onclick="renew()">更新</button>
+				</td>
+			</tr>
+			<tr>
+				<td>输入姓名</td><td><input type="text" id="nam" /></td>
+			</tr>
+			<tr>
+				<td>输入性别</td><td><input type="text" id="gender" /></td>
+			</tr>
+			<tr>
+				<td>输入手机号</td><td><input type="text" id="iphone" /></td>
+			</tr>
+		</table>
+		<table align="center" border="1" class="playing" id="biao">
+			<tr>
+				<td>姓名</td>
+				<td>性别</td>
+				<td>手机号</td>
+				<td></td>
+			</tr>
+		</table>
+		
+		<script>
+			function $(idname){
+				return document.getElementById(idname);
+			}
+			function tj(){
+				var td1 = document.createElement("td");
+				td1.setAttribute("class","na");
+				var td2 = document.createElement("td");
+				td2.setAttribute("class","gend");
+				var td3 = document.createElement("td");
+				td3.setAttribute("class","pho");
+				var td4 = document.createElement("td");
+				var delet = document.createElement("button");
+				td4.appendChild(delet);
+				delet.innerText = "删除";
+				delet.setAttribute("onclick","delect(this)");
+				var reset = document.createElement("input");
+				td4.appendChild(reset);
+				reset.setAttribute("type","button");
+				reset.value = "修改";
+				reset.setAttribute("onclick","chang(this)");
+				var tr = document.createElement("tr");
+				tr.appendChild(td1);
+				tr.appendChild(td2);
+				tr.appendChild(td3);
+				tr.appendChild(td4);
+				$("biao").appendChild(tr);
+				td1.innerText = $("nam").value;
+				$("nam").value = "";
+				td2.innerText = $("gender").value;
+				$("gender").value = "";
+				td3.innerText = $("iphone").value;
+				$("iphone").value = "";
+			}
+			function delect(cont){
+				cont.parentNode.parentNode.remove();
+			}
+			var rowindex = null;
+			function chang(cont){
+				var tr = cont.parentNode.parentNode;
+				var nam = tr.querySelector("[class = na ]");
+				var gender = tr.querySelector("[class = gend]");
+				var iphone = tr.querySelector("[class = pho]");
+				$("nam").value = nam.innerText;
+				$("gender").value = gender.innerText;
+				$("iphone").value = iphone.innerText;
+				rowindex = cont.parentNode.parentNode.rowIndex;
+			}
+			function renew(){
+				var tr = $("biao").querySelectorAll("tr")[rowindex];
+				var nam = tr.querySelector("[class = na]");
+				var gender = tr.querySelector("[class = gend]");
+				var iphone = tr.querySelector("[class = pho]");
+				nam.innerText = $("nam").value;
+				$("nam").value = null;
+				gender.innerText = $("gender").value;
+				$("gender").value = null;
+				iphone.innerText = $("iphone").value;
+				$("iphone").value = null;
+				rowindex = null;
+			}
+		</script>
+	</body>
+</html>

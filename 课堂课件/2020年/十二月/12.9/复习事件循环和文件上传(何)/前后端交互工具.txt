@@ -1,0 +1,40 @@
+ajax:在不刷新网页的情况下，局部的获取并刷新当前数据，最古老的、最基本前后端交互工具
+    缺点：
+        破坏了浏览器的回退按钮
+        破坏了JS的执行机制
+        嵌套较多，出现地狱回调问题
+        对SEO搜索引擎支持较弱，数据比较难抓取
+Promise:
+    前后端及交互工具，ES6新增的异步交互方案，本身是一个对象，也是一个构造函数
+    函数体是同步执行，成功的回调，失败的回调都是异步执行
+    参数：
+        回调函数，此函数叫做函数解析器【executor】，此回调函数又接收两个参数
+        一个是成功的回调 resolve
+        一个是失败的回调 rejecte
+        then():是resolve的实参
+        catch():是rejecte的实参
+
+    如果resolve中传递的是字符串，则发生值穿透现象
+    链式调用:
+        因为then和catch函数内部的返回结果是一个新的Promise对象 【{}】
+    原型方法：
+        then:
+        catch:
+        finally:
+    静态方法：
+        Promise.race():执行结果最快的请求一旦成功，则当前返回一个新的Promise对象
+
+        Promise.all():所有的请求都成功了，当前Promise.all()才返回成功状态
+             返回值：是一个新的Promise对象，此对象的结果是一个结果数组
+        Promise.resolve():成功的回调
+        Promise.rejecte():失败的回调
+async await:终极异步解决方案，async await一般都跟一个Promise对象，await必须在async
+            标识内，实现原理是 generator函数【生成器函数】实现的
+fetch:最新异步解决方案，用的不多，兼容性差，使用了Promise
+
+
+
+
+
+
+

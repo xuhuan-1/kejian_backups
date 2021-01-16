@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>全选</title>
+	</head>
+	<body>
+		全选<input type="checkbox" id="quan"/>:
+		<input type="checkbox"/>中国舞
+		<input type="checkbox"/>汉唐舞
+		<input type="checkbox"/>民族舞
+		<input type="checkbox"/>古典舞
+		<input type="checkbox"/>芭蕾舞
+		<input type="checkbox"/>街舞
+		<input type="checkbox"/>爵士
+		<script>
+			document.body.addEventListener('click',(e)=>{
+				var e = e||window.event;
+				var now_ele = e.target||e.srcElement;
+				if(now_ele.id == 'quan'){
+					var inputs = document.getElementsByTagName('input');
+					for(var i in inputs){
+						inputs[i].checked = document.getElementById('quan').checked?true:false;
+					}
+				}
+				if(now_ele.checked==false){quan.checked = false}
+			})
+		</script>
+	</body>
+</html>

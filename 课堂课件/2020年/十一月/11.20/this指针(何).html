@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 'use struct' 严格模式
+        /**
+         * 1、普通函数：this指向window  【谁调用指向谁】
+         * 2、定时器：this指向window
+         * 3、对象内的this，谁调用指向谁【指向调用者】
+         * 4、执行时看具体是谁调用，指向直接调用者
+         * 5、构造函数：this指向实例对象，new可以改变this指向
+         * 6、构造函数内部return 对象，则this指向当前return的对象
+         * 7、构造函数内部只要return的是对象，则指向当前对象，否则还是指向实例对象
+         * 8、严格模式中，普通函数this指向undefined，不是window了
+         * 9、DOM对象的this指向当前调用者【指向的是一个DOM对象】
+        */
+// 构造函数
+        // function Person(){
+        //     this.name = 'zimo';
+        //     console.log(this);
+        // }
+        // let p = new Person();
+        // console.log(p)
+
+
+        // function Person(){
+        //     this.name = 'zimo';
+            
+        //     return {};
+        // }
+        // let p = new Person();
+        // console.log(p)
+
+        function Person(){
+            this.name = 'zimo';
+            console.log(this)
+            return undefined;
+        }
+        let p = new Person();
+        console.log(p)
+// 缓存的this
+    //     var o = {
+    //         a:10,
+    //         b:{
+    //             a:12,
+    //             fn:function(){
+    //                 return function(){
+    //                     console.log(this.a); //undefined
+    //                     console.log(this); //  window
+    //                 }
+    //             }
+    //         }
+    //     }
+    //    let g = o.b.fn;
+    //     g()();
+
+// 定时器  setTimeout  setInterval:误差 4ms
+        // let obj = {
+        //     fn:function(){
+        //         let _this = this;
+        //         setTimeout(function(){
+        //             _this.fn1();
+        //         },1000);
+        //     },
+        //     fn1:function(){
+        //         console.log('====')
+        //     }
+        // }
+        // obj.fn();
+
+        // setInterval(() => {
+            
+        // }, 0);
+
+
+        // function a(){
+        //     console.log(this)
+        // }
+        // function b(){
+        //     a();
+        // }
+        // b();
+    </script>
+</body>
+</html>

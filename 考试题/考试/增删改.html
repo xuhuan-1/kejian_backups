@@ -1,0 +1,173 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>增删改</title>
+	</head>
+	<body>
+		<div id="box">
+			<div>
+				<table border="2" id="tab1">
+					<caption>用户注册信息</caption>
+					<tbody>
+						<tr>
+							<td>姓名</td>
+							<td width="200px"><input type="text" value=""/></td>
+						</tr>
+						<tr>
+							<td>性别</td>
+							<td>
+								男<input type="radio" value="男"name="1"/>
+								女<input type="radio" value="女"name="1"/>
+							</td>
+						</tr>
+						<tr>
+							<td>电话</td>
+							<td>
+								<input type="text" value=""/>
+							</td>
+						</tr>
+						<tr>
+							<td>爱好</td>
+							<td>
+								吃<input type="checkbox" value="吃"/>
+								喝<input type="checkbox" value="喝"/>
+								玩<input type="checkbox" value="玩"/>
+								乐<input type="checkbox" value="乐"/>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="2" align="center">
+								<input type="button" value="提交"/>
+								<input type="button" value="更新"/>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			<div>
+				<table border="2" id="tab2">
+					<thead>
+						<tr>
+							<td width="100px">姓名</td>
+							<td width="100px">性别</td>
+							<td width="100px">电话</td>
+							<td width="200px">爱好</td>
+							<td width="150px">操作</td>
+						</tr>
+					</thead>
+					<tbody>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<script>
+			function $(id){
+				return document.getElementById(id);
+			}
+			var sex_value = '',hobby_value = '';
+			var rowindex = null;
+			$('box').addEventListener('click',(eve)=>{
+				var e = eve||window.eve;
+				var now_element = eve.target||eve.srcElement;
+				hobby_value = ''
+				//获取
+				var tab1_td = $('tab1').querySelectorAll('input');
+				//姓名
+				var nam = tab1_td[0].value;
+				//电话
+				var tel = tab1_td[3].value;
+				//性别
+				var sex_inp = $('tab1').querySelectorAll('input[type="radio"]');
+				for(var i=0;i<sex_inp.length;i++){
+					if(sex_inp[i].checked){
+						sex_value = sex_inp[i].value;
+					}
+				}
+				//爱好
+				var hobby_inp = $('tab1').querySelectorAll('input[type="checkbox"]');
+				for(var i=0;i<hobby_inp.length;i++){
+					if(hobby_inp[i].checked){
+						hobby_value += hobby_inp[i].value;
+					}
+				}
+				//提交
+				if(now_element.value == '提交'){
+					if(nam == false||tel == ''||sex_value == ''||hobby_value == ''){
+						alert('您的信息输入有误！');
+						return;
+					}
+					//创建tr
+					var create_tr = document.createElement('tr');
+					create_tr.innerHTML = '<td>'+nam+'</td><td>'+sex_value+'</td><td>'+tel+'</td><td>'+hobby_value+'</td><td width="150px"><input type="button" value="删除"/><input type="button" value="修改"/></td>';
+					$('tab2').querySelector('tbody').appendChild(create_tr);
+					zk()
+				}
+				if(now_element.value == '删除'){
+					now_element.parentNode.parentNode.remove();
+					zk();
+				}
+				
+				if(now_element.value == '修改'){
+					rowindex = now_element.parentNode.parentNode.rowIndex;
+					var all_child = now_element.parentNode.parentNode.children;
+					//姓名
+					tab1_td[0].value = all_child[0].innerText;
+					//电话
+					tab1_td[3].value = all_child[2].innerText;
+					//性别
+					for(var i=0;i<sex_inp.length;i++){
+						if(sex_inp[i].value == all_child[1].innerText){
+							sex_inp[i].checked = true;
+						}
+					}
+					//爱好
+					for(var i=0;i<hobby_inp.length;i++){
+						if(all_child[3].innerText.indexOf(hobby_inp[i].value) >= 0){
+							hobby_inp[i].checked = true;
+						}
+					}
+				}
+				if(now_element.value == '更新'){
+					var tab2_td = $('tab2').querySelector('tbody').querySelectorAll('tr')[rowindex-1].querySelectorAll('td');
+					if(nam == false||tel == ''||sex_value == ''||hobby_value == ''){
+						alert('您的信息输入有误！');
+						return;
+					}
+					var tt = $('tab1').querySelector('tbody').querySelectorAll('input[type="text"]');
+					//姓名
+					tab2_td[0].innerText = tt[0].value;
+					//性别
+					tab2_td[2].innerText = tt[1].value;
+					//性别
+					tab2_td[1].innerText = sex_value;
+					tab2_td[3].innerText = hobby_value;
+					zk();
+				}
+			})
+			//制空方法
+			function zk(){
+				var tab1_td = $('tab1').querySelectorAll('input');
+				tab1_td[0].value = null;
+				tab1_td[3].value = null;
+				var sex_inp = $('tab1').querySelectorAll('input[type="radio"]');
+				for(var i=0;i<sex_inp.length;i++){
+					sex_inp[i].checked = false;
+				}
+				var hobby_inp = $('tab1').querySelectorAll('input[type="checkbox"]');
+				for(var i=0;i<hobby_inp.length;i++){
+					hobby_inp[i].checked = false;
+				}
+			}
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

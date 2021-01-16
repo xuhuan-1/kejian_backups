@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/echarts.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script> -->
+</head>
+<body>
+    <canvas id="myCanvas" width="800" height="400"></canvas>
+    <script>
+        /**
+         * canvas
+         * canvas:H5中新增的画布，可以实现很多种图画【动图、静图】，伽马射线，热力图、电力图、速度图、地壳
+         *  
+         *  画图的步骤：
+         *      1、创建画布
+         *      2、拿起画笔
+         *      3、画图
+         *      4、合并连线
+         * 1、默认的宽高：300 150   2：1的关系
+         * 2、设置画布的宽高只有两种方式，第一：设置属性【width,height】,第二：通过JS设置宽高
+         *    通过style行内样式设置的宽高，是把图画进行了拉伸
+         * 3、画图的方式有两种：
+         *      ① ：矩形
+         *          fillStyle:设置矩形的颜色（线的颜色）
+                    fillRect():画矩形的方法
+                        参数：x轴，y轴，宽，高
+                    clearRect():清除矩形内的图画，使其变为透明
+                        参数：x轴，y轴，宽，高
+                    fill():填充背景色
+         *      ② ：路径 【路径连线】
+         *          
+         * 
+         * 
+         * 
+        */
+
+        let canvas = echarts.init(document.getElementById('myCanvas'));
+        let option = {
+            tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b}: {c} ({d}%)'
+            },
+            legend: {
+                orient: 'vertical',
+                top:100,
+                left: 200,
+                data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '紫漠']
+            },
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: ['50%', '70%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: [
+                        {value: 335, name: '直接访问'},
+                        {value: 310, name: '邮件营销'},
+                        {value: 234, name: '联盟广告'},
+                        {value: 135, name: '视频广告'},
+                        {value: 1548, name: '紫漠'}
+                    ]
+                }
+            ]
+        };
+        canvas.setOption(option);
+    </script>
+</body>
+</html>
+
+

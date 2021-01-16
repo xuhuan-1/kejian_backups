@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>放大镜</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				width:400px;
+				height:400px;
+				background:pink;
+				position:relative;
+				left:0;
+				top:0;
+			}
+			#box img{
+				height:100%;
+				width:100%;
+			}
+			#box2{
+				overflow:hidden;
+			}
+			#box2{
+				width:400px;
+				height:400px;
+				background:green;
+				position:absolute;
+				left:420px;
+				top:0;
+			}
+			#box_1{
+				width:150px;
+				height:150px;
+				background:rgba(255,255,255,0.6);
+				position:absolute;
+				left:0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="box_1"></div>
+			<img src="imgs/1.jpg" width="400px" height="400px" />
+		</div>
+		<div id="box2">
+			<img src="imgs/1.jpg" width="1100px" height="1100px" />
+		</div>
+		<script>
+			var log = console.log;
+			function $(idname){
+				return document.getElementById(idname);
+			}
+			//父宽度，高度 -子宽度，高度
+			var w = $('box').offsetWidth - $('box_1').offsetWidth;
+			var h = $('box').offsetHeight - $('box_1').offsetHeight;
+			//获取鼠标坐标 让小div定位和鼠标坐标位置一样
+			$('box').addEventListener('mousemove',function (val){
+				
+				/*x = val.pageX - $('box_1').offsetWidth/2;
+				y = val.pageY - $('box_1').offsetHeight/2;
+				$('box_1').style.top = y + 'px';
+				$('box_1').style.left = x + 'px';
+				$('box_1').offsetTop <= 0? $('box_1').style.top = 0+'px':$('box_1').style.top;
+				$('box_1').offsetLeft <= 0? $('box_1').style.left = 0+'px':$('box_1').style.left;
+				$('box_1').offsetLeft >= w? $('box_1').style.left = w+'px':$('box_1').style.left;
+				$('box_1').offsetTop >= h? $('box_1').style.top = h+'px':$('box_1').style.top;
+				*/
+			});
+			//找到小div覆盖的区域
+			
+			//在外侧的div内容和小div覆盖的区域一样
+			
+		</script>
+	</body>
+</html>

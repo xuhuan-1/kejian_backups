@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div class="box" style="width: 200px;height: 200px;background:gold;"></div>
+    <div id="box" style="width: 200px;height: 200px;background:yellow;"></div>
+    <span>
+        <div class="btn">345</div>
+    </span>
+    <span>2</span>
+    <input type="text" value="zimo">
+    <div style="width: 200px;height: 200px;background:red;">
+    
+    </div>
+    <script>
+        $(document).ready(function(){
+        // 在这里写你的代码...
+
+            // 链式调用的链什么时候断掉？获取的值不是对象的时候，链会断掉
+            let $sp = $('span').eq(0).html('迭代对象');
+            let $ipt = $('input').val();
+            let emptyDiv = $('div').empty();
+            emptyDiv.click(function(){
+                console.log('888');
+            })
+            let s = $('.btn').parent().parent().first();
+            s.css({background:'purple'});
+            console.log(s);
+
+            // console.log($('body').children().first().css({
+            //     background:'purple',
+            // }),']]]');
+
+            console.log($('body').children().first().css("background","purple"));
+
+            console.log($sp,$ipt,'===',emptyDiv);
+        });
+        
+      
+        
+
+       
+
+
+        
+
+
+
+    </script>
+</body>
+</html>

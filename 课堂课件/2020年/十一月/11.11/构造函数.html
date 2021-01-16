@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数</title>
+</head>
+<body>
+    <script>
+        function par(name,age,sex){
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+        let a = new par('张三',18,'男');
+        //实例对象.constructor === 构造函数
+        console.log(a.constructor);
+        //原型对象.constructor === 构造函数
+        console.log(par.prototype.constructor);
+        //构造函数.prototype === 实例对象.__proto__
+        console.log(par.prototype);
+        console.log(a.__proto__);
+        //实例对象.__proto__ === 构造函数.prototype
+        console.log(a.__proto__ === par.prototype);
+    </script>
+</body>
+</html>

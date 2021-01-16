@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 结论：
+         *  1、class类和构造函数完全没有关系
+         *  2、class类是function的语法糖，有块级作用域，强类型、偏向于后台语言【JAVA C】
+         *  3、类中默认是严格模式  'use strict'
+         *  4、constructor类中默认有的方法，可以声明，不声明的时候，
+         *     类会自动创建一个constructor函数
+         *  5、类中可以声明静态方法，可以直接通过类名调用，关键字是static【可以不用实例化】
+         *  6、直接声明的方法是原型方法，加在prototype上的方法
+         *  7、class继承：通过 extends 进行继承，通过 super 进行接收
+         *  8、子类中如果要访问继承的数据，必须要在super调用之后，否则报错
+         *  9、super以函数或者对象的方式调用的时候，则当前super代表的是父类
+         *  10、class继承过程：
+         *      class进行继承时，通过 extends 继承，super接收，当前super指向的是父类
+         *      触发了父类中的构造器【constructor】，父类中的构造器把属性、方法传递给
+         *      子类，并且触发了子类构造器的执行，把this改变到子类中去
+         *  11、当super以对象调用时，在子类的静态方法中可以继承父类的静态方法
+         *  12、当super以对象调用时，在子类的原型方法中可以继承父类的原型方法
+         *  13、类不存在变量提升
+        */
+        // ES6 类
+        class Parent{
+            static zimo = '剑哥哥';
+            constructor(name,age){
+                this.name = name || '紫漠';
+                this.age = age || 20;
+                console.log(Parent.zimo,111)
+            }
+            // 静态方法
+            static hi(){
+                console.log('年后')
+            }
+            // 原型方法
+            everyBody(){
+                console.log('年前')
+            }
+        }
+        console.log(Parent.zimo,'000')
+        // extends继承的关键字
+        class Son extends Parent{
+            constructor(name,age){
+                // 必须通过super调用，才能访问this
+                super(name,age); //super当函数调用时，指向当前父类
+                console.log(this,222)
+            }
+            static sss(){
+                super.hi();
+            }
+            aaa(){
+                // super.hi(); // 静态方法报错
+                super.everyBody();
+                // console.log('===')
+            }
+        }
+        Son.sss();
+        let p = new Parent();
+        let s = new Son();
+        s.aaa()
+        // console.log(s.name)
+        console.log(typeof Parent,typeof Son)
+
+
+    </script>
+</body>
+</html>

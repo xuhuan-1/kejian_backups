@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery练习</title>
+    <!-- jQ库 -->
+    <script src="./JS/jquery-3.2.1.min.js"></script>
+    <style>
+        img{
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1" style="height: 50px; width: 50px; background: gold;">1</div>
+    <div class="box2" style="height: 50px; width: 50px; background: yellowgreen;">2</div>
+    <div class="box3" style="height: 50px; width: 50px; background: pink;">3</div>
+    <div class="box4">
+        <p>0</p>
+        <p class="p2">
+            <span>10000</span>
+        </p>
+        <p>
+            <span class="ss">20000</span> 
+        </p>
+        <p></p>
+        <p></p>
+    </div>
+    <div class="box5">
+        <p class="p1">0</p>
+        <p class="p2">1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7</p>
+        <p>8
+            <span>子</span>
+        </p>
+        <p>9</p>
+    </div>
+    <img id="img" src="" alt="">
+    <script>
+        // .hide(); 隐藏元素
+        // .show(); 显示元素
+        // .eq(); 通过索引查找元素，可以传参，从0开始，不传参获取所有的元素
+        // .not(); 获取到除了指定元素以为，其余所有元素，传递元素作为参数
+        // .html(); 获取元素的文本值以及DOM结构，可以传参修改元素内容包括元素结构
+        // .text(); 获取元素的文本值
+        // .val(); 获取input的value值
+
+        // .empty(); 删除匹配的元素集合中所有的子节点包括文本
+        // .children(); 获取子元素集合,可以传递参数，从0开始
+        // .first(); 获取第一个子元素
+        // .last(); 获取最后一个子元素
+        // .css(); 可以设置css样式【可以用对象的方式】
+        // .parent(); 获取直接父级元素 
+        // .prev(); 获取上一个兄弟元素
+        // .next(); 获取下一个兄弟元素
+        // .find(); 在一定范围查找某个元素 
+        // .attr(); 可以设置属性、获取属性，传递一个参数时获取属性，两个参数时设置属性，属性值。
+        // .removeAttr(); 移除属性，参数为要移除的属性名
+        // .siblings(); 除自身以为的所有兄弟元素
+        // .slideUp(); 
+        // .slideDown();
+
+        // :gt(); 获取大于索引值的所有元素	例如$('p:gt(4)')
+        // :lt(); 获取小于索引值的所有元素	例如$('p:lt(4)')
+        // :first; 获取元素集合中第一个元素 
+        // :last; 获取元素集合中最后一个元素 
+        // :even; 获取元素集合中偶数元素【根据索引分奇偶数】
+        // :odd; 获取元素集合中奇数元素【根据索引分奇偶数】
+
+        // 删除匹配的元素集合中所有的子节点包括文本
+        // let $p = $('.box5').children().empty();
+        // console.log($p);
+
+        // 给图片设置属性/属性值
+        let $img =  $('#img').attr({src:'./1.jpg',alt:'龙珠',});
+        $img.attr('title',function(){
+            return this.src;
+        })
+        // 删除属性
+        $img.removeAttr('title');
+        
+        console.log($img);
+
+        // 设置属性/属性值
+        // let $p = $('.box5').children('.p1').attr({a:'1',b:'2',c:'3'});
+        // console.log($p);
+
+        // 获取属性值
+        // let $p = $('.box5').children('.p1').attr('class');
+        // console.log($p);
+
+        // 获取上一个兄弟元素
+        // let $p = $('.box5').children().eq(1).prev();
+        // console.log($p);
+
+        // 获取下一个兄弟元素
+        // let $p = $('.box5').children().eq(1).next();
+        // console.log($p);
+
+        // 获取直接父级元素
+        // let $p = $('.box5').find('span').parent().parent();
+        // console.log($p);
+        
+        // 获取除自己以外所有的元素
+        let $p = $('.box5').children().not('.p1');
+        console.log($p);
+
+        // 除自己以外所有的兄弟元素
+        // let $p = $('.p1').siblings();
+        // console.log($p);
+
+
+        // 大于下标4的元素
+        // let $p = $('.box5 p:gt(4)');
+        // console.log($p);
+
+        // 下于下标5的元素
+        // let $p = $('.box5 p:lt(5)');
+        // console.log($p);
+        // for(let i=0;i<$p.length;i++){
+        //     let s = $p[i].innerText + '0000';
+        //     console.log(s);
+        // }
+
+
+        // .box5偶数子元素隐藏、文本内容
+        // let $p = $('.box5').children('p:nth-child(2n)').hide().text();
+        // console.log($p);
+        // 隐藏
+        // let $p = $('.box5 p').eq(0).hide().text();
+        // console.log($p);
+        // 显示
+        // let $p1 = $('.box5 p').eq(0).show().text();
+        // console.log($p1);
+
+        // 所有单数的文本
+        // let $p = $('.box5 p:nth-child(odd)').text();
+        // console.log($p);
+
+        // .box5的奇数子元素
+        // let $p = $('.box5').children('p:odd');
+        // console.log($p);
+
+        // .box5的偶数子元素
+        // let $p = $('.box5').children('p:even');
+        // console.log($p);
+
+
+        // let $box = $('.box1');
+        // $box.click(()=>{
+        //     console.log('ss');
+        // })
+        // console.log($box);
+        
+        // let $p = $('.box4').children().eq(0).click(function(){
+        //     console.log('sss');
+        // });
+        // let $p5 = $('p').eq();
+        // console.log($p5);
+        // let $span = $('.box4').children('.p2');
+        // console.log($span);
+    </script>
+</body>
+</html>

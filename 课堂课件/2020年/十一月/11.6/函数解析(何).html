@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数解析</title>
+</head>
+<body>
+    <script>
+        /*
+          递归函数：直接或间接的调用自身的函数叫做递归函数
+          函数解析：
+           name:函数名,只读，不可以被修改
+           arguments：是对象，用来收集实参的一个集合，有数组的特点【length】
+           callee:是arguments对象的一个属性，指向自身函数,可以配合使用递归，
+                  只能在自己的函数体内调用，解决了一些函数名冲突问题
+           caller:是函数的属性，指向的是直接父级函数  【废弃了】
+          
+           callee和caller主要就是配合递归函数完成一些操作  
+           
+          
+          
+        */
+
+        // function box(num){
+        //     if (num<=1) {
+        //         return 1;
+        //     }else{
+        //         return num* arguments.callee(num-1);
+        //     }
+        // }
+        // console.log(box(3));  // 6 
+
+        function a(){
+            function b(){
+                console.log(arguments.callee.caller)
+            }
+            b();
+        }
+        a()
+
+
+
+
+    
+
+    </script>
+</body>
+</html>

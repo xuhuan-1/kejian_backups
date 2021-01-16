@@ -1,0 +1,657 @@
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing:border-box;
+}
+a{
+	text-decoration:none;
+}
+li{
+	list-style:none;
+}
+.f_left{
+	float:left;
+}
+.f_right{
+	float:right;
+}
+.clearfix{
+	content:"";
+	display:block;
+	clear:both;
+	visibility:hidden;
+	height:0px;
+}
+.clearfix{
+	*zoom:1;
+}
+/*第一行开始*/
+.head{
+	height:40px;
+	width:972px;
+	background:#434343;
+	margin:0 auto;
+}
+.head_1{
+	
+}
+.head_1 dt{
+	float:left;
+	width:110px;
+	line-height:40px;
+	text-align:center;
+	background:#4E4E4E;
+}
+.head_1 dt a{
+	color:#CACACA;
+	font-size:15px;
+}
+.head_1 dd{
+	float:left;
+	width:38px;
+	line-height:40px;
+	color:#CACACA;
+	font-size:14px;
+	margin-left:5px;
+	text-align:center;
+}
+.head_1 dd:hover{
+	background:#4E4E4E;
+}
+.p1{
+	float:right;
+	width:63px;
+	line-height:40px;
+	text-align:center;
+}
+.p1 a{
+	color:#CACACA;
+}
+.p1:hover{
+	/*height:45px;*/
+	background:#917347;
+}
+/*第一行结束*/
+/*第二行开始*/
+.logo{
+	height:97px;
+	width:972px;
+	margin:0 auto;
+}
+.logo_1 li{
+	float:left;
+	margin-left:15px;
+	margin-top:40px;
+}
+.logo_1 li a{
+	font-size:14px;
+	color:#28AFEA;
+}
+.a_1{
+	background:url(img/0-4.png) no-repeat left;
+	padding-left:17px;
+}
+.a_2{
+	background:url(img/0-5.png) no-repeat left;
+	padding-left:17px;
+}
+.a_3{
+	background:url(img/0-6.png) no-repeat left;
+	padding-left:17px;
+}
+.a_4{
+	background:url(img/0-7.png) no-repeat left;
+	padding-left:17px;
+}
+.logo_1 input{
+	height:29px;
+	width:230px;
+	background:#E2E2E2;
+	border:1px solid #CDCDCD;
+	color:#CACACA;
+}
+.logo_1 button{
+	width:68px;
+	height:29px;
+	background:#F89C0D;
+	border:none;
+	color:#fff;
+	margin-left:-15px;
+}
+/*第二行结束*/
+/*第三行开始*/
+.nav{
+	height:35px;
+	width:972px;
+	background:#4B6A27;
+	margin:0 auto;
+	margin-bottom:10px;
+}
+.nav dt{
+	float:left;
+	width:73px;
+	line-height:35px;
+	text-align:center;
+}
+.nav dd{
+	float:left;
+	line-height:35px;
+	margin-right:15px;
+}
+.nav dt a{
+	color:#fff;
+	font-size:14px;
+	font-weight:600;
+}
+.nav dd a{
+	color:#fff;
+	width:85px;
+	border-right:1px solid #ACE04A;
+	padding-right:15px;
+	font-size:14px;
+	font-weight:600;	
+}
+#pp{
+	border:none;
+	padding:0px;
+	margin-left:px;
+}
+.nav dd:hover{
+	background:#738B56;
+}
+/*第三行结束*/
+/*第四行开始*/
+.main_content{
+	height:448px;
+	width:970px;
+	margin:0 auto;	
+}
+.content_1{				/*主要内容*/
+	width:565px;
+	height:448px;
+}
+.p2{
+	margin-top:14px;
+}			
+.content_2{
+	width:398px;
+	height:448px;
+	border:1px solid #CDCDCD;
+	position:relative;
+}
+.h_1{
+	color:#666666;
+	text-indent:1em;
+	margin:10px 0px;
+	font-size:17px;
+}
+.p3{
+	font-size:13px;
+	color:#999999;
+	margin:10px 0px;
+}
+.luoyuan{
+	height:334px;
+	position:absolute;
+	top:130px;
+	left:0px;
+}
+.luoyuan li{
+	height:29px;
+}
+.luoyuan li a{
+	font-size:14px;
+	color:#06346F;	
+}
+/*第四行结束*/
+/*第五行开始*/
+.exclusive{
+	height:269px;
+	width:970px;
+	margin:10px auto;
+}
+.exclusive_1{				/*环球时报 独家*/
+	height:269px;
+	width:306px;
+	border-top:1px solid #CDCDCD;
+	border-left:1px solid #CDCDCD;
+	border-bottom:1px solid #CDCDCD;
+}
+.gd{
+	height:32px;
+	border-bottom:1px solid #CDCDCD;
+}
+.gd dt{
+	float:left;
+	line-height:40px;
+	margin-left:10px;
+}
+.gd dd{
+	float:left;
+	line-height:32px;
+	font-weight:600;
+	margin-left:5px;
+}
+.gd dd a{
+	color:black;
+	font-size:14px;
+	margin-left:120px;
+	font-weight:400;
+}
+.h_2{
+	clear:both;
+	font-size:14px;
+	color:#06346F;
+	text-indent:1em;
+	margin-bottom:5px;
+}
+.gd_1{
+	
+}
+.gd_1 li{
+	text-indent:1em;
+	height:25px;
+}
+.gd_1 li a{
+	font-size:13px;
+	color:#06346F;
+}
+.exclusive_2{			/*深度视野一块*/
+	height:269px;
+	width:360px;
+}
+.sy{
+	height:32px;
+	border-bottom:1px solid #CDCDCD;
+	text-indent:1em;
+}
+.sy dt{
+	float:left;
+	line-height:40px;
+	margin-left:10px;
+}
+.sy dd{
+	float:left;
+	line-height:32px;
+	font-weight:600;
+	margin-left:5px;
+}
+.sy dd a{
+	color:black;
+	font-size:14px;
+	margin-left:180px;
+	font-weight:400;
+}
+.particular{
+	height:110px;
+	margin-top:10px;
+}
+.particular dt{
+	float:left;
+}
+.particular dd{
+	font-size:14px;
+	float:left;
+	width:168px;
+	margin-left:10px;
+	color:#06346F;
+}
+.particular dd span{
+	color:#999999;	
+}
+.exclusive_3{			
+	height:269px;
+	width:300px;
+}
+.exclusive_3 img{
+	margin-top:10px;
+}
+/*第五行结束*/
+/*第六行开始*/
+.phb{
+	height:362px;
+	width:970px;
+	margin:0 auto;
+}
+.phb_1{					/*排行榜*/
+	height:362px;
+	width:306px;
+	border:1px solid #CDCDCD;
+}
+.h_3{
+	height:28px;
+	width:306px;
+	line-height:28px;
+	text-indent:1em;
+	border-bottom:1px solid #CDCDCD;
+}
+.comment{
+	height:335px;
+	margin-left:10px;
+}
+.comment dt{
+	margin:10px 0px;
+}
+.comment dd{
+	font-size:13px;
+	color:#06346F;
+	height:27px;
+	margin-top:2px;
+}
+.phb_2{					/*中国军事*/
+	height:362px;
+	width:651px;
+}
+.h_4{
+	height:32px;
+	width:651px;
+	border-bottom:2px solid black;
+	line-height:32px;
+	text-indent:1em;
+}
+.h_4 a{
+	font-size:14px;
+	margin-left:500px;
+	color:black;
+}
+.xj{
+	height:165px;
+	width:651px;
+}
+.xj dt{
+	width:200px;
+	float:left;
+}
+.xj dt img{
+	margin-left:10px;
+	margin-top:15px;
+}
+.p4{
+	font-size:12px;
+	color:#06346F;
+	text-align:center;
+}
+.xj dd{
+	float:left;
+	margin-top:15px;
+	margin-left:30px;
+	padding-right:15px;
+}
+.xj dd h4{
+	font-size:14px;
+	padding-bottom:5px;
+}
+.xj dd p{
+	font-size:14px;
+	margin-top:7px;
+}
+/*第六行结束*/
+/*第七行开始*/
+.flying{
+	height:821px;
+	width:970px;
+	margin:0 auto;
+	margin-top:10px;
+}
+.flying_1{				/*嫦娥飞天 左半边*/
+	width:305px;
+	height:821px;
+}
+.focus{				/*论坛焦点*/
+	height:252px;
+	width:304px;
+	border:1px solid #CDCDCD;
+	margin-top:10px;
+}
+.h_5{
+	height:32px;
+	width:304px;
+	border-bottom:1px solid #CDCDCD;
+	line-height:32px;
+	text-indent:1em;
+	margin-bottom:10px;
+}
+.h_5 a{
+	font-size:14px;
+	margin-left:160px;
+	color:black;
+}
+.p5{
+	font-size:12px;
+	color:#06346F;
+	text-indent:1em;
+	height:25px;
+}
+.net_friend{			/*网页贴图*/
+	height:292px;
+	width:304px;
+	border:1px solid #CDCDCD;
+	margin-top:10px;
+}
+.net_friend img{
+	margin-left:10px;
+}
+.p6{
+	color:#06346F;
+	font-size:15px;
+	text-indent:1em;
+	margin-top:10px;
+}
+.flying_2{					/*嫦娥飞天 右半边*/
+	width:652px;
+	height:821px;
+}
+.js_comment{			/*军事评论*/
+	height:456px;
+	width:652px;
+}
+.p7{
+	font-size:14px;
+	color:#06346F;
+	text-indent:1em;
+	margin-top:20px;
+}
+.specialist{
+	height:117px;
+	width:311px;
+	margin-left:10px;
+}
+.specialist dt{
+	float:left;
+	margin-top:15px;
+}
+.specialist dd{
+	float:right;
+	width:160px;
+	margin-left:6px;
+	font-size:13.5px;
+	margin-top:17px;
+	color:#666666;
+}
+.specialist dd a{
+	color:red;
+}
+.survey{			/*调查*/
+	height:268px;
+	width:650px;
+}
+.dc_1{
+	height:268px;
+	width:201px;
+	float:left;
+}
+.h_6{
+	width:184px;
+	height:37px;
+	line-height:37px;
+	border-bottom:3px solid #A5B98A;
+	text-indent:1em;
+	margin-left:7px;
+}
+.p8{
+	width:168px;
+	font-size:13px;
+	margin-left:20px;
+	color:#06346F;
+	margin-top:10px;
+}
+.rad>p{
+	font-size:14px;
+	margin-top:10px;
+}
+.rad input{
+	margin-left:15px;
+}
+.rad span{
+	margin-left:10px;
+}
+.p9{
+	margin-left:70px;
+	padding-top:15px;
+}
+.inp{
+	height:21px;
+	width:44px;
+	background:#DBD9DA;
+	border:1px solid #999999;
+	border-radius:3px;	
+}
+.zhuanjia{
+	float:right;
+	height:126px;
+	width:431px;
+}
+.zhuanjia dt{
+	font-size:14px;
+	float:left;
+}
+.zhuanjia dt p{
+	margin-top:10px;
+	color:#06346F;
+}
+.zhuanjia dd{
+	font-size:14px;
+	float:left;
+}
+.zhuanjia dd p{
+	margin-top:10px;
+	color:#06346F;
+	margin-left:50px;
+}
+.to{
+	margin-top:15px;
+}
+/*第七行结束*/
+/*第八行结束*/
+.mbc{
+	height:90px;
+	width:961px;
+	margin:10px auto;
+}
+/*第八行结束*/
+/*第九行结束*/
+.map_depot{				/*军事图库*/
+	height:31px;
+	width:970px;
+	margin:20px auto;
+	border-bottom:3px solid #98AF79;
+}
+.jstk li{
+	float:left;
+	width:86px;
+	height:28px;
+	line-height:28px;
+	border:1px solid #CDCDCD;
+	border-radius:8px;
+	text-align:center;
+	margin-right:5px;
+	background:#EFEFEE;
+}
+.jstk li a{
+	color:black;
+	font-size:14px;
+}
+.jstk li:hover{
+	background:#D6E6C1;
+}
+/*第九行结束*/
+/*第十行结束*/
+.tk_list{			/*军事图库_图片合集*/
+	height:310px;
+	width:970px;
+	margin:0 auto;
+}
+.list_1{
+	height:157px;
+	width:183px;
+	margin-left:10px;
+	float:left;
+}
+.list_1 dd{
+	font-size:12px;
+	text-align:center;
+	color:#06346F;
+}
+/*第十行结束*/
+/*第十一行开始*/
+.military_strength{				/*各国军力*/
+	height:25px;
+	width:947px;
+	background:#DDE5D8;
+	margin:0 auto;
+}
+.military_strength>p{
+	float:left;
+	color:#82926E;
+	line-height:25px;
+	margin-right:20px;
+	font-size:14px;
+}
+.p10{
+	margin-left:10px;
+}
+/*第十一行结束*/
+/*第十二行开始*/
+.js_video{				/*军事视频*/
+	height:32px;
+	width:970px;
+	margin:10px auto;
+	border-bottom:3px solid #98AF79;
+}
+.h_7{
+	line-height:30px;
+	margin-left:20px;
+}
+.h_7 span{
+	font-size:14px;
+	margin-left:815px;
+}
+.js_video_1{				/*军事视频的列表*/
+	height:138px;
+	width:970px;
+	margin:0 auto;
+}
+.js_video_1>img{
+	float:left;
+	margin-top:30px;
+	margin-left:30px;
+}
+.Japanese{
+	width:120px;
+	float:left;
+	margin-top:10px;
+	margin-left:20px;
+}
+.Japanese dt{
+	
+}
+.Japanese dd{
+	font-size:12px;
+	color:#06346F;
+	text-align:center;
+}
+
+
+
+
+/*第十二行结束*/

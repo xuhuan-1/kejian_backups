@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" style="background: yellow;width: 800px;height:800px;"></canvas>
+    <script>
+        /**
+         * canvas实现椭圆：
+         * 
+        */
+        // 三次贝塞尔曲线
+        let cvs = document.getElementById('canvas');
+        let pen = cvs.getContext('2d');
+        // 手动设置宽高
+        cvs.width = cvs.clientWidth;
+        cvs.height = cvs.clientHeight;
+        // function ellipse(context, x, y, a, b) {
+        //         context.save();
+        //         var r = (a > b) ? a : b;
+        //         var ratioX = a / r;
+        //         var ratioY = b / r;
+        //         context.scale(ratioX, ratioY);
+        //         context.beginPath();
+        //         context.arc(x / ratioX, y / ratioY, r, 0, 2 * Math.PI, false);
+        //         context.closePath();
+        //         context.restore();
+        //         context.fillStyle = "red";
+        //         if(a<=10){
+        //             context.fillStyle = "white";
+        //         }
+        //         context.fill();
+
+        //     }
+        //     ellipse(pen, 326, 50, 14, 20);
+
+            pen.beginPath();
+            pen.strokeStyle = 'red';
+            pen.lineWidth = 10;
+            // pen.strokeText('紫漠',400,400);
+            // pen.font = '20px 宋体';
+            pen.ellipse(400, 400, 100, 200, 0, 0, 2*Math.PI)
+            // (起点x,起点y,半径x,半径y,旋转的角度，起始角，结果角，顺时针还是逆时针)
+            pen.stroke();
+            pen.fillStyle = 'red';
+            pen.fill();
+    </script>
+</body>
+</html>

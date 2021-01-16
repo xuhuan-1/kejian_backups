@@ -1,0 +1,23 @@
+$fontSize:37.5;
+@function rem($px){
+    @return $px/$fontSize + rem;
+}
+
+.box{
+    width:100%;
+    height: rem(400);
+    // font:20p/rem(400) "宋体";
+    background: gold;
+    .nav1{
+        float: left;
+        width: rem(40);
+        height: rem(200);
+        background: red;
+    }
+    .nav2{
+        float: right;
+        width: rem(120);
+        height: rem(200);
+        background: yellowgreen;
+    }
+}

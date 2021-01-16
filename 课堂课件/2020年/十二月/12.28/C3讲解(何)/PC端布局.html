@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100vh;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+        }
+        .header{
+            width: 100%;
+            height: 80px;
+            background: yellowgreen;
+        }
+        .content{
+            width: 100%;
+            height: calc(100vh - 80px);
+            background: pink;
+            min-width: 800px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        aside{
+            width: 304px;
+            height: 100%;
+            background: red;
+        }
+        .cont{
+            height: calc(100% - 28px);
+            flex: 1;
+            padding: 14px;
+            background: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">头部</div>
+        <section class="content">
+            <aside>导航</aside>
+            <section class="cont">内容</section>
+        </section>
+    </div>
+</body>
+</html>

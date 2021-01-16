@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>无缝轮播图2</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				position:relative;
+				width:500px;
+				height:500px;
+				margin:0 auto;
+				/* overflow: hidden; */
+			}
+			#im{
+				width:3000px;
+				height:500px;
+				position:absolute;
+				
+			}
+			li{
+				float:left;
+				list-style:none;
+			}
+			img{
+				height:500px;
+				width:500px;
+			}
+			#le{
+				width:50px;
+				height:50px;
+				background:red;
+				text-align:center;
+				line-height:50px;
+				background:rgba(122,210,215,0.6);
+				position:absolute;
+				left:0px;
+				top:250px;
+			}
+			#ri{
+				width:50px;
+				height:50px;
+				background:rgba(122,210,215,0.6);
+				text-align:center;
+				line-height:50px;
+				position:absolute;
+				left:450px;
+				top:250px;
+			}
+			#dian{
+				position:absolute;
+				top:450px;
+				left:150px;
+				background:red;
+				height:30px;
+				width:200px;
+			}
+			#dian ul li{
+				height:20px;
+				width:20px;
+				float:left;
+				margin:6px 10px;
+				border-radius:50%;
+				background:pink;
+			}
+			#dian ul li:hover{
+				background:blue;
+			}
+			#dian ul .liang{
+				background:blue;
+			}
+		</style>
+		<script src="sss.js"></script>
+	</head>
+	<body>
+		<div id="box">
+			<div id="im">
+				<ul>
+					
+				</ul>
+			</div>
+			<div id="le" onclick="to_left()">《</div>
+			<div id="ri" onclick="to_right()">》</div>
+			<div id="dian">
+				<ul>
+					<li class="liang"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			function $(id){
+				return document.getElementById(id);
+			}
+			function getStyle(ele,name){
+				return ele.currentStyle?ele.currentStyle[name]:getComputedStyle(ele,null)[name]
+			} //参数：元素、属性、目标位置、速度、函数
+			function move(ele,attr,target,speed,fn){
+				clearInterval(ele.timer);
+				//获取元素的当前位置
+				let current = parseInt(getStyle(ele,attr));
+				//判断是正值还是负值
+				if(current > target){
+					speed = -speed;
+				}
+				//定时器
+				ele.timer = setInterval(function(){
+					//获取元素的当前位置
+					let old_left = parseInt(getStyle(ele,attr));
+					//元素当前位置 + 速度
+					let new_left = old_left + speed;
+					//比如：元素位置：0   目标：800  速度：10
+					//10 < 0负值      20 < 800正值              10 > 0正值    20 > 负值    
+					if((speed < 0 && new_left < target) || (speed > 0 && new_left > target)){
+						new_left = target;
+					}
+					ele.style[attr] = new_left + 'px';
+					if(new_left == target){
+						clearInterval(ele.timer);
+						fn && fn()
+					}
+				},10)
+			}
+			//获取元素
+			var box_ul = $('im').querySelector('ul');
+			var dian_ul = $('dian').querySelector('ul');
+			var dian_li = dian_ul.querySelectorAll('li');
+			for(var i=1;i<=5;i++){
+				var create_li = document.createElement('li');
+				var create_img = document.createElement('img');
+				box_ul.appendChild(create_li);
+				create_li.appendChild(create_img);
+				create_img.setAttribute('src','img/'+i+'.png');
+			}
+			var box_li = box_ul.querySelectorAll('li');
+			 // 轮播图总数量
+			var all_img = box_li.length;
+			console.log(all_img);
+			let node = box_li[0].cloneNode(true);
+			box_ul.appendChild(node);
+			var a = 0;
+			timer = setInterval(to_right,1500);
+			//鼠标移入
+			$('box').addEventListener('mouseover',()=>{
+				clearInterval(timer);
+			})
+			//鼠标移出
+			$('box').addEventListener('mouseout',()=>{
+				clearInterval(timer);
+				timer = setInterval(to_right,1500);
+			})
+			//右侧按钮
+			function to_right(){
+				a++;
+				if(a>all_img){
+					$('im').style.left = 0;
+					a = 1;
+				}
+				move($('im'),'left',a*-500,10);
+				colo();
+			}
+			//左侧按钮
+			function to_left(){
+				a--;
+				if(a<0){
+					$('im').style.left = -(all_img*500)-1 + 'px';
+					a = all_img-1;
+				}
+				move($('im'),'left',a*-500,10);
+				colo();
+			}
+			//颜色
+			function colo(){
+				for(var i=0;i<dian_li.length;i++){
+					//dian_li[i].setAttribute('class',a == i?'liang':'');//三元表达式
+					if(a == i){
+						dian_li[i].setAttribute('class','liang');
+					}else if(a==5){
+						dian_li[0].setAttribute('class','liang');
+						dian_li[4].setAttribute('class','');
+					}
+					else{
+						dian_li[i].setAttribute('class','');
+					}
+					dian_li[i].setAttribute('nam',i);
+				}
+			}
+			for(var i=0;i<dian_li.length;i++){
+				dian_li[i].setAttribute('nam',i);
+			}
+			//底部按钮事件
+			$('dian').addEventListener('click',(eve)=>{
+				var e = eve||window.event;
+				var now_element = eve.target||eve.srcElement;
+				a = now_element.getAttribute('nam');
+				if(now_element.tagName == 'LI'){
+					move($('im'),'left',a*-500,10);
+					colo();
+				}
+			})
+		</script>
+	</body>
+</html>

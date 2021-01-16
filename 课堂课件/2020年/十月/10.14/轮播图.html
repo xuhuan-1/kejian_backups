@@ -1,0 +1,188 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>轮播图</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			li{
+				list-style:none;
+			}
+			#box{
+				width:600px;
+				height:500px;
+				margin:0 auto;
+				position:relative;
+				overflow:hidden;
+			}
+			#box ul{
+				width:3000px;
+				position:absolute;
+			}
+			#box ul li{
+				float:left;
+			}
+			img{
+				height:500px;
+				width:600px;
+			}
+			#p1{
+				height:40px;
+				width:205px;
+				line-height:30px;
+				position:absolute;
+				left:225px;
+				top:90%;
+				background:rgba(255,255,255,0.4);
+				border-radius:25px;
+				
+			}
+			button{
+				display:inline-block;
+				height:25px;
+				width:25px;
+				background:rgba(230,42,202,0.7);
+				border-radius:50%;
+				border:none;
+				margin-left:10px;
+			}
+			
+			#p2{
+				position:absolute;
+				
+			}
+			#p2 button{
+				height:80px;
+				width:30px;
+				background:rgba(255,255,255,0.4);
+				border:none;
+				border-radius:25px;
+				font-size:40px;
+			}
+			#p2 button:first-child{
+				position:absolute;
+				top:200px;
+				left:0px;
+			}
+			#p2 button:last-child{
+				position:absolute;
+				top:200px;
+				left:550px;
+			}
+			.dong{
+				background:rgba(235,116,11,0.8);
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li><img src="img/1.png"/></li>
+				<li><img src="img/2.png"/></li>
+				<li><img src="img/3.png"/></li>
+				<li><img src="img/4.png"/></li>
+				<li><img src="img/5.png"/></li>
+			</ul>
+			<p id="p1">
+				<button class="dong"></button>
+				<button></button>
+				<button></button>
+				<button></button>
+				<button></button>
+			</p>
+			<p id="p2">
+				<button onclick="left()"><</button>
+				<button onclick="right()">></button>
+			</p>
+		</div>
+		<script>
+			//封装一个通过ID获取DOM元素方法
+			function get(xc){
+				return document.getElementById(xc);
+			}
+			var query = document.querySelector('ul');
+			var but = get('p1').querySelectorAll('button');//底部5个圆按钮
+			var but_1 = get('p2').querySelectorAll('button');//两边按钮
+			var a = 0;
+			var time = null;
+			function fun(){//函数
+				get('p2').style.display = 'none';
+				time = setInterval (function (){
+					a++;
+					if(a == 5){a = 0;}
+					query.style.left = -600 * a + 'px';
+					//底部5个按钮
+					for(var i=0;i<but.length;i++){
+						if(i==a){
+							but[i].setAttribute("class","dong");
+						}else{
+							but[i].setAttribute("class","");
+						}
+					}
+				},1000);
+			}fun();
+			//鼠标悬浮其上时停止
+			get('box').onmouseover = function(){
+				clearInterval(time);
+				get('p2').style.display = 'block';
+			}
+			//鼠标挪开后开始
+			get('box').onmouseout = function(){
+				clearInterval(time);
+				fun();
+			}
+			//右侧按钮事件
+			function right(){
+				a++;
+				if(a>4){a = 0;}
+				for(var i=0;i<but.length;i++){
+					if(i==a){
+						but[i].setAttribute("class","dong");
+					}else{
+						but[i].setAttribute("class","");
+					}
+				}
+				query.style.left = -600 * a + 'px';
+			}
+			//左侧按钮事件
+			function left(){
+				a--;
+				if(a<0){a = 4;}
+				for(var i=0;i<but.length;i++){
+					if(i==a){
+						but[i].setAttribute("class","dong");
+					}else{
+						but[i].setAttribute("class","");
+					}
+				}
+				query.style.left = -600 * a + 'px';
+			}
+			for(var i=0;i<but.length;i++){
+					but[i].setAttribute('name',i);
+					but[i].setAttribute('onclick',"suibian(this)");
+				}
+			
+			function suibian(x){//底部按钮事件
+				a = x.attributes.name.value;
+				for(var i=0;i<but.length;i++){
+					if(i==a){
+						but[i].setAttribute("class","dong");
+					}else{
+						but[i].setAttribute("class","");
+					}
+				}
+				query.style.left = -600 * a + 'px';
+			}
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

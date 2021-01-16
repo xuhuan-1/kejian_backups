@@ -1,0 +1,57 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>星星</title>
+		<style>
+			body{
+				background:black;
+			}
+		
+			@font-face {
+			  font-family: 'iconfont';
+			  src: url('font_d2kt9w5ezq4/iconfont.eot');
+			  src: url('font_d2kt9w5ezq4/iconfont.eot?#iefix') format('embedded-opentype'),
+				  url('font_d2kt9w5ezq4/iconfont.woff2') format('woff2'),
+				  url('font_d2kt9w5ezq4/iconfont.woff') format('woff'),
+				  url('font_d2kt9w5ezq4/iconfont.ttf') format('truetype'),
+				  url('font_d2kt9w5ezq4/iconfont.svg#iconfont') format('svg');
+			}
+	
+			span{
+				 font-family: 'iconfont';
+				 position:absolute;
+			}		
+		</style>
+	</head>
+	<body>
+		<input type="button" value="星星" onclick="xx()"/>
+		<script>
+			for(var j=1;j<9;j++){
+				for(var i=0;i<22;i++){
+					document.write("<span style='top:"+40*j+"px;"+"left:"+90*i+"px;'>&#xe618;</span>");
+				}
+				
+			}
+			function fun(){
+				var arr = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
+				var b = '#';
+				for(var i=0;i<6;i++){
+					b += arr[Math.floor(Math.random()*16)];
+				}
+				return b;
+			}
+			var ss = document.querySelectorAll('span');
+			function xx(){
+				for(var i=0;i<ss.length;i++){
+					ss[i].style.color = fun();
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+

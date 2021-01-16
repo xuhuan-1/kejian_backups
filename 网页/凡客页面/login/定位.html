@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定位</title>
+	<style>
+		/*定位
+			position:
+				可选值：
+					static 默认值，代表没有开启定位
+					relative:开启相对定位，需要结合 top left bottom 				 right一起使用
+					absolute:开启绝对定位:
+								此元素，会立即脱离文档流;
+								原点：是离他最近开启了定位的父元素
+
+					fixed：开启 固定定位 他也是一种绝对定位
+							原点:浏览器的窗口;
+							会固定在窗口的某个位置，随浏览器一起滚动
+					z-index 
+					opacity 透明度
+						0 完全透明
+						1 不透明
+		*/
+		#box1{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			position: absolute;
+			left: 100px;
+			top: 100px;
+			z-index: 100;
+			opacity: 0.5;
+			
+
+		}
+		#box2{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+			z-index: 110;
+			opacity: 0.5;
+		}
+		#box3{
+			width: 200px;
+			height: 200px;
+			background-color: yellow;
+			position: absolute;
+			left: 200px;
+			top: 200px;
+			z-index: 120;
+			opacity: 0.5;
+		}
+		span{
+			width: 200px;
+			height: 200px;
+			color: skyblue;
+			background-color: pink;
+			
+		}
+	</style>
+</head>
+
+<body style="height: 5000px;">
+	<div id="box3">dasdfasdasdasd</div>
+	<div id="box1">
+		dasdasdasdasdasd
+	</div>
+	<div id="box2">dasdasdasdasdasda</div>
+	
+	<span>我是一个span</span>
+</body>
+</html>

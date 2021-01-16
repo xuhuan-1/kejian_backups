@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * JSONP跨域的原理：动态创建script标签，利用src属性不
+         * 受同源策略的限制进行请求数据
+         * 
+         * 只支持get请求    http://localhost:8080/admin?callback=func
+         * 
+         * 需要服务端配合，返回jsonp格式的数据
+         * 
+        */
+        function jsonP(obj){
+            obj.url = obj.url || '';
+            obj.method = obj.method || 'get';
+            obj.data = obj.data || {};
+            obj.success = obj.success;
+
+            function formate(data){
+                let arr = [];
+                for(let key in data){
+                    arr.push(key + '=' + data[key])
+                }
+                return arr.join('&');
+            }
+            let params = formate(obj.data );
+            
+            let head = document.querySelector('head');
+            let callbackName = obj.data['callback'];
+            let script = document.createElement('script');
+            script.src = obj.url +'?'+params;  
+            head.appendChild(script);
+            // 后台规定 ：字段
+            window[callbackName] = function(value){
+                obj.success && obj.success(value);
+                head.removeChild(script);
+                window[callbackName] = null;
+            }
+        }
+
+        jsonP({
+            url:'https://sug.so.360.cn/suggest',
+            method:'get',
+            data:{word:'vue',callback:'a'},
+            success:(res)=>{
+                console.log(res.result)
+            }
+        });
+
+
+        let obj = {
+            username:''
+        }
+
+
+    </script>
+</body>
+</html>

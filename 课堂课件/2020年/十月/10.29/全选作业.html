@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>全选作业</title>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<div id="box1">
+			<input type="checkbox" value="1"/>
+		</div>
+		<div id = "box">
+			<input type="checkbox"/>
+			<input type="checkbox"/>
+			<input type="checkbox"/>
+			<input type="checkbox"/>
+			<input type="checkbox"/>
+		</div>
+		<script>
+			function $(id){
+				return document.getElementById(id);
+			}
+			var box1_che = $('box1').querySelector('input[type="checkbox"]');
+			var box_all = $('box').querySelectorAll('input[type="checkbox"]');
+			document.body.addEventListener('click',(eve)=>{
+				var e = eve||window.event
+				var now_element = eve.target||eve.srcElement;
+				if(now_element.value == '1'){
+					for(var i=0;i<box_all.length;i++){
+						box_all[i].checked = box1_che.checked?true:false;
+					}
+				}else{
+					box1_che.checked = true;
+					for(var i=0;i<box_all.length;i++){
+						if(box_all[i].checked != true){
+							box1_che.checked = false;
+						}
+					}
+				}
+				
+			})
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<title>热点图</title>
+		<style>
+			body{
+				background:#333;
+			}
+			.map{
+				position:relative;
+				width:747px;
+				height:617px;
+				background:url(map.png) no-repeat;
+				margin:0 auto;
+			}
+			.city{
+				position:absolute;
+				top:228px;
+				right:188px;	
+			}
+			.dotted{
+				width:10px;
+				height:10px;
+				background:red;
+				border-radius:50%;
+			}
+			.city div[class^="plus"]{
+				position:absolute;
+				top:50%;
+				left:50%;
+				transform:translate(-50%,-50%);
+				width:10px;
+				height:10px;
+				box-shadow:0 0 5px 3px red;
+				border-radius:50%;
+				animation-name:plus;
+				animation-duration:1.2s;
+				animation-iteration-count:infinite;
+			}
+			.city div.plus2{
+				animation-delay:0.4s;
+			}
+			.city div.plus3{
+				animation-delay:0.8s;
+			}
+			@keyframes plus{
+				75%{
+					width:40px;
+					height:40px;
+				}
+				100%{
+					width:70px;
+					height:70px;
+					opacity:0;
+				}
+				
+			}
+			.td{
+				top:500px;
+				right:80px;
+			}
+			.th{
+				top:530px;
+				right:190px;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div class="map">
+			<div class="city">
+				<div class="dotted"></div>
+				<div class="plus1"></div>
+				<div class="plus2"></div>
+				<div class="plus3"></div>
+			</div>
+			<div class="city td">
+				<div class="dotted"></div>
+				<div class="plus1"></div>
+				<div class="plus2"></div>
+				<div class="plus3"></div>
+			</div>
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,162 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>轮播图</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				position:relative;
+				width:500px;
+				height:500px;
+				margin:0 auto;
+				
+			}
+			#im{
+				width:2500px;
+				height:500px;
+				position:absolute;
+			}
+			li{
+				float:left;
+				list-style:none;
+			}
+			img{
+				height:500px;
+				width:500px;
+			}
+			#left{
+				width:50px;
+				height:50px;
+				background:red;
+				text-align:center;
+				line-height:50px;
+				background:rgba(122,210,215,0.6);
+				position:absolute;
+				left:0px;
+				top:250px;
+			}
+			#right{
+				width:50px;
+				height:50px;
+				background:rgba(122,210,215,0.6);
+				text-align:center;
+				line-height:50px;
+				position:absolute;
+				left:450px;
+				top:250px;
+			}
+			#dian{
+				position:absolute;
+				top:450px;
+				left:150px;
+				background:pink;
+				height:30px;
+				width:200px;
+			}
+			#dian ul li{
+				height:20px;
+				width:20px;
+				float:left;
+				margin:6px 10px;
+				border-radius:50%;
+				background:red;
+			}
+			#dian ul li:hover{
+				background:blue;
+			}
+			#dian ul .liang{
+				background:blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="im">
+				<ul>
+					<li><img src="img/1.png"/></li>
+					<li><img src="img/2.png"/></li>
+					<li><img src="img/3.png"/></li>
+					<li><img src="img/4.png"/></li>
+					<li><img src="img/5.png"/></li>
+				</ul>
+			</div>
+			<div id="left" onclick="to_left()">《</div>
+			<div id="right" onclick="to_right()">》</div>
+			<div id="dian">
+				<ul>
+					<li class="liang"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			function $(id){
+				return document.getElementById(id);
+			}
+			var im_ul = $('im').querySelector('ul');
+			var im_li = im_ul.querySelectorAll('li');
+			var dian_ul = $('dian').querySelector('ul');
+			var dian_li = dian_ul.querySelectorAll('li');
+			
+			var timer = null;
+			var a = 0;
+			function dsq(){
+				timer = setInterval(()=>{
+					to_right();
+				},1000)
+			}dsq();
+			$('box').addEventListener('mouseover',()=>{
+				clearInterval(timer);
+			})
+			$('box').addEventListener('mouseout',()=>{
+				clearInterval(timer);
+				dsq();
+			})	
+			function to_right(){
+				a++;
+				a>im_li.length-1?a=0:'';
+				colo();
+				$('im').style.left = -500 * a + 'px';
+			}
+			function to_left(){
+				a--;
+				a<0?a=im_li.length-1:'';
+				colo();
+				$('im').style.left = -500 * a + 'px';
+			}
+			//颜色
+			function colo(){
+				for(var i=0;i<dian_li.length;i++){
+					dian_li[i].setAttribute('class',a==i?'liang':'');
+				}
+			}
+			for(var i=0;i<dian_li.length;i++){
+				dian_li[i].setAttribute('nam',i);
+			}
+			dian.addEventListener('click',(eve)=>{
+				var e = eve||window.eve;
+				var now_element = eve.target||eve.srcElement;
+				a = now_element.getAttribute('nam');
+				if(now_element.tagName == 'LI'){
+					$('im').style.left = -500 * a + 'px';
+					colo();
+				}
+			})
+			
+			
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

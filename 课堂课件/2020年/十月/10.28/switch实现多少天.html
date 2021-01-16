@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>利用switch实现输入年月日(8位)判断是当年的第几天</title>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<script>
+			//利用switch实现输入年月日(8位)判断是当年的第几天
+			//页面打印：你当前输入年份为：2020-10-10，为该年的第**天
+		/*
+			var pro = prompt('请输入年月日(8位数)');
+			var year = parseInt(pro/10000);//年
+			var month = parseInt(pro/100%100);//月
+			var day = parseInt(pro%100);//日
+			var all = 0;
+			switch(month-1){
+				case 11:all+=30;
+				case 10:all+=31;
+				case 9:all+=30;
+				case 8:all+=31;
+				case 7:all+=31;
+				case 6:all+=30;
+				case 5:all+=31;
+				case 4:all+=30;
+				case 3:all+=31;
+				case 2:
+					if(year%4==0&&year%10!=0||year%400==0){
+						all+=29;
+					}else{
+						all+=28;
+					}
+				case 1:all+=31;
+			}
+			all += day;
+		*/	
+			var date = prompt('请输入年月日(8位数)');
+			var year = parseInt(date/10000);
+			var month = parseInt(date/100%100);
+			var day = parseInt(date%100);
+			var all = 0;
+			switch(month-1){
+				case 11:all+=30;
+				case 10:all+=31;
+				case 9:all+=30;
+				case 8:all+=31;
+				case 7:all+=31;
+				case 6:all+=30;
+				case 5:all+=31;
+				case 4:all+=30;
+				case 3:all+=31;
+				case 2:
+					if(year%10 == 0 && year%100 != 0 || year%400 == 0){
+						all+=29;
+					}else{
+						all+=28;
+					}
+				case 1:all+=31;
+			}
+			all += day;
+			document.write('你输入的日期是：'+year+'年'+month+'月'+day+'日 为'+year+'年的第：'+all+'天');
+			</script>
+	</body>
+</html>

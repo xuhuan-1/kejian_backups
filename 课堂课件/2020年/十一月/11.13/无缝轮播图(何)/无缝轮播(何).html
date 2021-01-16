@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图实现</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            /* 禁止用户选中内容 */
+            user-select: none;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .container {
+            width: 800px;
+            height: 400px;
+            margin: 0 auto;
+            
+            position: relative;
+            left: 0px;
+            top: 50px;
+        }
+
+        .loop {
+            position: absolute;
+            left: 0px;
+            width: 4000px;
+            height: 100%;
+        }
+
+        .loop .item {
+            width: 800px;
+            height: 100%;
+            font: 20px/400px "微软雅黑";
+            float: left;
+            /* position: absolute;
+            left: 0; */
+            text-align: center;
+        }
+        img{
+            width:100%;
+            height: 100%;
+        }
+        .loop .item:nth-of-type(1) {
+            background: pink;
+        }
+
+        .loop .item:nth-of-type(2) {
+            background: green;
+        }
+
+        .loop .item:nth-of-type(3) {
+            background: yellow;
+        }
+
+        .loop .item:nth-of-type(4) {
+            background: skyblue;
+        }
+
+        .loop .item:nth-of-type(5) {
+            background: pink;
+        }
+
+        .btn {
+            width: 40px;
+            height: 40px;
+            font: 60px/20px "微软雅黑";
+            font-weight: 700px;
+            /* position: relative; */
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .container .prev {        
+            position: absolute;
+            top: 190px;
+            left: 20px;
+            z-index: 2;
+        }
+
+        .container .next {
+            position: absolute;
+            top: 190px;
+            left: 740px;
+            z-index: 2;
+        }
+
+        .dots-wraper {
+            /* width:800px; */
+            height: 15px;
+            position: absolute;
+            text-align: center;
+            bottom: 20px;
+            margin-left: 43%;
+        }
+
+        .dots-wraper li {
+            list-style: none;
+            width: 14px;
+            height: 15px;
+            cursor: pointer;
+            float: left;
+            margin-left: 14px;
+            border-radius: 25px;
+            background: red;
+        }
+
+        .dots-wraper li.current {
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 轮播图容器 -->
+    <div class="container">
+        <!-- 轮播图 -->
+        <div class="loop">
+            <div class="item"><img src="./images/banner1.jpeg" /></div>
+            <div class="item"><img src="./images/banner1.jpeg" /></div>
+            <div class="item"><img src="./images/banner1.jpeg" /></div>
+            <div class="item"><img src="./images/banner1.jpeg" /></div>
+            <!-- 当图片轮播到下面的图片时，我重置loop的定位，left:0; -->
+            <!-- <div class="item">一</div> -->
+            </div>
+            <!-- 左右控制按钮 -->
+            <div class="btn prev"><</div>
+            <div class="btn next">></div>
+            <ul class="dots-wraper">
+                <!-- 默认给当前显示的图片指示点高亮 -->
+                <!-- <li class="current"></li>
+                <li></li>
+                <li></li>
+                <li></li> -->
+            </ul>
+        </div>
+        <script>
+            /**
+             * 轮播图实现
+             * 左按钮  图片右移  prev() 
+             * 右按钮  图片左移  next()
+             * 默认图片左移 setInterval(next,3000)
+             * 鼠标移入轮播区域内，则停止轮播（停止定时器）
+             * 鼠标移除轮播区域内，则启动定时器
+             * 点解dot点时，对应展示当前点对应的那张图片
+             * addEventListener(type,cb,false/true):true代表事件捕获，
+             *  false代表冒泡，默认值是false，事件冒泡时可以省略第三个参数
+             * setInterval():
+             * mouseleave：鼠标离开事件
+             * mouseout：鼠标移出去之后清除的事件
+             * nth-of-type(1):是css3中的属性选择器，可以选择元素 接收number值作为参数
+             *          从1开始
+             * 2n   0  2 4 6 8   
+             * 作业：10个li，偶数有背景色，奇数没有背景色
+            */
+
+            // 获取轮播容器
+            var container = document.getElementsByClassName('container')[0];
+            // 轮播图的宽度  =  相对于每个图片的宽度
+            let containerWidth = container.offsetWidth //获取container的宽度
+            // 图片集合[]
+            var item = document.getElementsByClassName('item');
+            // 按钮
+            var nextBtn = document.getElementsByClassName('next')[0];
+            var prevBtn = document.getElementsByClassName('prev')[0];
+            // 指示器容器
+            var dotsWrap = document.getElementsByClassName('dots-wraper')[0];
+            // 获取所有的li
+            var dotsLi = dotsWrap.children;
+            //轮播图的容器
+            var loop = document.getElementsByClassName('loop')[0];
+            // 轮播图总数量
+            var itemLength = item.length;
+            // 初始化的索引  显示第一张图片
+            var index = 0;
+            // 小点点的索引
+            var dot = 0;
+            // 克隆第一张图片并且添加到loop容器的最后面
+            loop.appendChild(item[0].cloneNode(true));
+            // 将第四张图片添加到第一张前面
+            // loop.insertBefore(item[itemLength - 1].cloneNode(true),item[0]);
+            // 生成指示器  （小点点）
+            for(var i = 0;i<itemLength;i++){
+                var lis = document.createElement('li');
+                lis.value = i+1;
+                dotsWrap.appendChild(lis);
+            }
+            // 默认初始化高亮状态    773 616 471
+            dotsLi[0].className = 'current';
+            // 时间段内轮播一次的定时器
+            timer = setInterval(next,1500);
+            // 封装动画
+            // ele:移动的元素
+            // target  偏移量 移动的目标像素   2秒内，我要移动800px 
+            function animate(ele,target){  
+                // 先关闭定时器
+                clearInterval(ele.timee);
+                // 一张图片的移动轨迹 让用户能看到移动的过程
+                ele.timee = setInterval(()=>{
+                    // 设置左、右移动像素  
+                        // 左  0        -800 
+                        // 右  0         800
+                    var speed = ele.offsetLeft > target ? -10:10;
+                        //   接近于0时，则移动完成
+                    var result = target - ele.offsetLeft;
+                    // 匀速运动的效果，每10ms走15px
+                    // 一个图片 如果移动的差值大于speed，则一直让loop的left进行移动
+                    // 没有到达800px时，则继续执行每次加15像素，接近800px
+                    if(Math.abs(result) > Math.abs(speed)){
+                        ele.style.left = ele.offsetLeft + speed + "px";
+                    }else{
+                        // 已经移动了，接近我得目标值800px，直接赋值800px
+                        ele.style.left = target + "px";
+                        clearInterval(ele.timee);
+                    }
+                },10);
+            }
+            // 左移动
+            function next(){
+                index++;  //先加1 再做运算   ++i i++
+                    //  5        4   
+                if(index > itemLength){  
+                    // 当我的图片到达最后一张图片时，第一张图片  
+                    loop.style.left = 0;
+                    index = 1;
+                }              //1 2 3 4    800
+                animate(loop,-(index * containerWidth));
+                // 运动完之后，指示器也跟着移动
+                dot++;
+                currentDot();
+            }
+            // 右移动
+            function prev(){
+                index--;
+                // 如果index<0，则应该定位在第四张图片 反着轮播  索引改到倒数第一个
+                if(index  < 0){
+                    loop.style.left = -(itemLength* containerWidth) + 'px';
+                    index = itemLength-1;//找到倒数第二张图片
+                }
+                animate(loop, -index * containerWidth);
+                dot--;
+                currentDot();
+            }
+            //封装当前高亮状态的函数
+            function currentDot(){
+                // --的判断
+                if(dot < 0){
+                    dot = itemLength -1;
+                }
+                // ++的判断
+                if(dot >= itemLength){
+                    dot = 0;
+                }
+                for(var i=0;i<dotsLi.length;i++){
+                    dotsLi[i].className = '';
+                }
+                dotsLi[dot].className = 'current';
+            }    
+            // 右按钮功能
+            nextBtn.addEventListener('click',()=>{
+                next();
+                // 运动完后清除定时器
+                clearInterval(timer);
+                // 禁止连续点击  
+                // ``:叫做模板字符串   可以进行拼接字符串
+                // "<div>"+ id +"</div>"
+                // `<div>${id}</div>`
+                nextBtn.style.cssText = "pointer-events: none;"; 
+                // 600ms内再进行点击
+                setTimeout(() => {
+                    nextBtn.style.cssText = `pointer-events: auto;`;
+                }, 600);
+            })
+            // 左按钮功能
+            prevBtn.addEventListener('click',()=>{
+                prev();
+                clearInterval(timer);
+                prevBtn.style.cssText = "pointer-events: none;"; 
+                // 600ms内再进行点击
+                setTimeout(() => {
+                    prevBtn.style.cssText = `pointer-events: auto;`;
+                }, 600);
+            })
+             //指示器功能实现   false 冒泡
+            dotsWrap.addEventListener('click',(e)=>{
+                for(var i=0;i<dotsLi.length;i++){
+                    dotsLi[i].className = '';
+                }
+                animate(loop,-(e.target.value * containerWidth));
+                e.target.className = 'current';
+            }); 
+            // 鼠标移入事件
+            container.addEventListener('mouseover', function () {
+                clearInterval(timer);
+            });
+            // 鼠标移出事件
+            container.addEventListener('mouseout', function () {
+                timer = setInterval(next,1500)
+            });
+
+        </script>
+    </div>
+</body>
+</html>

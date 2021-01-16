@@ -1,0 +1,25 @@
+跨域：浏览器为了安全性考虑，产生了跨域
+    同源策略：只要协议、域名、子域名、端口号中有一项不同，则违反了同源策略，
+    就产生跨域问题
+
+解决跨域方式：
+    1、jsonp：原理是动态创建script标签，src属性指向外部资源
+       不受同源策略的限制  通过回调函数的方式获取服务端数据
+
+       缺点：
+        只支持get请求，不其他请求，因为只有get请求的请求参数拼接
+        在url地址栏中的
+    2、cors：设置请求头，允许访问【服务端设置】
+        setHeader('Access-control-allow-origin','*')
+    3、nginx：
+        反向服务器代理 【服务端设置】
+    4、H5新增的API：postMessage()，不受同源策略的限制
+    5、H5新增的websocket:不受同源策略的限制   
+    6、window.name + iframe
+    7、document.domain + iframe   
+    8、location.hash + iframe 
+
+    解决跨域常用的方式：2、3    
+
+
+

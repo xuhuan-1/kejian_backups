@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>触发事件活动</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            position: relative;
+			float:left;
+            margin: 100px 50px 0px 100px;
+            background: pink;
+        }
+        #bot{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100px;
+            height: 100px;
+            background: hotpink;
+            opacity: 0.5;
+        }
+		#bigbot{
+            position: relative;
+			float: left;
+            margin-top: 100px;
+            width: 600px;
+            height: 600px;
+            overflow: hidden;
+		}
+        #bigimg{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id = "box">
+		<img id = "img" src="bee.jpg" />
+        <div id = "bot"></div>
+    </div>
+	<div id = "bigbot">
+        <img id = "bigimg" src="bee.jpg" />
+	</div>
+    <script>
+        function $(a){
+            return document.getElementById(a);
+        } 
+        var propor = null;
+		window.onload = function(){
+			$("box").style.width = $("img").offsetWidth+"px";
+			$("box").style.height = $("img").offsetHeight+"px";
+			propor = $("bigbot").offsetWidth/$("bot").offsetWidth;
+            $("bigimg").style.width = $("bigimg").offsetWidth*propor+"px";
+		}
+        document.body.addEventListener("mousemove",(e)=>{
+            var e = e || window.event;
+            //var box = e.target || e.srcElement;
+            //父盒子的外边距-上
+            var parent_top = $("box").offsetTop;
+            //父盒子的外边距-左
+            var parent_left = $("box").offsetLeft;
+            $("bot").style.transition = "all 0s linear 0s";
+            //小盒子位置
+            var bot_left = e.pageX - parent_left - $("bot").offsetWidth/2 + "px";
+            var bot_top = e.pageY - parent_top - $("bot").offsetHeight/2 + "px";
+            $("bot").style.left = bot_left;
+            $("bot").style.top = bot_top;
+            
+            if(e.pageX - $("bot").offsetWidth/2 <= parent_left){
+                $("bot").style.left = "0px";
+			}
+			if(e.pageX >= parent_left+$("box").offsetWidth - $("bot").offsetWidth/2){
+                $("bot").style.left = $("box").offsetWidth - $("bot").offsetWidth +'px';
+            }
+            if(e.pageY - $("bot").offsetHeight/2 <= parent_top){
+                $("bot").style.top = "0px";
+            }
+			if(e.pageY >= parent_top+$("box").offsetHeight - $("bot").offsetHeight/2){
+                $("bot").style.top = $("box").offsetHeight-$("bot").offsetHeight +'px';
+            }
+            //重新获取经过if判断后的原图盒子位置
+            var bigimg_left = $("bot").style.left;
+            var bigimg_top = $("bot").style.top;
+            $("bigimg").style.left = -parseFloat(bigimg_left)*propor +"px";
+            $("bigimg").style.top = -parseFloat(bigimg_top)*propor +"px";
+        })
+    </script>
+</body>
+</html>

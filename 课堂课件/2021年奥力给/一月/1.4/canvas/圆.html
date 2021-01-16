@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画圆</title>
+</head>
+<body>
+    <canvas id="Mycanvas" style="background: #cccccc;" width="800" height="400"></canvas>
+    <script>    
+        let cvs = document.querySelector('#Mycanvas');
+        let pen = cvs.getContext('2d');
+        pen.arc(400,200,100,0,Math.PI,false);
+        pen.lineWidth = 5;
+        pen.strokeStyle = 'red';
+        pen.stroke();
+
+        
+    </script>
+</body>
+</html>

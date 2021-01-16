@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS动画</title>
+</head>
+<body>
+    <div id="box" style="height:500px;width:500px;background:#CDCDCD;position:relative;">
+        <div id="box_1" style="width: 50px;height: 50px;background: red; position:absolute;left:20px; opacity:1;">
+
+        </div>
+    </div>
+    <button id="but">点击</button>
+    <script>
+    /*
+        function getStyle(ele,attr){
+            return ele.currentStyle? ele.currentStyle[attr]:getComputedStyle(ele,null)[attr];
+        }
+        function donghua(ele,options){
+            clearInterval(ele.timer);
+            ele.timer = setInterval(()=>{
+                for(let i in options){
+                    let speed = (options[i] - parseInt(getStyle(ele,i)))/10;
+                    speed = speed > 0 ? Math.ceil(speed):Math.floor(speed);
+                    ele.style[i] = parseInt(getStyle(ele,i))+speed + 'px';
+                    if(options[i] == parseInt(getStyle(ele,i))){
+                        clearInterval(ele.timer);
+                    }
+                }
+            },20)
+        }
+        but.onclick = function(){
+            let p = new donghua(box_1,{
+                left:400,
+            });
+        }
+    */  
+        function getStyle(ele,attr){
+            return ele.currentStyle? ele.currentStyle[attr]:getComputedStyle(ele,null)[attr];
+        }
+        function animate(ele,options){
+            clearInterval(ele.timer);
+            ele.timer = setInterval(()=>{
+                for(let i in options){
+                    if(i == 'opacity'){
+                        //现在的透明数
+                        let currentOpacity = parseInt(getStyle(ele,i))*100;
+                        let step = (options[i]*100) - currentOpacity;
+                        step = step > 0 ? 10:-10;
+                        ele.style[i] = (currentOpacity + step)/100;
+                        console.log(step);
+                    }else{
+                        //传入的距离 - 获取的距离 / 10
+                        let speed = (options[i] - parseInt(getStyle(ele,i)))/10;
+                        //判断向上取整还是向下取整
+                        c = speed > 0 ? Math.ceil(speed):Math.floor(speed);
+                        //元素的left值赋值
+                        ele.style[i] = parseInt(getStyle(ele,i)) + c + 'px';
+                        console.log(c);
+                        if(options[i] == parseInt(getStyle(ele,i))){
+                            clearInterval(ele.timer);
+                        }
+                    }
+                    
+                }
+            },50)
+        }
+        but.onclick = function(){
+            let p = new animate(box_1,{
+                top:400,
+                opacity:.4,
+            });
+        }
+    </script>
+</body>
+</html>

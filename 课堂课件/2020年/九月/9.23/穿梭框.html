@@ -1,0 +1,107 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>穿梭框</title>
+	</head>
+	<body>
+		<select id="se1" multiple="multiple" size="10">
+			<option>🌈</option>
+			<option>🌈</option>
+			<option>🌈</option>
+			<option>🌈</option>
+			<option>🌈</option>
+		</select>
+		<button onclick="a1()">></button>
+		<button onclick="a2()"><</button>
+		<select id="se2" multiple="multiple" size="10">
+			<option>🌈</option>
+			<option>🌈</option>
+			<option>🌈</option>
+			<option>🌈</option>
+			<option>🌈</option>
+		</select>
+		<script>
+			var select1 = document.getElementById('se1');
+			var select2 = document.getElementById('se2');
+			
+			function a1(){
+				var doc = se1.querySelectorAll('option');
+				for(var i=0;i<doc.length;i++){
+					if(doc[i].selected){
+						select2.appendChild(doc[i]);
+					}
+				}
+			}
+			function a2(){
+				var doc = se2.querySelectorAll('option');
+				for(var i=0;i<doc.length;i++){
+					if(doc[i].selected){
+						select1.appendChild(doc[i]);
+					}
+				}
+			}	
+			
+		/*	//二、
+			function a1(){
+				var doc = se1.querySelectorAll('option');
+				for(var i=0;i<doc.length;i++){
+					if(doc[i].selected){
+						select2.appendChild(doc[i]);
+					}
+				}
+			}
+			function a2(){
+				var doc = se2.querySelectorAll('option');
+				for(var i=0;i<doc.length;i++){
+					if(doc[i].selected){
+						select1.appendChild(doc[i]);
+					}
+				}
+			}
+			//三、
+			function a1(){
+				var doc = se1.querySelectorAll('option');
+				for(var i=0;i<doc.length;i++){
+					if(doc[i].selected == true){
+						select2.appendChild(doc[i]);
+					}
+				}
+			}
+			function a2(){
+				var doc = se2.querySelectorAll('option');
+				for(var i=0;i<doc.length;i++){
+					if(doc[i].selected == true){
+						select1.appendChild(doc[i]);
+					}
+				}
+			}	
+		*/	//四、
+			function a1(){
+				var docu = se1.querySelectorAll('option');
+				for(var i=0;i<docu.length;i++){
+					if(docu[i].selected == true){
+						select2.appendChild(docu[i]);
+					}
+				}
+			}
+			
+			function a2(){
+				var docu1 = se2.querySelectorAll('option');
+				for(var i=0;i<docu1.length;i++){
+					if(docu1[i].selected == true){
+						select1.appendChild(docu1[i]);
+					}
+				}
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

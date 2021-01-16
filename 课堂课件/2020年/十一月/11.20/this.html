@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this指针</title>
+</head>
+<body>
+    <script>
+        // 'use struct' 严格模式
+        /**
+         * 1、普通函数：this指向window  【谁调用指向谁】
+         * 2、定时器：this指向window
+         * 3、对象内的this，谁调用指向谁【指向调用者】如果没有调用就没有执行
+         * 4、执行时看具体是谁调用，指向直接调用者
+         * 5、构造函数：this指向实例对象，new可以改变this指向
+         * 6、构造函数内部return 对象，则this指向当前return的对象
+         * 7、构造函数内部只要return的是对象，则指向当前对象，否则还是指向实例对象
+         * 8、严格模式中，普通函数this指向undefined，不是window了
+        */
+    /*  let obj = {
+            fn:function(){
+                setTimeout(()=>{
+                    //this指向obj
+                    console.log(this);
+                });
+            }
+        }
+        obj.fn();
+
+        let obj = {
+            fn:function(){
+                setTimeout(function(){
+                    //this指向window
+                    console.log(this);
+                });
+            }
+        }
+        obj.fn();
+
+        let obj = {
+            fn:function(){
+                let _this = this;
+                setTimeout(function(){
+                    _this.fn1();
+                },0)
+            },
+            fn1:function(){
+                console.log('========');
+            }
+        }
+        obj.fn();
+
+        let o = {
+            a:10,
+            b:{
+                a:15,
+                fn:function(){
+                    //console.log('======');
+                    console.log(this.a);
+                    console.log(this);
+                }
+            }
+        }
+        let g = o.b.fn;
+        g();
+
+
+        function Person(){
+            this.name = 'zimo';
+            console.log(this);
+            return {};
+        }
+        let p = new Person();
+        console.log(p);
+    */
+
+    
+
+    /*
+        //1、普通函数
+    
+        function a(){
+            console.log(this);
+        }
+        function b(){
+            a();
+        }
+        b();
+    
+        //2、定时器 用的普通函数
+        let obj = {
+            fn:function(){
+                setTimeout(function(){
+                    console.log(this);
+                },0);
+            }
+        }
+        obj.fn();
+        //2、定时器 用的ES6箭头函数【箭头函数没有this,继承的是他的父元素】
+        let obj = {
+            fn:function(){
+                setTimeout(function(){
+                    console.log(this);
+                },0);
+            }
+        }
+        obj.fn();
+    
+        //3、对象内的this，谁调用指向谁【指向调用者】如果没有调用就没有执行
+        let obj = {
+            name:'张三',
+            value:{
+                a:12,
+                b:function(){
+                    console.log(this.a);
+                    console.log(this);
+                }
+            }
+        }
+        let g = obj.value.b;
+        g();
+    */  //5、构造函数
+        function person(){
+            this.name = 'zimo';
+            console.log(this);
+            //如果returnd 是对象，则this执行当前return 的对象
+            return {};
+        }
+        let s = new person();
+        console.log(s);
+
+
+
+    </script>
+</body>
+</html>

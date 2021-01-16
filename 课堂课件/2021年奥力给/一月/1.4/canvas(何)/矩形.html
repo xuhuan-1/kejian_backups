@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" style="background:yellow;" width="800" height="400"></canvas>
+    <script>
+        let cvs = document.getElementById('canvas');
+        // 画笔
+        let pen = cvs.getContext('2d');
+    // 第一
+        // pen.fillStyle = 'green';
+        // pen.fillRect(100,100,200,200);
+        // pen.clearRect(120,120,160,160);
+    // 第二
+        pen.beginPath();//开始画图
+        pen.lineWidth = 10;
+        pen.strokeStyle = 'green';
+        pen.moveTo(20,20);//起始坐标
+        pen.lineTo(120,20);
+        pen.lineTo(120,120);
+        pen.lineTo(20,120);
+        pen.closePath();//合闭路径
+        pen.stroke();//合并连线
+        // pen.fillStyle = 'green';
+        // pen.fill();
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模块化实现数据上传3</title>
+    <style>
+        #img_box{
+            height: 500px;
+            width: 500px;
+            border: 1px solid;
+        }
+    </style>
+    <!-- IMPORT CSS -->
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/index2.css">
+</head>
+
+<body>
+    <section id="uploadBox" class="uploadBox clearfix">
+        <div class="card button" id="submit">
+            <input type="file" id="upLoad" accept="image/*" multiple>
+        </div>
+
+        <!-- <div class="card">
+            <img src="images/1.png" alt="">
+            <div class="progress">
+                <div class="line"></div>
+            </div>
+            <div class="mark"></div>
+        </div> -->
+    </section>
+    <div id="img_box">
+        <ul id="ul"></ul>
+    </div>
+
+    <!-- IMPORT JS  axios:onProgress-->
+    <script src="js/axios.min.js"></script>
+    <script src="js/qs.min.js"></script>
+    <!-- 入口文件 -->
+    <script type="module" src="a.js"></script>
+    <script>
+        
+    </script>
+</body>
+</html>

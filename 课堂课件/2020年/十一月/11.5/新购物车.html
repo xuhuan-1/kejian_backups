@@ -1,0 +1,153 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>杂货铺</title>
+		<style>
+			td{
+				text-align:center;
+			}
+			input[type="text"]{
+				width:30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<table border="2" id="tab_1">
+				<caption>牛逼杂货铺</caption>
+				<tr>
+					<td width="100">商品</td>
+					<td width="100">单价</td>
+					<td width="100">分量</td>
+					<td width="100">库存</td>
+					<td width="100">操作</td>
+				</tr>
+				<tr>
+					<td>O泡果奶</td>
+					<td>5</td>
+					<td>/瓶</td>
+					<td>15</td>
+					<td>
+						<input type="button" value="加入购物车"/>
+					</td>
+				</tr>
+				<tr>
+					<td>旺仔牛奶</td>
+					<td>4</td>
+					<td>/瓶</td>
+					<td>30</td>
+					<td>
+						<input type="button" value="加入购物车"/>
+					</td>
+				</tr>
+				<tr>
+					<td>康师母方便面</td>
+					<td>5</td>
+					<td>/桶</td>
+					<td>20</td>
+					<td>
+						<input type="button" value="加入购物车"/>
+					</td>
+				</tr>
+				<tr>
+					<td>旺旺碎冰冰</td>
+					<td>3</td>
+					<td>/根</td>
+					<td>30</td>
+					<td>
+						<input type="button" value="加入购物车"/>
+					</td>
+				</tr>
+			</table>
+			<table id="tab_2" border="2">
+				<caption>结算界面</caption>
+				<thead>
+					<tr>
+						<td width="100">商品</td>
+						<td width="100">单价</td>
+						<td width="100">数量</td>
+						<td width="100">金额</td>
+						<td width="100">删除</td>
+					</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="3">总结</td>
+						<td>0</td>
+						<td>元</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<script>
+			function $(id){
+				return document.getElementById(id);
+			}
+			var tab1_td;
+			$('box').addEventListener('click',(eve)=>{
+				var e = eve||window.eve;
+				var now_element = eve.target||eve.srcElement;
+				//tab1里所以的td
+				tab1_td = now_element.parentNode.parentNode.children;
+		//加入购物车事件
+				if(now_element.value == '加入购物车'){
+					//商品
+					var nam = tab1_td[0].innerText;
+					//价格
+					var price = tab1_td[1].innerText;
+					//库存
+					var repertory = tab1_td[3].innerText;
+					//第一次加入购物车  查找表格2里是否有相同的物品
+					var tab2_td = $('tab_2').querySelector('tbody').querySelectorAll('td');
+					for(var i=0;i<tab2_td.length;i++){
+						if(tab2_td[i].innerText == tab1_td[0].innerText){
+							//库存--
+							if(tab1_td[3].innerText<1){
+								return;
+							}
+							tab1_td[3].innerText--;
+							//数量++
+							tab2_td[i].parentNode.querySelector('input[type="text"]').value++;
+							//金额
+							var b = tab2_td[i].
+							parentNode.querySelectorAll('td');
+							b[3].innerText = b[1].innerText*b[2].querySelector('input[type="text"]').value;
+							
+							return;
+						}
+					}
+					var create_tr = document.createElement('tr');
+					create_tr.innerHTML = '<tr><td>'+nam+'</td><td>'+price+'</td><td><input type="button" value="-"/><input type="text" value="1"/><input type="button" value="+"/></td><td></td><td><input type="button" value="X"/></td></tr>';
+					$('tab_2').querySelector('tbody').appendChild(create_tr);
+					//tab2所以的td
+					var tab2td = create_tr.querySelectorAll('td');
+					//金额
+					var jine = parseInt(tab2td[1].innerText * tab2td[2].querySelector('input[type="text"]').value);
+					tab2td[3].innerText = jine;
+					//库存--
+					tab1_td[3].innerText--;
+				}
+			})	
+			
+			//总计方法
+			function total(){
+				var all_tr = $('tab_2').querySelector('tbody').children;
+				var he = 0;
+				for(var i=0;i<all_tr.length;i++){
+					he+=all_tr[i].querySelectorAll('td')[3].innerText
+				}
+				console.log(all_tr);
+			}
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

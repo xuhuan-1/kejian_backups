@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="body">
+    <div id="box" style="width: 200px;height: 200px;background: red;"></div>
+    <script>
+        /*
+
+        事件监听：
+        缺点：一直监听，就算不调用了，还存在于内存中，占用内存单元，消耗性能，容易造成堆栈溢出
+
+        解决：移除事件监听
+        
+		addEventListener():标准浏览器
+        attachEvent(): IE浏览器 
+        */
+
+        // 事件冒泡兼容写法
+        // function addEvent(ele,type,fn,flag){
+        //     // 处理标准浏览器事件监听
+        //     if(ele.addEventListener){
+        //         ele.addEventListener(type,fn,flag);
+        //     }else{
+        //         // IE 浏览器的事件监听
+        //         ele.attachEvent('on'+type,fn,flag)
+        //     }
+        // }
+
+// 绑定事件冒泡兼容写法
+        function addEvent(ele,type,fn,flag){
+            ele.addEventListener ? ele.addEventListener(type,fn,flag) : ele.attachEvent('on'+type,fn,flag)
+        }
+// 移除事件监听兼容函数
+        function removeEvent(ele,type,fn){
+            ele.removeEventListener ? ele.removeEventListener(type,fn) : ele.detachEvent('on'+type,fn);
+        }
+        
+        addEvent(box,'click',fn1);
+        addEvent(body,'click',fn2);
+        removeEvent(body,'click',fn2);
+        addEvent(document,'click',fn3);
+        // removeEvent(document,'click',fn3)
+
+        function fn1(){
+            console.log('box')
+        }
+        function fn2(){
+            console.log('body')
+        }
+        function fn3(){
+            console.log('document')
+        }
+
+    </script>
+</body>
+</html>

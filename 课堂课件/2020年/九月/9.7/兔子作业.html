@@ -1,0 +1,34 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>兔子</title>
+		<script>
+		/*
+			document.write('第1个月的兔子对数是：1<br/ >');
+			document.write('第2个月的兔子对数是：1<br/ >');
+			var t1 = 1,t2 = 1,t;
+			for(i = 3;i <= 12;i++){
+				t = t2;
+				t2 = t1 + t2;
+				t1 = t;
+				document.write('第'+i+'个月的兔子对数是：'+t2+'<br/ >');
+			}
+		*/
+			var t;
+			var t1 = 1;
+			var t2 = 1;
+			for(var i=1;i<=10;i++){
+				t = t2;
+				t2 = t1 + t2;
+				t1 = t;
+				document.write(t2+'<br/ >');
+			}
+		</script>
+				
+		
+	</head>
+	<body>
+		
+	</body>
+</html>

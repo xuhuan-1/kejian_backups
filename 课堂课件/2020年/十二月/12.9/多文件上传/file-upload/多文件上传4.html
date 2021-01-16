@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多文件上传4</title>
+    <!-- IMPORT CSS -->
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/index2.css">
+</head>
+
+<body>
+    <section id="uploadBox" class="uploadBox clearfix">
+        <div class="card button" id="submit">
+            <input type="file" id="upLoad" accept="image/*" multiple>
+        </div>
+
+        <!-- <div class="card">
+            <img src="images/1.png" alt="">
+            <div class="progress">
+                <div class="line"></div>
+            </div>
+            <div class="mark"></div>
+        </div> -->
+    </section>
+
+    <!-- IMPORT JS  axios:onProgress-->
+    <script src="js/axios.min.js"></script>
+    <script src="js/qs.min.js"></script>
+    <script>
+        /**
+         * 思路：
+         *    1、封装公共方法
+         *    2、获取需要操作的元素
+         *    3、获取选取的多张图片对象 存到上传列表 【就是一个数组】
+         *    4、循环数组传到请求接口 Promise.all([])
+         *    5、创建DOM结构
+         *    6、创建完成之后进行移除 card
+         *  
+        */
+        // 获取本地文件
+        function fileReader(file){
+            return new Promise(resolve=>{
+                let reader = new FileReader;
+                reader.readAsDataURL(file);
+                reader.onload = (e=>{
+                    resolve(e.target.result);
+                })
+            })
+        }
+        // 延迟函数
+        function delay(timer){
+            var timer = timer || 2000;
+            return new Promise(resolve=>{
+                setTimeout(()=>{
+                    resolve();
+                })
+            },timer)
+        }
+        // 获取后台数据
+        function postMessage(url,data,config){
+            return axios.post(`http://localhost:8888/${url}`,data,config).then(res=>{
+                return res.data;
+            })
+        }
+        function $(id){
+            return document.getElementById(id);
+        }
+        // 获取DOM元素
+        let submit = $('submit'),
+        upLoad = $('upLoad'),
+        uploadBox = $('uploadBox');
+        
+        submit.onclick = function(){
+            upLoad.click();
+        }
+        upLoad.onchange = async e=>{
+            let file = e.target.files;
+            file = Array.from(file);
+            if(file.length == 0)return;
+            let upLoadList = [];
+            file.forEach((item,index)=>{
+                upLoadList[index] = {
+                    file:item,
+                    card:null,
+                    base64:null
+                }
+            })
+            let BASE64 = await Promise.all(file.map(item=>fileReader(item)));
+            let frag = document.createDocumentFragment();
+            BASE64.forEach((item,index)=>{
+                let card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `<img src="${item}" alt="">
+                                    <div class="progress">
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="mark"></div>`
+                frag.appendChild(card);
+                upLoadList[index].card = card;
+                upLoadList[index].base64 = item;
+            })
+            uploadBox.appendChild(frag);
+            await delay(5000);
+            upLoadList.forEach(async (item,index)=>{
+                let {
+                    card,
+                    base64,
+                    file
+                } = item;
+
+                let data = {
+                    chunk:base64,
+                    filename:file.name
+                }
+                let response = await postMessage('single2',Qs.stringify(data),{
+                    headers:{
+                        'Content-Type':'application/x-www-form-urlencoded'
+                    },
+                    onUploadProgress(ev){
+                        let s = ev.loaded / ev.total * 100 + '%';
+                        card.querySelector('.line').style.width = s;
+                    }
+                });
+                if(response.code == 0){
+                    //card.remove();
+                }
+            })
+        };
+
+
+    </script>
+</body>
+</html>

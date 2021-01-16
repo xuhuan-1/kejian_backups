@@ -1,0 +1,38 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>计算器</title>
+	</head>
+	<body>
+		<input id="a" type="text"/>	<!--第一个文本框-->
+		<select id="b">		<!--选择框-->
+			<option>+</option>
+			<option>-</option>
+			<option>*</option>
+			<option>/</option>
+		</select>
+		<input id="c" type="text"/>		<!--第二个文本框-->
+		<input onclick="dj()" type="button" value="="/><!--按钮-->
+		<input id="e" type="text"/>		<!--结果框-->
+		<script>
+			//封装一个通过ID获取DOM元素方法
+			function get(xc){
+				return document.getElementById(xc);
+			}
+			function dj(){
+				switch(get('b').value){
+					case '+':get('e').value = parseFloat(get('a').value) + parseFloat(get('c').value);break;
+					case '-':get('e').value = parseFloat(get('a').value) - parseFloat(get('c').value);break;
+					case '*':get('e').value = parseFloat(get('a').value) * parseFloat(get('c').value);break;
+					case '/':get('e').value = parseFloat(get('a').value) / parseFloat(get('c').value);break;
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+

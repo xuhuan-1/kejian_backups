@@ -1,0 +1,72 @@
+1、JSONP跨域：
+    原理：动态的创建script标签，让src指向当前需要访问的地址
+         因为src属性指向的是外部地址，不受同源策略的限制
+
+    优点：
+        1、创建的script，解决跨域问题
+        2、简单，使用回调函数的方式跨域的
+
+    缺点：
+        1、只支持get请求，不支持其他请求
+
+    就是前端调用服务端的回调函数
+
+2、cors跨域:
+    原理：设置响应头部，允许访问即可 
+         服务端解决 ：
+         res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+
+3、nginx跨域：
+    反向服务器代理
+    server {
+        listen       5500;
+        server_name  127.0.0.1;
+        root   html;
+        location / {
+            #index  demo.html;
+        }
+        #请求http://localhost:8080/api，将该请求转发到百度api，则保证请求在同一个域，解决跨域问题
+        location /abc {
+            proxy_pass http://127.0.0.1:5500;
+    }
+
+4、postMessage()  【H5着重讲】
+    H5中新增的提交数据的方法，不受同源策略的限制
+5、document.domain + iframe   【不常用】
+    原理：利用iframe的src属性进行跨域访问
+    缺点：只有在主域相同的时候才能使用该方法
+6、location.hash + iframe
+    原理：是利用location.hash来进行传值   
+7、window.name + iframe
+    name 值在不同的页面（甚至不同域名）加载后依旧存在，并且可以支持非常长的 name 值（2MB）
+8、websocket：持久性请求  【H5着重讲】
+    有状态的请求，只要连接上服务器，不主动断开连接，则一直连接着服务器
+    多用于实时聊天，【ws】，不受同源策略的限制
+    双向通道：双向通信
+
+WEB服务器：
+    tomcat：【大型】
+    Apache：【大型】
+    Nginx：反向代理服务器 【小型】
+    IIS：
+    Boa服务器  【小型】
+
+
+作业：
+    1、整理多种请求头部 Content-type
+    2、整理简单请求和非简单请求的方式
+
+
+下周一：
+    一张，多张，续点上传，MIME上传
+    上传进度
+
+
+
+
+
+
+
+
+
+

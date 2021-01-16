@@ -1,0 +1,25 @@
+.container{
+    margin-left: 100px;
+}
+img{
+    width: 120px;
+    height: 40px;
+}
+
+ #h2{
+     color: red;
+ }
+ .box{
+    display: block;
+ }
+ .box.hide{
+     display: none;
+  }
+ .show{
+     display: block;
+     width: 752px;
+ }
+ .show.hide{
+    display: none;
+ }
+

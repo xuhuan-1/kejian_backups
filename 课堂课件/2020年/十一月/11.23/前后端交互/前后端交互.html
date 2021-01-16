@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前后端交互</title>
+</head>
+<body>
+    <script>
+        /**
+         * 封装ajax步骤：
+         *  1、创建异步请求对象
+         *  2、建立连接  【和服务端建立连接】
+         *  3、发送/提交数据
+         *  4、注册监听函数  【监听服务端给前端响应的数据】
+        */
+        function ajax(obj){
+            //处理参数
+            obj.url = obj.url || '';//路径
+            obj.method = obj.method || 'get';//请求方式
+            obj.data = obj.data || {};  //数据
+            obj.dataType = obj.dataType || 'josn';//数据类型
+            obj.success = obj.success;//成功的回调函数
+            //1、创建异步请求对象
+            let xhr
+            window.XMLHttpRequest ? xhr = new XMLHttpRequest():xhr = new ActiveXObject('Microsoft.XMLHTTP');
+            //2、建立连接
+            function formate(o){
+                let arr = [];
+                for(let key in o){
+                    arr.push(key +' = '+ o[key]);
+                }
+                return arr.join('&');
+            }
+            let params = formate(obj.data);
+            let url = obj.url + '?' + params;
+            if(obj.method == 'get'){
+                xhr.open(obj.method,url,true);//true 异步请求对象
+            }else{
+                xhr.open(obj.method,obj.url,true);//true 异步请求对象
+            }
+            //3、发送请求
+            if(obj.method == 'get'){
+                xhr.setRequestHeader('Content-type','application/json;charset=utf-8');
+                xhr.send(null);
+            }else{
+                xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded;charset=utf-8');
+                xhr.send(params);
+            }
+            //4、注册监听函数
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200 && xhr.status < 300 || xhr.status == 304){
+                        if(obj.method == 'get'){
+                            obj.success && obj.success(JSON.parse(xhr.responseText));
+                        }else{
+                            obj.success && obj.success(xhr.responseText);
+                        }
+                    }
+                }
+            }
+        }
+        ajax({
+            //url:'./data.json',
+            url:'http://localhost:3001/add',
+            data:{username:'剑哥哥',age:16},
+            method:'post',
+            success:function(response){
+                console.log(response);
+            }
+        })
+        
+    </script>
+</body>
+</html>

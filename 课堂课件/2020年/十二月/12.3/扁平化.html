@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let a = arr.join();
+        // //let as = JSON.parse(a);
+        // let ss = a.split(',');
+        // let dd;
+        // for(let i=0;i<ss.length;i++){
+        //     dd = ss[i] * 1;
+        //     let o = 1;
+        // }
+        // console.log(dd);
+
+        // function flatten(arr) {
+        //     return arr.reduce((result, item) => {
+        //         return result.concat(Array.isArray(item) ? flatten(item) : item);
+        //     }, []);
+        // }
+        // console.log(flatten(a));
+        //一、reduce扁平化
+        // let arra = [1, 2, 3, [4, 5, 6, 7, [7, 8, 99, 5], 4, 5], 6, 7];
+        // function a(arr){
+        //     return arr.reduce((now,item)=>{
+        //         return now.concat(Array.isArray(item)?a(item):item);
+        //     },[]);
+        // }
+        // console.log(a(arra));
+        //二、转换成字符串方法【只能数组中都是(数字)才能使用】
+        //let arra = [1, 2, 3, [4, 5, 6, 7, [7, 8, 99, 5], 4, 5], 6, 7];
+        // function a(arr){
+        //     return arr.toString().split(',').map(item=>{
+        //         return parseInt(item);
+        //     });
+        // }
+        //console.log(a(arra));
+        //
+        //indexOf去重
+        // let arra = [1, 2, 3, 3, 2, 1, 4, 6, 8, 2, 4, 5, 6, 7, 6, 7];
+        // let s = [];
+        // for(let i=0;i<arra.length;i++){
+        //     if(s.indexOf(arra[i]) == -1){
+        //         s.push(arra[i]);
+        //     }
+        // }
+        // console.log(s);
+
+        // let arra = [1, 2, 3, [4, 5, 6, 7, [7, 8, 99, 5], 4, 5], 6, 7];
+        // function a(arr){
+        //     return arr.toString().split(',').map(item=>{
+        //         return item*1;
+        //     })
+        // }
+        // console.log(a(arra));
+
+        //一、flat降维
+        // let arra = [1, 2, 3, [4, 5, 6, 7, [7, 8, [1,2,3],99, 5], 4, 5], 6, 7];
+        // let a = arra.flat(Infinity);
+        // console.log(a);
+
+        //二、reduce降维
+        // let arra = [1, 2, 3, [4, 5, 6, 7, [7, 8, [1,2,3],99, 5], 4, 5], 6, 7];
+        // function a(arr){
+        //     return arr.reduce((now,item)=>{
+        //         return  now.concat(Array.isArray(item)?a(item):item);
+        //     },[]);
+        // }
+        // console.log(a(arra));
+
+        //三、toString() map() 降维
+        // let arra = [1, 2, 3, [4, 8, 6, 7, [7, 8, [1,2,3],99, 5], 4, 5], 6, 7];
+        // function a(arr){
+        //     return arr.toString().split(',').map(item=>{
+        //         return item*1;
+        //     })
+        // }
+        // console.log(a(arra));
+        
+        //四、递归函数降维
+        // let arr = [1, 2, 3, [4, 8, 6, 7, [7, 8, [1, 2, 3], 99, 5], 4, 5], 6, 7];
+        // function a(ss){
+        //     let newArr = [];
+        //     ss.map(item=>{
+        //         return Array.isArray(item) ? newArr = newArr.concat(a(item)):newArr.push(item);
+        //     });
+        //     return newArr;
+        // }
+        // console.log(a(arr));
+
+        //一、去重
+        //let arr = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9];
+        // let a = [];
+        // arr.map(item=>{
+        //     if(a.indexOf(item) == -1){
+        //         a.push(item);
+        //     }
+        //     return a;
+        // })
+        // console.log(a);
+
+        //二、Array.from() new Set去重
+        // let arr = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9];
+        // let ss = Array.from(new Set(arr));
+        // console.log(ss);
+
+        //三、filter过滤去重
+        // let arr = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9];
+        // let a = arr.filter((item,index)=>{
+        //     return arr.indexOf(item) == index;
+        // })
+        // console.log(arr);
+        // console.log(a);
+        
+        
+        //递归降维
+        // let arr = [1, 2, 3, [4, 8, 6, 7, [7, 8, [1, 2, 3], 99, 5], 4, 5], 6, 7];
+        // function a(ss){
+        //     let newArr = [];
+        //     ss.map(item=>{
+        //         Array.isArray(item) ? newArr = newArr.concat(a(item)):newArr.push(item);
+        //     })
+        //     return newArr;
+        // }
+        // console.log(a(arr));
+
+
+
+
+
+
+
+
+
+        var arrs = [1, [23, 32], 42, [0, 33, [55, 39, [10, 331, [15, 34]]]]];
+        function a(arr){
+            let newArr = [];
+            arr.map(item=>{
+                Array.isArray(item) ? newArr = newArr.concat(a(item)):newArr.push(item);
+            })
+            return newArr;
+        }
+        console.log(a(arrs));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQ上下滑动效果</title>
+    <!-- jQ库 -->
+    <script src="./JS/jquery-3.2.1.min.js"></script>
+    <style>
+        .box {
+            /* display: none; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" style="background: gold; height: 500px; width: 500px;">
+
+    </div>
+    <button class="up">上</button>
+    <button class="down">下</button>
+    <script>
+        /**
+         * slideUp()向上 参数，可以传num值【毫秒数】，或者，慢速的"slow"、普通的"normal"、快速的"fast"
+         * slideDown()向下 参数，可以传num值【毫秒数】，或者，慢速的"slow"、普通的"normal"、快速的"fast"
+         */
+        let $box = $('.box'),
+            $up = $('.up'),
+            $down = $('.down');
+
+        $up.click(() => {
+            $box.slideUp(1000);
+        })
+        $down.click(function () {
+            $box.slideDown(2000);
+        })
+    </script>
+</body>
+
+</html>

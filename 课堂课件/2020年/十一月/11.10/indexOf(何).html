@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * indexOf():用于字符串或者数据中查找某个数据，返回第一次找到的下标，没有找到
+         *           返回-1；
+         * typeof:可以判断基本数据类型，但是不能判断出具体的引用数据类型
+         * 
+         * 特殊：null
+         *  typeof判断不出来，返回的是object
+         * 
+         * includes:ES7新增的一个方法，检测数据中是否包含某一项
+         *          找到返回true，否则返回false 【字符串和数组皆可用】
+        */
+
+
+        // var str = 'zimogod';
+        // var s = str.indexOf('m');
+        // console.log(s)
+
+        // var arr = [3,4,5,6,4];
+        // var s = arr.indexOf(5);
+        // console.log(s)
+
+        // var obj = null;
+        // var num = [];
+        // console.log(typeof num);
+
+        // 问：为什么typeof 判断null返回object？
+        /**
+         * 回答：因为电脑的cpu只能计算二进制的数据，例如：0011001
+         *      所有的引用数据类型翻译成二进制 000110，只要是二进
+         *      制的数据，前三位都是000开头
+         *      null开头是000开头的进制数据，typeof的作用是通过进
+         *      制来判断是基本数据类型还是引用数据类型
+         * 
+         *      typeof只要碰到  000开头的二进制数据，则都返回object
+         *      【function除外】
+         * 
+        
+
+
+        // var str = 'zimogod';
+        // var s = str.includes('l');
+        // console.log(s)
+        //includes去重
+        var arr = [3,3,4,5,6,6,7,8,7,8];
+        var array =[];
+        var a = [];
+        for(var i = 0; i < arr.length; i++) {
+            if(!array.includes(arr[i])) {
+                 //includes 检测数组是否有某个值 
+                array.push(arr[i]); 
+            } else{
+                a.push(arr[i]);
+            }
+        }
+        console.log(array);
+        console.log(a);
+    */
+        let arr = [1,2,3,4,5,6,7,8,9];
+        console.log(arr.includes(11));
+    </script>
+</body>
+</html>

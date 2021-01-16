@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table border=2px id="tab">
+		<caption >用户信息<button id = "addnew" onclick = "addnew()">添加用户</button></caption>
+		<tr>
+			<td style = "width:80px;">姓名</td>
+			<td style = "width:200px;">email</td>
+			<td style = "width:120px;">电话</td>
+			<td style = "text-align:center;">操作</td>
+		</tr>		
+	</table>
+	<!-- 
+	表格的获取：
+	    一个表格中：caption、thead、tfoot是唯一的，tbody不是唯一的
+	    获取caption的引用（节点对象）：tab.caption
+	    获取thead的引用：tab.tHead
+	    获取tbody的引用：tab.tBodies []数组形式
+		获取tfoot的引用：tab.tFoot
+		获取表格中所有的行：tab.rows
+		获取表格中表头的行：tab.tHead.rows
+		获取表格中表体的行：tab.tBodies[下标].rows
+		获取表格中表尾的行：tab.tFoot.rows
+		获取表格中指定行中所有的列：tab.rows[下标].cells
+        获取指定行的行标：tab.rows[下标].rowIndex 
+        表格中行标的计算是从表头里的第一行开始计算的
+        获取指定列的列标：tab.rows[下标].cells[下标].cellIndex
+        合并行：列.rowSpan = 数字
+        合并列：列.colSpan = 数字
+	表格的创建
+	    创建表名：tab.createCaption()
+	    创建表头：tab.createTHead()
+	    创建表体：tab.createTBody()
+	    创建表尾：tab.createTFoot()
+	    创建行：tab.insertRow(位置) tab.tHead().insertRow() ....
+	    插入列：行.insertCell(位置)
+   
+	表格的删除
+		删除表名：tab.deleteCaption()
+		删除表头：tab.deleteTHead()
+		删除表体（不存在）
+		删除表尾：tab.deleteTFoot()
+		删除行：tab.deleteRow(下标)  
+		删除列：tab.rows[下标].deleteCell(下标)
+	-->
+
+	<script>
+		/*// 创建的表格
+		var tab = document.createElement("table");
+		// 创建表头
+		var thead = tab.createTHead();
+		// 插入行
+		var theadTr = thead.insertRow(0);
+		var theadTr = thead.insertRow(1);
+		// 插入列
+		var arr = ["<input type='checkbox' id='all'>","邮件名称","操作"];
+		for(var i=0;i<arr.length;i++){
+			var theadTd = theadTr.insertCell(i);
+			theadTd.innerHTML = arr[i];
+		}
+
+		// 创建tbody
+		var tbody = tab.createTBody();
+		var arr1 = [
+			{
+				0:"<input type='checkbox' class='one'>",
+				1:"我稀罕你1...",
+				2:"<button>删除</button>"
+			},
+			{0:"<input type='checkbox' class='one'>",1:"我稀罕你2...",2:"<button>删除</button>"},
+			{0:"<input type='checkbox' class='one'>",1:"我稀罕你3...",2:"<button>删除</button>"},
+			{0:"<input type='checkbox' class='one'>",1:"我稀罕你4...",2:"<button>删除</button>"}
+		];
+		arr1.forEach(function(email,i){
+			var tbodyTr = tbody.insertRow(i);
+			for(var p in email){
+				var tbodyTd = tbodyTr.insertCell(p);
+				tbodyTd.innerHTML = email[p];
+			}
+		})
+
+		// 创建表尾
+		var tfoot = tab.createTFoot();
+		var tfootTr = tfoot.insertRow(0);
+		var tfootTd = tfootTr.insertCell(0);
+		tfootTd.innerHTML = `<button>删除选中</button><button>全选</button>`;
+		tfootTd.colSpan = 3;
+		document.body.appendChild(tab);
+
+		var cks = tab.querySelectorAll("input[type=checkbox]:not(#all)");
+		all.onclick = a;
+		tfootTd.lastElementChild.onclick = a;
+		function a(){
+			for(var i=0;i<cks.length;i++){
+				if(!this.show){
+					cks[i].checked = true;
+				}else{
+					cks[i].checked = false;
+				}
+			}
+			this.show = !this.show;
+		}
+
+		var rows = tab.rows;
+		var btns = tbody.querySelectorAll("button");
+		[].forEach.call(btns,function(btn,i){
+			btn.onclick = function(){
+				tab.tBodies[0].removeChild(this.parentNode.parentNode);
+			}
+		});
+
+		var deleteAll = tab.tFoot.querySelector("button");
+		deleteAll.onclick = function(){
+			cks = tab.querySelectorAll("input[type=checkbox]:not(#all)");
+			for(var i=0;i<cks.length;i++){
+				if(cks[i].checked){
+					tab.tBodies[0].removeChild(cks[i].parentNode.parentNode);
+				}
+			}
+		}	
+*/
+	</script>	
+</body>
+</html>

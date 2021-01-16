@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <p>0</p>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <div>
+        <div>
+            <span>$2000</span>
+            <div class="mei">$3000</div>
+        </div>
+    </div>
+
+    <p>6</p>
+    <p>7</p>
+    <p>8</p>
+    <p>
+        <!-- <div> -->
+            <span>444</span>
+        <!-- </div> -->
+        </p>
+    <script>
+        // console.log($('p').eq(4).html());
+        // console.log($('p').not($('p').eq(2)));
+        // console.log($('p:gt(4)'));
+        // console.log($('p:lt(4)'));
+
+        // console.log($('p:last').text())
+        // console.log($('p:first').text())
+
+        // console.log($('p:even').text())
+        // console.log($('p:odd').text())
+
+        // console.log($('p:last').first().text());
+
+        // console.log($('p').eq(6).prev().text())
+        // console.log($('p').eq(6).next().next().text())
+
+        // console.log($('p').eq(5).next().find('.mei').text())
+
+        console.log($('div').children(0).children(0).last().text(),'777');
+
+        console.log($('p').eq(5).next().find('.mei').attr('class'));
+
+        console.log($('p').eq(5).next().find('.mei').attr('pid',10001));
+
+        console.log($('p').eq(5).next().find('.mei').removeAttr('pid'));
+
+        
+
+        console.log($('p').eq(0)[0]);
+
+
+    </script>
+</body>
+</html>

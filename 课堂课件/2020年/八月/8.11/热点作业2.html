@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>热点练习</title>
+		<style>
+			body{
+				background:#333;
+			}
+			.map{
+				position:relative;
+				width:747px;
+				height:617px;
+				background:url(map.png) no-repeat;
+				margin:0 auto;
+			}
+			.place{
+				position:absolute;
+				top:228px;
+				right:188px;
+			}
+			.city{
+				height:10px;
+				width:10px;
+				background:red;
+				border-radius:50%;
+			}
+			.place div[class^="bj"]{
+				position:absolute;
+				top:50%;
+				left:50%;
+				transform:translate(-50%,-50%);
+				width:10px;
+				height:10px;
+				border-radius:50%;
+				box-shadow:0 0 5px 3px red;
+				animation-name:aa;
+				animation-duration:1.5s;
+				animation-iteration-count:infinite;
+			}
+			.place div.bj2{
+				animation-delay:0.4s;
+			}
+			.place div.bj3{
+				animation-delay:0.8s;
+			}
+			@keyframes aa{
+				50%{
+					width:50px;
+					height:50px;
+				}
+				75%{
+					width:80px;
+					height:80px;
+					opacity:0;
+				}
+			}
+			.td{
+				top:500px;
+				right:80px;
+				
+			}
+			.th{
+				top:530px;
+				right:185px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="map">
+			<div class="place">
+				<div class="city"></div>
+				<div class="bj1"></div>
+				<div class="bj2"></div>
+				<div class="bj3"></div>
+			</div>
+			<div class="place td">
+				<div class="city"></div>
+				<div class="bj1"></div>
+				<div class="bj2"></div>
+				<div class="bj3"></div>
+			</div>
+			<div class="place th">
+				<div class="city"></div>
+				<div class="bj1"></div>
+				<div class="bj2"></div>
+				<div class="bj3"></div>
+			</div>
+		</div>
+	</body>
+</html>

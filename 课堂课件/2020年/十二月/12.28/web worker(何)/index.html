@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * 主线程代码
+         */
+        //先创建一个子线程   【主线程分出来一个子线程】  
+        let worker = new Worker('./index.js');
+        // 接收数据的变量
+        let result = {};
+        // 监听子线程
+        worker.addEventListener('message', e => {
+            console.log(e.data);
+        });
+        // 得把接收数据的变量传递给子线程   
+        worker.postMessage(result)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="upLoad" type="file" accept="image/*" multiple>
+    <img src="" alt="" id="abbreImg" width="300">
+    <script>
+        /**
+         * 作业：
+         *  1、整理input新增的type属性
+         *  
+         * 
+         * input的控件必须设置成file类型，才是文件上传 【file是H5新增的表单控件】
+         * multiple:设置是否允许多文件上传
+         * accept:可以指定上传文件的类型
+         * MIME:多文件类型
+         * 
+         * async await：终极异步解决方案
+         * 
+         * FileReader:电脑本地的文件系统
+         *   onload：文件读取完成的函数
+         *   readAsDataURL:BASE64格式的文件，传递给后台
+         *   readAsText:转成文本传递给后台
+         *   readAsArrayBuffer():就是一个数组，当前数组内存放的是二进制的数据
+         * 
+         * FileList:当前上传文件对象
+         *   0: 当前文件所有信息
+         *      name:文件名
+         *      size:文件大小
+         *      type:文件类型
+         *   length:上传文件的数量
+         * 
+         * 
+        */
+
+        // 封装文件的方法  【异步读取，性能好】
+        function fileReader(file){
+            return new Promise(resolve =>{
+                let files = new FileReader;
+                // 将图片转为base64格式图片
+                files.readAsDataURL(file);
+                files.onload = e => {
+                    // e.target.result:文件的名称   sss.png
+                    resolve(e.target.result)
+                }
+            })
+        }
+
+        upLoad.onchange = async function(){
+            let file = this.files[0];
+            if(!file) return;
+            let s = await fileReader(file);
+            console.log(s);
+        }
+
+        
+
+    </script>
+</body>
+</html>

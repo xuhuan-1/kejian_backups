@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" style="width: 800px;height: 600px;border: 2px solid #000;"></div>
+    <script>
+
+        // 阻止浏览器默认行为
+        document.ondragover = function (e) {
+            e.preventDefault();  
+        };
+        document.ondrop = function (e) {
+            e.preventDefault();
+        };
+        // 目标区域
+        // box.ondragover = function (e) {
+        //     e.preventDefault();
+        // };
+
+        box.ondrop = function(e){
+            console.log(e);
+            let list = e.dataTransfer.files;
+            if(!list) return;
+            for(let i = 0;i<list.length;i++){
+                let file = list[i];
+                fileReader(file);
+            }
+        }
+        // 阅读文件
+        function fileReader(file){
+            let reader = new FileReader;
+            reader.readAsDataURL(file);
+            reader.onload = function(){
+                let img = new Image();
+                img.src = reader.result;
+                box.appendChild(img);
+            }
+        }
+    </script>
+</body>
+</html>

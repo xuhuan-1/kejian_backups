@@ -1,0 +1,43 @@
+封装ajax步骤：
+    1、创建异步请求对象 【兼容性】
+    2、建立连接  open
+    3、发送请求  send 
+    4、注册监听函数  onreadystatechange  
+        监听响应状态码4  监听客户端200 <= xhr.status <300 || xhr.status == 304
+    
+本地缓存【WEB 存储】：5种，
+    localStorage：完全的本地存储，一条可以存5MB，可以存20条
+    sessionStorage：完全的本地存储，一条可以存5MB，可以存20条
+        区别：
+            localStorage：
+                1、localStorage长期存储，需要手动删除，否则一直存在
+                2、可以在不同标签窗口可以共享数据
+                3、不和服务端进行交互
+            sessionStorage:
+                1、会话存储，打开浏览器，则存数据，关闭之后则数据自动消失
+                2、只在当前窗口内能共享数据
+                3、场景主要用在判断用户是否登录
+                4、不和服务端进行交互
+        共同方法：
+            setItem('key',{}):存数据，第一个参数存数据时的数据名【字符串】，
+                      第二个参数需要存的字符串数据 【数据序列化】
+            getItem('key'):
+                      获取数据，只有一个参数，存数据时的数据名【第一个参数】
+            removeItem('key'):
+                      移除单项数据，参数同上
+            clear():
+                    清除全部数据，没有参数
+
+    cookies：js-cookie插件
+        本地存储，存储大小4kb，可以存20个左右的cookie，与服务端进行交互，每次请求
+        都会携带cookie，除非你手动限制，多用于电商网站【购物】
+
+        withcredentials:false 可以限制每次请求携带cookie请求跨域请求
+
+    IndexedDB
+    WEB SQL
+
+    
+
+  
+

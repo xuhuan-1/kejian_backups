@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>完美继承</title>
+</head>
+<body>
+    <script>
+        // 手动更改子类的constructor指向，
+        // 通过Object.create()/Object.assign()，复制一份父类原属性及方法给子类
+        // function Parent(){
+        //     this.name = '张三';
+        //     this.age = 19;
+        //     this.sex = '男';
+        //     this.fn = function(){
+        //         console.log('玩游戏');
+        //     }
+        // }
+        
+        // Parent.prototype.a = '你好啊'
+        // let s = new Parent();
+        // function Son(){
+        //     Parent.call(this);
+        // }
+        // Son.prototype = Object.assign({},Parent.prototype);
+        // Son.prototype.constructor = Son;
+        // let f = new Son();
+        // console.log(s);
+        // console.log(f);
+
+        // //构造函数继承
+        //     function Parent(age,sex){
+        //         //Parent的自身属性
+        //         this.name = '张三';
+        //         this.age = age || 38;
+        //         this.sex = sex || '男';
+        //     }
+        //     //添加原型方法
+        //     Parent.prototype.hobby = '玩游戏';
+        //     //实例对象
+        //     let p = new Parent();
+
+        //     function Son(){
+        //         //使用 call 继承
+        //         Parent.call(this);
+        //     }
+        //     //手动继承原型方法下的属性
+        //     Son.prototype = Object.create(Parent.prototype);
+        //     //手动更改继承的构造器指向
+        //     Son.prototype.constructor = Son;
+        //     Son.prototype.hobby = '学习，看书'
+        //     let s = new Son();
+        //     console.log(p);
+        //     console.log(s);
+
+            class Parent{
+                constructor(){
+                    this.name = '张三';
+                    this.age = 18;
+                }
+                static a(){
+                    console.log('年前');
+                }
+                b(){
+                    console.log('年后');
+                }
+            }
+            class Son extends Parent{
+                constructor(name,age){
+                    super(name,age);
+                }
+                static ddd(){
+                    super.a();
+                }
+            }
+            let p = new Parent();
+            let s = new Son();
+            console.log(p);
+            console.log(s);
+    </script>
+</body>
+</html>

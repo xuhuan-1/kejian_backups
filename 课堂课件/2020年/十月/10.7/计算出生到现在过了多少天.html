@@ -1,0 +1,61 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//封装一个通过ID获取DOM元素方法
+			function get(xc){
+				return document.getElementById(xc);
+			}
+			
+			var num = parseInt(prompt('请输入你的出生日期：'));
+			var year = parseInt(num/10000);	//提取出生日期前四位
+			var month = parseInt((num%10000)/100);//提取出生日期年份
+			var day = parseInt(num%100);//提取出生日期月份
+			var all =  0;
+			switch(month-1){
+				case 11:all += 30;
+				case 10:all += 31;
+				case  9:all += 30;
+				case  8:all += 31;
+				case  7:all += 31;
+				case  6:all += 30;
+				case  5:all += 31;
+				case  4:all += 30;
+				case  3:all += 31;
+				case  2:
+					if(year%4==0&&year%100!=0 || year%400==0){
+						all += 29;
+					}else{
+						all += 28;
+					}
+				case  1:all += 31;
+				case  0:all += day;
+			}console.log(all);
+			//出生那一年的天数
+			if(year%4 == 0 && year%100 != 0 || year%400 == 0){
+				var a = 366 - all + 1;
+			}else{
+				var a = 365 - all + 1;
+			}
+			var r = 0;
+			//出生到现在过了多少闰年数
+			for(var i=year;i<2020;i++){
+				if(i%4 == 0 && i%100 != 0 || i%400 == 0){
+					r++;
+					console.log(r);
+				}
+			}
+			a = a + 365*(2020-year-r-1) + 366*r + 281;
+			document.write(a);
+		</script>
+	</body>
+</html>
+
+
+
+
+

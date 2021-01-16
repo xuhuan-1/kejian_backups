@@ -1,0 +1,99 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>构造函数</title>
+	</head>
+	<body>
+		<script>
+		/*	//匿名函数
+			var fun = function (){
+				return console.log('hello');
+			}
+			//普通函数
+			function func(){
+				return console.log('hello');
+			}
+			//构造函数
+			//建议首字母大写，构造函数和普通函数并没有什么本质上的区别
+			var swk = {
+				name:'孙悟空',
+				age:18,
+				height:180,
+				skill:'大威天龙'
+			}
+			function setwzry(){
+				var msg = new Object();
+				msg.name = '李白';
+				msg.age = 18;
+				msg.height = 180;
+				msg.skill = '青莲剑歌';
+				return msg;
+			}
+			function wzry(name,age,height,skill){
+				var msg = new Object();
+				msg.name = name;
+				msg.age = age;
+				msg.height = height;
+				msg.skill = skill;
+				return msg;
+			}
+			var a = new wzry('诸葛亮',18,180,'元气弹');
+			console.log(a);
+			
+		
+			//普通函数创建的
+			function setwzry(){
+				var msg = new Object();
+				msg.name = '韩信';
+				msg.age = 18;
+				msg.height = 180;
+				msg.skill = '横扫';
+				return msg;
+			}
+			//工厂模式创建对应的函数
+			function wzry(name,age,height,skill){
+				var msg = new Object();
+				msg.name = name;
+				msg.age = age;
+				msg.height = height;
+				msg.skill = skill;
+				return msg;
+			}
+			var a = new wzry('疯狗•典韦',18,180,'我开大了');
+			var b = new wzry('孙悟空',18,180,'大威天龙');
+		
+		
+		
+			function person(name,age,sex){
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+			}
+			function Dog(){
+				
+			}
+			var dog = new Dog();
+			var per = new person('张三',18,'男');
+			var per1 = new person('张',1,'女');
+			console.log(per);
+			console.log(dog);
+			console.log(dog instanceof person);
+		*/	
+			function setwzry(){
+				var msg = new Object();
+				msg.name = '韩信';
+				msg.age = 18;
+				msg.height = 180;
+				msg.skill = '横扫';
+				return msg;
+			}
+			console.log(setwzry());
+		</script>
+	</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,36 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>复习事件监听</title>
+	</head>
+	<body>
+		<div id="box" style="height:100px; width:100px; background:red;">
+			
+		</div>
+		<script>
+		/*
+			//直接调用事件
+			function fun(){
+				console.log('====');
+			}
+			box.onclick = fun;
+			box.click();
+		*/	
+		box.addEventListener('click',dj1);
+		box.addEventListener('click',dj2);
+		function dj1(){
+			console.log('1');
+		}
+		function dj2(){
+			console.log('2');
+		}
+		
+		</script>
+	</body>
+</html>
+
+
+
+
+

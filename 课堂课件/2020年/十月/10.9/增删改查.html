@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>增删改查</title>
+</head>
+<style>	
+    #div_id1{
+		width:750px;
+        margin-left:400px;
+		display:none;
+    }
+    #div_id2{
+        margin:0 auto;
+		width:750px;
+    }
+	#tab_id{
+		width:800px;
+	}
+	#addnew{
+		float:right;
+	}
+	.handle{
+		width:150px;
+		margin-right:30px;
+	}
+</style>
+<body>
+    <div id="div_id1">
+        <h1>添加用户</h1>
+        姓名<input type="text" value="" id="tex_id"/>
+        邮箱<input type="text" value="" id="tex_id1"/>
+        电话<input type="text" value="" id="tex_id2"/>
+        <p>
+			<input type="button" onclick="fun1()" value="提交"/>
+			<input type="button" onclick="update()" value="更新"/>
+		</p>
+        <hr>
+    </div>
+    <div id="div_id2">
+        <table border=2px id="tab_id">
+			<caption  >用户信息<button id = "addnew" onclick = "addnew()">添加用户</button></caption>
+            <tr>
+				<td style = "width:80px;">姓名</td>
+				<td style = "width:200px;">email</td>
+				<td style = "width:120px;">电话</td>
+				<td style = "text-align:center;">操作</td>
+			</tr>
+        </table>
+    </div>
+    <script>
+		//封装通过ID获取元素
+		function $(msg){
+			return document.getElementById(msg)
+		}
+		//添加用户按钮的事件方法
+		function addnew(){
+			$("div_id1").style.display = "block";
+			$("div_id2").style.display = "none";
+		}
+        function fun1(){
+			$("div_id1").style.display = "none";
+			$("div_id2").style.display = "block";
+			var name = document.getElementById('tex_id').value;
+			var email = document.getElementById('tex_id1').value;
+			var tel = document.getElementById('tex_id2').value;
+			var tab = document.getElementById('tab_id');
+            var neww = document.createElement('tr');
+            var name1 = document.createElement('td');
+			name1.setAttribute('class','name');
+            var email1 = document.createElement('td');
+			email1.setAttribute('class','email');
+            var tel1 = document.createElement('td');
+			tel1.setAttribute('class','tel');
+            name1.innerText = name;
+            email1.innerText = email;
+            tel1.innerText = tel;
+            //删除按钮
+            var shan = document.createElement('button');
+            shan.setAttribute('onclick','add1(this)');
+			shan.setAttribute('class','handle');
+            shan.innerText = '删除';
+            //修改按钮
+            var xiu = document.createElement('button');
+            xiu.setAttribute('onclick','add2(this)');
+			xiu.setAttribute('class','handle');
+            xiu.innerText = '修改';
+            neww.appendChild(name1);
+            neww.appendChild(email1);
+            neww.appendChild(tel1);
+            neww.appendChild(shan);
+            neww.appendChild(xiu);
+            tab.appendChild(neww);
+            document.getElementById('tex_id').value = ("");
+            document.getElementById('tex_id1').value = ("");
+            document.getElementById('tex_id2').value = ("");
+        }
+        //删除
+        function add1(val){
+			val.parentNode.remove();
+        }
+        //修改
+		function add2(val){
+			$("div_id1").style.display = "block";
+			$("div_id2").style.display = "none";
+			var name = document.getElementById('tex_id');
+			var email = document.getElementById('tex_id1');
+			var tel = document.getElementById('tex_id2');
+            name.value = val.parentNode.querySelector('[class = "name"]').innerText;
+            email.value = val.parentNode.querySelector('[class = "email"]').innerText;
+            tel.value = val.parentNode.querySelector('[class = "tel"]').innerText;
+			//当前行在表格中的位置
+			rowIndex = val.parentNode.rowIndex
+        }
+		//更新
+        function update(){
+			$("div_id1").style.display = "none";
+			$("div_id2").style.display = "block";
+			var tab = document.getElementById('tab_id');
+			var name = document.getElementById('tex_id');
+			var email = document.getElementById('tex_id1');
+			var tel = document.getElementById('tex_id2');
+			var uptable = tab.querySelectorAll("tr");
+			uptable[rowIndex].querySelector('[class = "name"]').innerText = name.value;
+			uptable[rowIndex].querySelector('[class = "email"]').innerText = email.value;
+			uptable[rowIndex].querySelector('[class = "tel"]').innerText = tel.value;
+			document.getElementById('tex_id').value = ("");
+            document.getElementById('tex_id1').value = ("");
+            document.getElementById('tex_id2').value = ("");
+        }
+     
+    </script>
+</body>
+</html>

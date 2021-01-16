@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型链</title>
+</head>
+<body>
+    <div id="box">
+        
+    </div>
+    <script>
+    /*  //一、
+        function Ball(width,height,color,radius){
+            this.ball = null;
+            this.width = width || '100';
+            this.height = height || '100';
+            this.color = color || 'red';
+            this.radius = radius || '60';
+        }
+        Ball.prototype = {
+            createBall:function(){
+                this.ball = document.createElement('div');
+                this.ball.style.width = this.width + 'px';
+                this.ball.style.height = this.height + 'px';
+                this.ball.style.background = this.color;
+                this.ball.style.borderRadius = this.radius + 'px';
+            }
+        }
+        let b = new Ball(100,100,'red',50);
+        b.createBall();
+        let a = b.ball;
+        box.appendChild(a)
+    */  
+    /*  //二、
+        function Ball(width,height,colo,radi){
+            this.ball = null;
+            this.width = width;
+            this.height = height;
+            this.color = colo;
+            this.radius = radi;
+        }
+    
+        Ball.prototype = {
+            createBall:function(){
+                this.ball = document.createElement('div');
+                this.ball.style.cssText = `width:${this.width}px;
+                height:${this.height}px;background:${this.color};border-radius:${this.radius}px;`
+            }
+        }
+        let b = new Ball(100,100,'pink',50);
+        b.createBall();
+        let a = b.ball;
+        box.appendChild(a);
+    */
+        //三、
+        function Ball(width,height,col,radi){
+            this.ball = null;
+            this.width = width;
+            this.height = height;
+            this.color = col;
+            this.radius = radi;
+        }
+        Ball.prototype = {
+            tet:function(){
+                this.ball = document.createElement('div');
+                this.ball.style.cssText = `width:${this.width}px;
+                height:${this.height}px;background:${this.color};border-Radius:${this.radius}px`;
+            }
+        }
+        let a = new Ball(100,100,'red',50);
+        a.tet();
+        let b = a.ball;
+        box.appendChild(b);
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H5拖拽事件(王涛)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #content {
+            position: absolute;
+            left: 300px;
+            top: 0px;
+            width: 500px;
+            min-height: 200px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" style="width: 200px; height: 200px; background: red; cursor: move" draggable="true">
+        1
+    </div>
+    <div id="box1" style="width: 200px; height: 200px; background: green; cursor: move" draggable="true">
+        2
+    </div>
+    <div id="box2" style="width: 200px; height: 200px; background: yellow; cursor: move" draggable="true">
+        3
+    </div>
+    <div id="content"></div>
+    <script>
+        /**
+         * H5中拖拽事件：
+         *  很大帮助开发者以组件的方式拖拽到指定位置
+         *  组件：就是把一块区域布局当成一整块，我们叫做组件  分组件的方式叫做模块化
+         *  H5中的拖拽事件有7个：
+         *     拖动源：拖动的组件
+         *     拖动目标区域：拖动的目标区域位置
+         *  事件：
+         *     ondragstart:开始拖动（要想拖动元素，必须给当前拖动的元素设置一个属性 draggable = true）
+         *     ondrag:拖动中
+         *     ondragend:拖动结束
+         *
+         * 注意：必须在拖动中或者结束（ondragend或者ondragover）要阻止浏览器默认行为
+         *
+         *
+         * H5元素拖放：拖  放
+         *
+         *  1、dataTransfer:是拖动组件时的临时数据仓库，拖元素时，把当前元素的数据全部存在dataTransfer
+         *      携带到拖动的区域内
+         *      存数据:setData();
+         *      取数据:getData();
+         *      清空数据：clearData('Text');传参数 ,只清楚当前这个数据，如果不传参数，则清楚所有的数据
+         *
+         *  2、拖动元素必须在拖动开始函数内存放数据
+         *  3、在原来的元素位置拖动结束时，必须阻止浏览器的默认行为
+         *      为什么要阻止？
+         *      答案：因为元素本身就限制其他元素进入自身元素
+         *  4、在目标区域内要进行放 ondrop ，要取数据
+         *
+         *
+         *
+         *  H5拖动系统文件：
+         *  1、阅读文件
+         *  2、获取文件信息
+         *  3、写入文件
+         *
+         *
+         *  电脑系统内所有的文件默认是可以拖动的   txt html  文件夹  css  .mp4
+         *
+         *
+         */
+
+        box.ondragstart = function (e) {
+            console.log(e);
+            e.dataTransfer.setData("aaa", e.target.id);
+        };
+        box1.ondragstart = function (e) {
+            e.dataTransfer.setData("aaa", e.target.id);
+        };
+        box2.ondragstart = function (e) {
+            // console.log(e)
+            e.dataTransfer.setData("aaa", e.target.id);
+        };
+        // 在目标区域内进行阻止浏览器的默认行为
+        content.ondragover = function (e) {
+            // 阻止浏览器的默认行为
+            e.preventDefault();
+            // 阻止IE浏览器的默认行为
+            return false;
+        };
+        content.ondrop = function (e) {
+            //    e.dataTransfer.clearData();
+            var data = e.dataTransfer.getData("aaa");
+            console.log(data);
+            e.target.appendChild(document.getElementById(data));
+        };
+    </script>
+</body>
+
+</html>

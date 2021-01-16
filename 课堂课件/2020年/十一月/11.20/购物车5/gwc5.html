@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>购物车5</title>
+        <link rel="stylesheet" href="./css/cart.css" />
+        <script src="./cookie.js"></script>
+        <style>
+            input[type="text"]{
+                width: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>购物车</h1>
+            <h3><a href="./商品列表5.html">返回商品列表页面</a></h3>
+            <table border="1" cellspacing="0" cellpadding="0" class="show">
+                <thead>
+                    <tr>
+                        <th width="100px">
+                            <input type="checkbox" id="allCheck" class="ck" />全选
+                        </th>
+                        <th width="100px">
+                            货物ID
+                        </th>
+                        <th width="150px">
+                            图片
+                        </th>
+                        <th width="100px">
+                            描述
+                        </th>
+                        <th width="200px">
+                            数量
+                        </th>
+                        <th width="100px">
+                            单价
+                        </th>
+                        <th width="120px">
+                            小计
+                        </th>
+                        <th width="100px">
+                            操作
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tbody" class="tbody" align="center">
+                    <!-- 动态创建购物车商品布局 -->
+                </tbody>
+            </table>
+            <div class="box" id="box">购物车里没有任何商品</div>
+            <h2 id="h2" class="">总价格：￥<span id="totalPrice">0</span></h2>
+            <script src="./utils.js"></script>
+            <script src="./gwc5.js"></script>
+    </body>
+</html>

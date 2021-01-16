@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise对象</title>
+</head>
+
+<body>
+    <script>
+    /*  //一、
+        //源码解析
+        function Promise(executor) {
+            this.status = 'pending';
+            this.data = undefined;
+            this.resolved = null;
+            this.rejected = null;
+            executor(resolved, rejected);
+        }
+        //成功的回调函数
+        Promise.prototype.then = function (value) {
+            return new Promise((resolved) => {
+                if (this.status == 'pending') {
+                    this.status = '成功';
+                    this.data = value;
+                    this.resolved = resolved();
+                }
+            })
+        }
+        //失败的回调函数
+        Promise.prototype.catch = function (value) {
+            return new Promise((rejected) => {
+                if (this.status == 'pending') {
+                    this.status = '失败';
+                    this.data = undefined;
+                    this.rejected = rejected();
+                }
+            })
+        }
+    */  
+    /*  //二、
+        //源码解析
+        function Promise(executor){
+            this.status = 'pending';
+            this.data = undefined;
+            this.resolved = null;
+            this.rejected = null;
+            executor(resolved,rejected);
+        }
+        //成功的回调函数
+        Promise.prototype.then = function(value){
+            return new Promise((resolved)=>{
+                if(this.status == 'pending'){
+                    this.status = '成功';
+                    this.data = value;
+                    this.resolved = resolved();
+                }
+            })
+        }
+        //失败的回调函数
+        Promise.prototype.catch = function(value){
+            return new Promise((rejected)=>{
+                if(this.status == 'pending'){
+                    this.status = '失败';
+                    this.data = undefined;
+                    this.rejected = rejected();
+                }
+            })
+        }
+    */  //源码解析
+        function Promise(executor){
+            this.status = 'pending';
+            this.data = undefined;
+            this.resolved = null;
+            this.rejected = null;
+            executor(resolved,rejected);
+        }
+        //成功的回调
+        Promise.prototype.then = function(value){
+            return new Promise((resolved)=>{
+                if(this.status == 'pending'){
+                    this.status = '成功';
+                    this.data = value;
+                    this.resolved = resolved();
+                }
+            })
+        }
+        //失败的回调
+        Promise.prototype.catch = function(value){
+            return new Promise((reject)=>{
+                if(this.status == 'pending'){
+                    this.status = '失败';
+                    this.data = undefined;
+                    this.rejected = rejected();
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

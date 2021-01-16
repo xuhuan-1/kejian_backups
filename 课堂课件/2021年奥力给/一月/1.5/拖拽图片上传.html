@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽多文件上传</title>
+    <style>
+        img{
+            height: 500px;
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" style="width: 600px; height: 600px; border: 2px solid;"></div>
+    <script>
+        /**
+         * 300ms延迟，是移动端的一个BUG,如何解决？
+         *  解决：在移动端，有三种解决方式
+         *      1、fastclick:快速点击
+         *      2、touch事件  触摸事件
+         *      3、Zepto :移动端的库，专门写移动端的库，体积小   tap事件
+         * 
+         *  电脑本地文件系统默认都是可以拖动的
+         * 
+         *  在前端开发中，img标签和a标签默认是可以被拖拽的 draggable='auto'
+         * 
+         * draggable:true、false、auto,true代表可以被拖拽，false不能被拖拽
+         * 拖拽：H5中新增的文件的拖拽功能，可以对文件，文件夹，图片视频、MP3等进行拖放到指定区域
+         * 拖：拖动目标文件 【阅读文件】
+         * 放：把目标文件放到指定区域内
+         * 
+         * 拖：(拖动源) 三个监听函数
+         *     ondragstart：文件拖拽开始的函数
+         *     ondrag：文件拖拽中，每350ms触发一次，直到文件到目标区域内完成
+         *     ondragend：文件拖拽完成
+         * 放：（目标源）四个监听函数
+         *     ondragenter:拖动源被拖进目标区域内触发的事件
+         *     ondragover:文件在目标区域内被拖动的触发事件
+         *     ondragleave:文件在目标区域内离开时触发的事件
+         *     ondrop:在目标区域内鼠标放开的触发事件
+         * 
+         * 文件拖拽的时候，必须要在ondragover和ondragend中阻止浏览器的默认行为
+         * 
+         * dataTransfer：穿梭对象【只有拖动过程中才有】
+         *    把文件的数据存放到当前对象内了，当拖动的过程中，携带着此对象进行拖拽，
+         *    到达目标区域内，则获取dataTransfer中数据到目标区域
+         *  
+         *     setData('userInfo',obj):存数据
+         *     getData():获取数据
+         *     clearData():清除数据  
+         *
+         */
+        // 阻止浏览器默认行为
+        document.ondragover = e=>{
+            e.preventDefault();
+        }
+        document.ondragend = e=>{
+            e.preventDefault();
+        }
+        document.ondrop = e=>{
+            e.preventDefault();
+        }
+        box.ondrop = e=>{
+            let list = e.dataTransfer.files;
+            if(list.length == 0)return;
+            for(let i=0;i<list.length;i++){
+                fileReader(list[i]);
+            };
+            console.log(e);
+        }
+        function fileReader(file){
+            let reader = new FileReader;
+            reader.readAsDataURL(file);
+            reader.onload = e=>{
+                let img = new Image();
+                img.src = e.target.result;
+                console.log(e);
+                box.appendChild(img);
+            }
+        }
+
+    // 阻止浏览器默认行为
+        // 文件在目标区域内触发的事件
+        // document.ondragover = function(e){
+        //     e.preventDefault();
+        // }
+        // // 文件拖拽完成
+        // document.ondragend = function(e){
+        //     e.preventDefault();
+        // }
+        // // 文件在指定区域内鼠标放开时
+        // document.ondrop = function(e){
+        //     e.preventDefault();
+        // }
+        // box.ondrop = e=>{
+        //     let list = e.dataTransfer.files;
+        //     console.log(list);
+        //     for(let i=0;i<list.length;i++){
+        //         fileReader(list[i]);
+        //     }
+        // }
+        // function fileReader(file){
+        //     let reader = new FileReader;
+        //     reader.readAsDataURL(file);
+        //     reader.onload = e=>{
+        //         let img = document.createElement('img');
+        //         img.src = e.target.result;
+        //         box.appendChild(img);
+        //     }
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        // // 浏览器默认行为
+        // document.ondragover = (e) =>{
+        //     e.preventDefault()
+        // }
+        // document.ondragend = (e) =>{
+        //     e.preventDefault()
+        // }
+        // document.ondrop = (e) =>{
+        //     e.preventDefault()
+        // }
+        // box.ondrop = function (e) {
+        //     console.log(e);
+        //     let list = e.dataTransfer.files;
+        //     for(let i=0;i<list.length;i++){
+        //         let file = list[i];
+        //         fileReader(file);
+        //     }
+        // }
+        // function fileReader(file) {
+        //     let reader = new FileReader;
+        //     reader.readAsDataURL(file);
+        //     reader.onload = (e) => {
+        //         let img = new Image();
+        //         img.src = e.target.result;
+        //         box.appendChild(img);
+        //     }
+            
+        // }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <input type="text" required> -->
+    <canvas></canvas>
+    <script>
+        /**
+         * 可视化库：echarts、D3.js、three.js、heightCharts
+         * 
+         * canvas:H5新增的画布，有默认宽高，W：300  H：150 
+         * 
+         * H5中要验证输入的数据，需要设置required
+         * 
+         * 正则：
+         *    其实就是一个算法验证及匹配是否符合条件，符合条件返回true，不符合返回false
+         *  
+         *    有两种验证方法：
+         *      1、test():验证是否匹配成功，成功了返回true，失败了返回false  【常用】
+         *      2、exec():验证捕获，有就拿出来使用，如果没有就返回null
+         *    
+         *      正则有两种表示方法：
+         *          1、let reg = new RegExp();【不常用】
+         *          2、let reg = //;【常用】
+         *      
+         *      +:匹配一次或多次 {1,}
+         *      ?:匹配0次或一次 {0,1}  
+         *      .:匹配所有字符
+         *      *:匹配0次或多次  {0,n}
+         *      []:匹配字符集的集合
+         *      {}:匹配的次数：例如：{0,10}：匹配 0-10  {4,}:至少匹配4次  {5}:正好匹配5次
+         *      ^:从头开始匹配
+         *      $:匹配的结束边界
+         *      a-z:所有的小写字母
+         *      A-Z：所有的大写字母
+         *      0-9：所有的数字
+         *      \d:代表数字  == 0-9
+         *      \D:代表的是非数字  == [^0-9] 此时^在[]内，代表取非
+         *      \w:代表的是组合 == [a-zA-Z0-9_]
+         *      \W:代表的[^a-zA-Z0-9]
+         *      \s:代表空格
+         *      \S:非空白字符
+         *      \n:换行
+         *      \r:回车
+         *      \\ == \
+         *      g:在//之外，代表全局匹配
+         *      i:在//之外，代表字符 [a-zA-Z]
+         *      m:在//之外，代表多行匹配
+         *      ?=:断言：就是说明一个范围的位置【记录】
+         * 
+         *      * ` 。. 、! + = % $ # @ 通过\进行转译
+         *      
+        */
+
+        // let reg = /[a-zA-Z0-9]/;  // a-zA-Z0-9
+        // let str = 'hello world ZIMO 99';
+        // let s = reg.test(str);
+        // console.log(s)
+
+        // 匹配手机号   第一位必须是1 
+        // let isPhone = /^[1]{1}[3-9]{1}[0-9]{9}$/;
+        // let num = 18611696765;
+        // let phone = isPhone.test(num)
+        // console.log(phone)
+
+        // let s = /^(3|6)$/;
+        // let d = s.test(3||6)
+        // console.log(d)
+
+        // let isPhotoType = /^\.(jpg|jpeg|png|gif|svg)$/;
+        // let d = isPhotoType.test('.jpg');
+        // console.log(d)
+    // 验证图片类型
+        // function isPhotoType(type){
+        //     let reg = /^\.(jpg|jpeg|png|svg)$/;
+        //     if(!reg.test(type))return false;
+        //     return true;
+        // }
+        // console.log(isPhotoType('.gif'))
+// 验证用户名  必须是字母开头 必须包含数字、字母、特殊字符  且 6-12位 
+        // function isUserName(type){
+        //     let reg = /^.*(?=.{6,12})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/;
+        //     if(!reg.test(type))return false;
+        //     return true;
+        // }
+        // console.log(isUserName('a@w1Fffffffff'));
+
+
+        // console.log(1)
+        // debugger  //打断点
+        // console.log(1)
+        // console.log(1)
+        // debugger  //打断点
+        // console.log(1)
+        // console.time(new Date())
+        // assert
+
+
+
+
+    </script>
+</body>
+</html>

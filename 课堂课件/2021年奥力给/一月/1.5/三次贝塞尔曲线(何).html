@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" style="background: yellow;width: 800px;height:800px;"></canvas>
+    <script>
+        // 三次贝塞尔曲线
+        let cvs = document.getElementById('canvas');
+        let pen = cvs.getContext('2d');
+        // 手动设置宽高
+        cvs.width = cvs.clientWidth;
+        cvs.height = cvs.clientHeight;
+        // 开始画
+        pen.beginPath();
+        pen.lineWidth = 10;
+        pen.strokeStyle = 'red';
+        pen.moveTo(200,200);
+        pen.bezierCurveTo(150,100,650,300,600,200);
+        // pen.bezierCurveTo(150,100,650,300,600,200);
+        pen.stroke();//合闭连线
+
+    </script>
+</body>
+</html>

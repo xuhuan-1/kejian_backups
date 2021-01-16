@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container" style="width: 300px;height:300px;background: #ccc;">
+
+    </div>
+    <script>
+        function Ball(width,height,color){
+            // 小球
+            this.ball = null;
+            this.width = width || '100';
+            this.height = height || '100';
+            this.color = color || 'red';
+            this.radius = 50
+        }
+
+        Ball.prototype = {
+            // 初始化
+            init:function(){
+                this.createBall();
+            },
+            createBall:function(){
+                this.ball = document.createElement('div');
+                this.ball.style.cssText = `width:${this.width}px;height:${this.height}px;
+                background:${this.color};border-radius:${this.radius}px;`
+            }
+            
+        }
+        let b = new Ball(100,100,'yellow');
+        // 创建小球，给宽 高 背景色
+         b.init();
+         
+        let smallBall = b.ball;
+        container.appendChild(smallBall)
+    </script>
+</body>
+</html>

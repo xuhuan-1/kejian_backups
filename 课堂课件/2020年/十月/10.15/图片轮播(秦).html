@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		ul li{
+			list-style: none;
+		}
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			margin: 20px auto;
+			width: 768px;
+			height: 432px;
+			position: relative;
+			overflow: hidden;
+		}
+		#ig{
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		#box ul li{
+			float: left;
+		}
+		#box ul li img{
+			width: 768px;
+			height: 432px;
+		}
+		#dian{
+			position: absolute;
+			width: 160px;
+			height: 30px;
+			left: 50%;
+			margin-left: -80px;
+			bottom: 20px;
+			background: rgba(255,255,255,0.4);
+			border-radius: 30px;
+		}
+		#dian ul li{
+			float: left;
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			background: purple;
+			margin: 8px 8px;
+		}
+		#dian ul li:hover{
+			background: pink;
+		}
+		#l,#r{
+			line-height:80px;
+		}
+		#l:hover,#r:hover{
+			cursor: pointer;
+		}
+		#l{
+			position: absolute;
+			width: 40px;
+			height: 80px;
+			left: 10px;
+			top: 50%;
+			font-size: 48px;
+			color: #FFFFFF;
+			text-align: center;
+			margin-top: -40px;
+			background: rgba(255,255,255,0.4);
+			border-radius: 30px;
+		}
+		#r{
+			position: absolute;
+			width: 40px;
+			height: 80px;
+			right: 10px;
+			top: 50%;
+			text-align: center;
+			font-size: 48px;
+			color: #FFFFFF;
+			margin-top: -40px;
+			background: rgba(255,255,255,0.4);
+			border-radius: 30px;
+		}
+		#dian ul li{
+			background: purple;
+		}
+		#dian ul .dong{
+			background: pink;
+		}
+		#dian ul .dong:hover{
+			background: pink;
+		}
+	</style>
+	<body>
+		<div id="box">
+			<div id="ig">
+				<ul>
+					<li><img src="imgs/1.jpg" alt="" /></li>
+					<li><img src="imgs/2.jpg" alt="" /></li>
+					<li><img src="imgs/3.jpg" alt="" /></li>
+					<li><img src="imgs/4.jpg" alt="" /></li>
+					<li><img src="imgs/5.jpg" alt="" /></li>
+				</ul>
+			</div>	
+			<div id="l" onclick = "to_left()"><</div>
+			<div id="r" onclick = "to_right()">></div>
+			<div id="dian">
+				<ul>
+					<li class = "dong"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//封装获取元素的方法
+			function $(idname){
+				return document.getElementById(idname)
+			}
+		//获取元素
+			var ig_ul = $("ig").querySelector("ul");
+			//获取图片盒子内的li标签，
+			var ig_li = ig_ul.querySelectorAll("li");
+			var dian_li = $("dian").querySelectorAll("li");
+			for(var i = 0;i<dian_li.length;i++){
+				dian_li[i].setAttribute("onclick","to_there(this)");
+				dian_li[i].setAttribute("itme",i);
+			}
+			
+			//声明一个定时器
+			var timers = null;
+			//声明一个计数器
+			var ul_num = 0;
+			//创建一个函数---
+			function change_left(){
+				timers = setInterval(function (){
+					to_right();
+				},1000)
+			}
+			change_left();//调用change_left()方法让图片动起来
+			//点击让图片向左移动
+			function to_left(){
+				ul_num--;
+				//判断当前计数器(ul_num)的范围
+				if(ul_num<0){
+					ul_num = ig_li.length-1;
+				}
+				for(var i = 0;i <dian_li.length;i++){
+					//判断当i的值等于计数器的值得时候
+					if(i == ul_num){
+						dian_li[i].setAttribute("class","dong");
+					}else{
+						dian_li[i].setAttribute("class","");
+					}
+				}
+				$("ig").style.left = -ul_num*768 + "px";
+			}
+			//点击让图片向右移动
+			function to_right(){
+				ul_num++;
+				//判断当前计数器(ul_num)的范围
+				if(ul_num>ig_li.length-1){
+					ul_num = 0;
+				}
+				for(var i = 0;i <dian_li.length;i++){
+					//判断当i的值等于计数器的值得时候
+					if(i == ul_num){
+						dian_li[i].setAttribute("class","dong");
+					}else{
+						dian_li[i].setAttribute("class","");
+					}
+				}
+				$("ig").style.left = -ul_num*768 + "px";
+			}
+			//当鼠标移入box这个元素时，清除定时器，onmouseover
+			$("box").onmouseover = function (){
+				clearInterval(timers);
+			}
+			//当鼠标移出box这个元素时，开启定时器，onmouseout
+			$("box").onmouseout = function (){
+				change_left();
+			}
+			//点击对应的圆点展示对应图片
+			function to_there(val){
+				//attributes:属性集合
+				//在attributes找到对应的属性值：元素.attributes.属性名.value
+				ul_num = val.attributes.itme.value;
+				for(var i = 0;i <dian_li.length;i++){
+					//判断当i的值等于计数器的值得时候
+					if(i == ul_num){
+						dian_li[i].setAttribute("class","dong");
+					}else{
+						dian_li[i].setAttribute("class","");
+					}
+				}
+				$("ig").style.left = -ul_num*768 + "px";
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		body{
+			color:red;
+		}
+		#xm,#nl{
+			width: 120px;
+		}
+		#tj{
+			margin-left: 80px;
+			margin-top: 20px;
+			height: 40px;
+			font-size: 24px;
+			color: lightskyblue;
+			background: #832580;
+			border: 0;
+			border-radius: 5px;	
+		}
+		p{
+			font-size: 12px;
+			color: deeporange;
+		}
+	</style>
+	<body>
+		<p>
+			验证输入框是否输入内容<br />
+			(1)	如果没有输入姓名点击提交按钮，提示“请输入姓名”<br />
+			(2)	如果没有输入年龄点击提交按钮，提示“请输入年龄”<br />
+			(3)	如果姓名和年龄都没有输入点击提交按钮，提示“请输入姓名和年龄”<br />
+			(4)	输入姓名和年龄后点击提交按钮，提示“提交成功”<br />
+		</p>
+		输入您的姓名<input type="text" class="xname" id="xm"/><br />
+		输入您的年龄<input type="text" id="nl"/><br />		
+		<input onclick = "subtj()" type="button" id="tj" value="点击提交" />
+		<script type="text/javascript">
+			var yourName = document.getElementsByClassName("xname")[0];
+			var age = document.getElementById("nl");
+			var sub = document.getElementById("tj");
+			//元素.onclick = function (){}
+			//function 函数名(){函数体}
+			function addbai(){
+				if(yourName.value ==""||yourName.value ==null||yourName.value ==undefined||yourName.value ==" "||yourName.value ==NaN){
+					alert("请输入正确的姓名");
+				}else if(age.value ==""||age.value ==null||age.value ==" "||age.value ==NaN){
+					alert("请输入正确的年龄");
+				}else{
+					alert("提交成功！谢谢参与");
+				}
+			}
+		</script>
+	</body>
+</html>

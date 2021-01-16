@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" style="background: yellow;width: 800px;height:800px;"></canvas>
+    <script>
+        /**
+         * 贝塞尔曲线：由线段和坐标点组成，通过坐标点可以控制线段的
+         *          拉伸，使线段可以随意进行变换
+         * 必须要有起始点，moveTo
+         * quadraticCurveTo():接收4个参数，第一个是控制节点的X坐标，第二个是控制
+         *      节点的Y坐标，第三个是结束点的X坐标，第四个是结束点的Y坐标
+         * 
+        */
+
+        // 二次贝塞尔曲线
+        let cvs = document.getElementById('canvas');
+        let pen = cvs.getContext('2d');
+        // 手动设置宽高
+        cvs.width = cvs.clientWidth;
+        cvs.height = cvs.clientHeight;
+        // 开始画贝塞尔曲线
+        pen.beginPath();
+        pen.lineWidth = 10;
+        pen.moveTo(200,200);//起始坐标
+        pen.quadraticCurveTo(400,800,600,200);
+        pen.strokeStyle = 'red';
+        pen.stroke();
+        
+        
+    </script>
+</body>
+</html>

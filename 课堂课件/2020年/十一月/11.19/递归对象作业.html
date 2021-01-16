@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>递归对象作业</title>
+</head>
+<body>
+    <script>
+    /*
+        let obj = {
+            name:'张三',
+            value:{
+                name:'李四',
+                sex:'男',
+                tel:0000000
+            },
+            age:'王五'
+        };
+        function a(xc){
+            let newArr = [];
+            if(xc.constructor == Object){
+                for(let key in xc){
+                    newArr.push(key);
+                    newArr = newArr.concat(a(xc[key]));
+                }
+            }
+            return newArr;
+        }
+        console.log(a(obj));
+    
+        let obj = {
+            name:'张三',
+            value:{
+                name:'李四',
+                sex:'男',
+                tel:0000000
+            },
+            age:'王五'
+        };
+        function o(xc){
+            let newArr = [];
+            if(xc.constructor == Object){
+                for(let i in xc){
+                    newArr.push(i);
+                    newArr = newArr.concat(o(xc[i]));
+                }
+            }
+            return newArr;
+        }
+        console.log(o(obj));
+    */
+        let obj = {
+            name:'张三',
+            value:{
+                name:'李四',
+                sex:'男',
+                a:{
+                    b:'ss',
+                    c:'ssss',
+                    d:{
+                        na:'111',
+                        ccc:'558'
+                    }
+                },
+                tel:'01111'
+            },
+            age:'王五'
+        };
+    /*
+        let newArr = [];
+        function o(xc){
+            for(let i in xc){
+                if(xc.constructor == Object){
+                    o(xc[i]);
+                    //newArr = newArr.concat(o(xc[i]));
+                    if(xc[i].constructor != Object){
+                        newArr.push(xc[i]);
+                    }
+                }
+            }
+            return newArr;
+        }
+        console.log(o(obj));
+    */  
+        // let newArr = [];
+        // function o(xc){
+        //     for(let i in xc){
+        //         if(xc.constructor == Object){
+        //             o(xc[i]);
+        //             if(xc[i].constructor != Object){
+        //                 newArr.push(xc[i]);
+        //             }
+        //         }
+        //     }
+        //     return newArr;
+        // }
+        // console.log(o(obj));
+        
+        // //计算斐波那契数列：1 1 2 3 5 8 13
+        // function a(xc){
+        //     if(xc == 1 || xc == 2){
+        //         return 1;
+        //     }else{
+        //         return a(xc - 2) + a(xc - 1);
+        //     }
+        // }
+        // document.write(a(8));
+        let arr = [1,2,3,4,[1,23,[1,23,],4,5],5,6,7,8,9];
+        // function a(i){
+        //     let newArr = [];
+        //     i.map(function(item){
+        //         Array.isArray(item)?newArr = newArr.concat(a(item)):newArr.push(item);
+        //     })
+        //     return newArr;
+        // }
+        function a(arr){
+            let newArr = [];
+            arr.map((item)=>{
+                Array.isArray(item)?newArr = newArr.concat(a(item)):newArr.push(item);
+            })
+            return newArr;
+        }
+        console.log(a(arr));
+    </script>
+</body>
+</html>

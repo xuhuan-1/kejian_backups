@@ -1,0 +1,15 @@
+.public{
+    width: 100px;
+    height: 100px;
+    margin-top: 5px;
+    border: 1px solid;
+}
+$a:red;
+$b:skyblue;
+$c:gold;
+$d:pink;
+$e:#999;
+
+%w{
+    width: 300px;
+}

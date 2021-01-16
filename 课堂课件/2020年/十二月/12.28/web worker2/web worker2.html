@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web worker2</title>
+</head>
+<body>
+    <script>
+        // let worker = new Worker('./child.js');
+        // let result = {};
+        // worker.addEventListener('message',(e)=>{
+
+        // });
+        // worker.postMessage(result);
+        
+        //创建一个子线程
+        let worker = new Worker('./child.js');
+        //声明一个数组
+        let arr = [1,2,3,4,5];
+        //接收一下
+        worker.postMessage(arr);
+        //监听一下子线程传递数据给主线程
+        worker.addEventListener('message',(e)=>{
+            console.log(e.data);
+        })
+
+    </script>
+</body>
+</html>

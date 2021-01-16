@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>3D呈现</title>
+		<style>
+		
+			.box{
+				position:relative;
+				height:200px;
+				width:300px;
+				margin:200px;
+				perspective:500px;
+				transform-style:preserve-3d;
+				transform:rotateX(30deg);
+				
+			}
+			.box1{
+				position:absolute;
+				width:300px;
+				height:200px;
+				background:red;
+				z-index:1;
+				transform:rotateY(-100deg);
+				
+			}
+			.box2{
+				position:absolute;
+				width:300px;
+				height:200px;
+				background:pink;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="box1"></div>
+			<div class="box2"></div>
+			
+		</div>
+	</body>
+</html>
+

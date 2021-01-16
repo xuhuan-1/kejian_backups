@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "933",
+      "name": "处女座",
+      "font_class": "chunvzuo",
+      "unicode": "f000d",
+      "unicode_decimal": 983053
+    },
+    {
+      "icon_id": "960",
+      "name": "上传",
+      "font_class": "shangchuan",
+      "unicode": "f0024",
+      "unicode_decimal": 983076
+    }
+  ]
+}

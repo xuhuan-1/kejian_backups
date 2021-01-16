@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前后端交互6</title>
+</head>
+<body>
+    <script>
+        function ajax(obj){
+            //处理参数
+            obj.url = obj.url || '';
+            obj.method = obj.method || 'get';
+            obj.data = obj.data || {};
+            obj.dataType = obj.dataType || 'json';
+            obj.success = obj.success;
+            //1、创建异步请求对象
+            let xhr;
+            window.XMLHttpRequest ? xhr = new XMLHttpRequest():xhr = new ActiveXObject('Microsoft.XMLHTTP');
+            //2、建立连接
+            function formate(o){
+                let arr = [];
+                for(let key in o){
+                    arr.push(key + '=' + o[key]);
+                }
+                return arr.join('&');
+            }
+            let params = formate(obj.data);
+            let url = obj.url +'?'+ params;
+            if(obj.method == 'get'){
+                xhr.open(obj.method,url,true);
+            }else{
+                xhr.open(obj.method,obj.url,true);
+            }
+            //3、发送/请求数据
+            if(obj.method == 'get'){
+                xhr.setRequestHeader('Content-type','applicetion/json;charset=utf-8');
+                xhr.send(null);
+            }else{
+                xhr.setRequestHeader('Content-type','applicetion/x-www-form-urlencoded;charset=utf-8');
+                xhr.send(params);
+            }
+            //4、注册监听函数
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200 && xhr.status <300 || xhr.status == 304){
+                        if(obj.method == 'get'){
+                            obj.success && obj.success(JSON.parse(xhr.responseText));
+                        }else{
+                            obj.success && obj.success(xhr.response);
+                        }
+                    }
+                }
+            }
+        }
+        ajax({
+            url:'./data4.json',
+            success:function(res){
+                console.log(res);
+            }
+        })
+    </script>
+</body>
+</html>

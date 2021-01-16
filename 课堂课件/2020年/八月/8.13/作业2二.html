@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>作业2二</title>
+		<style>
+			.float{
+				margin:0 auto;
+				width:1200px;
+			}
+			.box{
+			margin-left:50px;
+				pointer:relative;
+				float:left;
+				width:150px;
+				height:50px;	
+				transform-style:preserve-3d;
+				transition:all 1s;
+			}
+			.box:hover{
+				transform:rotateX(90deg);
+			}
+			.a1{
+				position:absolute;
+				
+				width:150px;
+				height:50px;
+				background:pink;
+				transform:translateY(25px) rotateX(270deg);
+				text-align:center;
+				line-height:50px;
+
+			}
+			.a2{
+				position:absolute;
+				width:150px;
+				height:50px;
+				background:blue;
+				text-align:center;
+				line-height:50px;
+				transform:translateZ(25px);
+			}
+			div[class*="2"]{
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="float">
+			<div class="box">
+				<div class="a1">欢迎你</div>
+				<div class="a2">我</div>
+			</div>
+			<div class="box">
+				<div class="a1">欢迎你</div>
+				<div class="a2">在</div>
+			</div>
+			<div class="box">
+				<div class="a1">欢迎你</div>
+				<div class="a2">进</div>
+			</div>
+				<div class="box">
+				<div class="a1">欢迎你</div>
+				<div class="a2">思</div>
+			</div>
+			<div class="box">
+				<div class="a1">欢迎你</div>
+				<div class="a2">等</div>
+			</div>
+			<div class="box">
+				<div class="a1">欢迎你</div>
+				<div class="a2">你</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+
+

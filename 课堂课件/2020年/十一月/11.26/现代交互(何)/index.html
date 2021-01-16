@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/axios.min.js"></script>
+</head>
+<body>
+    <button id="btn">点击获取</button>
+    <script>
+        /**
+         * axios:前后端交互的一个库【插件】，基于Promise封装的
+         * 
+         * ajax：
+         *  前后端交互的工具，创建异步请求对象
+         * Promise():异步
+         *  是ES6语法新出的前后端交互的一种规范，Promise对象,他也是构造函数，异步解决方法
+         *  参数：
+         *      接收一个回调函数作为参数,此回调函数叫做函数解析器 【excutor】
+         *      excutor 是一个函数，接收两个参数
+         *          一个是resolved，成功的回调
+         *          一个是rejected，失败的回调
+         * 
+         *  特点：
+         *      1、不可逆，只能从准备状态到成功，或者从准备状态到失败，过程不可逆
+         *          有三种状态：
+         *          1、准备状态  pending
+         *          2、成功     resolved
+         *          3、失败     rejected
+         *      2、每个then和catch函数都重新返回一个新的Promise对象
+         *      3、链式调用、解决了ajax的地狱回调问题
+         * 
+         * 
+         * async await：终极异步操作，后面跟的必须是异步代码【必须跟Promise对象】
+         * async 后的任何数据都代表是异步的了
+         * await 必须在async内部，await代表的等待返回结果，有结果了再执行下一步，
+         *       没有返回结果，则一直等待
+         * 
+         * 
+        */
+
+        function postMessage(url,data,config){
+            return axios.get(url,data,config).then(res =>{
+                return res.data;
+            })
+        }   
+
+        //异步延迟处理函数
+        function delay(timer){
+            var timer = timer || 2000;
+            return new Promise(resolved =>{
+                setTimeout(() =>{
+                    resolved();
+                },timer)
+            })
+        }
+
+
+        // async function a(){
+        //     await delay(2000);
+        //     let list =  await postMessage('http://localhost:3001/allData');
+        //     console.log(list)
+        // }
+        // // a();
+
+
+        btn.onclick = ()=>{
+            // //1  
+            // axios.get('http://localhost:3001/allData').then(res =>{
+            //     //console.log(res.data)
+            // })
+
+            //2
+            async function getData(){
+                let list = await axios.get('http://localhost:3001/allData');
+                console.log(list);
+            }
+            getData();
+        }
+    
+
+    
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<html>
+	<head>
+		<title>圣杯布局</title>
+		<style>
+			*{
+				margin:0px;
+				padding:0;
+			}
+			.header{
+				width:100%;
+				height:200px;
+				background:#afc;
+			}
+			.continaer{
+				width:100%;
+				height:200px;
+				background:pink;
+				padding:0 400px;
+				box-sizing:border-box;
+			}
+			.clums{
+				float:left;
+				position:relative;
+			}
+			.left{
+				width:200px;
+				height:200px;
+				left:-200px;
+				background:red;
+				margin-left:-100%;
+				
+			}
+			.center{
+				width:100%;
+				height:200px;
+				background:green;
+				
+			}
+			
+			.right{
+				left:200px;
+				width:200px;
+				height:200px;
+				background:blue;
+				margin-left:-200px;
+			}
+			
+			
+			
+			
+			
+			
+			.footer{
+				width:100%;
+				height:200px;
+				background:#000;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="header">头部</div>
+		<div class="continaer clearfix">
+			<div class="center clums">中</div>
+			<div class="left clums">中左侧</div>
+			
+			
+			<div class="right clums">中右侧</div>
+		</div>
+		<div class="footer">尾部</div>
+	
+		
+		
+		
+		
+		
+	</body> 
+</html>

@@ -1,0 +1,153 @@
+琪璇：
+联想管家：开发中 20%
+git clone 地址
+git clone https://github.com/wangfeng0307/Shopping-cart-implementation.git
+
+版本控制工具：
+
+版本控制工具：GIT SVN(小乌龟)
+
+代码时需要储存到远程仓库中，不能放在本地（电脑上）。
+
+代码托管网站(远程仓库)：github(用户量最多) OS码云 gitlab ，三者皆基于git
+
+版本控制工具，是开发者用来提交代码，拉取代码，回退版本、合并分支，创建分支等等的一个操作工具
+
+公安系统：
+vue:开源（开放源代码）
+
+
+作业：
+1、把网站注册了 github 用户名密码：不用中文 建立txt文件，记住
+2、git安装上
+3、课件
+
+.git 半影藏和github仓库建立联系（连接） 认识了
+
+版本控制工具：
+GIT:分布式的版本控制工具
+分布式：
+每个开发者都是个单独的个体
+
+版本控制工具：
+git可以立马回退版本
+git可以立马前进版本
+git 可以 回退、前进到任何一个版本去
+
+公司代码不能存放在本地电脑，应该存放在远程仓库
+
+git官方
+github网站
+
+
+git操作：
+
+查看状态：git status
+
+有红色状态的文件，说明需要git add .
+有绿色状态的文件，说明需要git commit -m "fix 10567"
+
+
+查看提交修改日志：git log
+
+第一次推送：
+1、git init 在本地电脑初始化 出现一个半影藏的 .git 文件
+2、git add 某个文件（.） . 全部提交
+3、git commit -m "提交信息"
+4、git remote add origin 仓库地址 只有第一次和仓库建立连接时才操作的
+5、git push -u origin master 第一次推送到远程仓库
+
+master:主分支
+
+后面推送：
+1、git add .
+2、git commit -m "提交信息"
+3、git push
+
+举例：
+航姐：github账号
+我公司的项目30%
+zimogod
+
+https://github.com/zimogod/DEMO.git
+
+克隆之前，你得在你本地电脑初始化一下 git init
+
+git clone https://github.com/zimogod/DEMO.git
+
+开发
+
+1、git add .
+2、git commit -m "提交信息"
+3、git push
+
+0-1 :仓库也没有 项目从0开始
+
+
+更新代码：git pull
+推送代码：git push
+第一次推送代码：git push -u origin master
+
+查看分支：git branch
+创建分支：git branch 分支名
+删除分支：git branch -d 分支名 （不能在当前分支上删除当前分支，需要切换到主分支去删除）
+切换分支：git checkout 分支名
+
+配置git信息：
+git config --global user.name "你的github用户名"
+git config --global user.email "你的注册邮箱"
+
+查看：
+git config user.name 查看你配置的用户名
+git config user.email 查看你配置的邮箱
+
+提交代码时，遇到需要输入密码：注册的github密码
+
+
+优点：
+1、分布式开发，强调个体
+把一个项目分成很多模块，每个人都有完整的项目代码，在这个基础之上进行开发，每个人独立开发，互不影响
+2、服务器压力小数据量不会太大
+每次提交的代码（代码少），服务器压力小，数据量小
+3、速度快，灵活
+4、多个开发者之间可以轻松解决冲突问题
+5、离线工作（没有网络也可以提交、拉取代码等）
+
+缺点：
+1、资料少（中文资料）
+2、学习成本高
+3、不符合常规思维
+4、代码保密性差（把项目克隆到本地电脑，所有的代码都是公开的）
+
+git删除了 重新安装 配置 git 用户名 邮箱
+
+第一次和仓库提交完代码
+
+后面推送操作：
+1、git add .
+2、git commit -m "提交信息"
+3、git push
+
+后面更新操作：
+git pull
+
+
+3个月
+
+第一天：
+1、git init 在本地电脑初始化 出现一个半影藏的 .git 文件
+2、git add 某个文件（.） . 全部提交
+3、git commit -m "提交信息"
+4、git remote add origin 仓库地址 只有第一次和仓库建立连接时才操作的
+5、git push -u origin master 第一次推送到远程仓库
+
+以后的每一天：
+后面推送操作：
+1、git add .
+2、git commit -m "提交信息"
+3、git push
+后面更新操作：
+git pull
+
+配置秘钥：
+ssh-keygen -t rsa -C '邮箱地址'

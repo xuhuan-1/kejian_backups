@@ -1,0 +1,37 @@
+JS模块化：
+    AMD:
+        最先出来的一种模块化规范，代表者是RequireJS
+        1、异步
+        2、依赖前置
+        3、全部加载
+        4、define定义模块
+    CMD:
+        是一种模块化规范，借鉴了AMD和CommonJS，中国阿里玉伯写出来的
+        代表者是 SeaJS
+        1、异步 
+        2、没有依赖前置
+        3、按需加载
+        4、就近原则
+        5、遵循AMD和CommonJS规范
+        6、通过define定义模块
+    CommonJS:
+        是一种模块化规范，代表者是 Node.js   
+        1、同步
+        2、只能运行在服务端环境中【Node环境】，浏览器不支持
+
+    ES6 Module:
+        ES6新增的模块化规范，完全和其他几种不一样的模块化规范
+        工作中大量使用
+        单个暴露：export let const xxx = '值';
+        引入:
+            1、import { xxx } from './路径'; xxx：暴露时的变量名
+            2、import * as xxx from './路径'; xxx：随意命名
+
+        默认暴露：export default 变量
+        引入：
+            xxx:随意命名
+            import xxx from './路径';
+
+
+
+

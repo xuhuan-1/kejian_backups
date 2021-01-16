@@ -1,0 +1,43 @@
+JSONP跨域：
+    原理：动态的创建script标签，让src指向当前需要访问的地址
+         因为src属性指向的是外部地址，不受同源策略的限制
+
+    优点：
+        1、创建的script，解决跨域问题
+        2、简单，使用回调函数的方式跨域的
+
+    缺点：
+        1、只支持get请求，不支持其他请求
+
+    就是前端调用服务端的回调函数
+
+cors跨域:
+    原理：设置请求头部，允许访问即可 
+         服务端解决 ：
+         res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+
+nginx跨域：
+    反向服务器代理
+    server {
+        listen       5500;
+        server_name  127.0.0.1;
+        root   html;
+        location / {
+            #index  demo.html;
+        }
+        #请求http://localhost:8080/api，将该请求转发到百度api，则保证请求在同一个域，解决跨域问题
+        location /abc {
+            proxy_pass http://127.0.0.1:5500;
+    }
+
+
+
+作业：
+    1、看10篇web服务器文章
+    2、整理跨域
+
+
+
+
+
+

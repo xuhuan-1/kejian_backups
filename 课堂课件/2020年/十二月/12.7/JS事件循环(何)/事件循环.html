@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 事件循环：
+         *    结论：
+         *      1、所有的JS都在栈的主线程执行
+         *      2、执行栈优先执行同步任务【从上到下】
+         *      3、等主线程执行完成同步代码了，主线程空闲了，才去检查
+         *         任务队列中是否有异步任务，有则拿出来到执行栈【主线程】执行，
+         *          当前任务执行完毕，继续执行下一个任务，直到任务队列中没有任何
+         *          任务，停止执行
+         *      4、优先检查上一个宏任务中是否有遗留下来的微任务，有就执行，没有就
+         *         执行当前宏任务，然后再执行当前宏任务内的微任务
+         *      5、一直循环3、4步骤，形成一个事件循环，直到任务队列中没有任务
+         * 
+         * 
+         *      requestAnimationFrame:浏览器自带的动画，启动CPU加速计算，性能好
+         *          根据浏览器的刷新频率来计算，60HZ，16.7ms执行一次动画，不会丢失
+         *          动画帧，所以动画非常流畅，不会卡顿 【H5新增】
+         * 
+         *      process:进程 【NODE环境支持】
+         *      nextTick():立即执行函数
+         *      setImmediate：【立即执行函数】 
+         *              
+         *  宏任务：
+         *       setTimeout、setInterval、setImmediate【立即执行函数】
+         *       requestAnimationFrame、I/O、 UI渲染
+         *  微任务：
+         *      Promise.then()、Promise.catch()、finally、MutationObserver【监听器】
+         *      process.nextTick()、Object.observe
+         * 
+         *  Promsie对象本身是异步操作，但是promise函数体内同步执行
+         * 
+        */
+
+        // new Promise(()=>{
+        //     // 函数体:同步执行
+        // })
+        // .then(res =>{
+
+        // })
+
+        // script start
+        // async1 start
+        // async2
+        // promise1
+        // script end
+        // async1 end
+                 // async2
+        // promise2
+                // async1 end1
+        // setTimeout
+
+        // async function async1() {
+        //     console.log('async1 start');
+        //     await async2();
+        //     console.log('async1 end');
+        //     await async2();
+        //     console.log('async1 end1');
+        // }
+        // async function async2() {
+        //     console.log('async2');
+        // }
+
+        // console.log('script start');
+
+        // setTimeout(function() {
+        //     console.log('setTimeout');
+        // }, 0)
+
+        // async1();
+
+        // new Promise(function(resolve) {
+        //     console.log('promise1');
+        //     resolve();
+        // }).then(function() {
+        //     console.log('promise2');
+        // });
+        // console.log('script end');
+
+    // 打印顺序   1  2  5  4  3  6
+        // console.log(1)
+        // new Promise(resolve =>{
+        //     setTimeout(() =>{
+        //         console.log(6) 
+        //     },2000)
+        //     resolve();
+        //     for(var i=0;i<20;i++){
+        //         console.log(2)
+        //     }
+        //     setTimeout(() =>{
+        //         console.log(3)
+        //     })
+        // }).then(res =>{
+        //     console.log(4)
+        // })
+        // console.log(5) 
+        // 1 2 5 4  3  6
+        // 宏任务：定时器、setImmediate、requstAnimationFrame、I/O操作、UI渲染
+        // 微任务：promise.then()、promise.catch()、mutationObserver、finally
+        //        process.nextTick()、Object.observe()【监听对象】
+        // Promise：整体是异步任务，函数体内是同步执行。
+
+
+    </script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三次贝塞尔曲线</title>
+</head>
+<body>
+    <canvas id="Mycanvas" style="background: #cccc; height: 800px; width: 800px;"></canvas>
+    <script>
+        let cva = document.querySelector('#Mycanvas');
+        cva.height = cva.clientHeight;
+        cva.width = cva.clientWidth;
+        let pen = cva.getContext('2d');
+        pen.lineWidth = 5;
+        pen.strokeStyle = 'red';
+        // 开始画
+        pen.beginPath();
+        // 初始坐标
+        pen.moveTo(150,250);
+        // 三次贝塞尔曲线
+        // pen.bezierCurveTo(150,500,130,500,130,600);
+        pen.quadraticCurveTo(110,325,150,500);
+        pen.moveTo(150,500);
+        pen.quadraticCurveTo(130,525,130,570);
+        // 合并连线
+        pen.stroke();
+
+        
+    </script>
+</body>
+</html>

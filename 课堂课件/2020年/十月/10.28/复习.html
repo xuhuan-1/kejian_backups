@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>复习</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				position:relative;
+				left:0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id = "box">
+			
+		</div>
+		<script>
+			/*
+				网页由三部分构成
+				JS、是什么？包含什么？各表示什么
+					ES6语法：箭头函数，this指向父级（上一级） 
+					()=>{函数体}
+				三个系统弹窗：
+				alert("举个栗子")
+				window对象：全局，BOM
+				数据类型：简单（基础）/引用（复杂）
+				运算符：一目运算符/三目运算符
+				运算符的优先级
+					()
+					++/--/!
+					*、/、%、+、-
+					比较运算符
+					关系运算符
+					&&||
+					=、+=、*=、-=、/=、%=
+					,
+					;
+				三元表达式：条件?真结果:假结果
+				JS语法：顺序结构、选择分支结构if...else、switch、循环结构
+					do..while和while的区别
+					break和continue的区别
+					switch(比较的值){
+						case 条件1：结果1
+						break;
+						case 条件2：结果2
+						break;
+						default :结果
+					}
+				
+				数组：[]
+					var arr = [{name:"安然然",age:18;},{},{}]
+				数组方法：toString()/join()/shift()/unshift()/pop()/push()/sort()/splice()/concat()/slice()/reverse()/indexOf()/map()/forEach()/reduce()/filter()-过滤
+				对象：{}  new Object()
+				{
+					键：值,----键值对
+					键：值,
+					键：值
+				}
+				如果值的类型为简单数据类型的话，当前键为该对象下的属性；如果值的类型为函数的话，当前键为该对象下的方法
+				函数 
+					function 函数名(形参名){函数体}
+					函数调用：函数名(实参)
+					function $(_){函数体}
+			*/
+			var arr = [{name:"安然然",age:18},{name:"李雷",age:38},{name:"韩梅梅",age:28},{name:"范冰冰",age:28},{name:"易烊千玺",age:28},{name:"权志龙",age:28},{name:"小鬼",age:28},{name:"大鬼",age:28},{name:"洪世贤",age:28},{name:"法海",age:28},{name:"璐瑶",age:28}];
+			/*var timer = setInterval(()=>{
+				var i= ~~(Math.random()*arr.length);
+				console.log(arr[i].name)
+			},3000)*/
+		
+			function $(_){
+				return document.getElementById(_)
+			}
+			$("box").style.width = "400px";
+			$("box").style.height = "400px";
+			$("box").style.backgroundColor = "red";
+			$("box").addEventListener("click",(e)=>{
+				//e--事件对象
+				var e = event || window.event;
+				//获取当前点击的元素
+				var now_element = e.target || e.srcElement;
+				//now_element--ele
+				animate(now_element,"left","20px",1);
+			})
+			//封装一个规定时间内单属性运动效果
+			function animate(ele,dir,distance,speed){
+				//ele:当前操作元素
+				//dir:ele的运动方向
+				//distance：ele的运动距离
+				//speed：ele的运动所需时间
+				var direc = parseFloat(ele.style[dir]?ele.style[dir]:0);
+				ele.style[dir] = parseFloat(distance) + direc + 'px';
+				var now_dir = ele.style[dir];
+				console.log(now_dir)
+			}
+		</script>
+	</body>
+</html>

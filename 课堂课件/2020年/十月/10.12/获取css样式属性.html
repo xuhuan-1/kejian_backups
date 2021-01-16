@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>获取css样式的属性</title>
+        <meta charset="utf-8">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+			#box{
+				width:200px;
+				height:200px;
+				background:pink;
+			}
+        </style>
+    </head>
+    <body>
+		<button id="btn1">点击1</button>
+		<button id="btn2">点击2</button>
+        <div id="box">
+			
+		</div>
+        <script>
+			var dj1 = document.getElementById('btn1');
+			var dj2 = document.getElementById('btn2');
+			var get_Id = document.getElementById('box');
+			dj1.onclick = function(){
+				get_Id.style.width = '400px';
+			}
+			dj2.onclick = function(){
+				alert(get_Id.currentStyle.width);
+			}
+        </script>
+    </body>
+</html>

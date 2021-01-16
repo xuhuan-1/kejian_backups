@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数---function</title>
+		<style>
+			table{
+				border:1px solid black;
+				border-collapse: collapse;
+				text-align:center;
+				margin:0 auto;
+				
+			}
+			tr{
+				width:600px;
+				height:40px;
+			}
+			td{
+				height:40px;
+				border:1px solid #000000;
+			}
+		</style>
+		
+	</head>
+	<body>
+		
+		<table>
+			<tr>
+				<td rowspan = "2">国家</td>
+				<td rowspan = "2">市</td>
+				<td colspan = "3">周一(三月12日)前12小时</td>
+				<td colspan = "3">周一(三月10日)后12小时</td>
+				<td rowspan = "2">这个是空白区域</td>
+			</tr>
+			<tr>
+				<td>天气现象</td>
+				<td>风力风向</td>
+				<td>最高温度</td>
+				<td>天气现象</td>
+				<td>风力风向</td>
+				<td>最高温度</td>
+			</tr>
+			<tr>
+				<td rowspan = "2">天气现象</td>
+				<td>风力风向</td>
+				<td>最高温度</td>
+				<td>天气现象</td>
+				<td>风力风向</td>
+				<td>最高温度</td>
+				<td>天气现象</td>
+				<td>风力风向</td>
+				<td>最高温度</td>
+			</tr>
+			<tr>
+				<td>风力风向</td>
+				<td>最高温度</td>
+				<td>天气现象</td>
+				<td>风力风向</td>
+				<td>最高温度</td>
+				<td>天气现象</td>
+				<td>风力风向</td>
+				<td>最高温度</td>
+			</tr>
+		</table>
+		<p style = ''>
+			<h4>今天下雨</h4>
+		</p>
+		<h1 class = "gushi">静夜思</h1>
+		<ol style = "color:#a11b26;font-size:32px;margin-left:100px;" start = "10" >
+			<li><a href = "https://www.baidu.com" target = "new" style = "color:#c3ac8d;text-decoration:none;">李白</a></li>
+			<li id = "moon"><a>床前明月光</a></li>
+			<li><a style = "color:#c3ac8d;">疑是地上霜</a></li>
+			<li><a>举头望明月</a></li>
+			<li><a>低头思故乡</a></li>
+		</ol>
+		<ul style = "color:#a11b26;font-size:32px;margin-left:20px;list-style:none;">
+			<li><a href = "https://www.baidu.com" target = "new" style = "color:#c3ac8d;text-decoration:none;">李白</a></li>
+			<li><a>床前明月光</a></li>
+			<li><a style = "color:#c3ac8d;">疑是地上霜</a></li>
+			<li><a>举头望明月</a></li>
+			<li><a id = "ditou">低头思故乡</a></li>
+		</ul>
+		<dl>
+			<dt><img src ="" alt = "杀手不太冷" style = "height:100px;" title = "这是一个杀手"/></dt>
+			<dd>杀手不太冷</dd>
+		</dl>
+		<input type = "text" id = "youcantry"/>
+		<div class = "box" style = "letter-spacing:20px;">
+			<p class = "ss">曾经沧海<span >是否</span>难为水</p>
+		</div>
+		<div style = "font-size: 36px;text-indent:2em;">我的中国心</div>
+		<script type="text/javascript">
+			/*函数/事件/方法
+				写法1：
+				function 函数名(形参1,形参2...){
+					函数体-----》要执行的代码，必须要有一个结果
+				}函数名(实参1,实参2...)
+				//函数的调用:函数名()
+				写法2：（匿名函数）
+				var fun = function (){
+					函数体-----》要执行的代码，必须要有一个结果
+					一般利用return来返回一个结果
+				}
+			//写法1例子：
+			function fn(){
+				var msg = "你好";
+				return msg
+			}
+			console.log(fn());
+			//写法2例子：匿名函数
+			var fun = function (){
+				return "你好"
+			}
+			fun();
+			*/
+			
+			//封装了通过ID名获取元素的方法			
+			function getid(docId){
+				var docall = document.all;
+				//获取页面中所有标签，格式为数组
+				for(var i = 0;i < docall.length;i++){
+					//获取到ID名为"ditou"的元素
+					if(docall[i].id == docId){
+						break
+					//简写：if(条件)break;
+					}
+				}
+				return docall[i]
+			}
+			getid("youcantry")
+		</script>
+	</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>旋转木马2</title>
+		<style>
+			.box{
+				position:relative;
+				top:200px;
+				left:300px;
+				width:150px;
+				height:10000px;
+				transform-style:preserve-3d;
+				perspective:0px;
+				transition:all .3s;
+				animation:nn 8s linear;
+			}
+				
+			div[class^="a"]{
+				opacity:0.3;
+			}
+			.a1{
+				position:absolute;
+				top:0px;
+				left:0px;
+				width:150px;
+				height:250px;
+				background:pink;
+				transform:rotateY(60deg) translateZ(200px);
+			}
+			.a2{
+				position:absolute;
+				top:0px;
+				left:0px;
+				width:150px;
+				height:250px;
+				background:red;
+				transform:rotateY(120deg) translateZ(200px);
+			}
+			.a3{
+				position:absolute;
+				top:0px;
+				left:0px;
+				width:150px;
+				height:250px;
+				background:yellow;
+				transform:rotateY(180deg) translateZ(200px);
+			}
+			.a4{
+				position:absolute;
+				top:0px;
+				left:0px;
+				width:150px;
+				height:250px;
+				background:black;
+				transform:rotateY(240deg) translateZ(200px);
+			}
+			.a5{
+				position:absolute;
+				top:0px;
+				left:0px;
+				width:150px;
+				height:250px;
+				background:blue;
+				transform:rotateY(300deg) translateZ(200px);
+			}
+			.a6{
+				position:absolute;
+				top:0px;
+				left:0px;
+				width:150px;
+				height:250px;
+				background:#afc;
+				transform:rotateY(360deg) translateZ(200px);
+			}
+			.b1{
+				position:absolute;
+				top:-150px;
+				left:50px;
+				width:50px;
+				height:250px;
+				background:#8B2500;
+				background:url(move.gif);
+				
+			}
+			.b2{
+				position:absolute;
+				top:-150px;
+				left:50px;
+				width:50px;
+				height:800px;
+				background:url(move.gif);	
+			}
+			@keyframes nn{
+				50%{
+					transform:translateY(3000px) rotateY(7000deg);	
+				}
+				100%{
+					transform:translateY(7000px) rotateY(15000deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="a1"></div>
+			<div class="a2"></div>
+			<div class="a3"></div>
+			<div class="a4"></div>
+			<div class="a5"></div>
+			<div class="a6"></div>
+			<div class="b1"></div>
+			<div class="b2"></div>
+		</div>
+	</body>
+</html>
+
+
+
+			
+
+
+

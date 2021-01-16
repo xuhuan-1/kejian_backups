@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+  		<title>数学方法</title>
+		<style>
+			#box{
+				height:300px;
+				background:pink;
+				line-height:300px;
+				text-align:center;
+				margin:0 auto;
+				font-size:52px;
+			}
+			#but{
+				width:600px;
+				height:100px;
+				line-height:100px;
+				text-align:center;
+				margin:20px auto 0;
+				font-size:32px;
+				display:block;
+			}
+		</style>
+ </head>
+ <body>
+		
+		<div id = "box">登上梦想舞台</div>
+		<button id = "but" onclick = "getrand()">点击抽奖</button>
+    <script type="text/javascript">
+		/*
+			数学对象：Math----Number类型
+			1.Math.abs()取绝对值
+				绝对值：正数为数据的数字类型本身，负数时先取正之后得出该数据的数字类型
+			2.Math.ceil()向上取整
+				向上取整：如果小数点后有数据，则返回一个整数+1的数字类型，存在精度问题（16位以上不会+1）
+			3.Math.floor()向下取整
+				向下取整：如果小数部分有数据，则返回整数部分，存在精度问题（当小数部分全是由9组成的且大于16位，则整数部分会+1）
+			4.Math.round()四舍五入
+				遵循四舍五入原则
+			5.Math.random()取0-1之间的随机数
+		
+		//封装通过ID名获取元素
+		function getid(idName){
+			return document.getElementById(idName)//返回对应ID的元素
+		}*/
+		//封装随机颜色
+		function changeColor(){
+				var _color="#";
+				var arrResult=[0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
+			
+				for(var i=0;i<6;i++){
+					_color+=arrResult[Math.floor(Math.random()*16)];
+				}
+				box.style.background = _color;
+				but.style.color = _color;
+				setTimeout("changeColor()",200);
+				return _color;
+			}
+		changeColor();
+		
+		
+		var msg = new Array("董祥宇","范敏敏","易道明","陈坤","陈卓","殷丽丽","宋晨曦","邢壮","陈宸锐","李璐瑶","吴凯","孙一杰","谢贵鹏","周世文","汪昱祺","兰天翔","张苏沛");	
+		function getrand(){
+			var rand = Math.floor(Math.random()*msg.length);
+			box.innerHTML = "有请"+ msg[rand] +"登上梦想舞台";
+			for(var i = 0;i < msg.length;i++){
+				if(i == rand){
+					msg.splice(i,1)
+				}
+			}
+			if(msg.length == 0){
+				box.innerHTML = "感谢大家的激情演出";
+			}	
+			return msg;
+		}
+		
+    </script> 
+ </body>
+</html>

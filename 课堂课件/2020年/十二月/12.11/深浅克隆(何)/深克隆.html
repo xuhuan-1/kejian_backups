@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 递归实现深克隆
+         * 1、判断是不是对象，是的话则走循环
+         * 2、声明新对象，最后要的结果
+         * 3、给新对象赋值，如果结果还是对象，则递归
+         * 4、返回新对象
+         * 
+         *  深克隆方式：
+         *  1、JSON.parse(JSON.stringify(obj))
+         *  2、递归+for in 循环
+         *  3、loadsh库
+         *  4、JQ中$.extends()
+         * 
+         * 作业：
+         *  1、复习学过的知识
+         *  2、看10篇关于模块化知识
+         *  3、看10篇关于深浅克隆的知识
+        */
+
+        function deepClone(obj){
+            if(typeof obj!== 'object') return obj;
+            if(obj == null) return obj;
+            if(obj.constructor === Date) return new Date();
+            // if(obj.constructor === RegExp) return new RegExp();
+            if(obj.constructor === Symbol) return obj;
+            // 设置变量接收
+            // let newObj = new obj.constructor == Array ? []:{};
+            // let newObj = obj instanceof Array ? []:{};
+            let newObj = Array.isArray(obj) ? []:{};
+            for(let key in obj){
+                newObj[key] = typeof obj[key] == 'object' ? deepClone(obj[key]) : obj[key];
+            }
+            return newObj;
+            
+        }
+
+        let o = {
+            name:'zimo',
+            fn:{
+                name:'dds',
+                page:1,
+                num:100,
+                un:undefined,
+                nu:null,
+                fn:() =>{}
+            },
+            [Symbol('A')]:100,
+            time:new Date()
+        }
+        let s = deepClone(o) // == 》克隆之后的数据
+        s.fn.name = '123'
+        console.log(s,o)
+
+
+        // 兼容性最强的
+        // function deepClone(target){
+        //     // 处理特殊的，不能循环的
+        //     if(target === null) return null;
+        //     if(typeof(target) !== 'object') return target;
+        //     if(target.constructor === Date) return new Date();
+        //     if(target.constructor === RegExp) return new RegExp();
+        //     // 新对象 [] 或者是 {} 
+        //     // var cloneObj = Array.isArray(target) ? [] : {};
+        //     // var cloneObj = target.constructor == Array ? [] : {};
+        //     // var cloneObj = new target.constructor;
+        //     if(target && typeof(target) === 'object'){
+        //         for(var key in target){
+        //             // 保证传进来的数据都是自身的属性
+        //             if(target.hasOwnProperty(key)){
+        //                 //如果cloneObj为数组 则key是索引
+        //                 cloneObj[key] = typeof(target[key]) == 'object' ? deepClone(target[key]) : target[key];
+        //             }
+        //         }
+        //     }
+        //     return cloneObj;
+        // }
+    </script>
+</body>
+</html>

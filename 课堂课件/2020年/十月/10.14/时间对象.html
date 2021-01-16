@@ -1,0 +1,48 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>时间对象</title>
+	</head>
+	<body>
+	<p id="p1"></p>
+		<script>
+		/*	//创建一个时间对象
+			var myDate = new Date();//获取指定天数的信息new Date('2020/01/01 00:00:00');
+			var a1 = myDate.getYear();//获取当前年份-1900年数(使用比较少)
+			var a2 = myDate.getFullYear();//当前年份
+			var a3 = myDate.getMonth()+1;//当前月份(0-11 0代表1月)
+			var a4 = myDate.getDay();//当前星期(0-6 0代表星期天)
+			var a5 = myDate.getDate();//当前日期(1-31)
+			var a6 = myDate.getTime();//当前时间(从1970.1.1开始的毫秒数)
+			var a7 = myDate.getHours();//当前小时数(0-23)
+			var a8 = myDate.getMinutes();//当前分钟数(0-59分钟)
+			var a9 = myDate.getSeconds();//当前秒数(0-59秒)
+			var a10 = myDate.getMilliseconds();//当前毫秒数(0-999毫秒)
+			var a11 = myDate.toLocaleDateString();//当前完整日期
+			var a12 = myDate.toLocaleTimeString();//当前时间
+			console.log(a12);
+		*/	
+			var myDate = new Date();
+			var a1 = myDate.getFullYear();//当前年份
+			var a2 = myDate.getMonth()-1;//当前月份
+			var a3 = myDate.getDate(); //当前日
+			var a4 = myDate.getDay();//当前星期
+			var a5 = myDate.getTime();//当前时间到1970.1.1的毫秒数
+			var a6 = myDate.getHours();//当前小时
+			var a7 = myDate.getMinutes();//当前分钟
+			var a8 = myDate.getSeconds();//当前秒
+			var a9 = myDate.getMilliseconds();//当前毫秒数
+			var a10 = myDate.toLocaleDateString();//当前日期(年月日)
+			var a11 = myDate.toLocaleTimeString();//当前时间(时分秒)
+			console.log(a11);
+			
+		
+		</script>
+	</body>
+</html>
+
+
+
+
+

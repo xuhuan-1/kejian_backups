@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>奔跑熊2</title>
+		<style>
+			.mountain1{
+				position:relative;
+				height:569px;
+				background:url(bg2.png) repeat-x;
+				padding-top:233px;
+				animation:mountain1 20s linear infinite;
+			}
+			.mountain2{
+				height:336px;
+				background:url(bg1.png) repeat-x;
+				animation:mountain 20s linear infinite;
+			}
+			.bear{
+				position:absolute;
+				height:100px;
+				width:200px;
+				background:url(bear.png) no-repeat;
+				top:450px;
+				left:0px;
+				animation:bear .5s steps(8) infinite,bear2 5s forwards linear infinite; 
+			}
+			@keyframes bear{
+				100%{
+					background-position:-1600px 0px;
+				}
+			}
+			@keyframes bear2{
+				100%{
+					left:120%;
+					transform:translateX(-50%);
+				}
+			}
+			@keyframes mountain{
+				100%{
+					background-position:-3840px 0px;
+				}
+			}
+			@keyframes mountain1{
+				100%{
+					background-position:3840px 0px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mountain1">
+			<div class="mountain2"></div>
+			<div class="bear"></div>
+		<div>
+	</body>
+</html>

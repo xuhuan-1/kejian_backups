@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * JS模块化：
+         *  一般有4种，分别是AMD,CMD,CommonJS,ES6 Module
+         * 什么是JS的模块化？
+         *  JS的模块化就是把项目中各种功能单独抽离出来，封装成一个单独的功能【单独JS文件】，
+         *  不同的JS文件之间可以相互引用，实现了JS与JS文件之间的交流
+         * 
+         * 优点：
+         *     1、减少http请求，优化性能
+         *     2、减少冗余代码，提高代码的复用性
+         *     3、集中管理，便于维护，便于测试，便于版本迭代
+         *     4、偏向于工程化
+         *     5、解耦，模块和模块之间尽量不要有任何关系
+         *     6、灵活，模块之间也可以自由组合
+         *     7、解决了命名冲突问题，避免了环境污染
+         *     8、多人协作开发，互不干扰，效率大大提升
+         * 缺点：
+                1、系统分层，调用链过长，消耗性能
+                2、模块间通信,模块间发送消息会很耗性能
+
+            AMD: 是一种模块化规范，代表者是 RequireJS
+                页面中必须依赖Requirejs，并且指定入口文件  必须是data-main属性指定
+                特点：
+                    1、异步加载
+                    2、依赖前置
+                    3、全部加载
+                    4、通过define定义模块
+
+                定义一个模块：define函数定义
+                    define('模块名?',['依赖']?,(形参：用于接收依赖中的数据) =>{
+                        暴露一个模块
+                        return {
+
+                        }
+                    }) 
+                引入模块：define、require、requirejs 
+                    require(['依赖'],function(形参：用于接收依赖中的数据){
+                        // 使用依赖的代码即可
+                    })
+
+            CMD: 是一种模块化规范，代表者是 SeaJS  阿里玉伯开发的
+                页面中先引入sea.js 然后引入入口js文件
+                既遵从AMD规范，又遵从CommonJS规范
+                特点：
+                    1、异步加载
+                    2、没有依赖前置
+                    3、按需加载
+                    4、通过CommonJS暴露模块 module.exports
+                    5、通过define函数定义模块
+                    6、就近原则 【用到的地方再去引入模块】
+                定义模块： define 函数定义
+                    require:引入模块
+                    exports:暴露模块
+                    module:模块标识
+                    define((require,exports,module) =>{
+                        暴露模块 
+                        1、CommonJS 默认暴露方式
+                            module.exports = {}
+                        2、CommonJS单个暴露方式
+                            exports.xxx = 值
+                        3、AMD暴露方式
+                            return 
+                    })
+
+            CommonJS: 是一种模块化规范，代表者是 Node.js ，运行在NODE中的
+                        浏览器不支持
+                        NODE环境默认有require模块
+                    暴露：
+                        module.exports = {}
+                        exports.xxx = 值
+                    引入：
+                        require
+                    特点：
+                        1、运行在NODE环境中，浏览器不支持
+                        2、同步加载
+                        
+            ES6 Module:ES6新增一种模块化规范  【最常使用的】
+                页面中给script标签设置type="module",否则不会解析
+                
+                单独暴露和引入：
+                    暴露时：
+                        1、export let xxx = 20;
+                    引入单独暴露的变量时，有两种引入方式：
+                        1、import { 暴露的变量名 } from './文件';
+                        2、import * as xxx from './文件';
+                默认暴露和引入：
+                    暴露时：
+                        export default {}
+                    引入时：
+                        import xxx from './文件'; 【xxx:可以自定义】
+        */
+
+    </script>
+</body>
+</html>

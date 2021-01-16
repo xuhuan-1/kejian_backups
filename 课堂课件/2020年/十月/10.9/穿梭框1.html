@@ -1,0 +1,104 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>穿梭框</title>
+	</head>
+	<body>
+		
+		<script>
+			//创建第一个选择框
+			var create_sel = document.createElement('select');
+			//创建选择框的size属性为10
+			create_sel.setAttribute('size','8');
+			create_sel.setAttribute('multiple','multiple');
+			//将选择框放入body标签里
+			document.body.appendChild(create_sel);
+			//创建普通按钮
+			var but1 = document.createElement('button');
+			but1.setAttribute('onclick','dj1()');
+			but1.innerText = '>';
+			document.body.appendChild(but1);
+			//创建普通按钮
+			var but2 = document.createElement('button');
+			but2.setAttribute('onclick','dj2()');
+			but2.innerText = '<';
+			document.body.appendChild(but2);
+			
+			//创建option标签
+			var a1 = document.createElement('option');
+			//将option标签放入选择框里
+			create_sel.appendChild(a1);
+			//创建文本内容
+			var b1 = document.createTextNode('吃'); 
+			//将文本内容放到option标签里
+			a1.appendChild(b1);
+			
+			var a2 = document.createElement('option');
+			create_sel.appendChild(a2);
+			var b2 = document.createTextNode('喝'); 
+			a2.appendChild(b2);
+			
+			var a3 = document.createElement('option');
+			create_sel.appendChild(a3);
+			var b3 = document.createTextNode('玩'); 
+			a3.appendChild(b3);
+			
+			var a4 = document.createElement('option');
+			create_sel.appendChild(a4);
+			var b4 = document.createTextNode('乐'); 
+			a4.appendChild(b4);
+			
+			var a5 = document.createElement('option');
+			create_sel.appendChild(a5);
+			var b5 = document.createTextNode('黄'); 
+			a5.appendChild(b5);
+			
+			var a6 = document.createElement('option');
+			create_sel.appendChild(a6);
+			var b6 = document.createTextNode('赌'); 
+			a6.appendChild(b6);
+			
+			var a7 = document.createElement('option');
+			create_sel.appendChild(a7);
+			var b7 = document.createTextNode('毒'); 
+			a7.appendChild(b7);
+			
+			var a8 = document.createElement('option');
+			create_sel.appendChild(a8);
+			var b8 = document.createTextNode('学习'); 
+			a8.appendChild(b8);
+			
+			//创建第二个选择框
+			var se2 = document.createElement('select');
+			//创建选择框的size属性为10
+			se2.setAttribute('size','8');
+			se2.setAttribute('multiple','multiple');
+			//将选择框放入body标签里
+			document.body.appendChild(se2);
+			
+			function dj1(){
+				var que = document.querySelectorAll('option');
+				for(var i=0;i<que.length;i++){
+					if(que[i].selected == true){
+					se2.appendChild(que[i]);
+					}
+				}
+			}
+			
+			function dj2(){
+				var que = document.querySelectorAll('option');
+				for(var i=0;i<que.length;i++){
+					if(que[i].selected == true){
+					create_sel.appendChild(que[i]);
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二次贝塞尔曲线</title>
+</head>
+<body>
+    <canvas id="Mycanvas" style="background: #cccc; width: 800px; height: 800px;"></canvas>
+    <script>
+        let cvs = document.getElementById('Mycanvas');
+        cvs.width = cvs.clientWidth;
+        cvs.height = cvs.clientHeight;
+        let pen = cvs.getContext('2d');
+        // 开始画贝塞尔曲线
+        pen.beginPath();
+        //线宽
+        pen.lineWidth = 10;
+        // 线的颜色
+        pen.strokeStyle = 'red';
+        // 初始坐标
+        pen.moveTo(100,300);
+        // 二次贝塞尔曲线
+        pen.quadraticCurveTo(800,-100,500,300);
+        // 连线
+        pen.stroke();
+    </script>
+</body>
+</html>

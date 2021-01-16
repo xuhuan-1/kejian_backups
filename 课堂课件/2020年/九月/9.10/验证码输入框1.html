@@ -1,0 +1,36 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>验证码输入框练习2</title>
+		<script>	
+			
+		</script>
+	</head>
+	<body>
+		<form>
+			姓名：<input id="xm" type="text"/><br/>
+			年龄：<input id="nl" type="text"/><br/>
+			<input id="but" type="button" value="提交信息"/>
+		</form>
+	<script>	
+		var a = document.getElementById('xm');
+		var b = document.getElementById('nl');
+		var c = document.getElementById('but');
+		c.onclick = function(){
+			if(a.value == false || !isNaN(a.value) == true){
+				alert('请输入正确的姓名!');
+			}else if(b.value == false || isNaN(b.value) == true){
+				alert('请输入正确的年龄!');
+			}else{
+				alert('提交成功，谢谢!');
+			}
+		}
+	</script>
+	</body>
+</html>
+
+
+
+
+

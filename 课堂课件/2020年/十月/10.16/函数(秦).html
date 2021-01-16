@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+</head>
+<body>
+    <script>
+		//函数
+		
+		//匿名函数
+		var fn = function (){
+			return console.log("hello");
+		}
+		//普通函数
+		function Fn(){
+			console.log(this)//这里this指向就是全局对象window
+			return console.log("hello");
+		}
+		
+		//构造函数  建议首字母大写
+		//构造函数和普通函数并没有本质上的区别
+		/*
+			利用new关键字实例化一个对象
+		*/
+			var blind = {
+				name:"李青",
+				age:68,
+				height:188,
+				skill:"大威天龙，神龙摆尾"
+			}
+			function setLOLHeros(){
+				var msg = new Object();
+				msg.name = "李青";
+				msg.age = 68;
+				msg.height = 188;
+				msg.skill = "大威天龙，神龙摆尾";
+				return msg
+			}
+			//工厂模式创建对应的函数
+			function setHeros(name,age,height,skill){
+				var msg = new Object();
+				msg.name = name;
+				msg.age = age;
+				msg.height = height;
+				msg.skill = skill;
+				return msg;
+			}
+			var gailun =new setHeros("盖伦",18,150,"吃我一记大宝剑，德玛西亚万岁");
+			//var yi =new setHeros("剑圣·易",38,180,"我开大招了，赶紧跑");
+			//var ali =new setHeros("阿狸",16,170,"蹦三下");
+			
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>冒泡和捕获练习</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box ul li{
+				line-height:50px;
+				background:pink;
+				margin-top:10px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+		</div>
+		<script>
+			var box_ul = box.querySelector('ul');
+			var box_li = box_ul.querySelectorAll('li');
+			box_ul.addEventListener('click',(e)=>{
+				var e = e.event||window.event;
+				var now_element = e.currentTarget||event.srcElement;
+				//console.log(now_element);
+			})
+			for(var i=0;i<box_li.length;i++){
+				box_li[i].addEventListener('click',(e)=>{
+					var e = e.event||window.event;
+					var now_element = e.target||event.srcElement;
+					console.log(now_element.innerText);
+				})
+			}
+		
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

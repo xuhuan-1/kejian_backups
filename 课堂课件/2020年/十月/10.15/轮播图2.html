@@ -1,0 +1,182 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>轮播图2</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			li{
+				list-style:none;
+				float:left;
+			}
+			img{
+				width:600px;
+				height:500px;
+			}
+			#box{
+				width:600px;
+				height:500px;
+				position:relative;
+				margin:0 auto;
+				overflow:hidden;
+			}
+			#im{
+				width:3000px;
+				height:500px;
+				position:absolute;
+				
+			}
+			#le{
+				height:80px;
+				width:30px;
+				position:absolute;
+				top:200px;
+				left:10px;
+				background:rgba(255,255,255,0.4);
+				border-radius:25px;
+				line-height:75px;
+				font-size:40px;
+				user-select:none;
+			}
+			#ri{
+				height:80px;
+				width:30px;
+				position:absolute;
+				top:200px;
+				left:560px;
+				background:rgba(255,255,255,0.4);
+				border-radius:25px;
+				line-height:75px;
+				font-size:40px;
+				user-select:none;
+			}
+			#dian{
+				position: absolute;
+				width: 160px;
+				height: 30px;
+				left: 50%;
+				margin-left: -68px;
+				background: rgba(255,255,255,0.4);
+				border-radius: 30px;
+				bottom:10px;
+			}
+			#dian ul li{
+				float: left;
+				width: 16px;
+				height: 16px;
+				border-radius: 50%;
+				background: purple;
+				margin: 8px 8px;
+			}
+			#dian ul li:hover{
+				background:pink;
+			}
+			#dian ul .con{
+				background:pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="im">
+				<ul>
+					<li><img src="img/1.png" ondragstart="return false;"/></li>
+					<li><img src="img/2.png" ondragstart="return false;"/></li>
+					<li><img src="img/3.png" ondragstart="return false;"/></li>
+					<li><img src="img/4.png" ondragstart="return false;"/></li>
+					<li><img src="img/5.png" ondragstart="return false;"/></li>
+				</ul>
+			</div>
+			<div id="le" onclick="to_left()"><</div>
+			<div id="ri" onclick="to_right()">></div>
+			<div id="dian">
+				<ul>
+					<li class="con"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			function $(xc){
+				return document.getElementById(xc);
+			}
+			//获取im里的ul标签
+			var im_ul = $('im').querySelector('ul');
+			//获取ul里的li标签
+			var im_li = im_ul.querySelectorAll('li');
+			var a = 0;
+			var time = null;
+			//定时器
+			function js(){
+				time = setInterval (function (){
+					to_right();
+				},1000)
+			}js();//调用定时器
+			
+			
+			//鼠标划过时
+			$('box').onmouseover = function(){
+				clearInterval(time);
+			}
+			//鼠标移开后
+			$('box').onmouseout = function(){
+				js();
+			}
+			var dian_ul = $('dian').querySelector('ul');
+			var dian_li = dian_ul.querySelectorAll('li');
+			
+			
+			//封装一个变颜色方法
+			function colo(){
+				for(var i=0;i<dian_li.length;i++){
+					if(i == a){
+						dian_li[i].setAttribute('class','con');
+					}else{
+						dian_li[i].setAttribute('class','')
+					}
+				}
+			}
+			//右侧按钮事件
+			function to_right(){
+				a++;
+				if(a>im_li.length-1){
+					a = 0;
+				}
+				colo();
+				$('im').style.left = -600*a+'px';
+			}
+			//左侧按钮事件
+			function to_left(){
+				a--;
+				if(a<0){
+					a =  im_li.length-1;
+				}
+				colo();
+				$('im').style.left = -600*a+'px';
+			}
+			//创建底部按钮onclick
+			for(var i=0;i<dian_li.length;i++){
+				dian_li[i].setAttribute('onclick','dj(this)');
+				dian_li[i].setAttribute('nam',i);
+				
+			}
+			//底部按钮事件
+			function dj(c){
+				a = c.attributes.nam.value;
+				colo();
+				$('im').style.left = -600*a+'px';
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,48 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>开灯关灯</title>
+		
+	</head>
+	<body>
+		<form>
+			<input id="a" type="button" value="关灯" onclick="kaideng()"/>
+			
+		</form>
+	<script>
+		var s = document.getElementById('a');
+		var i = 0;
+		function kaideng(){
+			if(i%2==0){
+				document.body.style.background="black";
+				s.value = '开灯';
+			}else{
+				document.body.style.background="#fff";
+				s.value = '关灯';
+			}
+			i++;
+		}
+	
+	/*
+		var s = document.getElementById('a');
+		var i = 0;
+		function kaideng(){
+			if(i%2==0){
+				document.body.style.background="black";
+				s.value='开灯';
+			}else{
+				document.body.style.background=null;
+				s.value='关灯';
+			}
+			i++
+		}
+	*/
+	</script>
+	</body>
+</html>
+
+
+
+
+

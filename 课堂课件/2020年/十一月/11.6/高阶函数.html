@@ -1,0 +1,131 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>高阶函数</title>
+	</head>
+	<body>
+		<script>
+		/*
+			function fun(x){
+				return function(y){
+					return function(z){
+						return function(l){
+							return function(i){
+								return x+y+z+l+i;
+							}
+						}
+					}
+				}
+			}
+			console.log(fun(3)(4)(5)(6)(7));
+		*/
+		/*
+			function reduce(fn){
+				return fn&&fn();
+			}
+			console.log(reduce(()=>{return 5}))
+		*/
+		/*
+			var arr = [3,4,1,2];
+			var newarr = [3,4,5,6];
+			var s = arr.filter((item,index)=>item == newarr[index]);
+			console.log(s);
+		*/
+		/*	
+			//去重 new Set()不允许有重复	和 Array.from()将对象转成数组
+			var arr = [1,1,2,3,4,3,4,6,6,5,5,7,4,7,8,8];
+			var s = Array.from(new Set(arr));
+			console.log(s);
+		*/
+		/*	//去重 filter 过滤
+			var arr = [1,1,2,3,4,3,4,6,6,5,5,7,4,7,8,8];
+			var s = arr.filter((item,index)=>{
+				return arr.indexOf(item) == index;
+			})
+			console.log(arr);
+			console.log(s);
+		
+			//.map()
+			var arr = [13,33,2,11,33,7,8,9];
+			var s = arr.map((item,index)=>{
+				return item*2;
+			})
+			console.log(s);
+		
+			//综合性的高阶函数
+			function reduce(fn){
+				return fn&&fn();
+			}
+			console.log(reduce(()=>{return 5}));
+			
+			//综合性的高阶函数
+			function a(x){
+				return function(fn){
+					return fn&&fn() * x;
+				} 
+			}
+			console.log(a(10)(()=>{return 10}));
+			//1--100累加
+			var arr = [];
+			for(var i=1;i<=100;i++){
+				arr.push(i);
+				//arr[i] = i
+			}
+			var s = arr.reduce((prev,current)=>{
+				return prev + current;
+			},0)
+			console.log(s); 
+			//去重
+			var arr = [1,1,2,3,4,3,4,6,6,5,5,7,4,7,8,8];
+			var s = arr.filter((item,index)=>{
+				return arr.indexOf(item) == index;
+			})
+			console.log(s);
+			//去重
+			var arr = [1,1,2,3,4,3,4,6,6,5,5,7,4,7,8,8];
+			var s = Array.from(new Set(arr));
+			console.log(s);
+			//过滤去重
+			var arr = [1,1,2,3,4,3,4,6,6,5,5,7,4,7,8,8];
+			var s = arr.filter((item,index)=>{
+				return arr.indexOf(item) == index;
+			})
+			console.log(s);
+			
+			//for循环去重
+			var arr = [1,1,2,3,4,3,4,6,6,5,5,7,4,7,8,8];
+			var s = [];
+			var s1 = [];
+			for(var i=0;i<arr.length;i++){
+				if(arr.indexOf(i) != -1){
+					s.push(i);
+				}else{
+					s1.push(i);
+				}
+			}
+			console.log(arr);
+			console.log(s);
+			console.log(s1);
+		*/	
+			function fun(x){
+				return y=>{
+					return z=>{
+						return l=>{
+							return i=>x*y*z*l*i;
+						}
+					}
+				}
+			}
+			console.log(fun(3)(4)(5)(6)(7));
+			
+			
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,599 @@
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing:border-box;
+}
+a{
+	text-decoration:none;
+}
+li{
+	list-style:none;
+}
+img{
+	vertical-align:middle;
+}
+.clearfix{
+	content:"";
+	display:block;
+	clear:both;
+	height:0px;
+	visibility:hidden;
+}
+.clearfix{
+	*zoom:1;
+}
+.f_left{
+	float:left;
+}
+.f_right{
+	float:right;
+}
+.w{
+	width:960px;
+	margin:0 auto;
+}
+/*第一行开始*/
+.top1{			/*头部一*/
+	height:32px;
+	width:100%;
+	background:#7D0000;
+}
+.top_1{
+	height:32px;
+	line-height:32px;
+	color:#fff;
+	font-size:13px;
+}
+.top_1 input{
+	height:19px;
+	width:84px;
+	margin-right:10px;
+}
+.top_1 button{
+	background:#CA5C5D;
+	border:none;
+	color:#fff;
+	height:19px;
+	width:62px;
+	margin-left:5px;
+}
+.p1{
+	display:inline;
+	margin-left:50px;
+}
+.top_ul{
+	float:right;
+	margin-top:10px;
+}
+.top_ul li{
+	float:left;
+	height:12px;
+	line-height:10px;
+	padding-right:10px;
+	border-right:1px solid #fff;
+	margin-right:10px;
+}
+.top_ul li a{
+	color:#fff;	
+}
+.top_ul li:last-child{
+	border:none;
+}
+/*第一行结束*/
+/*第二行开始*/
+.top2{
+	height:30px;
+}
+.journalism{
+	line-height:30px;
+}
+.journalism li{
+	width:30px;
+	float:left;	
+}
+.journalism li a{
+	font-size:13px;
+	color:black;
+}
+.journalism li a:hover{
+	color:red;
+}
+/*第二行结束*/
+/*第三行开始*/
+.top3{
+	height:30px;
+	background:#FCEEEE;
+	border-top:2px solid red;
+}
+.broadcast{
+	margin-left:10px;
+}
+.broadcast li{
+	float:left;
+	width:60px;
+	text-align:center;
+	line-height:28px;
+	margin-left:2px;
+}
+.broadcast li a{
+	font-size:12px;	
+	padding-right:5px;
+	border-right:1px solid;
+	height:13px;
+	color:#7D0000;
+}
+.broadcast li:last-child{
+	width:75px;
+}
+#a1{
+	border:none;
+}
+/*第三行结束*/
+/*第四行结束*/
+.top4{
+	height:49px;
+	margin-top:10px;
+}
+.p2{
+	margin-top:6px;
+	float:left;
+	margin-left:20px;
+}
+.search{
+	float:left;
+	margin-left:570px;
+	margin-top:10px;
+}
+.search input{
+	width:90px;
+	height:25px;
+	float:left;
+	margin-right:10px;
+}
+.search select{
+	width:60px;
+	height:25px;
+	background:#F1F1F1;
+	float:left;
+	margin-right:10px;
+}
+.search img{
+	float:left;
+	margin-right:10px;	
+}
+/*第四行结束*/
+/*第五行开始*/
+.top5{
+	height:41px;
+	background:#1138F9;
+	line-height:41px;
+}
+.top5 ul{
+	margin-left:130px;
+}
+.top5 ul li{
+	float:left;
+	width:100px;
+	height:20px;
+	line-height:20px;
+	border-right:1px solid #fff;
+	text-align:center;
+	margin-top:12px;
+}
+.top5 ul li a{
+	color:#fff;
+}
+.top5 ul li:last-child{
+	border:none;
+}
+/*第五行结束*/
+/*第六行开始*/
+.flash{
+	height:41px;		/*央广快讯一块*/
+}
+.flash img{
+	margin-top:10px;
+	float:left;
+}
+.p3{
+	font-size:12px;
+	line-height:41px;
+	color:#1D3C7D;
+	float:left;
+}
+.p3 span{
+	color:black;
+}
+#sp_1{
+	color:#1D3C7D;
+	margin-left:50px;
+}
+#sp_1::before{
+	content:"[";
+	color:black;
+}
+#sp_1::after{
+	content:"]";
+	color:black;
+}
+/*第六行结束*/
+/*第七行开始*/
+.context{				/*主要内容大盒子*/
+	height:558px;
+}
+.context_1{				/*主要内容一*/
+	height:558px;
+	width:370px;
+	margin-right:13px;
+}
+.context_1_dl{
+	height:276px;
+	width:370px;
+	overflow:hidden;
+	border:1px solid #CDCDCD;
+}
+.context_1_dl dt{
+	margin-left:10px;
+	margin-top:5px;
+}
+.context_1_dl dd{
+	text-align:center;
+	color:#1D3C7D;
+}
+.interview{				/*高端访谈*/
+	height:266px;
+	width:370px;
+	border:1px solid #CDCDCD;
+	margin-top:5px;
+}
+.interview dt{
+	margin-left:7px;
+}
+.interview dd{
+	font-size:14px;
+	margin-left:7px;
+	margin-top:10px;
+	color:#1D3C7D;
+}
+.context_2{				/*主要内容二*/
+	height:558px;
+	width:362px;
+}
+.focus{				/*焦点新闻 和 焦点新闻*/
+	height:276px;
+	width:362px;
+	border-bottom:1px solid #CDCDCD;
+}
+.focus_dl{
+	height:115px;
+	color:#1D3C7D;
+	margin-top:10px;
+	border-bottom:1px dashed #CDCDCD;
+}
+.focus_dl dt{
+	font-size:17px;
+	font-weight:600;
+}
+.focus_dl dd{
+	font-size:15px;
+	margin-top:5px;
+}
+.context_3{				/*主要内容三*/
+	height:558px;
+	width:203px;
+}
+.observe{				/*商业观察*/
+	height:183px;
+	width:203px;
+	border:1px solid #CDCDCD;
+	margin-top:3px;
+}
+.observe_dl{
+	font-size:14px;
+	color:#1D3C7D;
+	margin-left:3px;
+}
+.observe_dl dd{
+	margin-top:3px;
+}
+/*第七行结束*/
+/*第八行开始*/
+.description{
+	height:169px;
+	background:pink;
+	margin-top:10px;
+}
+.h_1{
+	height:30px;
+	color:#fff;
+	background:#1374FF;
+	border:1px solid;
+	padding-left:20px;
+	line-height:26px;
+}
+.description_img{
+	height:144px;
+	background:#D5E7FE;	
+}
+.description_img img{
+	margin:7px 5px;
+}
+.p4{
+	margin-left:20px;
+}
+/*第八行结束*/
+/*第九行开始*/
+.commercial{			/*商学院*/
+	height:251px;
+	margin-top:20px;
+}
+.sss{
+	height:206px;
+	width:960px;
+	border:1px solid #CDCDCD;
+	margin-top:10px;
+}
+.commercial_1{				/*商学院动态*/
+	height:185px;
+	width:362px;
+	border:1px solid #CDCDCD;
+	float:left;
+	margin-top:10px;
+	margin-left:8px;
+}
+.commercial_1 p{
+	height:22px;
+	font-size:14px;
+	margin-left:10px;
+}
+.commercial_1 p a{
+	color:#1D3C7D;
+}
+#p5{
+	margin-top:5px;
+}
+.commercial_2{				/*评论案例*/
+	height:185px;
+	width:362px;
+	float:left;
+	margin-top:10px;
+	margin-left:8px;
+	border:1px solid #CDCDCD;
+}
+.plal{
+	font-size:14px;
+	color:#1D3C7D;
+	margin-top:10px;
+	margin-left:5px;
+}
+.plal dt{
+	float:left;
+	margin-right:5px;
+}
+.plal dd{
+	float:left;	
+	height:17px;
+}
+.commercial_2 p{
+	clear:both;
+	color:##1D3C7D;
+	font-size:14px;
+	margin-bottom:5px;	
+}
+.commercial_3{				/*商学院推荐*/
+	height:185px;
+	width:204px;
+	float:left;
+	margin-top:10px;
+	margin-left:8px;
+	border:1px solid #CDCDCD;
+}
+/*第九行结束*/
+/*第十行开始*/
+.industry{				/*商业产经*/
+	height:604px;
+	border:1px solid #CDCDCD;
+	margin-top:10px;
+}
+.industry_img{
+	height:48px;
+	border-bottom:1px solid #CDCDCD;
+}
+.industry_1{		/*商业产经1*/
+	height:261px;
+	width:363px;
+	border:1px solid #CDCDCD;
+	float:left;
+	margin-top:12px;
+	margin-left:7px;
+}
+.industry_1 img{
+	margin-left:5px;
+	margin-top:5px;
+}
+.industry_1 p{
+	color:#0066CC;
+	text-align:center;
+}
+.industry_2{		/*商业产经2*/
+	height:261px;
+	width:363px;
+	border:1px solid #CDCDCD;
+	float:left;
+	margin-top:12px;
+	margin-left:7px;
+}
+.industry_2 p{
+	font-size:14px;
+	height:19px;
+	margin-top:6px;
+	margin-left:10px;
+}
+.industry_2 p a{
+	color:#1D3C7D;
+}
+.industry_3{		/*商业产经3*/
+	height:261px;
+	width:202px;
+	border:1px solid #CDCDCD;
+	float:left;
+	margin-top:12px;
+	margin-left:7px;
+}
+.manufacture dt{
+	margin-top:3px;
+	margin-left:3px;
+}
+.manufacture dd{
+	font-size:14px;
+	margin-left:3px;
+	color:#1D3C7D;
+	height:19px;
+	margin-top:3px;
+}
+.industry_4{		/*商业产经4*/
+	height:261px;
+	width:363px;
+	border:1px solid #CDCDCD;
+	float:left;
+	margin-top:12px;
+	margin-left:7px;
+}
+.industry_4 p{
+	height:19px;
+	margin-left:10px;
+	font-size:14px;
+	margin-top:6px;
+}
+.industry_4 p a{
+	color:#1D3C7D;
+}
+.industry_5{		/*商业产经5*/
+	height:261px;
+	width:363px;
+	border:1px solid #CDCDCD;
+	float:left;
+	margin-top:12px;
+	margin-left:7px;
+}
+.industry_5 p{
+	height:19px;
+	margin-left:10px;
+	font-size:14px;
+	margin-top:6px;
+}
+.industry_5 p a{
+	color:#1D3C7D;
+}
+.industry_6{		/*商业产经6*/
+	height:261px;
+	width:202px;
+	border:1px solid #CDCDCD;
+	float:left;
+	margin-top:12px;
+	margin-left:7px;
+}
+/*第十行结束*/		/*商业消费 和 商业产经*/
+/*第十三行结束*/
+.blogroll{
+	height:73px;
+	border:5px solid #1374FF;
+	margin-top:10px;
+}
+.blogroll h4{
+	height:32px;
+	width:900px;
+	border-bottom:2px solid #CDCDCD;
+	line-height:32px;
+	margin-left:20px;
+	color:#100CEF;
+}
+.blogroll p{
+	font-size:14px;
+	line-height:32px;
+	padding-left:20px;
+	color:#100CEF;
+}
+.blogroll p span{
+	text-decoration:underline;
+}
+/*第十三行结束*/
+/*第十四行开始*/
+.contact{
+	height:53px;
+	margin-top:10px;
+	line-height:53px;
+	border:1px solid #CDCDCD;
+}
+.contact p{
+	margin-left:20px;
+}
+.contact p span{
+	font-size:14px;
+	color:#100CEF;
+}
+/*第十四行结束*/
+/*第十五行开始*/
+.stern{				/*尾部开始*/
+	height:35px;
+	width:100%;
+	background:#500202;
+	margin-top:10px;
+}
+.stern p{
+	height:35px;
+	width:960px;
+	margin:0 auto;
+	line-height:35px;
+	text-align:center;
+}
+.stern p span{
+	font-size:12px;
+	margin-left:1px;
+}
+.stern p span a{
+	color:#fff;
+}
+/*第十五行结束*/
+/*第十六行开始*/
+.stern_1{			/*尾部2*/
+	height:26px;
+	line-height:26px;
+}
+.stern_1 p{
+	text-align:center;
+}
+.stern_1 span{
+	font-size:13px;
+}
+.stern_1 span a{
+	color:#999999;
+}
+/*第十六行结束*/
+/*第十七行开始*/
+.stern_2{			/*尾部3*/
+	height:191px;
+}
+.stern_2 img{
+	float:left;
+	margin-top:70px;
+	margin-left:50px;
+}
+.copyright{
+	float:left;
+	position:relative;
+}
+.copyright p{
+	font-size:14px;
+	height:19px;
+	margin-top:10px;
+	margin-left:50px;
+	color:#999999;
+}
+.posi{
+	position:absolute;
+	top:60px;
+	left:365px;
+}
+/*第十七行结束*/
+

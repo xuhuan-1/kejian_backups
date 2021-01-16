@@ -1,0 +1,113 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>作业2</title>
+		<script>
+		/*	一、
+			var name = prompt('请输入账号');
+				pass = prompt('请输入密码');
+			var i = 0;
+			if(name == 'admin' && pass == 123){
+				alert('登录成功');
+			}else{
+				alert('账号密码有误！');
+				while(i < 5){
+						name = prompt('请输入账号');
+						pass = prompt('请输入密码');
+					if(name == 'admin' && pass == 123){
+						alert('登录成功');break;
+					}else{
+						alert('账号密码有误！');
+					}
+					i++
+				}	
+			}
+		
+			二、
+			var name = prompt('请输入账号');
+				pass = prompt('请输入密码');
+			var i = 0;
+			if(name == 'admin' && pass == 123){
+				alert('登录成功');
+			}else{
+				alert('账号密码有误！\n请查证:账号：'+ name +'\n密码：'+ pass);
+				while(i < 5){
+						name = prompt('请输入账号');
+						pass = prompt('请输入密码');
+					if(name == 'admin' && pass == 123){
+						alert('登录成功');break;
+					}else{
+						alert('账号密码有误！请查证');
+					}
+					i++
+				}	
+			}
+		
+			
+			三、
+			var name = prompt('请输入账号：');
+				pass = prompt('请输入账号：');
+			var i = 0;
+			if(name == 'admin' && pass == 123){
+				alert('登录成功');
+			}else{
+				alert('账号密码有误！');
+				while (i < 5){
+					name = prompt('请输入账号：');
+					pass = prompt('请输入密码：');
+					if(name == 'admin' && pass == 123){
+						alert('登录成功');break;
+					}else{
+						alert('账号密码有误！');
+					}
+					i++	
+				}
+			}
+		
+			
+			
+				var i = 1;
+				while(i <= 3){
+					var user = prompt('请输入账号：');
+						pass = prompt('请输入密码：');
+					if(user == 'admin' && pass == 123){
+						alert('登录成功');break;
+					}if(i == 3){
+						alert('你的账号已经输入错误\"' + i +"\"次,\n请10分钟后再试！");break;
+					}
+					alert('账号密码有误！这是第' + i + '次输入错误');
+					i++;
+				}
+		*/	
+				var i = 1;
+				while(i <= 3){
+						var user = prompt('请输入用户名：');
+						var pass = prompt('请输入密码：');
+					if (user == 'admin' && pass == 123){
+						alert('登录成功');break;
+					}else if(i == 3){
+						alert('你的账号已经输入错误'+ i +'次，请10分钟后再式！');break;
+					}
+					else{
+						alert('账号密码有误！这是第' + i + '次输入错误！');
+					}
+					i++;
+				}
+
+
+		
+			
+		</script>
+				
+		
+	</head>
+	<body>
+		
+	</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,8 @@
+Promise  class
+class类：
+    是ES6新增的API，是有了类的概念，有了块级作用域，更像编程语言
+    偏向于真正的强类型编程语言
+
+
+function Parent(){} 模拟的 class Parent{}
+

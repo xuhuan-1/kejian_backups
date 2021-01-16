@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数生成器</title>
+</head>
+<body>
+    <div id="box" style="width: 100px;height: 100px;"></div>
+    <script>
+        let arr = [
+            'Number',
+            'String',
+            'Boolean',
+            'Undefined',
+            'Null',
+            'Symbol',
+            'BigInt',
+            'Function',
+            'Object',
+            'Array',
+            'Date',
+            'RegExp'
+        ];
+        // function isType(type){
+        //     return function(obj){
+        //         return ({}).toString.call(obj).includes(type);
+        //     }
+        // }
+        // let fn = {};
+        // arr.forEach(item=>{
+        //     fn['is'+item] = isType(item);
+        // })
+        // let s = fn.isObject({});
+        // console.log(s)
+
+
+
+        // function isType(type){
+        //     return function(obj){
+        //         return ({}).toString.call(obj).includes(type);
+        //     }
+        // }
+        // let fn = {};
+        // arr.forEach(item=>{
+        //     fn['is' + item] = isType(item);
+        // });
+        // let s = fn.isNumber(4);
+        // console.log(s);
+
+        //获取Symbol的属性方法
+        // let obj = {};
+        // obj[Symbol('a')] = '你';
+        // obj[Symbol.for("b")] = '好';
+        // let [a,b] = Object.getOwnPropertySymbols(obj)
+        // console.log(obj[a],obj[b]);
+
+
+
+        
+        // function isType(type){
+        //     return function(obj){
+        //         return Object.prototype.toString.call(obj).includes(type);
+        //     }
+        // }
+        // let fn = {};
+        // arr.forEach(item=>{
+        //     fn['is'+ item] = isType(item);
+        // })
+        // console.log(fn);
+        // let s = fn.isNumber(11)
+        // console.log(s);
+
+        
+        function getStyle(ele,attr){
+            return ele.currentStyle?currentStyle(attr):getComputedStyle(ele)[attr];
+        }
+        let s = getStyle(box,'height');
+        console.log(s);
+
+    </script>
+</body>
+</html>

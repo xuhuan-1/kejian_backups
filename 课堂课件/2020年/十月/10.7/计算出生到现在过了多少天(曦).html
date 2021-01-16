@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>9月成果汇报</title>
+		<style>
+			body{
+			 background:rgba(252,239,194,.5);
+			}
+			.box{
+				margin:150px auto;
+				width:1000px;
+			}
+			p:nth-child(1){
+				margin-bottom:20px;
+				color:pink;
+				font-size:50px;
+			}
+			p:nth-child(1) input{
+				position:relative;
+				bottom:5px;
+				width:200px;
+				height:50px;
+				border:2px solid pink;
+				font-size:30px;
+				color:hotpink;
+			}
+			p:nth-child(2){
+				clear:both;
+			}
+			p:nth-child(2) input{
+				width:80px;
+				height:50px;
+				background:pink;
+				font-size:20px;
+				font-weight:bold;
+				color:#fff;
+			}
+			p:nth-child(2) .res{
+				margin-left:50px;
+			}
+			p:nth-child(3){
+				margin-top:20px;
+				color:pink;
+				font-size:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<audio controls="controls" autoplay="autoplay" preload="auto">
+			<source src="yinghua.mp3" type="audio/mpeg" />
+		</audio>
+		<div class="box">
+			<form>
+				<p>请输入可爱的您的出生日期吧：<input type="text" autocomplete="off" autofocus="autofocus" name="date" id="date" /></p><!--19980125 -->
+				<p><input type="button" value="提交" onclick="sub()" /><input type="reset" value="重置" onclick="res()" class="res"/> </p>
+				<p>今天是优秀的您为周围一切带来快乐的第<span id="live_day">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>天</p>
+			</form>
+		</div>
+		<img src="timg.gif" />
+		<script>
+			var liveday = document.getElementById("live_day");
+			function sub(){
+				var dat = document.getElementById("date").value;
+				var year = parseInt(dat/10000);
+				var month = parseInt((dat%10000)/100);
+				var day = parseInt(dat%100);
+				var a = 0;
+				switch(month-1){
+					case 11:a += 30;
+					case 10:a += 31;
+					case  9:a += 30;
+					case  8:a += 31;
+					case  7:a += 31;
+					case  6:a += 30;
+					case  5:a += 31;
+					case  4:a += 30;
+					case  3:a += 31;
+					case  2:
+						if(year%4==0&&year%100!=0 || year%400==0){
+							a += 29;
+						}else{
+							a += 28;
+						}
+					case  1:a += 31;
+					case  0:a += day;
+				}
+				//出生那一年的日子
+				if(year%4==0&&year%100!=0 || year%400==0){
+					var live = 366 - a + 1;
+				}else{
+					var live = 365 - a + 1;
+				}
+				console.log("出生那一年"+live);
+				//生活到现在经历过的闰年数
+				var r = 0;
+				for(var i = year ; i < 2020 ; i++){
+					if(i%4 == 0&&i%100 != 0 || i%400 == 0){
+						r++;
+						console.log(i);
+					}
+				}
+				
+				live = live + 365*(2020-year-r-1) + 366*r + 268;
+				
+				liveday.innerText = live;
+			}
+			function res(){
+				liveday.innerText = "    ";
+			}
+		</script>
+	</body>
+</html>

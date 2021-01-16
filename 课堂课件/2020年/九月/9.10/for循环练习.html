@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+  		<title>for循环练习</title>  
+	<script>
+	/*
+		//打印九九乘法
+			正序：
+		for(var i=1;i<=9;i++){
+			for(var k=1;k<=i;k++){
+				document.write(k+'*'+i+'='+k*i+'&nbsp;&nbsp;&nbsp;');
+			}
+			document.write('<br/ >');
+		}
+			倒序：
+		for(var i=9;i>=1;i--){
+			for(var k=1;k<=i;k++){
+				document.write(k+'*'+i+'='+k*i+'&nbsp;&nbsp;');
+			}
+			document.write('<br/ >');
+		}
+		
+		//打印空心三角
+		var count = 5;
+		for(var i=1;i<=count;i++){
+			for(var k=count-1;k>=i;k--){
+				document.write('-');
+			}
+			for(var x=1;x<=i*2-1;x++){
+				if(x==1||x==i*2-1||i==count){
+					document.write('*');
+				}else{
+					document.write('-');
+				}
+			}
+			document.write('<br/ >');
+		}
+	
+		//打印空心菱形
+		var count = 5;
+		for(var i=1;i<=count;i++){
+			for(var k=count-1;k>=i;k--){
+				document.write('-');
+			}
+			for(var x=1;x<=i*2-1;x++){
+				if(x==1||x==i*2-1){
+					document.write('*');
+				}else{
+					document.write('-');
+				}
+			}
+			document.write('<br/ >');
+		}
+		for(var i=count;i>=1;i--){
+			for(var k=count-1;k>=i;k--){
+				document.write('-');
+			}
+			for(var x=1;x<=i*2-1;x++){
+				if(x==1||x==i*2-1){
+					document.write('*');
+				}else{
+					document.write('-');
+				}
+			}
+			document.write('<br/ >');
+		}
+		
+		//打印平行三角形
+		var count = 10;
+		for(var i=1;i<=count;i++){
+			for(var k=count;k>=i;k--){
+				document.write('-');
+			}
+			for(var x= 1;x<=2*i-1;x++){
+				document.write('*');
+			}
+			document.write('<br/ >');
+		}
+		
+		//打印正直角三角形
+		var count = 5;
+		for(var i=1;i<=count;i++){
+			for(var x=1;x<=i;x++){
+				document.write('*');
+			}
+			document.write('<br/ >');
+		}
+		
+		//打印倒直角三角形
+		var count = 5;
+		for(var i=1;i<=count;i++){
+			for(var x=count;x>=i;x--){
+				document.write('*');
+			}
+			document.write('<br/ >');
+		}
+	*/
+		var month = prompt('请输入月份：');
+		switch(parseInt(month)){
+			case 12:
+			case 10:
+			case 8:
+			case 7:
+			case 5:
+			case 3:
+			case 1:alert('有31天');break;
+			case 11:
+			case 9:
+			case 6:
+			case 4:alert('有30天');break;
+			case 2:
+				var year = prompt('请输入年份：');
+				if(year%4 == 0 && year%100 != 0 || year&400==0){
+					alert('有29天');
+				}else{
+					alert('有28天');
+				}
+			default:alert('请输入正确的月份！');
+		}
+		
+	</script>
+	</head> 
+	<body>
+	
+	</body>
+</html>

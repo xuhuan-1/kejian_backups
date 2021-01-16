@@ -1,0 +1,107 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>增删改3</title>
+		<style>
+			#box2{
+				text-align:center;
+				display:none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box1">
+			<table border="2" align="center" id="tab">
+				<caption align="center">用户信息
+					<input type="button" value="添加用户" onclick="add()"/>
+				</caption>
+				<tr>
+					<td width="100px" align="center">姓名</td>
+					<td width="100px" align="center">年龄</td>
+					<td width="200px" align="center">电话</td>
+					<td width="300px" align="center">操作</td>
+				</tr>
+			</table>
+		</div>
+		<div id="box2">
+			<h4>添加用户</h4>
+			姓名：<input type="text" id="nam"/>
+			年龄：<input type="text" id="age"/>
+			电话：<input type="text" id="tel"/>
+			<p id="p1">
+				<input type="button" value="提交" onclick="sub()"/>
+				<input type="button" value="更新" onclick="upd()"/>
+			</p>
+		</div>
+		<script>
+			//封装一个通过ID获取DOM元素方法
+			function get(xc){
+				return document.getElementById(xc);
+			}
+			var but = get('p1').querySelectorAll('input');//获取提交更新按钮 全局作用域
+			function add(){//添加用户按钮事件
+				get('box1').style.display = 'none';
+				get('box2').style.display = 'block';
+				but[1].style.display = 'none';
+			}
+			function sub(){//提交用户按钮事件
+				get('box1').style.display = 'block';
+				get('box2').style.display = 'none';
+				//获取姓名，年龄，电话的value值
+				var name = get('nam').value;
+				var age = get('age').value;
+				var tel = get('tel').value;
+				//创建tr行
+				var create_tr = document.createElement('tr');
+				create_tr.innerHTML = '<td class="td_1">'+name+'</td>'+
+										'<td class="td_2">'+age+'</td>'+
+										'<td class="td_3">'+tel+'</td>'+
+										'<button onclick="del(this)">删除</button>'+
+										'<button onclick="xiugai(this)">修改</button>';	
+				get('tab').appendChild(create_tr);
+				get('nam').value = null;
+				get('age').value = null;
+				get('tel').value = null;
+			}
+			function del(c){//删除按钮事件
+				c.parentNode.remove();
+			}
+			var rowindex = null;
+			function xiugai(c){//修改按钮事件
+				get('box1').style.display = 'none';
+				get('box2').style.display = 'block';
+				get('box2').querySelector('h4').innerText = '修改信息';
+				but[0].style.display = 'none';
+				but[1].style.display = 'inline-block';
+				
+				var ss = c.parentNode;
+				get('nam').value = ss.querySelector('.td_1').innerText;
+				get('age').value = ss.querySelector('.td_2').innerText;
+				get('tel').value = ss.querySelector('.td_3').innerText;
+				rowindex = c.parentNode.rowIndex;
+			}
+			function upd(){//更新按钮事件
+				get('box1').style.display = 'block';
+				get('box2').style.display = 'none';
+				var mm = get('tab').querySelectorAll('tr');
+				mm[rowindex].querySelector('.td_1').innerText = get('nam').value;
+				mm[rowindex].querySelector('.td_2').innerText = get('age').value;
+				mm[rowindex].querySelector('.td_3').innerText = get('tel').value;
+				but[0].style.display = 'inline-block';
+				get('box2').querySelector('h4').innerText = '添加用户';
+				get('nam').value = null;
+				get('age').value = null;
+				get('tel').value = null;
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /**
+         *  原型对象是构造函数内部存在的，实例对象是new实例化之后得到的
+         * 
+         *  new：内部执行过程
+         *      1、new触发了构造函数的内部执行,隐式创建了一个空对象
+         *      2、将构造函数的上下文指向当前的new创建的空对象
+         *      3、将prototype 完全赋值给 __proto__ 
+         *      4、隐式返回当前对象 
+         *  构造函数的内部执行过程
+         *      1、隐式创建一个空对象
+         *      2、把当前Animail函数的上下文【作用域】，指向obj
+         *      3、将函数的参数赋值给当前隐式创建的空对象
+         *      4、隐式返回当前对象 
+         * 1、在JS中，构造函数想要正常使用，必须要实例化【new】
+         * 2、原型对象：
+         *    原型对象【prototype】存在于构造函数内，原型对象是用来
+         *       封装一些公共的属性、方法等，为了实现数据共享,减少代码冗余
+         *       提高性能
+         *       prototype：给开发者使用的
+         *       __troto__：浏览器提供的
+         * 3、__proto__ === prototype
+         *    
+         * 4、__proto__：实例对象原型链,浏览器使用的
+         * 5、当前原型内的constructor指向当前原型所在的构造函数
+         * 
+         * 结论：
+         *      实例对象.constructor === 构造函数
+         *      原型对象.constructor === 构造函数
+         *      构造函数.prototype === 实例对象.__proto__
+         *      实例对象.__proto__ === prototype
+         *      __proto__ === prototype
+         * 
+        */
+
+        // function Person(name,age,sex){
+        //     // 1、new触发了构造函数的内部执行
+
+        // }
+
+        // function new1(){
+        //     // 1、new触发了构造函数的内部执行,隐式创建了一个空对象
+        //     var obj = new Object();   
+        //     // 2、将构造函数的上下文指向当前的new创建的空对象
+        //     // 3、将prototype 完全赋值给 __proto__ 
+        //     obj.__proto__ = prototype;
+        //     // 隐式返回当前new创建的对象
+        //     return obj;
+        // }
+        // new Person();  // let a = {}
+        
+       
+
+        // 动物类
+        // function Animail(name,sex,age){
+        //     // var obj = new Object();// 1、隐式创建一个空对象
+        //                                // 2、把当前Animail函数的上下文【作用域】，指向obj
+        //     // obj.name = name;       // 3、将函数的参数赋值给当前隐式创建的空对象
+        //     // obj.sex = sex;         // 4、隐式返回当前对象      
+        //     // obj.age = age;
+
+        //     // return obj;
+        //     this.name = name;
+        //     this.age = age;
+        //     this.sex = sex;
+        // }
+        // Animail.prototype.username = '小熊熊';
+        // Animail.prototype.run = function(){
+        //     console.log('我跑了1000米，比博尔特快')
+        // }
+
+        // let a = new Animail('panda','雄',2); //let a = {}
+        // // Animail.prototype.run(); // 跑 1000 米
+        // // console.log(Animail.prototype.username)
+        // console.log(a);
+        // console.log(new Animail('panda','雄',2));
+        // console.log(Animail.prototype.constructor)
+        // console.log(a.__proto__.constructor)
+        // console.log(a.__proto__.constructor === Animail.prototype.constructor)
+        // a.__proto__.run();
+        // console.log(a.__proto__.username)
+        // console.log(a.__proto__ === Animail.prototype) // true
+
+        // function Son(){
+
+        // }
+        // Son.prototype = Animail.prototype;
+        // let s = new Son();
+        // console.log(s,'000')
+
+
+
+            // function run1(){
+            //     return {
+            //         name:'zimo',
+            //         fn:function(){
+            //             console.log('===')
+            //         }
+            //     }
+            // }
+            // console.log(run1().fn()) // >> 
+    </script>
+</body>
+</html>
+

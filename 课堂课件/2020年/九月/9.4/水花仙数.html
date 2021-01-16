@@ -1,0 +1,33 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>水花仙数</title>
+		<script>
+		//水花仙数：它的每位数的3次幂(n*n*n)之和等于它的本身
+		//比如：1*1*1+5*5*5+3*3*3 = 153
+			for(var i=100;i<=1000;i++){
+				var bai = parseInt(i/100);
+				var shi = parseInt((i/10)%10);
+				var ge = parseInt(i%10);
+				//判断bai*bai*bai+shi*shi*shi+ge*ge*ge == i
+				if(bai*bai*bai+shi*shi*shi+ge*ge*ge==i){
+					document.write(i+'<br/ >');
+				}
+			}
+			
+			
+			
+		</script>
+				
+		
+	</head>
+	<body>
+		
+	</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        setTimeout(() =>{
+            console.log(1)
+            new Promise(resolve =>{
+                console.log(2)
+                resolve();
+            }).then(res =>{
+                console.log(3)
+            })
+            console.log(4)
+        },10)
+        new Promise(resolve =>{
+            console.log(5)
+            resolve();
+            new Promise( resolve =>{
+                console.log(9)
+                resolve();
+                setTimeout(() =>{
+                    console.log(10)
+                })
+            })
+        }).then(res =>{
+            console.log(6)
+        })
+        console.log(7);
+        setTimeout(() =>{
+            console.log(8)
+        })
+        //5 9 7 6 10 8 1 2 4 3
+    /**
+     *  应用的场景：
+     *     超长列表优化
+     *     触底加载
+     */ 
+
+    </script>
+</body>
+</html>

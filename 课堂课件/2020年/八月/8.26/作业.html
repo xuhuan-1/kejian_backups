@@ -1,0 +1,111 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>作业</title>
+		<script>
+			var sex = prompt('请输入你的性别：');
+			if(sex == '男'){
+				var name2 = prompt('请输入你的身高：');
+				if(isNaN(name2) == false && name2 !='' && name2 !=0){
+					name3 = prompt('请输入你的体重');
+					if(isNaN(name3) == false && name3 !='' && name2 !=0){
+						var boy = name3 - (name2-100);
+						if(parseFloat(boy) >= -3 && parseFloat(boy) <= 3){
+							alert('你的体重”很完美“');
+						}else if(boy > 3){
+							alert('请问：”你是猪吗“');
+						}else if(boy < 3){
+							alert('请问：”你是猴子吗“');
+						}else{
+							alert('请输入正确的信息');
+						}
+					}else{
+						alert('请输入你的信息');
+					}
+				}else{
+					alert('请输入你的信息！');
+				}	
+			}else if(sex == '女'){
+				var name2 = prompt('请输入你的身高：');
+				if(isNaN(name2) == false && name2 !=''){
+					name3 = prompt('请输入你的体重');
+					if(isNaN(name3) == false && name3 !=''){
+						var girl = name3 - (name2-110);
+						if(parseFloat(girl) >= -3 && parseFloat(girl) <= 3){
+							alert('你的体重”很完美“');
+						}else if(girl > 3){
+							alert('请问：”你是猪吗“');
+						}else if(girl < 3){
+							alert('请问：”你是猴子吗“');
+						}else{
+							alert('请输入正确的信息');
+						}
+					}else{
+						alert('请输入你的信息');
+					}
+				}else{
+					alert('请输入你的信息！');
+				}	
+			}
+			else{
+				alert('请输入你的信息！');
+			}
+		/*	var name1 = prompt('请输入你的性别');
+				name2 = prompt('请输入你的身高');
+				name3 = prompt('请输入你的体重');
+			if(name1 == '男'){
+				var boy = name3 - (name2-100);
+				if(parseFloat(boy) >= -3 && parseFloat(boy) <= 3){
+					console.log('你的体重”标准体重“');
+				}
+				else if(boy > 3){
+					console.log('你的体重“超重了”');
+				}
+				else if(boy < 3){
+					console.log('你的体重“太瘦了”');
+				}
+				else{
+					console.log('请输入"体重"');
+				}
+			}
+			else if(name1 == '女'){
+				var girl = name3 - (name2-110);
+				if(parseFloat(girl) >= -3 && parseFloat(girl) <= 3){
+					console.log('你的体重是“标准体重”');
+				}
+				else if(girl > 3){
+					console.log('你的体重“超重了”');
+				}
+				else if(girl < 3){
+					console.log('你的体重“太瘦了”');
+				}
+				else{
+					console.log('请输入"体重"');
+				}
+			}	
+			else{
+				alert('请输入你的信息：');
+			}
+		*/	
+				
+				
+				
+			
+			
+			
+			
+			
+		</script>
+			
+		
+	</head>
+	<body>
+		
+	</body>
+</html>
+
+
+
+
+

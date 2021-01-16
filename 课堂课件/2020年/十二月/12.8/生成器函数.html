@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function a(times){
+            let index = 0;
+            return {
+                next(){
+                    let done = (index >= times.length);
+                    let value = !done?times[index++]:undefined;
+                    return {
+                        value:value,
+                        done:done
+                    }
+                }
+            }
+        }
+        let ss = a([1,2,3,4,5]);
+        for(let i=0;i<ss.length;i++){
+            console.log(i);
+        }
+        let a1 = ss.next();
+        console.log(a1);
+
+    </script>
+</body>
+</html>

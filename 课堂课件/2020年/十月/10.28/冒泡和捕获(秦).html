@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>复习</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				position:relative;
+				left:0;
+				top:0;
+			}
+			#box ul li{
+				line-height:42px;
+				background:green;
+				margin-top:5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id = "box">
+			<ul>
+			   <li>1</li>
+			   <li>2</li>
+			   <li>3</li>
+			   <li>4</li>
+			   <li>5</li>
+			   <li>6</li>
+		   </ul>
+		</div>
+		<script>
+			var box_ul = box.querySelector("ul");
+			var box_li = box_ul.querySelectorAll("li");
+			/*
+			//target和currentTarget的区别
+				//target:返回当前点击元素
+				//currentTarget：返回当前事件绑定的元素
+			//开启捕获需要给父级元素的addEventListener第三个参数，传入true
+			*/
+			box_ul.addEventListener('click',(eve)=>{
+				var eve = eve || window.event;
+				var now_ul = eve.currentTarget;
+				console.log(now_ul);
+			})
+		/*
+			for(var i=0;i<box_li.length;i++){
+				box_li[i].addEventListener('click',(eve)=>{
+					var eve = eve || window.event;
+					//var now_li = eve.target || eve.srcElement;
+					var now_li = eve.target;
+					console.log(now_li);
+				})
+			}
+		*/
+		</script>
+	</body>
+</html>

@@ -1,0 +1,79 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>高阶函数</title>
+	</head>
+	<body>
+		<script>
+			/*
+			var arr = [1,2,3,4,5,6,7,8];
+			
+			var a = arr.map(function (item,index,arr){
+				console.log(arr[7]);
+			})
+			
+			var a = arr.forEach(function (item,index,arr){
+				console.log(arr);
+			})
+		
+			
+		
+			
+			map(function(item,index,arr){}) 返回一个数组   forEach(function(item,index,arr){}) 只是单纯的进行操作
+			
+			var arr = [1,2,3,6,7,8,93,90];
+			var arr1 = arr.map(function(a){
+				return a/2;
+			})
+			arr.forEach(function(a){
+				return a/2;
+			})
+			
+			var arr = [1,2,3,6,7,8,93,90];
+			arr.map(function(item,index,arr){
+				console.log(item+index);
+			})
+			arr.forEach(function(item,index,arr){
+				console.log(item+index);
+			})
+			*/
+			
+		/*	
+			
+			var arr1 = arr.reduce(fn);
+			function fn(x,y){
+				return x+y;
+			}
+		*/	
+			/*
+			1+2 3
+			3+3 6
+			6+6 12
+			12+7 19
+			19+8 27
+			27+93 120
+			120+90 210
+			    accumulator 累计器
+				currentValue 当前值
+				currentIndex 当前索引
+				array 数组
+			arr.reduce(function(accumulator,item,index,arr){})
+			
+			*/
+			var arr = [1,2,3,6,7,8,93,90];
+			var i = arr.reduce(function (accumulator,item,index,arr){
+			console.log(accumulator +'\t' + item)
+				return accumulator + 10;
+			})
+			
+			
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

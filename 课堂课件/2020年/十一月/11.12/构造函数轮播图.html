@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数轮播图</title>
+    <style>
+       *{
+				margin:0;
+				padding:0;
+			}
+			li{
+				list-style:none;
+				float:left;
+			}
+			img{
+				height:600px;
+				width:600px;
+			}
+			#box{
+				width:600px;
+				height:600px;
+				position:relative;
+				margin:0 auto;
+                overflow: hidden;
+			}
+			#im{
+				width:3600px;
+				height:600px;
+				position:absolute;
+			}
+			#le{
+				height:80px;
+				width:30px;
+				position:absolute;
+				top:260px;
+				left:10px;
+				background:rgba(255,255,255,0.4);
+				border-radius:25px;
+				line-height:75px;
+				font-size:40px;
+				display:none;
+				user-select:none;
+			}
+			#ri{
+				height:80px;
+				width:30px;
+				position:absolute;
+				top:260px;
+				left:560px;
+				background:rgba(255,255,255,0.4);
+				border-radius:25px;
+				line-height:75px;
+				font-size:40px;
+				display:none;
+				user-select:none;
+			}
+			#dian{
+				position: absolute;
+				width: 170px;
+				height: 30px;
+				left: 50%;
+				margin-left: -85px;
+				background: rgba(255,255,255,0.4);
+				border-radius: 30px;
+				bottom:10px;
+			}
+			#dian ul li{
+				float: left;
+				width: 16px;
+				height: 16px;
+				border-radius: 50%;
+				background: purple;
+				margin: 8px 8px;
+			}
+			#dian ul li:hover{
+				background:rgba(223,186,247,0.5);
+			}
+			#dian ul .con{
+				background:rgba(223,186,247,0.5);
+			}
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="im">
+            <ul>
+                <li><img src="img/1.png"/></li>
+                <li><img src="img/2.png"/></li>
+                <li><img src="img/3.png"/></li>
+                <li><img src="img/4.png"/></li>
+                <li><img src="img/5.png"/></li>
+            </ul>
+        </div>
+        <div id="le" onclick="to_left()"><</div>
+        <div id="ri" onclick="to_right()">></div>
+        <div id="dian">
+            <ul>
+                <li class="con"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function $(id){
+            return document.getElementById(id);
+        }
+        function lunbo(){
+            this.a = 0;
+            this.im_ul = $('im').querySelector('ul');
+            this.im_li = this.im_ul.querySelectorAll('li');
+            this.dian_ul = $('dian').querySelector('ul');
+            this.dian_li = this.dian_ul.querySelectorAll('li');
+        }
+        let timer = null;
+        lunbo.prototype = {
+            //定时器
+            dsq:function(lunbo){
+                timer = setInterval(()=>{
+                    p.right();
+                    p.colo();
+                },1000)
+            },
+            //鼠标移入时
+            over:function(){
+                clearInterval(timer);
+                $('le').style.display = 'inline-block';
+                $('ri').style.display = 'inline-block';
+            },
+            //鼠标移除时
+            out:function(){
+                clearInterval(timer);
+                p.dsq();
+                $('le').style.display = 'none';
+                $('ri').style.display = 'none';
+            },
+            //右侧按钮
+            right:function(){
+                this.a++;
+                this.a > this.im_li.length-1?this.a = 0:'';
+                $('im').style.left = this.a * - 600 + 'px';
+                p.colo();
+            },
+            //左侧按钮
+            left:function(){
+                this.a--;
+                this.a <0 ?this.a = this.im_li.length-1:'';
+                $('im').style.left = this.a * - 600 + 'px';
+                p.colo();
+            },
+            //底部按钮颜色
+            colo:function(){
+                for(let i=0;i<this.dian_li.length;i++){
+                    this.dian_li[i].setAttribute('class',this.a == i?'con':'')
+                }
+            },
+            //底部按钮事件
+            dj:function(){
+                for(let i=0;i<this.dian_li.length;i++){
+                    this.dian_li[i].setAttribute('nam',i);
+                }
+                $('dian').addEventListener('click',(eve)=>{
+                    let e = eve.Event || window.Event;
+                    let now_element = eve.target || eve.srcElement;
+                    if(now_element.tagName == 'LI'){
+                        this.a = now_element.getAttribute('nam');
+                        $('im').style.left = this.a * - 600 + 'px';
+                        p.colo();
+                    }
+                })
+            }
+        }
+        //实例化的对象
+        let p = new lunbo();
+        //定时器
+        p.dsq();
+        //鼠标移入时
+        $('box').onmouseover = function(){
+            p.over();
+        }
+        //鼠标移出时
+        $('box').onmouseout = function(){
+            p.out();
+        }  
+        //右侧按钮
+        function to_right(){
+            p.right();
+        }//左侧按钮
+        function to_left(){
+            p.left();
+        }
+        //底部按钮事件
+        p.dj();
+        
+    </script>
+</body>
+</html>

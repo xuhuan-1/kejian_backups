@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹性盒</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,head{
+            height: 100%;
+            width: 100%;
+        }
+        .container{
+            height: 400px;
+            width: 800px;
+            margin: 0 auto;
+            background: pink;
+            display: flex;
+            /* flex-flow: column; */
+            justify-content: space-around;
+            align-items: space-around;
+            
+        }
+        .box{
+            height: 50px;
+            width: 80px;
+            background-color: red;
+            border-right: 3px solid ;
+            border-bottom: 3px solid ;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+</html>

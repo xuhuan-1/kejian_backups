@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 回调函数：
+         *  优点：让我们的代码更加灵活，可以实现封装很多的操作
+         *  缺点：打乱了JS的执行机制
+         * 高阶函数：参数为函数或者返回值为函数的函数是高阶函数
+         * 
+         * 箭头函数：
+         *   箭头函数是ES6新语法
+         *   没有this，借用了直接父级的上下文【this】
+         *   不能被用做构造函数
+         *   不能被实例化
+         * ()():自执行函数、不传参this指向window
+         * 
+         * 构造函数：
+         * 
+         * 递归函数：
+         *  直接或者间接的调用自己，这样的函数叫做递归函数
+         *  注意：必须要有结束条件，否则造成堆栈溢出
+         *  场景：
+         *      1、算第多少个、多少项的数据是多少
+         *      2、循环对象或者数组
+         *      3、菜单循环
+        */
+
+        let arr = [3,4,5,[7,[9,[10,[11]]],8],6]
+
+        // let s = arr.flat(Infinity)
+        // console.log(s)
+
+        // 数组递归
+        // function flat(array){
+        //     let newArr = [];
+        //     array.map(item =>{
+        //         Array.isArray(item) ? newArr = newArr.concat(flat(item)) : newArr.push(item);
+        //     })
+        //     return newArr;
+        // } 
+        // console.log(flat(arr));
+
+
+        // function flat(array){
+        //     return array.reduce((newArr,current) =>{
+        //         return newArr = newArr.concat(Array.isArray(current) 
+        //         ? flat(current): current);
+        //     },[]);
+        // }
+        // console.log(flat(arr));
+        // 今晚作业：对象递归，获取key
+
+
+
+        // 案例  1 - 100的和    1 + 2 +3 + 4 +5 +6 +7 +8+9 + 10  = 55 
+
+        // function sum(num){
+        //     let total = 0;
+        //     if(num == 1){
+        //         return 1;
+        //     }else{
+        //         total = sum(num -1) + num;
+        //     }
+        //     return total;
+        // }
+        // console.log(sum(3));
+
+    // 案例二  阶乘  3 * 2 *1
+        // function sum(num){
+        //     let total = 0;
+        //     if(num == 1){
+        //         return 1;
+        //     }else{
+        //         total = sum(num -1) * num;
+        //     }
+        //     return total;
+        // }
+        // console.log(sum(4));
+
+    // 案例三 计算斐波那契数列  算 第20项的数据是多少？
+            // 1   1  2  3  5  8  13  21
+
+            // function abc(i){
+            //     if(i ==1 || i == 2){
+            //         return 1;
+            //     }else{
+            //         return arguments.callee(i-1) + arguments.callee(i-2);
+            //     }
+            // }
+            // console.log(abc(20));
+
+
+
+    //    (function(){
+    //        console.log(this)
+    //    })()
+
+        // let fn = num =>{
+        //     console.log(num)
+        // }
+        // fn(123);
+
+        // let arr = [3,4,5,6,7,8];
+        // let s = arr.filter(item => item > 5);
+        //     console.log(s)
+        // document.addEventListener('click',btn)
+
+        // function btn(){
+        //     console.log('0000000')
+        // }
+
+
+        // function a(fn){
+        //     fn && fn();
+        // }
+        // a(b);
+
+        // function b(){
+        //     console.log('555')
+        // }
+    </script>
+</body>
+</html>

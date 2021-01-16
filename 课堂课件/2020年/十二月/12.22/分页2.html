@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分页2</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #dbox {
+            width: 100%;
+            height: 100%;
+        }
+
+        #box {
+            width: 1400px;
+            height: 650px;
+            border: 1px solid #cccccc;
+            margin: auto;
+        }
+
+        h3 {
+            line-height: 50px;
+            background-color: #F5F5F5;
+        }
+
+        .page {
+            display: inline-block;
+        }
+
+        .page span {
+            line-height: 25px;
+            width: 25px;
+            text-align: center;
+            display: inline-block;
+            border: 1px solid #cccccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .down {
+            cursor: pointer;
+        }
+
+        .up {
+            cursor: pointer;
+        }
+
+        #anniu {
+            line-height: 50px;
+            width: 500px;
+            text-align: center;
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        img {
+            height: 100px;
+            width: 100px;
+        }
+
+        /* .liang {
+            background-color: red;
+        } */
+    </style>
+</head>
+<body>
+    <div id="dbox">
+        <div id="box">
+            <h3>分页实现</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <td width="100px">货物ID</td>
+                        <td width="150px">示例图</td>
+                        <td width="200px">名称</td>
+                        <td width="100px">价格</td>
+                        <td>描述</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <div id="anniu">
+            <span class="up">上一页</span>
+            <p class="page">
+                <!-- <span>1</span>
+                <span>2</span>
+                <span>3</span> -->
+            </p>
+            <span class="down">下一页</span>
+        </div>
+    </div>
+    <script>
+        let num = 1;
+        getDate(num);
+        //获取元素
+        let tbody = document.querySelector('tbody'),
+        up = document.querySelector('.up'),
+        down = document.querySelector('.down'),
+        pag = document.querySelector('.page');
+        function getDate(page){
+            axios.get('http://localhost:3001/page?page='+page).then(res=>{
+                tbody.innerHTML = null;
+                pag.innerHTML = null;
+                console.log(res);
+                let list = res.data.glist,
+                totle = res.data.totleNum;
+                let frag = document.createDocumentFragment();
+                for(let i=0;i<list.length;i++){
+                    let tr = document.createElement('tr');
+                    tr.innerHTML = `<td>${list[i].id}</td>
+                                    <td>
+                                        <img src="${list[i].goodimg}"/>
+                                    </td>
+                                    <td>${list[i].goodname}</td>
+                                    <td>${list[i].price}</td>
+                                    <td>${list[i].info}</td>`;
+                    frag.appendChild(tr);
+                }
+                tbody.appendChild(frag);
+                for(let i=0;i<Math.ceil(totle / 5);i++){
+                    let span = document.createElement('span');
+                    span.innerText = i+1;
+                    span.setAttribute('class','liang');
+                    frag.appendChild(span);
+                }
+                pag.appendChild(frag);
+                let all_span = pag.querySelectorAll('span');
+                for(let i=0;i<all_span.length;i++){
+                    num==all_span[i].innerText?all_span[i].style.background = 'red':''
+                }
+            })
+        }
+        //监听事件
+        anniu.addEventListener('click',(e)=>{
+            let eve = e.event || window.event;
+            let now_element = e.target || srcElement;
+            //下一页
+            if(now_element.className == 'down'){
+                let lastChild = pag.lastElementChild;
+                if(num >= lastChild.innerText * 1){
+                    num = lastChild.innerText;
+                    getDate(num);
+                    alert('已经最后一页了！');
+                }else{
+                    num++;
+                    getDate(num);
+                }
+            }
+            //上一页
+            if(now_element.className == 'up'){
+                let firstChile = pag.firstElementChild;
+                if(num <= firstChile.innerText * 1){
+                    num = firstChile.innerText;
+                    getDate(num);
+                    alert('已经是商品第一页了！');
+                }else{
+                    num--;
+                    getDate(num);
+                }
+            }
+            //底部按钮
+            if(now_element.className == 'liang'){
+                num = now_element.innerText*1;
+                getDate(num);
+            }
+        })
+    </script>
+</body>
+</html>

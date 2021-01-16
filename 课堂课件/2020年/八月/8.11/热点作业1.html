@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>热点作业1</title>
+		<style>
+			body{
+				background:#333333;
+			}
+			.box1{
+				position:relative;
+				width:747px;
+				height:617px;
+				background:url(map.png) no-repeat;
+				margin:0 auto;
+			}
+			.bj{
+				position:absolute;
+				top:228px;
+				right:188px;
+			}
+			.spot{
+				width:10px;
+				height:10px;
+				background:blue;
+				border-radius:50%;
+			}
+			.bj div[class^="light"]{
+				position:absolute;
+				top:50%;
+				left:50%;
+				transform:translate(-50%,-50%);
+				width:10px;
+				height:10px;
+				box-shadow:0 0 5px 3px blue;
+				border-radius:50%;
+				animation-name:aa;
+				animation-duration:1.5s;
+				animation-iteration-count:infinite;
+				animation-timing-function:linear;
+			}
+			.bj div.light2{
+				animation-delay:0.4s;
+			}
+			.bj div.light3{
+				animation-delay:0.8s;
+			}
+			@keyframes aa{
+				75%{
+					wdith:50px;
+					height:50px;
+				}
+				100%{
+					width:70px;
+					height:70px;
+					opacity:0;
+				}
+			}
+			.td{
+				top:500px;
+				right:80px;
+			}
+			.th{
+				top:530px;
+				right:190px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1">
+			<div class="bj">
+				<div class="spot"></div>
+				<div class="light1"></div>
+				<div class="light2"></div>
+				<div class="light3"></div>
+			</div>
+			<div class="bj td">
+				<div class="spot"></div>
+				<div class="light1"></div>
+				<div class="light2"></div>
+				<div class="light3"></div>
+			</div>
+			<div class="bj th">
+				<div class="spot"></div>
+				<div class="light1"></div>
+				<div class="light2"></div>
+				<div class="light3"></div>
+			</div>
+		</div>
+	
+	</body>
+</html>
+
+

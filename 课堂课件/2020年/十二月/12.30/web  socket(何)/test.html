@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 实时通讯的库 -->
+    <script src="https://cdn.bootcss.com/socket.io/2.2.0/socket.io.js"></script>
+</head>
+<body>
+    <script>
+        // 建立连接
+        let ws = io('http://localhost:3001/allData');
+        // 监听ws事件
+        ws.on('message', msg =>{
+            
+        })
+    </script>
+</body>
+</html>

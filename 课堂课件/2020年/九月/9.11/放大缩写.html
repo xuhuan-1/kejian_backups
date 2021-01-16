@@ -1,0 +1,83 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>放大缩小</title>
+		<style>
+			p{
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<form>
+			<input id="da" type="button" value="放大" />
+			<input id="xiao" type="button" value="缩小" />
+			<p id="p">一giao我滴giaogiao</p>
+		</form>
+	<script>
+		var a = document.getElementById('da');
+		var b = document.getElementById('xiao');
+		
+		var i = 16;
+		a.onclick = function(){
+			p.style.fontSize=i+"px";
+			i += 2;
+		}
+		b.onclick = function(){
+			p.style.fontSize=i+"px";
+			i -= 2;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	/*
+		//二、
+		var a = document.getElementById('da');
+		var b = document.getElementById('xiao');
+		var p = document.getElementById('p');
+		var i = 16;
+		function fangda(){
+			p.style.fontSize=i+"px";
+			i += 2;
+		}
+		function suoxiao(){
+			p.style.fontSize=i+"px";
+			i -= 2;
+		}
+
+		//三、
+		var a = document.getElementById('da');
+		var b = document.getElementById('xiao');
+		var p = document.getElementById("p");
+		var i = 16;
+		function fangda(){
+			p.style.fontSize=i+"px";
+			
+			i += 2
+		}
+		function suoxiao(){
+			p.style.fontSize=i+"px";
+			i -= 2
+		}
+	*/
+	</script>
+	</body>
+</html>
+
+
+
+
+

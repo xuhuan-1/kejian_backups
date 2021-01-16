@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分页3</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .box{
+            height: 650px;
+            width: 1300px;
+            border: 2px solid #cdcdcd;
+            margin: auto;
+        }
+        .top{
+            height: 50px;
+            background-color: #cccccc;
+            line-height: 50px;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+        .page_number{
+            text-align: center;
+        }
+        .ym{
+            width: 20px;
+            display: inline-block;
+            border: 1px solid;
+            line-height: 20px;
+            cursor: pointer;
+            margin-left: 10px;
+            margin-top: 20px;
+        }
+        .up,.down{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="top">分页实现</div>
+        <table class="content">
+            <thead>
+                <tr>
+                    <td width="100px">货物ID</td>
+                    <td width="200px">示例图</td>
+                    <td width="300px">名称</td>
+                    <td width="100px">价格</td>
+                    <td>描述</td>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+
+            </tbody>
+        </table>
+    </div>
+    <div class="page_number">
+        <span class="up">上一页</span>
+        <span class="sp">
+            
+        </span>
+        <span class="down">下一页</span>
+    </div>
+    <script src="./ajax.js"></script>
+    <script>
+        //获取元素
+        let num = 1,
+        tbody = document.querySelector('.tbody'),
+        sp = document.querySelector('.sp'),
+        page_number = document.querySelector('.page_number');
+        paging(num);
+        function paging(page){
+            ajax({
+                url:'http://localhost:3001/page',
+                data:{page:page},
+                success:(res)=>{
+                    tbody.innerHTML = null;
+                    sp.innerHTML = '';
+                    console.log(res);
+                    let list = res.glist;
+                    let allNum = res.totleNum;
+                    let createFra = document.createDocumentFragment();
+                    for(let i=0;i<list.length;i++){
+                        let tr = document.createElement('tr');
+                        tr.innerHTML = `<td>${list[i].id}</td>
+                                        <td>
+                                            <img src="${list[i].goodimg}"/>
+                                        </td>
+                                        <td>${list[i].goodname}</td>
+                                        <td>${list[i].price}</td>
+                                        <td>${list[i].info}</td>`
+                        createFra.appendChild(tr);
+                    }
+                    tbody.appendChild(createFra);
+
+                    for(let i=0;i<allNum/5;i++){
+                        let span = document.createElement('span');
+                        span.innerText = i+1;
+                        span.setAttribute('class','ym');
+                        createFra.appendChild(span);
+                    }
+                    sp.appendChild(createFra);
+                }
+            })
+        }
+        page_number.addEventListener('click',(e)=>{
+            let eve = e.event || window.event;
+            let nowElement = e.target || e.srcElement;
+            if(nowElement.innerText == '下一页'){
+                if(num == 5){
+                    num = 5
+                }else{
+                    num++;
+                    paging(num);
+                }
+            }
+            if(nowElement.innerText == '上一页'){
+                if(num == 1){
+                    num = 1;
+                }else{
+                    num--;
+                    paging(num);
+                }
+            }
+            if(nowElement.className == 'ym'){
+                num = nowElement.innerText;
+                paging(num);
+            }
+        })
+    </script>
+</body>
+</html>

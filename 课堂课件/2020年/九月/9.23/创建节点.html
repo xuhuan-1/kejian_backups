@@ -1,0 +1,104 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>创建DOM元素</title>
+		
+	</head>
+	<body>
+		<div id="a">
+			
+		</div>
+		
+		<script>
+		/*
+			var box = document.getElementById('a');
+			//通过ID获取DOC元素
+			var num = document.createElement('h1');
+			//创建标签节点
+			var num1 = document.createTextNode('你好啊');
+			//创建一个文本
+			num.appendChild(num1);
+			//向父级元素添加一个子元素，在这里num就是父级元素
+			  num1就是子元素
+			document.body.appendChild(num1);
+		
+			var box = document.getElementById('a');
+			var doc = document.createElement('p');
+			var s = document.createTextNode('你好啊');
+			console.log(doc.appendChild(s));
+			box.appendChild(doc);
+			
+			var a = document.createElement('p');
+			var b = document.createTextNode('你好');
+			document.body.appendChild(b);
+			
+			var b = document.getElementById('a');
+			var c = document.createElement('p');
+			var d = document.createTextNode('你好');
+			b.appendChild(c);
+			c.appendChild(d);
+			
+			var b = document.getElementById('a');
+			var i = document.createElement('h1');
+			var i1 = document.createTextNode('你好');
+			b.appendChild(i);
+			i.appendChild(i1);
+		*/	
+			
+			
+			
+			
+			
+		/*
+			for(var i=1;i<=9;i++){
+				for(var j=1;j<=i;j++){
+					document.write(j+'*'+i+'='+j*i+'&nbsp;&nbsp;&nbsp;&nbsp;');
+				}
+				document.write('<br/ >');
+			}
+			document.write('<br/ >');
+			for(var i=9;i>=1;i--){
+				for(var j=1;j<=i;j++){
+					document.write(j+'*'+i+'='+j*i+'&nbsp;&nbsp;&nbsp;&nbsp;');
+				}
+				document.write('<br/ >');
+			}
+		*/
+			var count = 10;
+			for(var i=1;i<=count;i++){
+				for(var k=count-1;k>=i;k--){
+					document.write('-');
+				}
+				for(var x=1;x<=2*i-1;x++){
+					if(x==1||x==2*i-1||i==count){
+						document.write('*');
+					}else{
+						document.write('-');
+					}
+					
+				}
+				document.write('<br/ >');
+			}
+			for(var i=count;i>=1;i--){
+				for(var k=count-1;k>=i;k--){
+					document.write('-');
+				}
+				for(var x=1;x<=2*i-1;x++){
+					if(x==1||x==2*i-1){
+						document.write('*');
+					}else{
+						document.write('-');
+					}
+					
+				}
+				document.write('<br/ >');
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script type="module" src="./ajax.js"></script> -->
+    <script>
+        /**
+         * 1、JS全部在栈里面的主线程执行
+         * 2、JS主线程执行栈优先执行同步任务
+         * 3、同步任务执行结束了，然后才开始检查任务队列，执行异步任务
+         * 
+         * XMLHttpRequest():标准浏览器的异步请求对象
+         * ActiveXObject():IE浏览器的异步请求对象
+         * 
+         * get请求和post请求给后台传递参数的方式不一样
+         *   get请求：把参数拼接在url里面进行传递  传递给服务端
+         *      https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1
+         *
+         *   post请求：把参数携带在请求体里面      传递给服务端
+         * 
+         * readyState:准备开始响应码  4
+         *      0：(未初始化) 还没有调用open()方法。
+                1：(启动) 已经调用open()方法，但还没有调用send()方法。
+                2：(发送) 已经调用send()方法，但还没有接收到响应。
+                3：(接收) 已经接收到部分响应数据。
+                4：(完成) 已经接收到全部的响应数据，且可以在客户端使用了。
+
+         * status：前端状态码200 是请求成功的状态码
+         * 
+         * ajax:异步请求对象 （Asynchronous JavaScript and XML）
+         *     概念：在不刷新页面的情况下，获取并刷新某块区域的数据【服务端数据】
+         *     作用：异步请求对象，进行前后端交互，是一个工具
+         * 
+         * 
+         * 封装ajax步骤：
+         *  1、创建异步请求对象
+         *  2、建立连接  【和服务端建立连接】
+         *  3、发送/提交数据     
+         *  4、注册监听函数  【监听服务端给前端响应的数据】
+         * 
+        */
+
+        function ajax(obj){
+            // 处理参数
+            obj.url = obj.url || '';
+            obj.method = obj.method || 'get';
+            obj.data = obj.data || {};
+            obj.dataType = obj.dataType || 'json'
+            obj.success = obj.success;
+
+        // ajax步骤
+            // 1、创建异步请求对象
+            let xhr;
+            window.XMLHttpRequest ? xhr = new XMLHttpRequest():xhr = new ActiveXObject("Microsoft.XMLHTTP");
+
+            // 2、建立连接
+            xhr.open(obj.method,obj.url,true);  // true代表异步
+
+            // 3、发送数据
+                // 格式化参数  // {username:'zimo',pwd:123456}  =>  username=zimo&pwd=123456
+            function formate(o){
+                let arr = [];
+                for(let key in o){
+                    arr.push(key + '=' + o[key]);
+                }
+                return arr.join('&');
+            }
+            let params = formate(obj.data);
+            if(obj.method == 'get'){
+                obj.url = obj.url + '?' + params;
+                xhr.send(null);
+            }else{
+                // post请求传递参数的方式 传递到请求体里面
+                xhr.send(params);
+            }
+            
+            // 4、注册监听函数 onreadystatechange
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200 && xhr.status < 300 || xhr.status == 304){
+                        obj.success && obj.success(JSON.parse(xhr.responseText))                      
+                    }
+                }
+            }
+        }
+
+
+        ajax({
+            url:'./data.json',
+            //成功回调函数
+            success:function(response){
+                let list = response;
+                console.log(list)
+                // let trDom = document.createDocumentFragment();
+                // for(let i=0;i<list.length;i++){
+                //     let tr = document.createElement('tr')
+                //     tr.innerHTML = ``;
+                //     trDom.appendChild(tr);
+                // }
+                // body.appendChild(trDom)
+            }
+        })
+
+        
+        
+    </script>
+</body>
+</html>

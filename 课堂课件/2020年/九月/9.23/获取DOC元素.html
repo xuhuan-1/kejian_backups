@@ -1,0 +1,62 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>获取DOM元素</title>
+		<style>
+			div{
+				float:left;
+			}
+			.div_left{
+				height:200px;
+				width:300px;
+				background:red;
+			}
+			.div_cen{
+				height:200px;
+				width:300px;
+				background:yellow;
+			}
+			.div_right{
+				height:200px;
+				width:300px;
+				background:blue;
+			}	
+		</style>
+	</head>
+	<body>
+		<div class="div_left">左</div>
+		<div class="div_cen">中</div>
+		<div class="div_right">右</div>
+		<script>
+		/*	//一、
+			var divAll = document.querySelectorAll('div');
+			for(var i=0;i<divAll.length;i++){
+				if(divAll[i].className == 'div_left'){
+					divAll[i].style.backgroundColor='black';
+				}
+			}	
+			//二、
+			var divAll = document.querySelectorAll('div');
+			for(var i=0;i<divAll.length;i++){
+				if(divAll[i].className == 'div_cen'){
+					divAll[i].style.backgroundColor='green';
+				}
+			}
+		*/
+		
+		
+			var divAll = document.querySelectorAll('div');
+			for(var i=0;i<divAll.length;i++){
+				if(divAll[i].className == 'div_right'){
+					divAll[i].style.backgroundColor='yellow';
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+

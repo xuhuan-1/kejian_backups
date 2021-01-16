@@ -1,0 +1,107 @@
+版本控制工具：git  SVN（小乌龟）
+
+版本控制工具：
+    分布式的版本控制工具，适合多人协作开发，随时能前进和后退版本
+    创建分支、合并分支、删除分支、解决冲突、版本回退等
+
+
+代码保存到github上：【OS码云、gitlab】 代码托管平台
+    可视化的一个仓库网站，可以看到所有代码
+
+配置秘钥：
+    生成秘钥：ssh-keygen -t rsa -C "你的邮箱地址"
+配置用户信息：
+    配置用户名：git config --global user.name "zimogod"
+    配置用户邮箱：git config --global user.email "上午注册时的邮箱"
+
+查看命令：git config --list
+
+
+git常用命令：初次
+    查看当前代码提交的状态：git status  
+    初始化仓库：git init
+    将本地文件添加到工作区：git add .
+    将工作区文件推送到暂存区：git commit -m "提交信息"
+    新创建的仓库和本地代码建立联系【只用一次】：git remote add origin 当前仓库地址
+    将暂存区代码推送到远程仓库：git push -u origin master 【首次推送】，之后都用git push即可
+
+
+之后git操作：
+    1、git add .
+    2、git commit -m "提交信息"
+    3、git push  
+ 
+克隆代码：
+    你电脑本地从来没有当前项目的代码，得需要克隆下来【clone】
+    一旦克隆下来，之后再也不用clone，提交、更新等
+
+git pull：更新代码到本地  
+
+防止提交失败的情况：
+    提交代码前先检查，是否其他人员已经提交过代码了，要保证仓库的代码和
+    你本地代码是一样的，才能提交成功
+
+    无上法则：先pull，再push
+
+代码储藏功能：
+    git stash :储存暂存区的代码
+    git stash save "fix 19876": 
+ 
+    更新代码：git pull
+
+    解除stash : git stash pop
+
+    推送：git push  
+
+git分支：
+    查看分支：git branch
+    创建一个分支：git branch 分支名
+    切换分支：git checkout 分支名
+    删除分支：git branch -d 分支名
+
+
+将代码提交到开发分支：git push -u origin 开发分支名
+
+要合并开发分支代码，必须先再开发分支把代码推送完成，合并代码的人
+必须要切换到主分支上，然后才能合并，合并完成之后必须推送到仓库
+
+合并流程：
+    开发分支：操作完成【push完成】
+    切换到主分支  master 
+    合并：git merge 分支名
+    推送：git push   
+
+git log:查看提交日志
+
+版本回退：项目当前版本出问题了，应该回退版本
+    回退：二选一  【第二个常用】
+        1、git reset --hard HEAD^    其中^代表的是一个版本
+        2、git reset --hard HEAD~2   2代表的是回退几个版本
+        3、git reset HEAD^  回退到你add之前，本地代码还是保留
+    推送：
+        git push -f -u origin     强制推送回退到远程仓库
+
+撤销：
+    在未进行git push前的所有操作，都是在“本地仓库”中执行的。
+    我们暂且将“本地仓库”的代码还原操作叫做“撤销”！
+回滚：
+    已进行git push，即已推送到“远程仓库”中。我们将已被提交
+    到“远程仓库”的代码还原操作叫做“回滚”！
+    
+版本前进：
+    git reset --hard 指定版本号
+
+
+为了记录提交日志：
+    后台管理项目中会记录操作日志
+    
+    
+     
+
+
+ 
+    
+
+
+
+

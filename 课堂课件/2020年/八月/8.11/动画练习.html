@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>动画练习</title>
+		<style>
+		/*
+			.box1{
+				height:200px;
+				width:200px;
+				background:pink;
+				animation-name:move;
+				animation-duration:10s;
+			}
+			@keyframes move{
+				0%{
+					transform:translate(0px,0px);
+				}
+				25%{
+					transform:translate(1500px,0px) rotate(900deg);
+					background:red;
+				}
+				50%{
+					transform:translate(1500px,800px) rotate(1800deg);
+					background:black;
+				}
+				75%{
+					transform:translate(0px,800px) rotate(2700deg);
+					background:yellow;
+				}
+				100%{
+					transform:translate(0px,0px) rotate(3600deg);
+				}	
+			}
+		*/
+			.box1{
+				height:200px;
+				width:200px;
+				background:red;
+				animation-name:move;
+				animation-duration:3s;
+				animation-delay:0s;
+				animation-iteration-count:infinite;
+				animation-direction:alternate;
+			}
+			@keyframes move{
+				0%{
+					transform:translate(0px,0px);
+				}
+				100%{
+					transform:translate(1600px,0px);
+				}
+			}
+			.box1:hover{
+				animation-play-state:paused;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>
+	</body>
+</html>

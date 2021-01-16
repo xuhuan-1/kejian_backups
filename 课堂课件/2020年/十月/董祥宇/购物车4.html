@@ -1,0 +1,235 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>购物车4</title>
+		<style>
+			table tr td{
+				width:100px;
+				text-align:center;
+				color:#800080;
+			}
+			table caption{
+				font-weight:900;
+				color:#800080;
+			}
+			table tr:first-of-type{
+				font-weight:900;
+			}
+			input[type="text"]{
+				width:30px;
+			}
+			#total{
+				color:red;
+				border:solid 1px #800080;
+			}
+		</style>
+	</head>
+	<body>
+		<table border="2" id="tab1">
+			<caption>双十一</caption>
+			<tr>
+				<td>商品</td>
+				<td>单价</td>
+				<td>分量</td>
+				<td>库存</td>
+				<td>好评率</td>
+				<td>操作</td>
+			</tr>
+			<tr>
+				<td>O泡果奶</td>
+				<td>3</td>
+				<td>/袋</td>
+				<td>45</td>
+				<td>88%</td>
+				<td><button>加入购物车</button></td>
+			</tr>
+			<tr>
+				<td>旺仔QQ糖</td>
+				<td>5</td>
+				<td>/袋</td>
+				<td>20</td>
+				<td>82%</td>
+				<td><button>加入购物车</button></td>
+			</tr>
+			<tr>
+				<td>安慕希</td>
+				<td>80</td>
+				<td>/箱</td>
+				<td>35</td>
+				<td>75%</td>
+				<td><button>加入购物车</button></td>
+			</tr>
+			<tr>
+				<td>康师母牛肉面</td>
+				<td>6</td>
+				<td>/桶</td>
+				<td>10</td>
+				<td>80%</td>
+				<td><button>加入购物车</button></td>
+			</tr>
+		</table>
+		<table border="2" id="tab2">
+			<caption>结算</caption>
+			<tbody>
+				<tr>
+					<td>商品</td>
+					<td>单价</td>
+					<td>数量</td>
+					<td>金额</td>
+					<td>删除</td>
+				</tr>
+			<tbody>
+			<tfoot>
+				<td colspan="3">总计</td>
+				<td id="total">0</td>
+				<td>元</td>
+			</tfoot>
+		</table>
+		<script>
+			function $(xc){
+				return document.getElementById(xc);
+			}
+			//获取第一个表格里的所以button按钮
+			var tab1_button = $('tab1').querySelectorAll('button');
+			//给所以按钮添加事件
+			for(var i=0;i<tab1_button.length;i++){
+				tab1_button[i].setAttribute('onclick','join(this)');
+			}
+			//加入购物车事件
+			function join(va){
+				//找到购物车按钮的父元素的父元素
+				var parent = va.parentNode.parentNode;
+				//按钮所在行的所以td
+				var parent_td = parent.querySelectorAll('td');
+				//商品
+				var text1 = parent_td[0].innerText;
+				//单价
+				var text2 = parent_td[1].innerText;
+				//库存
+				var text3 = parent_td[3].innerText;
+				if(text3 == 0){
+					return;
+				}
+			//第一次加入购物车  查找表格2里是否有相同的物品
+				//结算表格里所以的td
+				var teab2_all = $('tab2').querySelectorAll('td');
+				for(var i=0;i<teab2_all.length;i++){
+					if(teab2_all[i].innerHTML == text1){
+						//数量++
+						teab2_all[i].parentNode.querySelector('input').value++;
+					//金额
+						var b = teab2_all[i].parentNode.querySelectorAll('td');
+						//单价 * 数量 = 金额
+						b[3].innerText = b[1].innerText * b[2].querySelector('input').value;
+						//库存--
+						parent_td[3].innerText--;
+						//总计方法
+						all_zh();
+						return;
+					}
+				}
+				//创建tr
+				var create_tr = document.createElement('tr');
+				create_tr.innerHTML = '<td>'+text1+'</td><td>'
+				+text2+'</td><td><button value="1" onclick="jiajian(this)">-</button><input type="text" value="1"readonly="readonly"/><button onclick="jiajian(this)">+</button></td><td></td><td><button onclick="delet(this)">X</button></td>';
+				$('tab2').querySelector('tbody').appendChild(create_tr);
+				//所在行的所以td
+				var tab2_td = create_tr.querySelectorAll('td');
+				//金额
+				var money = parseInt(text2 * tab2_td[2].querySelector('input').value);
+				tab2_td[3].innerText = money;
+				parent_td[3].innerText--;
+				//总计方法
+				all_zh();
+			}
+		//总计
+			function all_zh(){
+				var tbody_tr = $('tab2').querySelector('tbody').querySelectorAll('tr');
+				var he = 0;
+				for(var i=1;i<tbody_tr.length;i++){
+					he += tbody_tr[i].querySelectorAll('td')[3].innerText*1;
+				}
+				$('total').innerText = he;
+			}
+		//数量加减事件
+			function jiajian(val){//加按钮事件
+				//加减按钮的父元素 tr
+				var par_tr = val.parentNode.parentNode;
+				//tr里所有的td
+				var tr_td = par_tr.querySelectorAll('td');
+				//tr里的text文本
+				var tr_input = par_tr.querySelector('input');
+				if(val.innerText == '+'){
+				//库存  获取第一个表格里所有的tr
+					var all_tr = $('tab1').querySelectorAll('tr');
+					for(var i=1;i<all_tr.length;i++){
+						//获取第一个表格里第一个td
+						var ab = all_tr[i].querySelector('td');
+						//
+						if(ab.innerText == tr_td[0].innerText){
+							var ab_parent = ab.parentNode;
+							var all_td = ab_parent.querySelectorAll('td');
+							if(all_td[3].innerText == 0){
+								return;
+							}
+							//数量++
+							tr_input.value++;
+							//库存--
+							all_td[3].innerText--
+							//金额
+							tr_td[3].innerText = tr_td[1].innerText * tr_input.value;
+						}
+					}
+				}else{//减按钮事件
+					//库存  获取第一个表格里所有的tr
+					var all_tr = $('tab1').querySelectorAll('tr');
+					for(var i=1;i<all_tr.length;i++){
+						//获取第一个表格里第一个td
+						var ab = all_tr[i].querySelector('td');
+						if(ab.innerText == tr_td[0].innerText){
+							var	ab_parent = ab.parentNode;
+							var all_td = ab_parent.querySelectorAll('td');
+							if(tr_input.value > 1){
+								//数量--
+								tr_input.value--;
+								//库存++
+								all_td[3].innerText++;
+								//金额
+								tr_td[3].innerText = tr_td[1].innerText * tr_input.value;
+							}
+						}
+					}
+				}
+				//总计方法
+				all_zh();
+			}
+		//删除
+			function delet(val){
+				val.parentNode.parentNode.remove();
+				//总计方法
+				all_zh();
+				//删除按钮的爷 tr
+				var del_parent = val.parentNode.parentNode;
+				//第二个表格里所有的td
+				var del_td = del_parent.querySelectorAll('td');
+				//第一个表格所有tr
+				var tab1_tr = $('tab1').querySelectorAll('tr');
+				for(var i=1;i<tab1_tr.length;i++){
+					var tab1_td = tab1_tr[i].querySelector('td');
+					if(tab1_td.innerText == del_td[0].innerText){
+						var jk = tab1_td.parentNode.querySelectorAll('td');
+						jk[3].innerText = jk[3].innerText*1 + del_td[2].querySelector('input').value*1;
+					}
+				}
+			}
+			
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

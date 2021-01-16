@@ -1,0 +1,48 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>随机颜色</title>
+		
+	</head>
+	<body>
+		<button id="but">点我一哈</button>
+		<script>
+		/*	//随机颜色
+			var arr = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+			var b = '#';
+			for(var i=0;i<6;i++){
+				b+=arr[Math.floor(Math.random()*16)];
+			}
+			document.body.style.background = b;
+		
+			//函数的封装
+			function fun(){
+				var arr = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+				var b = '#';
+				for(var i=0;i<6;i++){
+					b += arr[Math.floor(Math.random()*16)];	
+				}
+				//document.body.style.background = b;
+				return b;
+			}
+		*/
+			//封装通过ID名获取元素
+			function ss(xc){
+				return document.getElementById(xc);//返回对应ID的元素
+			}
+			//封装随机颜色
+			function fun(){
+				var arr = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+				var b = '#';
+				for(var i=0;i<6;i++){
+					b += arr[Math.floor(Math.random()*16)];	
+				}
+				return b;//返回颜色的编码
+			}
+			//fun()封装好的随机颜色 方法调用
+			document.body.style.background = fun();
+			ss('but').style.background = fun();	
+		</script>
+	</body>
+</html>

@@ -1,0 +1,63 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>随机抽奖</title>
+	</head>
+	<body>
+		<div>
+			<p id="p1">下面出场的是：
+				<span id="sp1"></span>
+			</p>
+			<input type="button" value="点击抽奖" id="but" onclick="dj()"/>
+		</div>
+		<script>
+			//封装一个通过ID获取DOM元素方法
+			function get(xc){
+				return document.getElementById(xc);
+			}
+			//封装一个随机颜色方法
+			function fun(){
+				var arr = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
+				var b = '#';
+				for(var i=0;i<6;i++){
+					b += arr[Math.floor(Math.random()*16)];
+				}
+				get('p1').style.background = b;
+				get('but').style.color = b;
+				clearTimeout(t);
+				var t = setTimeout('fun()',500);
+				return b;
+			}fun();
+			
+			var arr = ['一','二','三','四','五'];
+			function dj(){
+				var a = Math.floor(Math.random()*arr.length);
+				get('p1').innerText = '有请' + arr[a] + '闪亮登场';
+				if(arr.length == 0){
+					get('p1').innerHTML = '没有了';
+				}
+				arr.splice(a,1);
+			}
+			
+			
+			
+			
+			
+		/*
+			function dj(){
+				var a = Math.floor(Math.random()*arr.length);
+				get('sp1').innerText = arr[a];
+				arr.splice(a,1);
+			}
+		*/		
+				
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

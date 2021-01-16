@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封装cookie</title>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <script>
+    //     document.cookie = "name=value[;expires=date]
+    // [;path=path-to-source][;domain=域名][;secure]";
+        let cookie = {
+            set:function(o){
+                let cookieStr = document.cookie = o.name +'='+ JSON.stringify(o.value);
+                if(o.expires){
+                    cookieStr += o.expires;
+                }
+                if(o.path){
+                    cookieStr += o.path;
+                }
+                if(o.domain){
+                    cookieStr += o.domain;
+                }
+            },
+            get:function(name){
+                let newArr = document.cookie.split(';');
+                for(let i=0;i<newArr.length;i++){
+                    let value = newArr[i].split('=');
+                    if(value[0] == 'name'){
+                        return JSON.parse(value[1]);
+                    }
+                }
+            },
+            remove:function(name,timer){
+                let date = new Date();
+                date.setDate(date.getDate() + timer);
+                this.set({
+                    name:name,
+                    expires:data
+                })
+            }
+        }
+        btn.onclick = function(){
+            cookie.set({
+                name:'zimo',
+                value:[1,2,3,4,5,6,7]
+            })
+        }
+        
+    </script>
+</body>
+</html>

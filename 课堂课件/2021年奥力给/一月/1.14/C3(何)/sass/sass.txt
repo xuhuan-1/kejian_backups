@@ -1,0 +1,82 @@
+
+css预编译语言有三种：
+    sass、less、stylus
+    
+sass:css预编译语言，通过、sass编写的css有一下特点
+
+sass是基于Ruby语言的，电脑需要安装ruby环境 
+
+    ruby官网:http://www.ruby-lang.org/en/downloads/
+
+    检查：ruby -v
+
+    
+
+优点：
+    1、编译快，解析快
+    2、可以写嵌套语法【书写快，写css很快】
+    3、可以写变量【公共变量】
+    4、混合宏  【函数】 
+        具体：函数、继承、占位符、循环等
+    
+
+#{}:动态变量的输出
+`${}`:模板字符串
+
+循环：使用to语法，不包含结束值，使用throught语法，
+     则进行穿透，包含结束值
+    @for 变量 from startNum to endNum {
+
+    }
+
+    @for 变量 from startNum through endNum {
+
+    }
+
+scss中引入scss文件：
+    @import '相对路径';
+
+    绝对路径：路径一直找到磁盘
+    相对路径：相对于当前文件【参照物】的路径，一般都是
+             './'或者'../../'
+
+变量：
+    $符号命名变量
+    使用：直接调用即可
+继承：
+    可以设置公共样式
+    继承：@extend .类名;
+占位符：
+    通过%设置变量
+    通过@extend 继承占位符
+    优点：占位符，用到的时候占用内存，没有用到不解析
+         不占内存
+include:
+    通过@mixin 命名变量
+    引用：通过include 引用@mixin的变量
+
+函数：必须@符号开始写函数
+    $fontSize:37.5;
+    @function rem($px){
+        @return $px/$fontSize + rem;
+    }
+
+在移动端：
+    字体大小一般都是使用px为单位，不使用rem
+
+lib-flexible:淘宝团队解决移动端适配的库，根据根字体和dpr大小
+            动态设置根字体大小
+    flexible_css.js
+    flexible.js
+
+   cdn：<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+        cnd方式必须要求有网络
+  
+
+移动端适配问题：
+    1、lib-flexible配合sass实现移动端适配
+    2、通过JS手动设置根字体大小，从而实现移动端适配
+
+
+性能优化：
+    css中尽量避免使用函数、循环、条件等语句

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./ajax.js"></script>
+    <script>
+        /**
+         * 1、JS全部在栈里面的主线程执行
+         * 2、JS主线程执行栈优先执行同步任务
+         * 3、同步任务执行结束了，然后才开始检查任务队列，执行异步任务
+         * 
+         * XMLHttpRequest():标准浏览器的异步请求对象
+         * ActiveXObject():IE浏览器的异步请求对象
+         * 
+         * get请求和post请求给后台传递参数的方式不一样
+         *   get请求：把参数拼接在url里面进行传递  传递给服务端
+         *      https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1
+         *
+         *   post请求：把参数携带在请求体里面      传递给服务端
+         * 
+         * readyState:准备开始响应码  4
+         *      0：(未初始化) 还没有调用open()方法。
+                1：(启动) 已经调用open()方法，但还没有调用send()方法。
+                2：(发送) 已经调用send()方法，但还没有接收到响应。
+                3：(接收) 已经接收到部分响应数据。
+                4：(完成) 已经接收到全部的响应数据，且可以在客户端使用了。
+
+         * status：前端状态码200 是请求成功的状态码
+
+            域名?admin=zzz  注意：？后面的都叫做参数【query】，不参与路径跳转，
+                                    不是真正的路径
+         * 
+         * ajax:异步请求对象 （Asynchronous JavaScript and XML）
+         *     概念：在不刷新页面的情况下，获取并刷新某块区域的数据【服务端数据】
+         *     作用：异步请求对象，进行前后端交互，是一个工具
+         * 
+         * 
+         * 封装ajax步骤：
+         *  1、创建异步请求对象
+         *  2、建立连接  【和服务端建立连接】
+         *  3、发送/提交数据     
+         *  4、注册监听函数  【监听服务端给前端响应的数据】
+         * 
+        */
+
+
+        ajax({
+            url:'http://localhost:3001/add',
+            data:{username:'剑哥哥',age:16},
+            method:'post',
+            success:function(res){
+                console.log(res)
+            }
+        })
+
+        // function ajax(obj){
+        //     // 处理参数
+        //     obj.url = obj.url || '';
+        //     obj.method = obj.method || 'get';
+        //     obj.data = obj.data || {};
+        //     obj.dataType = obj.dataType || 'json'
+        //     obj.success = obj.success;
+
+        // // ajax步骤
+        //     // 1、创建异步请求对象
+        //     let xhr;
+        //     window.XMLHttpRequest ? xhr = new XMLHttpRequest():xhr = new ActiveXObject("Microsoft.XMLHTTP");
+
+            // 2、建立连接  // xhr.open(obj.method,obj.url,true);  // true代表异步
+                // 如果是get请求，我的请求的参数携带在 url 上
+        //         let params = formate(obj.data);
+
+        //         let url = obj.url + '?' + params;
+        //         if(obj.method == 'get'){
+        //             xhr.open(obj.method,url,true);
+        //         }else{
+        //             xhr.open(obj.method,obj.url,true);
+        //         }
+
+        //     // 3、发送数据  格式化参数  // {username:'zimo',pwd:123456}  =>  username=zimo&pwd=123456
+        //     function formate(o){
+        //         let arr = [];
+        //         for(let key in o){
+        //             arr.push(key + '=' + o[key]);
+        //         }
+        //         return arr.join('&');
+        //     }
+
+
+        //     if(obj.method == 'get'){
+        //         xhr.setRequestHeader('Content-Type','application/json;charset=utf8');
+        //         xhr.send(null);
+        //     }else{
+        //         // post请求传递参数的方式 传递到请求体里面
+        //         // 请求头  post请求头默认是下面这个  form data
+        //         xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded;charset=utf8');
+        //         xhr.send(params);
+        //     }
+            
+        //     // 4、注册监听函数 onreadystatechange
+        //     xhr.onreadystatechange = function(){
+        //         if(xhr.readyState == 4){
+        //             if(xhr.status == 200 && xhr.status < 300 || xhr.status == 304){
+        //                 if(obj.method == 'get'){
+        //                     obj.success && obj.success(JSON.parse(xhr.responseText)); 
+        //                 }else{
+        //                     obj.success && obj.success(xhr.responseText);   
+        //                 }                
+        //             }
+        //         }
+        //     }
+        // }
+
+
+        // ajax({
+        //     url:'http://localhost:3001/page', //  请求的服务器：http://localhost:3001/page?page=2
+        //     data:{page:2},
+        //     // method:'post',
+        //     success:function(response){
+        //         console.log(response)
+        //     }
+        // })
+
+        
+        
+    </script>
+</body>
+</html>

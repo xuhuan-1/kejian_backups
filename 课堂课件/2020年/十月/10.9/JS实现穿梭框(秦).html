@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var data = ["抽烟","喝酒","打麻将","吃饭","睡觉","苍老师","不学习","扯犊子","吃鸡","斗地主"];
+		//创建左边的选框
+		var left_select =  document.createElement("select");
+		left_select.size= 10;
+		left_select.style.width="60px";
+		left_select.multiple = true;
+		
+		//根据data的数据创建左侧选项
+		for(var i=0;i<data.length;i++){
+			// 创建option 
+			var option = document.createElement("option");
+			option.innerHTML = data[i];
+			left_select.appendChild(option);
+			//console.log(option)
+		}
+		
+		//创建右边的选框
+		var right_select=document.createElement("select");
+		right_select.size= 10;
+		right_select.style.width="60px";
+		right_select.multiple = true;
+		
+		//创建向右穿梭的按钮
+		var left_button = document.createElement("button");
+        left_button.innerHTML=">>";
+		
+		//创建向左穿梭的按钮
+		var right_button = document.createElement("button");
+        right_button.innerHTML="<<";
+		
+		//向页面添加元素
+		document.body.appendChild(left_select);
+		document.body.appendChild(left_button);
+		document.body.appendChild(right_button);
+		document.body.appendChild(right_select);
+		
+		//向右穿梭按钮事件
+		left_button.onclick=function(){
+			var opts = left_select.selectedOptions;
+			for(var i = opts.length-1;i>=0;i--){
+			   right_select.add(opts[i])
+			}
+		}
+		
+		//向左穿梭按钮事件
+		right_button.onclick=function(){
+			var opts = right_select.selectedOptions;
+			for(var  i=opts.length-1;i>=0;i--){
+			   left_select.add(opts[i])
+			}
+		}
+	</script>
+</body>
+</html>

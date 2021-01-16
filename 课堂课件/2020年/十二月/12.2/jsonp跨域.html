@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsonp跨域1</title>
+</head>
+<body>
+    <button id="btn">点击获取</button>
+    <script>
+        function jsonp(obj){
+            obj.url = obj.url || '';
+            obj.method = obj.method || 'get';
+            obj.data = obj.data || {};
+            obj.success = obj.success;
+            function formate(o){
+                let arr = [];
+                for(let key in o){
+                    arr.push(key +'='+ o[key]);
+                }
+                return arr.join('&');
+            }
+            let params = formate(obj.data);
+            let heads = document.querySelector('head');
+            let script = document.createElement('script');
+            script.src = obj.url +'?'+ params;
+            heads.appendChild(script);
+            callbackName = obj.data['callback'];
+            window[callbackName] = function(value){
+                obj.success && obj.success(value);
+                heads.removeChild(script);
+                window[callbackName] = null;
+            }
+        }
+        btn.onclick = ()=>{
+            jsonp({
+                url:'https://sug.so.360.cn/suggest',
+                data:{
+                    word:'龙珠',
+                    callback:'cc'
+                },
+                success:(res)=>{
+                    console.log(res.result);
+                }
+            })
+        }
+    </script>
+</body>
+</html>

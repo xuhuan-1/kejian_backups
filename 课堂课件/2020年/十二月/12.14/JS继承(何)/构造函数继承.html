@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Parent(){
+            this.name = 'zimo';
+            this.age = 20;
+            this.sex = '男';
+            this.hobby = function(){
+                console.log('玩游戏')
+            }
+        }
+        // 原型方法
+        Parent.prototype.hi = function(){
+            console.log('---')
+        }
+
+        let s = new Parent();
+
+
+        function Son(){
+            Parent.call(this);
+        }
+        let f = new Son();
+        console.log(s)
+        console.log(f)
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>营业额作业</title>
+		<script>
+		/*
+			var a = 0,b = 10,c = 6;
+			var all = 0,s = 0;
+			var x = 7;
+			while(a <= 200){
+				all = a*b;
+				s = a*c;
+				console.log(all,s);
+				var n = (all + s) * x;
+				
+				a++
+			}console.log(n);
+			
+			var noodles = prompt('请输入面的销售量');
+			var rice = prompt('请输入米的销售量');
+			var price = 10;//售价
+				i = 6;//利润
+			var all = 0;//最多200份
+			while(all <= 200){
+				var a = (price * noodles)+(i * noodles);
+				var b = a*7;
+				console.log(b);
+				all++
+			}
+			var r = 12,c = 7;
+			var q = 0;
+			while(q <= 300){
+				var a1 = (r * rice) + (c * rice);
+				var b1 = a1*7;
+				console.log(b1);
+				var name = b + b1;
+				q++
+			}console.log(name);
+			
+		
+			var a1 = prompt('请输入第一天面的销售量');
+			var b1 = prompt('请输入第一天米的销售量');
+			var price = 10,fit = 6;
+			var price1 = 12,fit1 = 7;
+			var all = 0;
+			if(a1 <= 200 && b1 <= 300){
+				var i = price * a1;
+				var q = fit * a1;
+				console.log(i );
+			}
+		
+			var turnover = 0;//面营业额
+				profit = 0;//面利润
+				c = 0;//米营业额
+				c1 = 0;//米利润
+				all = 1;
+			while(all <= 7){
+				var a1 = prompt('请输入面的销售量');
+				var b1 = prompt('请输入米的销售量');
+				turnover = (a1 * 10) * 7;//面 七天营业额
+				profit = (a1 * 6) * 7;//七天利润
+				c = (b1 * 12) * 7;//米 七天营业额
+				c1 = (b1 * 7) * 7;//七天利润
+				var he = turnover + c;//七天的总营业额
+					he1 = profit + c1;//七天的总利润
+				
+					
+				all++
+			}		document.write('一周的总营业额是：' + he + '</br/ >');
+					document.write('一周的总利润是：' +he1 + '</br/ >');
+			
+		
+		
+		
+			var all = 1,yingye = 0,lirun = 0,i = 0,i1 =0;
+			while(all <= 7){
+				var a1 = prompt('请输入第'+all+'天面的销售量');
+				var b1 = prompt('请输入第'+all+'天米的销售量');
+					yingye = (a1*10) + (b1*12);//一天的营业额
+					lirun = (a1*6) + (b1*7);//一天的利润
+				i += yingye;//一周的营业额
+				i1 += lirun;//一周的利润
+				document.write('一天的营业额是：' + yingye + '<br/ >');
+				document.write('一天的利润是：' + lirun + '<br/ >');
+				all++;
+			}
+			document.write('一周的营业额是：' + i + '<br/ >');
+			document.write('一周的利润是：' + i1 + '<br/ >');
+			
+		
+		
+			var yingye = 0,lirun = 0 ,i = 0, i1 = 0;
+			var all = 1;
+			while(all <= 7){
+				var a1 = prompt('请输入第' + all+'天面的销售量：');
+				var b1 = prompt('请输入第' + all+'天米的销售量：');
+				yingye = (a1 * 10) + (b1 * 12);//一天的营业额
+				lirun = (a1 * 6) + (b1 * 7);//一天的利润
+				i += yingye;//一周的营业额
+				i1 += lirun;//一周的利润
+				document.write('一天的营业额是：'+ yingye + '<br/ >');
+				document.write('一天的利润是：'+ lirun + '<br/ >');
+				all++;
+			}
+				document.write('一周的营业额是：'+ i + '<br/ >');
+				document.write('一周的利润是：' + i1 + '<br/ >');
+		*/	
+		
+		
+		
+		
+			var yingye = 0,lirun = 0, i = 0, i1 =0;
+			var all = 1;
+				while(all <= 7){
+					var a1 = prompt('请输入第'+ all +'天面的销售量：');
+					var b1 = prompt('请输入第'+ all +'天米的销售量：');
+						yingye = (a1 * 10) + (b1 * 12);
+						lirun = (a1 * 6) + (b1 * 7);
+						i += yingye;
+						i1 += lirun;
+						document.write('第'+ all +'天的营业额是：' + yingye + '<br/ >');
+						document.write('第'+ all +'天的利润是：' + lirun + '<br/ >');
+					all++
+				}
+					document.write('一周的总营业额是：' + i + '<br/ >');
+					document.write('一周的总营业额是：' + i1 + '<br/ >');
+		</script>
+				
+		
+	</head>
+	<body>
+		
+	</body>
+</html>
+
+
+
+
+

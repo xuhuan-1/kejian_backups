@@ -1,0 +1,72 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title></title>
+		<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+			#box{
+				width:200px;
+				height:400px;
+				background:pink;
+				position:relative;
+				left:0px;
+				top:0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script>
+			function $(id){
+				return document.getElementById(id);
+			}
+			$('box').addEventListener('click',(e)=>{
+				var a = e.event||window.event;
+				var now_element = e.target||e.srcElement;
+				ss(now_element,'left','30',1);
+			})
+			function ss(ele,dir,distance,speed){
+				var p = parseFloat(ele.style[dir]?ele.style[dir]:0);
+				ele.style[dir] = parseFloat(distance) + p + 'px';
+			}
+			
+		/*	
+			$('box').addEventListener('mousemove',(e)=>{
+				var e = e.event||window.event;
+				var now_element = e.target||e.srcElement;
+				a(now_element,'left','20px',1);
+			})
+			function a(ele,dir,distance,speed){
+				var ss = parseFloat(ele.style[dir]?ele.style[dir]:0);
+				ele.style[dir] = parseFloat(distance)+ ss + 'px';
+				
+			}
+			
+			
+			$('box').addEventListener('click',(e)=>{
+				var e = e.event||window.event;
+				var now_element = e.target||e.srcElement;
+				a(now_element,'left','30px');
+			})
+			function a(ele,dir,distance,speed){
+				var ss = parseFloat(ele.style[dir]?ele.style[dir]:0);
+				ele.style[dir] = parseFloat(distance)+ ss + 'px';
+				console.log(ss);
+				
+			}
+		*/	
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

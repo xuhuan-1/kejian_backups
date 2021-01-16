@@ -1,0 +1,67 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>穿梭框</title>
+		
+	</head>
+	<body>
+		<select id="se1" size="10" multiple="multiple">
+			<option>一</option>
+			<option>二</option>
+			<option>三</option>
+			<option>四</option>
+			<option>五</option>
+		</select>
+		
+		<input type="button" value="》" onclick="dj1()"/>
+		<input type="button" value="《" onclick="dj2()"/>
+		<select id="se2" size="10" multiple="multiple">
+			<option>壹</option>
+			<option>贰</option>
+			<option>叁</option>
+			<option>肆</option>
+			<option>伍</option>
+		</select>
+		<script>
+		
+			var a = document.getElementById('se1');
+			var b = document.getElementById('se2');
+		/*
+			function dj1(){
+				var arr = se1.querySelectorAll('option');
+				for(var i=0;i<arr.length;i++){
+					if(arr[i].selected){
+						se2.appendChild(arr[i]);
+					}
+				}
+			}
+			function dj2(){
+				var arr = se2.querySelectorAll('option');
+				for(var i=0;i<arr.length;i++){
+					if(arr[i].selected){
+						se1.appendChild(arr[i]);
+					}
+				}
+			}
+		*/
+		
+			function dj1(){
+				var arr = se1.querySelectorAll('option');
+				for(var i=0;i<arr.length;i++){
+					if(arr[i].selected){
+						se2.appendChild(arr[i]);
+					}	
+				}
+			}
+			function dj2(){
+				var arr = se2.querySelectorAll('option');
+				for(var i=0;i<arr.length;i++){
+					if(arr[i].selected){
+						se1.appendChild(arr[i]);
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

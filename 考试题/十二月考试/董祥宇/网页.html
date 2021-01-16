@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网页</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .box{
+            width: 1500px;
+            height: 800px;
+            margin: 0 auto;
+            border: 1px solid;
+        }
+        .top{
+            height: 100px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+        .top-1{
+            width: 320px;
+            line-height: 100px;
+            font-size: 30px;
+            text-indent: 120px;
+        }
+        .top-2{
+            width: 590px;
+            height: 100px;
+            background: #F6F7FD;
+        }
+        .top-3{
+            width: 590px;
+            height: 100px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .content-box{
+            height: calc(100vh - 100px);
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .left{
+            width: 320px;
+            height: calc(800px - 100px);
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .left p{
+            margin-bottom: 30px;
+        }
+        .content{
+            height: calc(800px - 100px);
+            width: calc(100% - 320px);
+            background: #F1F2F6;
+        }
+        .content h4{
+            line-height: 40px;
+            width: 100%;
+            background: #EAEBED;
+        }
+        .content h4 span{
+            margin-left: 20px;
+        }
+        .diamond{
+            height: 620px;
+            width: 1135px;
+            margin: 20px;
+            background: #FFFFFF;
+        }
+        .ss-1{
+            display: flex;
+            justify-content: space-around;
+        }
+        /* 上传图片 */
+        .uploading{
+            height: 170px;
+            width: 170px;
+            border: 1px solid #cccccc;
+            margin-top: 20px;
+        }
+        .uploading p{
+            height: 80px;
+            width: 80px;
+            background: red;
+            border-radius: 50%;
+            margin-top: 20px;
+            margin-left: 45px;
+        }
+        .uploading button{
+            background: #65C338;
+            margin-left: 50px;
+            height: 30px;
+            width: 70px;
+            margin-top: 20px;
+            border: none;
+        }
+        .info{
+            height: 170px;
+            width: 240px;
+            border: 1px solid #cccccc;
+            margin-top: 20px;
+        }
+        .info p{
+            margin-left: 10px;
+            font-size: 15px;
+            line-height: 25px;
+        }
+        .info button{
+            background: #38C5FE;
+            margin-left: 20px;
+            height: 30px;
+            width: 200px;
+            border: none;
+        }
+        
+        .cash{
+            height: 170px;
+            width: 400px;
+            border: 1px solid #cccccc;
+            margin-top: 20px;
+        }
+        .p1{
+            line-height: 40px;
+            border: 1px solid;
+        }
+        .p1 span{
+            display: inline-block;
+            height: 40px;
+            width: 270px;
+            background: pink;
+        }
+        .data{
+            height: 170px;
+            width: 210px;
+            border: 1px solid #cccccc;
+            margin-top: 20px;
+        }
+
+        .ss-2{
+            display: flex;
+            justify-content: space-around;
+        }
+        /* 代收资产 */
+        .property{
+            height: 220px;
+            width: 260px;
+            border: 1px solid #cccccc;
+            margin-top: 40px;
+        }
+        .property h5{
+            font-size: 18px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .property p{
+            font-size: 16px;
+            text-align: center;
+            margin-top: 40px;
+            color: red;
+        }
+        .property button{
+            text-align: center;
+            width: 200px;
+            height: 30px;
+            margin-top: 40px;
+            margin-left: 35px;
+            background: #38C5FE;
+            border: none;
+        }
+
+        /* 底部 */
+        .bottom{
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        .bottom-1{
+            height: 70px;
+            width: 190px;
+            border: 1px solid #cccccc;
+            line-height: 70px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <header class="top">
+            <div class="top-1">
+                AI.ADMIN
+            </div>
+            <div class="top-2"></div>
+            <div class="top-3">
+                <p>infoShow1</p>
+                <p>infoShow2</p>
+                <p>infoShow3</p>
+                <p>infoShow4</p>
+                <p>infoShow5</p>
+            </div>
+        </header>
+        <section class="content-box">
+            <aside class="left">
+                <p>Dashboard</p>
+                <p>users</p>
+                <p>Share</p>
+                <p>Infos</p>
+                <p>Money</p>
+                <p>FundData</p>
+                <p>Permission</p>
+                <p>ErrorPage</p>
+            </aside>
+            <section class="content">
+                <h4>
+                    <span>lnfos</span>
+                    <span>lnfoShow</span>
+                    <span>lnfoShow1</span>
+                </h4>
+                <div class="diamond">
+                    <div class="ss-1">
+                        <!-- 上传图片 -->
+                        <div class="uploading">
+                            <p></p>
+                            <button>上传</button>
+                        </div>
+                        <!-- 信息 -->
+                        <div class="info">
+                            <p>姓名:王小!II</p>
+                            <p>昵称:Pw68061826</p>
+                            <p>投资年限∶5年</p>
+                            <p>绑定邮箱: 9061446xx@qq.com</p>
+                            <p>绑定手机:189xxxx9028</p>
+                            <button>
+                                签到有奖
+                            </button>
+                        </div>
+                        <!-- 可用现金 -->
+                        <div class="cash">
+                            <p class="p1">可用现金:
+                                <span></span>
+                            </p>
+                            <p class="p2">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </p>
+                            <p class="p3"></p>
+                        </div>
+                        <!-- 个人数据 -->
+                        <div class="data">
+
+                        </div>
+                    </div>
+                    <div class="ss-2">
+                        <!-- 代收资产 -->
+                        <div class="property">
+                            <h5>代收资产</h5>
+                            <p>$78.00</p>
+                            <button>查看详情>></button>
+                        </div>
+                        <div class="property">
+                            <h5>账号总资金</h5>
+                            <p>$2078.00</p>
+                            <button>查看详情>></button>
+                        </div>
+                        <div class="property">
+                            <h5>已得回报</h5>
+                            <p>$1000.00</p>
+                            <button>查看详情>></button>
+                        </div>
+                        <div class="property">
+                            <h5>期待回报</h5>
+                            <p>$3000.00</p>
+                            <button>查看详情>></button>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="bottom-1">出借服务</div>
+                        <div class="bottom-1">债权转让</div>
+                        <div class="bottom-1">充值提现</div>
+                        <div class="bottom-1">出借投标</div>
+                        <div class="bottom-1">充值提现</div>
+                    </div>
+                </div>
+                
+            </section>
+        </section>
+    </div>
+</body>
+</html>

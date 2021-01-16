@@ -1,0 +1,132 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>封装添加/移除监听事件方法</title>
+	</head>
+	<body>
+		<div id="box" style="height:100px; width:100px; background:red;">
+			
+		</div>
+		<script>
+			function addEvent(ele,type,fn,flag){
+				if(ele.addEventListener){
+					ele.addEventListener(type,fn,flag);
+				}else{
+					ele.attachEvent('on'+type,fn,flag);
+				}
+				
+			}
+			addEvent(box,'mouseover',dj1,false);
+			function dj1(){
+				console.log('box');
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		/*		
+			//一、封装添加监听器
+			function addEvent(ele,type,fn,flag){
+				if(ele.addEventListener){
+					ele.addEventListener(type,fn,flag);
+				}
+				else{
+					ele.attachEvent(type,fn,flag);
+				}
+			}
+			//封装移除监听器
+			function removeEvent(ele,type,fn,flag){
+				if(ele.removeEventListener){
+					ele.removeEventListener(type,fn,flag);
+				}else{
+					ele.dateEvent(type,fn,flag);
+				}
+			}
+			addEvent(box,'click',dj1,false);
+			addEvent(document,'click',dj2,false);
+			removeEvent(box,'click',dj1,false);
+			function dj1(){
+				console.log('box');
+			}
+			function dj2(){
+				console.log('document');
+			}
+		*/
+
+		/*	//二、封装添加监听器
+			function addEvent(ele,type,fn,flag){
+				if(ele.addEventListener){
+					ele.addEventListener(type,fn,flag);
+				}else{
+					ele.attachEvent('on'+type,fn,flag);
+				}
+			}
+			//封装移除监听器
+			function removeEvent(ele,type,fn){
+				if(ele.removeEventListener){
+					ele.removeEventListener(type,fn);
+				}else{
+					ele.detachEvent('on'+type,fn);
+				}
+			}
+			var body = document.querySelector('body');
+			//捕获
+			addEvent(box,'click',()=>{
+				console.log('box');
+			},true);
+			addEvent(body,'click',()=>{
+				console.log('body');
+			},true);
+			addEvent(document,'click',()=>{
+				console.log('document');
+			},true);
+			//冒泡
+			addEvent(box,'click',()=>{
+				console.log('box');
+			});
+			
+			addEvent(body,'click',()=>{
+				console.log('body');
+			});
+			addEvent(document,'click',()=>{
+				console.log('document');
+			});
+			
+			addEvent(box,'click',dj1);
+			addEvent(body,'click',dj2);
+			addEvent(document,'click',dj3);
+			removeEvent(box,'click',dj1);
+			function dj1(){
+				console.log('box');
+			}
+			function dj2(){
+				console.log('body');
+			}
+			function dj3(){
+				console.log('document');
+			}
+		*/
+
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

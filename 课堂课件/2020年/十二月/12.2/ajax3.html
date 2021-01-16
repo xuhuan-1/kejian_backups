@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax3</title>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <script>
+        function ajax(obj) {
+            obj.url = obj.url || '';
+            obj.method = obj.method || 'get';
+            obj.data = obj.data || {};
+            obj.dataType = obj.dataType || 'json';
+            obj.success = obj.success;
+
+            let xhr;
+            window.XMLHttpRequest ? xhr = new XMLHttpRequest() : xhr = new ActiveXObject('Microsoft.XMLHTTP');
+
+            function formate(o) {
+                let arr = [];
+                for (let key in o) {
+                    arr.push(key + '=' + o[key]);
+                }
+                return arr.join('&');
+            }
+            let params = formate(obj.data);
+            let url = obj.url + '?' + params;
+            if (obj.method == 'get') {
+                xhr.open(obj.method, url, true);
+            } else {
+                xhr.open(obj.method, obj.url, true);
+            }
+
+            if (obj.method == 'get') {
+                xhr.setRequestHeader('Content-type','application/json;charset = utf-8');
+                xhr.send(null);
+            } else {
+                xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded,charset = uft-8');
+                xhr.send(params);
+            }
+            
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200 && xhr.status < 300 || xhr.status == 304){
+                        if(obj.method == 'get'){
+                            obj.success && obj.success(JSON.parse(xhr.responseText));
+                        }else{
+                            obj.success && obj.success(xhr.responseText);
+                        }
+                    }
+                }
+            }
+        }
+        btn.onclick = function () {
+            ajax({
+                url: 'http://localhost:3001/add',
+                method:'post',
+                data:{
+                    type:'对象',
+                    value:'value'
+                },
+                success:function(rel){
+                    console.log(rel);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

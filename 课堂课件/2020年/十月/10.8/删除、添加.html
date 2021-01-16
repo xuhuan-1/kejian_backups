@@ -1,0 +1,70 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>删除/添加</title>
+	</head>
+	<body>
+		<input type="button" onclick="dj1()" value="添加"/>
+		<input type="button" onclick="dj2()" value="删除"/>
+		<div id="box">
+		</div>
+		<script>
+			//封装一个通过ID获取DOM元素方法
+			function get(xc){
+				return document.getElementById(xc);
+			}
+			function dj1(){
+				var create = document.createElement('p');
+				var text = document.createTextNode('我是一个p标签');
+				create.appendChild(text);
+				get('box').appendChild(create);
+			}
+			function dj2(){
+				var all = get('box').querySelectorAll('p');
+				if(all.length !== 0){
+					get('box').removeChild(all[all.length-1]);
+				}
+			}
+		
+		/*	//二、
+			//封装一个通过ID获取DOM元素方法
+			function get(xc){
+				return document.getElementById(xc);
+			}
+			function dj1(){
+				var create = document.createElement('p');
+				var text = document.createTextNode('你好!');
+				create.appendChild(text);
+				get('box').appendChild(create);
+			}
+			function dj2(){
+				var all = get('box').querySelectorAll('p');
+				if(all.length == 0)return;
+				get('box').removeChild(all[all.length-1]);
+			}
+			//三、
+			function get(xc){
+				return document.getElementById(xc);
+			}
+			function dj1(){
+				var create = document.createElement('p');
+				var create_text = document.createTextNode('我是一个p标签');
+				create.appendChild(create_text);
+				get('box').appendChild(create);	
+			}
+			
+			function dj2(){
+				var b = get('box').querySelectorAll('p');
+				if(b.length == 0)return;
+				get('box').removeChild(b[b.length-1]);	
+			}
+		*/
+		</script>
+	</body>
+</html>
+
+
+
+
+

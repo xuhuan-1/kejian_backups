@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>轮播图</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				position:relative;
+				width:500px;
+				height:500px;
+				margin:0 auto;
+				
+			}
+			#im{
+				width:2500px;
+				height:500px;
+				position:absolute;
+			}
+			li{
+				float:left;
+				list-style:none;
+			}
+			img{
+				height:500px;
+				width:500px;
+			}
+			#le{
+				width:50px;
+				height:50px;
+				background:red;
+				text-align:center;
+				line-height:50px;
+				background:rgba(122,210,215,0.6);
+				position:absolute;
+				left:0px;
+				top:250px;
+			}
+			#ri{
+				width:50px;
+				height:50px;
+				background:rgba(122,210,215,0.6);
+				text-align:center;
+				line-height:50px;
+				position:absolute;
+				left:450px;
+				top:250px;
+			}
+			#dian{
+				position:absolute;
+				top:450px;
+				left:150px;
+				background:red;
+				height:30px;
+				width:200px;
+			}
+			#dian ul li{
+				height:20px;
+				width:20px;
+				float:left;
+				margin:6px 10px;
+				border-radius:50%;
+				background:pink;
+			}
+			#dian ul li:hover{
+				background:blue;
+			}
+			#dian ul .liang{
+				background:blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="im">
+				<ul>
+					
+				</ul>
+			</div>
+			<div id="le" onclick="to_left()">《</div>
+			<div id="ri" onclick="to_right()">》</div>
+			<div id="dian">
+				<ul>
+					<li class="liang"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			function $(id){
+				return document.getElementById(id);
+			}
+			var box_ul = $('im').querySelector('ul');
+			var dian_ul = $('dian').querySelector('ul');
+			var dian_li = dian_ul.querySelectorAll('li');
+			for(var i=1;i<=5;i++){
+				var create_li = document.createElement('li');
+				var create_img = document.createElement('img');
+				box_ul.appendChild(create_li);
+				create_li.appendChild(create_img);
+				create_img.setAttribute('src','img/'+i+'.png');
+			}
+			var box_li = box_ul.querySelectorAll('li');
+			var a = 0;
+			var timer = null;
+			function dsq(){
+				timer = setInterval(()=>{
+					to_right();
+				},1000)
+			}dsq();
+			//鼠标移入
+			$('box').addEventListener('mouseover',()=>{
+				clearInterval(timer);
+			})
+			//鼠标移出
+			$('box').addEventListener('mouseout',()=>{
+				clearInterval(timer);
+				dsq();
+			})
+			//右侧按钮
+			function to_right(){
+				a++;
+				a>box_li.length-1?a=0:'';
+				$('im').style.left = -500*a + 'px';
+				colo();
+			}
+			//左侧按钮
+			function to_left(){
+				a--;
+				a<0?a=box_li.length-1:'';
+				$('im').style.left = -500*a + 'px';
+				colo();
+			}
+			//颜色
+			function colo(){
+				for(var i=0;i<dian_li.length;i++){
+					dian_li[i].setAttribute('class',a == i?'liang':'');//三元表达式
+					//a == i?dian_li[i].setAttribute('class','liang'):dian_li[i].setAttribute('class','');
+					dian_li[i].setAttribute('nam',i);
+				}
+			}
+			for(var i=0;i<dian_li.length;i++){
+				dian_li[i].setAttribute('nam',i);
+			}
+			//底部按钮事件
+			$('dian').addEventListener('click',(eve)=>{
+				var e = eve||window.event;
+				var now_element = eve.target||eve.srcElement;
+				a = now_element.getAttribute('nam');
+				if(now_element.tagName == 'LI'){
+					$('im').style.left = -500*a + 'px';
+					colo();
+				}
+			})
+			
+		</script>
+	</body>
+</html>

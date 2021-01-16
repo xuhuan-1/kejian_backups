@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>获取DOM元素宽高</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			li{
+				list-style:none;
+			}
+			table{
+				border:1px solid black;
+				border-collapse: collapse;
+				text-align:center;
+				margin:0 auto;
+				
+			}
+			tr{
+				width:600px;
+				height:40px;
+			}
+			td{
+				height:40px;
+				border:1px solid #000000;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="parent1">
+			<div id="child1" style="height:200px;background:#0cc">
+			冒泡
+			</div>
+		</div>
+		<div id="parent2">
+			<div id="child2" style="height:200px;background:red">
+			捕获
+			</div>
+		</div>
+
+		<script>
+			var parent1 = document.getElementById("parent1");
+			var child2 = document.getElementById("child1");
+			var parent2 = document.getElementById("parent2");
+			var child2 = document.getElementById("child2");
+			parent1.addEventListener('click', function(){
+				alert("this is parent element");
+			},false);
+			child1.addEventListener('click', function(){
+				alert("this is child element");
+			},false);
+			parent2.addEventListener('click', function(){
+				alert("this is parent element");
+			}, true);
+			child2.addEventListener('click', function(){
+				alert("this is child element");
+			}, true);
+		</script>
+		
+	</body>
+</html>

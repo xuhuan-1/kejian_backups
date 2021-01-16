@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animate动画</title>
+    <!-- jQ库 -->
+    <script src="../1.15/JS/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div class="box" style="height: 200px; width: 200px; background: gold;"></div>
+    <script>
+        // $('.box').click(function(){
+        //     $(this).animate({
+        //         height:500,
+        //         opacity:.1
+        //     })
+        // })
+        $('.box').hover(function(){
+            $(this).animate({
+                height:600,
+                opacity:.3,
+            })
+        },function(){
+            $(this).animate({
+                height:200,
+                opacity:1
+            })
+        })
+
+        
+    </script>
+</body>
+</html>

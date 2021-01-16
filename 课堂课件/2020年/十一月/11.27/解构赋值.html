@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解构赋值</title>
+</head>
+
+<body>
+    <script>
+        /**
+    //解构对象
+        let obj = {
+            username:'张三',
+            info:{
+                a:'老李',
+                b:'老张',
+                c:'老王',
+                d:{
+                    e:{
+                        f:{
+                            g:{
+                                h:{
+                                    sss:'奥里给',
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            age:18,
+            sex:'男'
+        }
+        //一、
+        //let {info:{d:{e:{f:{g:{h:{sss}}}}}}} = obj;//奥里给
+        //二、
+        let {sss} = obj.info.d.e.f.g.h;//奥里给
+        console.log(sss);
+    */
+        /**
+        //解构数组
+            let obj = {
+                arr:['10',20,2,1,23,4,5,6,9];
+            };
+            let {arr:[,,,,a]} = obj;//,是占位符
+            console.log(a);
+          //替换
+            let arr = [1,2];
+            let [a,b] = [1,2];
+            let arr1 = [b,a];
+            console.log(arr1);
+        */
+        /**
+        //解构字符串
+            let str = 'hello';
+            let [,,,,s] = str;
+            console.log(s);
+        */
+        /*
+        //合并数组
+            let arr = [2,3];
+            let a = [1,2,3,4,5,6,7,8,9]
+            let arr1 = ['4','5',...a,...arr];
+            console.log(arr1);
+        
+        
+            let params = {
+                name:'zimo',
+                age:18,
+                sex:'男'
+            }
+            let obj = {...params,card:'5451315351534'}
+            console.log(obj);
+          //互换变量
+            let a = '张三',b = '李四',c = '王五';
+            console.log(a,b,c);
+            [a,b,c] = [c,a,b];
+            console.log(a,b,c)
+        
+            //解构克隆
+            let colors = ['red','green','blue','pink'];
+            let [...b] = colors;
+            console.log(colors);
+            console.log(b);
+
+            //混合嵌套
+            let node = {
+                type: "Identifier",
+                name: 'foo',
+                loc: {
+                    start: {
+                        line: 1,
+                        column: 1
+                    },
+                    end: {
+                        line: 1,
+                        column: 4
+                    }
+                },
+                range: [0, 3]
+            }
+            let {
+                type,
+                name: localName,
+                loc: {
+                    start: {
+                        line: ll
+                    },
+                    end: {
+                        column: col
+                    }
+                },
+                range: [, second]
+            } = node;
+                
+            console.log(type);//Identifier
+            console.log(localName);//foo
+            console.log(ll);//1
+            console.log(col);//4
+            console.log(second);//3
+        */
+        let arr = [1, 33, 25, 29, 8, 0, 2, 21, 6, 3, 8, 5];
+        for (let i = 0; i < arr.length-1;i++) {
+            for(let j=0;j < arr.length - i;j++){
+                if(arr[j] < arr[j + 1]){
+                    [arr[j],arr[j + 1]] = [arr[j + 1],arr[j]];
+                }
+            }
+        }
+        console.log(arr);
+    </script>
+</body>
+
+</html>

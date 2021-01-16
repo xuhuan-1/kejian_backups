@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        /* #box{ */
+            /* width: 50%; */
+            /* height: 70vw; */
+            /* padding-bottom: 50%; */
+            /* border-bottom: 50vw solid #ccc; */
+            /* background: yellowgreen; */
+        /* } */
+        #content{
+            padding-top:50%;
+            height: 0;
+            background:thistle;
+            width: 50%;
+            position: relative;
+        }
+        #box{
+            position: absolute;
+            width: 100%;
+            height: 100%; 
+            left: 0;
+            top: 0;
+            background: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div id="box">
+
+        </div>
+    </div>
+    <script>
+        /**
+         * 移动端布局方式：
+         *  1、计算百分比  【非常麻烦的】
+         *  2、rem   弹性布局  动态修改根字体 font-size
+         *  3、vw vh  【用在移动端】   百分比的宽度和vw  1：1 关系
+         *     高度也可以使用vw
+         *  4、媒体查询
+         *      css3媒体查询，不同的分辨率的设备显示不同的css样式
+         *  
+         * 
+        */
+    </script>
+</body>
+</html>

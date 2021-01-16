@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>defineProperty</title>
+</head>
+
+<body>
+    <script>
+        // let obj = {
+        //     name:'张三',
+        //     age:18
+        // }
+        // let age = '李四';
+        // Object.defineProperty(obj,'age',{
+        //     get(){
+        //         return `你个哈皮都：${age}岁了`;
+        //     },
+        //     set(val){
+        //         age = val;
+        //     }
+        // })
+        // obj.age = 23;
+        // console.log(obj.age);
+
+        // let obj = {
+        //     name:'张三',
+        //     age:18
+        // }
+        // Object.defineProperty(obj,'age',{
+        //     get(){
+        //         return `你都${age}岁了`;
+        //     }
+        // })
+        // console.log(obj.age);
+
+        // let obj = {}
+        // let newObj = '李四'
+        // Object.defineProperty(obj,'newKey',{
+        //     get(){
+        //         return newObj;
+        //     },
+        //     set(num){
+        //         newObj = num;
+        //     }
+        // })
+        // obj.newObj = '9999'
+        // console.log(obj.newKey);
+        // console.log(obj);
+
+
+        // let obj = {
+        //     name:'张三',
+        //     age:18
+        // }
+        // Object.defineProperty(obj,'sex',{
+        //     writable:true
+        // })
+        // obj.sex = '女';
+        // console.log(obj);
+
+
+
+        // var obj = {
+        //     __book: '三国演义'
+        // }
+        // Object.defineProperty(obj, 'book', {
+        //     get(){
+        //         return `这是：${this.__book}`;
+        //     },
+        //     set(val){
+        //         //this指向原对象，定义一个属性用来接收赋值
+        //         this.__book = val
+        //     }
+        // })
+        // console.log(obj.book) //==> "<<三国演义>>"
+        // obj.__book = '水浒传';
+        // console.log(obj) //==> "<<水浒传>>"
+
+
+        // let obj = {
+        //     name:'张三',
+        // }
+        // Object.defineProperty(obj,'nam',{
+        //     get(){
+        //         return `你好：${this.name}`
+        //     },
+        //     set(num){
+        //         this.name = num;
+        //     }
+        // })
+        // obj.nam = 'sadsda'
+        // console.log(obj);
+
+
+
+        // let obj = {
+        //     name:'张三',
+        //     age:20
+        // }
+        // Object.defineProperty(obj,'name',{
+        //     writable:true,
+        //     enumerable:false,
+        //     configurable:false
+        // })
+        // delete obj.name;
+        // console.log(obj);
+        
+        let obj = {}
+        let s = {};
+        let d = Object.is(obj,s);
+        console.log(d);
+
+    </script>
+</body>
+
+</html>

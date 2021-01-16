@@ -1,0 +1,31 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>1</title>
+		
+	</head>
+	<body>
+		<script>
+		
+			function fun(xc){
+				var a = [];
+				var all = 0;
+				for(var i=1;i<=10;i++){
+					var cj = parseInt(prompt('请输入第'+i+'次分数'));
+					all += cj;
+					a.push(cj);
+				}
+				console.log(a);
+				console.log((a.sort(function(k,l){return l-k})));//排序
+				console.log((a.slice(0,1)));//最高分
+				console.log((a.slice(-1.1)));//最低分
+				console.log(all);//总和
+				console.log(all / 10);//平均分
+				return a;
+			}
+			fun('a');
+			
+		</script>
+	</body>
+</html>

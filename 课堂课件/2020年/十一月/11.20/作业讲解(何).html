@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业讲解</title>
+</head>
+<body>
+    <script>
+        /**
+         * 对象获取键名 不管嵌套多少层，每一层的键名我都最后
+         *  push一个一维数组内 
+         * 
+         * 实现思路：
+         *  递归        
+        */
+
+        let obj = {
+            a:{name:'uuu'},
+            b:{
+                b1:{
+                    b2:'zimo'
+                }
+            }
+        };
+
+        // {}.contructor === Object
+        let arr= [];   
+        function flat(o){
+            for(let key in o){
+                if(o[key] == null) return;
+                if(typeof o[key] === 'object'){
+                    flat(o[key]);
+                }else{
+                    arr.push(o[key]);
+                }
+            }
+            return arr;
+        }
+        console.log(flat(obj)); 
+    </script>
+</body>
+</html>

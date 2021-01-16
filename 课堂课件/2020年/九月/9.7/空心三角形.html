@@ -1,0 +1,71 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>空心三角形</title>
+		<script>
+			/*	打印空心三角形
+				    *
+				   * *
+				  *   *
+				 *     *
+				*********
+			
+				一、
+				for(var i=1;i<=7;i++){
+					for(var j=6;j>=i;j--){
+						document.writeln('1');
+					}
+					for(var k=1;k<=2*i-1;k++){
+						if(i==1||i==7){
+							document.writeln('*');
+						}else{
+							if(k==1||k==2*i-1){
+								document.writeln('*');
+							}else{
+								document.writeln('&nbsp;');
+							}
+						}
+					}		
+						document.writeln('<br/ >');
+				}
+			
+				//二、
+				for(var i=1;i<=7;i++){
+					for(var k=6;k>=i;k--){
+						document.write('-');
+					}
+					for(var x=1;x<=2*i-1;x++){
+						if(x==1||x==2*i-1||i==7){
+							document.write('*');
+						}else{
+							document.write('-');
+						}
+					}
+					document.write('<br/ >');
+				}
+			*/	
+			
+			
+			
+				var count = 10;
+				for(var i=1;i<=count;i++){//打印折行
+					for(var k=count-1;k>=i;k--){//打印占位符
+						document.write('-');
+					}
+					for(var x=1;x<=2*i-1;x++){//打印*
+						if(x==1||x==2*i-1||i==count){
+							document.write('*');
+						}else{
+							document.write('-');
+						}
+					}
+					document.write('<br/ >');
+				}
+		</script>
+	</head>
+	<body>
+		
+		
+	</body>
+</html>

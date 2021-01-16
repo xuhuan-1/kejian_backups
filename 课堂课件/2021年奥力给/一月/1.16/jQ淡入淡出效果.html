@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQ淡入淡出效果</title>
+    <script src="../1.15/JS/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div id="box" style="width: 200px;height: 200px;background: gold;"></div>
+    <button id="btn_up">上</button>
+    <button id="btn_down">下</button>
+    <script>
+        $('#btn_up').click(function(){
+            $('#box').fadeIn(4000);
+        })
+        $('#btn_down').click(function(){
+            $('#box').fadeOut(4000);
+        })
+    </script>
+</body>
+</html>

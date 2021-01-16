@@ -1,0 +1,71 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>抽奖2</title>
+	</head>
+	<style>
+		#p1{
+			margin-top:50px;
+			text-align:center;
+			font-size:20px;
+		}
+		
+		span{
+			font-size:30px;
+		}
+		div{
+			height:300px;
+			width:400px;
+			/*background:pink;*/
+			margin:0 auto;
+			border:1px solid;
+		}
+		#butt{
+			display:block;
+			margin:0 auto;
+		}
+	</style>
+	<body>
+		<div>
+		<p id="p1">恭喜&nbsp;<span id="sp"></span>&nbsp;喜提<span id="bd"></span>&nbsp;</p>
+		<input id="butt" onclick="dj()" type="button" value="点击一下" />
+		</div>
+		<script>
+			//封装一个通过ID获取DOM元素方法
+			function ge(xc){
+				return document.getElementById(xc);
+			}
+			//封装一个随机颜色方法
+			function fun(){
+				var arr = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
+				var b = '#';
+				for(var i=0;i<6;i++){
+					b += arr[Math.floor(Math.random()*16)];
+				}
+				return b;//返回值
+			}
+			var arr = ['李璐瑶','兰天翔','易道明','孙一杰','陈坤','谢贵鹏','董祥宇','汪煜祺'];
+			var arr1 = ['抽李璐瑶一个大嘴巴子','抽李璐瑶俩大嘴巴子','抽李璐瑶三大嘴巴子','抽李璐瑶四个大嘴巴子','抽李璐瑶五个大嘴巴子']
+			function dj(){
+				var i = Math.floor(Math.random()*arr.length);
+				ge('sp').innerText = arr[i];
+				ge('sp').style.color=fun();
+				var a = Math.floor(Math.random()*arr1.length);
+				ge('bd').innerText = arr1[a];
+				ge('bd').style.color=fun();
+				if(arr.length == 0){
+					//ge('sp').innerText = '没有大嘴巴子了';
+					//ge('p1').style.color='#fff';
+					ge('p1').innerText="抽奖结束，感谢参与";
+				}
+				arr.splice(i,1);
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS动画2(何)</title>
+</head>
+<body>
+    <div id="box" style="position: relative;width: 500px;height: 500px;background:#ccc;">
+        <div id="box1" style="position: absolute;top:0px;left: 0px;width: 100px;height: 100px;background: red;opacity:1;"></div>
+    </div>
+    <button id="right">右</button>
+    <button id="down">下</button>
+    <button id="left">左</button>
+    <button id="up">上</button>
+    <script>
+        /**
+         * 1、所有的JS都在栈内存的主线程执行
+         * 2、主线程先执行同步任务，同步任务执行结束，然后才去检查任务队列中是否有异步任务
+         *    有异步任务，则执行，否则就直接停止
+         * 3、任务队列中只要有排队的任务，必须全部执行结束
+         * 4、任务队列进出规则：先进先出，后进后出 【FIFO】
+         * 
+         * 
+         * JS动画：JS动画就是改变当前元素的left、top、bottom、right值
+         * 缺点：卡顿
+         * 
+        */
+        // 你要实时获取当前元素的当前left值，
+        // currentStyle:IE提供currentStyle可以获取到当前元素当前属性值
+        // getComputedStyle:标准浏览器【w3c】获取当前元素当前属性值
+        function getStyle(ele,attr){
+            return ele.currentStyle ? ele.currentStyle[attr] : getComputedStyle(ele,null)[attr];
+        }
+        function animate(ele,options){
+            // 先清除任务队列
+            clearInterval(ele.timer);
+            ele.timer = setInterval(() => {
+                // 循环属性
+                for(let key in options){
+                    if(key == 'opacity'){
+                        let curentOpcity = parseInt(getStyle(ele,key)*100);
+                    //    计算透明度过度间隔
+                        let step = ((options[key])*100) - curentOpcity;
+                        step = step > 0 ? 10:-10;
+                        ele.style[key] = (curentOpcity + step)/100;
+                    }else{
+                        // 计算步长 result:目标值  你走过的像素和:直接去标签上获取
+                        // step :步长的变量 = 400 - 391 = 10px/10  == 1
+                        let speed = (options[key] - parseInt(getStyle(ele,key))) / 10;
+                        // 步数向上 或 向下取整
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                        // parseInt(getStyle(ele,key)):是当前元素距离相对元素的left值
+                        ele.style[key] = parseInt(getStyle(ele,key)) + speed + 'px';
+                        if(options[key] == parseInt(getStyle(ele,key))){
+                            // 如果，目标值和走过的距离相等，则停止，清除定时器
+                            clearInterval(ele.timer)
+                        }
+                    }
+                } 
+            }, 20);
+        }
+
+        right.onclick = function(){
+            animate(box1,{
+                left:400,
+                top:400,
+                opacity:.4
+            });
+        }
+        down.onclick = function(){
+            animate(box1,{
+                top:400
+            });
+        }
+
+        left.onclick = function(){
+            animate(box1,{
+                left:0
+            });
+        }
+        up.onclick = function(){
+            animate(box1,{
+                top:0
+            });
+        }
+    </script>
+</body>
+</html>

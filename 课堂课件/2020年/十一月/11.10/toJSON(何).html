@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 对象内有一个toJSON方法，可以指定返回某个特定的属性，配合js序列化使用的  
+         * JSON.stringify(object)：序列化，就是将对象转换成字符串
+         * JSON.parse():反序列化，将字符串转换成浏览器能解析的对象
+         * 
+         * eval():把字符串转换成浏览器能解析、识别的对象
+         * 
+        */
+    /*
+        let obj = {
+            name:'紫漠大仙！',
+            age:15,
+            // 1000属性
+            // ES6写法
+            toJSON(){
+                return this.name;
+            },
+            // ES5写法
+            // toJSON:function(){
+            //     return this.age;
+            // }
+        };
+        let s = JSON.parse(JSON.stringify(obj));
+        console.log(s)
+    */ 
+        let obj = {
+            name:'读书人',
+            age:18,
+            toJSON(){
+                return this.age;
+            }
+        }
+        let s = JSON.parse(JSON.stringify(obj));
+        console.log(s);
+    
+    </script>
+</body>
+</html>

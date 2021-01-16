@@ -1,0 +1,147 @@
+<html>
+    <head>
+        <title>增删改1</title>
+        <meta charset="utf-8">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+			
+			#box1{
+				margin-left:600px;
+				display:none;
+			}
+			#box2 table{
+				margin:0 auto;
+			}
+			#box2 p{
+				text-align:center;
+				font-size:22px;
+			}
+			
+        </style>
+    </head>
+    <body>
+		<div id="box1">
+			<h3>添加用户</h3>
+			姓名：<input type="text" id="na1" value=""/>
+			邮箱：<input type="text" id="na2" value=""/>
+			电话：<input type="text" id="na3" value=""/>
+			<p>
+				<input type="button" value="提交" onclick="sub()"/>
+				<input type="button" value="更新" onclick="update()"/>
+				
+			</p>
+		</div>
+		<div id="box2">
+			<p>用户信息
+				<input type="button" onclick="add()" value="添加用户"/><!--添加用户按钮-->
+			</p>
+			<table border="2px" id="tab">
+				<tr>
+					<td width="100px">姓名</td>
+					<td width="300px">email</td>
+					<td width="200px">电话</td>
+					<td width="400px">操作</td>
+				</tr>
+			</table>
+		</div>
+		
+        <script>
+			//封装一个通过ID获取DOM元素方法
+			function get(xc){
+				return document.getElementById(xc);
+			}
+			function add(){
+				get('box1').style.display = 'block';
+				get('box2').style.display = 'none';
+			}
+			function sub(){
+				get('box1').style.display = 'none';
+				get('box2').style.display = 'block';
+				//获取姓名、邮箱、电话的value值 
+				var name1 = get('na1').value;
+				var name2 = get('na2').value;
+				var name3 = get('na3').value;
+				//获取table表格
+				var name4 = get('tab');
+				//创建一个tr行，并设置类名为a
+				var creat_tr = document.createElement('tr');
+				creat_tr.setAttribute('class','a');
+				//创建姓名单元格、邮箱单元格、电话单元格，并设置类名为b1、b2、b3
+				var creat_td1 = document.createElement('td');
+				creat_td1.setAttribute('class','b1');
+				
+				var creat_td2 = document.createElement('td');
+				creat_td2.setAttribute('class','b2');
+				
+				var creat_td3 = document.createElement('td');
+				creat_td3.setAttribute('class','b3');
+				
+				creat_td1.innerText = name1;
+				creat_td2.innerText = name2;
+				creat_td3.innerText = name3;
+				//创建 '删除' 按钮
+				var delet = document.createElement('button');
+				delet.setAttribute('onclick','dj1(this)');
+				delet.setAttribute('class','shanchu');
+				delet.innerText = '删除';
+				//创建 '修改' 按钮
+				var amend = document.createElement('button');
+				amend.setAttribute('onclick','dj2(this)');
+				amend.setAttribute('class','xiugai');
+				amend.innerText = '修改';
+				//将td单元格放入tr行里
+				creat_tr.appendChild(creat_td1);
+				creat_tr.appendChild(creat_td2);
+				creat_tr.appendChild(creat_td3);
+				creat_tr.appendChild(delet);
+				creat_tr.appendChild(amend);
+				//将tr行放入table表格里
+				name4.appendChild(creat_tr);
+				get('na1').value = '';
+				get('na2').value = '';
+				get('na3').value = '';
+			}
+			function dj1(c){
+				c.parentNode.remove();
+			}
+			var rowindex = null;
+			function dj2(c){
+				get('box1').style.display = 'block';
+				get('box2').style.display = 'none';
+				//改变h3标签文本内容
+				get('box1').querySelector('h3').innerText = '修改用户';
+				var ss = c.parentNode;
+				get('na1').value = ss.querySelector('.b1').innerText;
+				get('na2').value = ss.querySelector('.b2').innerText;
+				get('na3').value = ss.querySelector('.b3').innerText;
+				rowindex = c.parentNode.rowIndex;
+			}
+			function update(){//更新按钮事件
+			get('box1').style.display = 'none';
+					get('box2').style.display = 'block';
+				if(rowindex != null){
+					
+					var mm = get('tab').querySelectorAll('tr');
+					mm[rowindex].querySelector('.b1').innerText = get('na1').value;
+					mm[rowindex].querySelector('.b2').innerText = get('na2').value;
+					mm[rowindex].querySelector('.b3').innerText = get('na3').value;
+					get('na1').value = null;
+					get('na2').value = null;
+					get('na3').value = null;
+				}
+			}
+			
+			
+			
+			
+        </script>
+    </body>
+</html>
+
+
+
+
+

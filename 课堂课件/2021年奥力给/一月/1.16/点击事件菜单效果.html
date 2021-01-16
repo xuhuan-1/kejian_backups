@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击事件菜单效果</title>
+    <script src="../1.15/JS/jquery-3.2.1.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        
+        .menu {
+            height: 30px;
+            width: 200px;
+            background: gold;
+            line-height: 30px;
+        }
+        .nav{
+            display: none;
+        }
+        .nav ul {
+            width: 200px;
+        }
+
+        .nav ul li {
+            height: 20px;
+            width: 200px;
+            background: pink;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="menu" num="下">菜单</div>
+        <div class="nav">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        $('.menu').click(function () {
+            if($(this).attr('num') == '下'){
+                $('.nav').slideDown();
+                $(this).attr('num','上');
+            }else{
+                $('.nav').slideUp();
+                $(this).attr('num','下');
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./ajax.js"></script>
+</head>
+<body>
+    <input type="text" id="ipt">
+    <button id="btn">获取</button>
+    <script>
+        /**
+         * 跨域：跨域是浏览器产生的，因为安全性考虑，不让你随便拿数据【访问】
+         * 同源策略：
+         *  浏览器产生的同源策略，同源：协议、域名、子域名、端口号都一样，是
+         *  WEB浏览器的最基础的安全核心，如果一旦协议、域名、子域名、端口号中
+         *  有一个不一样，则违反了同源策略，产生跨域问题，不让访问数据
+         * 
+        */
+
+
+
+        // http://localhost:5500/admin.html
+
+        // http://localhost:3001/admin?callback=getData
+
+    // 本地同源
+    // btn.onclick = function(){
+    //     ajax('http://localhost:3001/allData','get',{},'json',function(res){
+    //         console.log(res)
+    //     })
+    // }
+
+    function ajax1(options) {
+            options.method = options.method || 'get';
+            options.data = options.data || {};
+            options.url = options.url;  //必传
+            options.success = options.success;  //必须传参
+            options.dataType = options.dataType;
+            // options.callback = options.callback;
+            // 格式化参数的函数  get请求把参数拼接到url地址栏里面去，post请求参数直接在请求体发送
+            function formatParams(data) {
+                var arr = [];
+                for (var name in data) {
+                    arr.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
+                }
+                return arr.join('&');
+            }
+            var params = formatParams(options.data);
+            
+            function jsonp(data){
+                var callbackName = data.callback;
+                var head = document.getElementsByTagName('head')[0];
+                data.data['callback'] = callbackName;
+                var script = document.createElement('script');
+                head.appendChild(script);
+                // 全局监听回调函数的返回值
+                window[callbackName] = function(res){
+                    data.success && data.success(res);
+                    // html页面会缓存，请求成功之后，移除script，下次再请求是再去创建script
+                    head.removeChild(script);
+                    window[callbackName] = null;   
+                }
+                script.src = data.url + '?' + params;
+            }
+            function json(data){
+                var xhr;
+                window.XMLHttpRequest ? xhr = new XMLHttpRequest() : xhr = new ActiveXObject('Microsoft.XMLHTTP');
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.status == 200 && xhr.readyState == 4) {
+                        data.method == 'get' ? data.success && data.success(JSON.parse(xhr.response)) : data.success && data.success(xhr.response);
+                    }
+                }
+                xhr.open(data.method, data.url, true);
+                if (data.method == 'post') {
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf8');
+                    xhr.send(params);
+                } else {
+                    data.url = data.url + '?' + params;
+                    xhr.setRequestHeader('Content-type', 'application/json;charset=utf8');
+                    xhr.send(null);
+                }
+            }
+            options.dataType == 'jsonp' ? jsonp(options) : json(options);
+        }
+    ipt.onchange = function(e){
+        var value = e.target.value + '';
+        // 通过 jsonp 进行跨域
+        ajax1({
+            url:'https://sug.so.360.cn/suggest',
+            method:'get',
+            dataType:'jsonp',
+            callback:'jsonCallback',
+            // word 传关键字，模糊搜索关键字内容
+            data:{'word':value,'callback':'jsonCallback'},
+            success:function(data){
+                console.log(data.result)
+            }
+        })
+    }
+    </script>
+</body>
+</html>

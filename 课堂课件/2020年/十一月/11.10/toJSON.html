@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toJSON对象方法</title>
+</head>
+<body>
+    
+</body>
+    <script>
+        
+        let obj = {
+            name:'读书人',
+            age:18,
+            tel:00121212211,
+            sex:'男',
+            //ES6写法
+            toJSON(){
+                return this.sex;
+            }
+        /*  //ES5写法    
+            toJSON:function(){
+                return this.sex;
+            }
+        */
+        }
+        let s = JSON.parse(JSON.stringify(obj));
+        console.log(s);
+    
+        
+    </script>
+</html>

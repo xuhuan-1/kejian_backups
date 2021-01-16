@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * cookie:
+         *  1、之前一直使用的本地存储，多用于电商网站、存储用户信息
+         *  2、cookie，是document对象的API，用于浏览器存储
+         *  3、存储大小4KB
+         *  4、和服务端进行交互
+         *  5、存的是字符串 ，主要配合序列化和反序列化进行存储/获取数据
+         *  6、删除数据，主要是设置当前商品或者当前用户的过期时间
+         *  7、cookie是需要开发者封装的
+         *  8、封装依据：
+         *      [包裹的可以省略，可以不设置]
+         *       document.cookie = "name=value[;expires=date]
+         *      [;path=path-to-source][;domain=域名][;secure]";
+         * 
+         *      name：存储的数据名，value是存储的值  
+         *      expires:设置的过期时间名，date过期时间具体时间
+         *      path：存储的路径，你把数据存在哪个网站里面了
+         * 
+         * 思路：
+         *  设置cookie
+         *  删除cookie
+        */  
+        
+        // 封装cookie
+        let cookieObj = {
+            
+            // 依据：
+            set:function(o){
+                let cookieStr = document.cookie = `${o.name} = ${o.value}`; //name=value
+                // cookieStr = name=value;
+                if(o.expires){
+                    cookieStr += `;${o.expires}`;
+                }
+                if(o.path){
+                    cookieStr += o.path;
+                }
+                if(o.domain){
+                    cookieStr += o.domain;
+                }
+            },
+            // 获取本地cookie中数据，要在页面中使用,根据存储的数据名获取值
+            get:function(name){
+                let arr = document.cookie.split(';')
+                for(let i=0;i<arr.length;i++){
+                    let newArr = arr[i].split('=');
+                    if(newArr[0] == name){
+                        return JSON.parse(newArr[1]);
+                    }
+                }
+            },
+            // 移除数据
+            remove:function(name,time){
+                let date = new Date();
+                date.setDate(date.getDate() + time)
+                this.set({
+                    name:name,
+                    expires:date
+                })
+            }
+        }
+        // 设置
+        cookieObj.set({
+            name:'zimo',
+            value:JSON.stringify({username:'剑哥哥'}),
+            expires:new Date().getDate() + 2
+        })
+        // 获取
+        console.log(cookieObj.get('zimo'));
+        // 删除
+        //cookieObj.remove('zimo',-1);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封装cookie缓存</title>
+</head>
+<body>
+    <script>
+    /*
+        封装依据：
+                [包裹的可以省略，可以不设置]
+                document.cookie = "name=value[;expires=date][;path=path-to-source][;domain=域名][;secure]";
+                name：存储的数据名，value是存储的值  
+                expires:设置的过期时间名，date过期时间具体时间
+                path：存储的路径，你把数据存在哪个网站里面了
+    */
+        let cookieObj = {
+            //设置
+            set:function(o){
+                let cookieStr = document.cookie = `${o.name} = ${o.value}`;
+                if(o.expires){
+                    cookieStr += `;${o.expires}`;
+                }
+                if(o.path){
+                    cookieStr += `;${o.path}`;
+                }
+                if(o.domain){
+                    cookieStr += `;${o.domain}`;
+                }
+            },
+            //获取
+            get:function(name){
+                let arr = document.cookie.split(';');
+                for(let i=0;i<arr.length;i++){
+                    let newArr = arr[i].split('=')
+                    if(newArr[0] == name){
+                        return JSON.parse(newArr[1]);
+                    }
+                }
+            },
+        /*  //删除
+            remove:function(name,time){
+                let date = new Date();
+                date.setDate(date.getDate() + time);
+                this.set({
+                    name:mame,
+                    expires:date
+                })
+            }
+        */
+        }
+        //设置
+        cookieObj.set({
+            name:'张三',
+            value:JSON.stringify({
+                names:'张',
+                age:19,
+                sex:'男'
+            }),
+            expires:new Date().getDate()+2
+        });
+        cookieObj.set({
+            a:'李四',
+            b:JSON.stringify({
+                names:'李',
+                age:19,
+                sex:'男'
+            }),
+            expires:new Date().getDate()+2
+        });
+        //获取
+        let d1 = cookieObj.get('张三')
+        let d2 = cookieObj.get('李四')
+        console.log(d1);
+        console.log(d2);
+    </script>
+</body>
+</html>

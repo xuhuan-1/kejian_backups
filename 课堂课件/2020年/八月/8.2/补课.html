@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title></title>
+		<style>
+			/*伪元素
+				::before 向某个元素的内部的前面 添加一个元素。 
+				::after	 向某个元素的内部的后面 添加一个元素。
+				用法：
+					1、必须结合content属性
+					2、这两个伪元素添加的都是 行内元素
+					3、伪元素在html结构中是 不存在的，是用css写出来的标签，所以称之为伪元素
+			  display
+				可选值：
+					none 元素在页面不显示 隐藏（消失）
+					inline 将元素转换成行内元素
+					block  将元素转换成块元素
+					inline-block 将元素转换成 行内块元素
+							既有行内元素的特点，又有块元素的特点。——既有宽和高，又不能独占一行
+			visibility:
+				可选值：
+					visible:默认标签在页面中显示
+					hidden:隐藏
+			*/		
+			div::before{
+				width:100px;
+				height:200px;
+				background:#afc;
+				visibility:hidden;
+				content:"你好啊！！！";
+			}
+		</style>		
+	</head>
+	<body>
+		<div class="box1">
+			<span>我是一个div标签</span>
+		</div>	
+	</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" style="width: 200px;height: 200px;background: rgb(255, 0, 0);"></div>
+    <script>
+        /**
+         * 注意：所有的DOM事件都可以自动调用
+         * 标准浏览器：谷歌、火狐：【firbug】、欧朋、Safari
+         * shim：优雅降级  无法优雅降级 ==【无法兼容性无法解决】== 无法shim
+         * IE 浏览器：怪异盒模型，兼容性很差 【好多方法、属性都是无法shim的】
+         * 
+         * 
+         * 
+         * 事件冒泡【事件委托】：从内向外进行冒泡，用的较多
+         * 事件捕获：从外到内捕获，用的不多
+         * 
+         * 
+         * 事件监听：
+         *     规则：
+         *      1、先捕获，再冒泡
+         *      2、事件源属于事件冒泡阶段
+         *     分为两个阶段【三个阶段】：
+         *      1、事件捕获  -- 网景公司提出 【主要由网景提出】
+         *      2、事件源【目标元素的事件源】
+         *      3、事件冒泡  -- 微软提出
+         *  
+         * addEventListener(): 标准浏览器
+         *      事件监听是浏览器给DOM元素在【执行时】提供的一个监听函数 
+         *      1、W3C浏览器【标准浏览器】提供的事件监听方法
+         *         参数：
+         *          1：事件类型
+         *          2：回调函数 【需要些具体的监听代码】
+         *          3：布尔值 true/false 可以省略，默认是false【默认冒泡】
+         *             true为事件捕获
+         * 
+         * attachEvent(): IE 浏览器
+         *      事件监听是浏览器给DOM元素在【执行时】提供的一个监听函数    
+         *      1、IE浏览器提供的事件监听方法
+         *      参数：
+         *          1：事件类型
+         *          2：回调函数 【需要些具体的监听代码】
+         *          3：布尔值 true/false 可以省略，默认是false【默认冒泡】
+         *             true为事件捕获
+        */      
+       
+//  给一个元素添加多个点击事件
+        // box.addEventListener('click',fn1,false);
+        // box.addEventListener('click',fn2,false);
+        // box.addEventListener('click',fn3,false);
+        // function fn1(){
+        //     console.log('000')
+        // }
+        // function fn2(){
+        //     console.log('111')
+        // }
+        // function fn3(){
+        //     console.log('222')
+        // }
+
+       
+// 事件自动调用 
+    //     function page(){
+    //         console.log('===')
+    //    }
+    //    box.onclick = page
+
+    // box.click()
+
+
+// 捕获+冒泡
+    /*
+        var body = document.querySelector('body');
+        
+        body.addEventListener('click',()=>{
+            console.log('冒泡-body')
+        })
+        box.addEventListener('click',()=>{
+            console.log('冒泡-box')
+        })
+
+        document.addEventListener('click',()=>{
+            console.log('冒泡-document')
+        })
+        
+        body.addEventListener('click',()=>{
+            console.log('捕获-body')
+        },true)
+        box.addEventListener('click',()=>{
+            console.log('捕获-box')
+        },true)
+
+        document.addEventListener('click',()=>{
+            console.log('捕获-document')
+        },true)
+    */
+        
+        
+        
+
+        
+    </script>
+</body>
+</html>
+
+

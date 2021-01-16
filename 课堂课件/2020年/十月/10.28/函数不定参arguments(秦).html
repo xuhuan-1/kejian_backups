@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>arguments</title>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<div id = "box">
+			
+		</div>
+		<script>
+			//当前创建的函数在调用的时候，浏览器会提供两个隐式对象：1.this、2.arguments（实参集合）
+			//arguments:特性：1.伪数组、2.length表示传的实参个数
+			function fn(){
+				console.log(arguments)
+				//for...in
+				for(var ind in arguments){
+					//ind代表索引下标，输出传入的实参
+					console.log(arguments[ind])
+				}
+				/*
+				//for...of
+				for(var ind of arguments){
+					//ind代表索引下标对应的数据，输出传入的实参
+					console.log(ind)
+				}*/
+			}
+			//var ppt = "从此君王不早朝"
+			var obj = {
+				name:"灭绝师太",
+				msg:function (){
+					//console.log(name)
+					this[name]= "小和尚"
+					//obj.'从此君王不早朝' = "小和尚"
+					console.log(this.name)
+				}
+				//'':"小和尚"
+			}
+			function createobj(){
+				var obj = new Object();
+				obj.name = "灭绝师太";
+				obj.age = 18;
+				return obj
+			}
+			/*
+			this指向：谁调用就指向谁
+			1.在window对象下调用方法，this指向window对象
+			2.DOM0级事件：MouseEvent/KeyboardEvent/Event
+			目标元素.onclick = "cc(this)"
+			function cc(val){console.log(val)}
+			3.在自定义对象下的方法中调用this,this指向当前自定义对象
+			*/
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

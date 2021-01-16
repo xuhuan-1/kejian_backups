@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Parent(){
+            this.name = 'zimo';
+            this.age = 20;
+            this.sex = '男';
+            this.hobby = function(){
+                console.log('玩游戏')
+            }
+        }
+        // 原型方法
+        Parent.prototype.hi = function(){
+            console.log('---')
+        }
+        Parent.prototype.ni = '不好'
+
+        let s = new Parent();
+
+
+        function Son(){
+            Parent.call(this);
+        }
+        Son.prototype = Object.assign({},Parent.prototype);
+        Son.prototype.constructor = Son;
+        Son.prototype.ni = '大家好';
+        let f = new Son();
+        
+        console.log(Parent.prototype.constructor === Parent)
+        console.log(Son.prototype.constructor === Son)
+        console.log(Parent.prototype.constructor == Son)
+        console.log(s,f)
+
+
+
+
+
+    </script>
+</body>
+</html>

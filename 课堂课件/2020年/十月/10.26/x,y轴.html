@@ -1,0 +1,59 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>x,y轴</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				height:500px;
+				width:300px;
+				background:pink;
+				margin-left:500px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script>
+			document.querySelector('div').onmouseover = function(e){
+				var a = e||window.event;
+				var mouse_x = a.pageX;
+				var mouse_y = a.pageY;
+				console.log('横向：X轴位置'+mouse_x);
+				console.log('纵向：Y轴位置'+mouse_y);
+			}
+		
+		
+		
+		/*
+			document.querySelector('div').onmouseover = function(e){
+				var a = e||window.event;
+				var mouse_x = a.pageX;
+				var mouse_y = a.pageY;
+				console.log('横向：X轴位置'+mouse_x);
+				console.log('纵向：Y轴位置'+mouse_y);
+			}
+		
+
+
+			document.querySelector('div').onclick = function(event){
+				var a = event||window.event;
+				var mouse_x = a.pageX;
+				var mouse_y = a.pageY;
+				document.querySelector('div').innerText += 'x轴位置：'+mouse_x + ' y轴位置：'+mouse_y+'\n';
+			}
+		*/	
+		</script>
+	</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+  		<title>穿梭框</title>
+	 </head>
+	 <body>
+		<script>
+			//封装方法
+			function create1(xc1){
+				return document.createElement(xc1);
+			}
+			function create2(xc2){
+				return document.createTextNode(xc2);
+			}
+			
+			function sel(){
+				var create_sel = create1('select');
+				create_sel.setAttribute('size','20');
+				create_sel.setAttribute('multiple','multiple');
+				var a = [];
+				for(var i=0;i<8;i++){
+					a[i] = create_sel.appendChild(create1('option'));
+				}
+				a[0].appendChild(create2('一'));
+				a[1].appendChild(create2('二'));
+				a[2].appendChild(create2('三'));
+				a[3].appendChild(create2('四'));
+				a[4].appendChild(create2('五'));
+				a[5].appendChild(create2('六'));
+				a[6].appendChild(create2('七'));
+				a[7].appendChild(create2('八'));
+				return create_sel;
+			}
+			//第一个选择框
+			var o1 = document.body.appendChild(sel());
+			//创建普通按钮
+			document.body.appendChild(create1('button'));
+			document.body.appendChild(create1('button'));
+			var but = document.querySelectorAll('button');
+			but[0].innerText = '>';
+			but[1].innerText = '<';
+			but[0].setAttribute('onclick','dj1()');
+			but[1].setAttribute('onclick','dj2()');
+			
+			//第二个选择框
+			var o2 = document.body.appendChild(sel());
+			function dj1(){
+				var s1 = document.querySelectorAll('option');
+				for(var i=0;i<s1.length;i++){
+					if(s1[i].selected){
+						o2.appendChild(s1[i]);
+					}
+				}
+			}
+			function dj2(){
+				var s2 = document.querySelectorAll('option');
+				for(var i=0;i<s2.length;i++){
+					if(s2[i].selected){
+						o1.appendChild(s2[i]);
+					}
+				}
+			}
+		</script>
+	 </body>
+</html>
+

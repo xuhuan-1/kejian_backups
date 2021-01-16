@@ -1,0 +1,99 @@
+// 引入scss文件
+@import './back.scss';
+$colors:red,green,blue,gold,pink;
+#box{
+    .nav{
+        @extend .public;
+    }
+    // .nav.nav1{
+    //     background: $a;
+    // }
+    // .nav.nav2{
+    //     background: $b;
+    // }
+    // .nav.nav3{
+    //     background: $c;
+    // }
+    // .nav.nav4{
+    //     background: $d;
+    // }
+    // .nav.nav5{
+    //     background: $e;
+    //     @extend %w;
+    // }
+    // sass写循环语句  through穿透包含结束值  to不包含结束值
+    // @for $i from 1 through 5{
+    //     .nav.nav#{$i}{
+    //         width: 100px * $i;
+    //         background: nth($colors,$i);
+    //     }
+    // }
+
+    // 继承 
+    // .extend{
+    //     width: 200px;
+    //     height: 200px;
+    //     background: black;
+    // }
+    // .box1{
+    //     @extend .extend;
+    // }
+    
+    // 占位符 %继承
+    // %whb{
+    //     width: 100px;
+    //     height: 100px;
+    //     background: red;
+    // }
+    // .box2{
+    //     @extend %whb;
+    // }
+
+    // @mixin
+    @mixin add{
+        height: 100px;
+        width: 100px;
+        border: 1px solid red;
+    }
+    .box3{
+        @include add;
+    }
+    
+}
+
+
+
+
+// $colors:red,yellow,green,pink,#afc;
+// @for $i from 1 through 5{
+//     .li#{$i}{
+//         width:30px * $i;
+//         height:30px;
+//         background: nth($colors,$i);
+//     }
+// }
+
+// .box1{
+//     width:100px;
+//     height:100px;
+//     border-radius: 50%;
+//     background: indigo;
+//     $red:red !global
+// }
+// .box2{
+//     // @extend .box1
+//     width:100px;
+//     height:100px;
+//     border-radius: 50%;
+//     background: $red;
+// }
+
+// @mixin aaa{
+//     width:200px;
+//     height:300px;
+//     background: lawngreen;
+// }
+
+// .box3{
+//     @include aaa
+// }

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 
+        移动端必须加meta标签
+
+        移动端只有两种宽度：
+            640：苹果4位标准    750：苹果6位标准  占比：70%
+
+        viewport：虚拟视口
+        width=device-width：设备宽度
+        initial-scale=no：禁止缩小
+        maximum-scale=no：禁止放大
+        user-scalable=no：禁止用户设置网页大小
+
+     -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width:100vw;
+            height: 100vh;
+        }
+        .container{
+            width: 100%;
+            height: 800px;
+        }
+        .list{
+            width: 100%;
+            height: 800px;
+            background: red;
+        }
+        .container .list>li{
+            width: 200px;
+            height: 12.5rem;
+            border:1px solid #000;
+            float: left;
+            background: green;
+        }
+        @media all and (max-width:800px) {
+            .list>li{
+                width: 200px;
+                height: 12.5rem;
+                border:1px solid #000;
+                float: left;
+                background: pink;
+            }
+        }
+        @media (min-width:800px) and (max-width:1200px) {
+            .list>li{
+                width: 400px;
+                height: 12.5rem;
+                border:1px solid #000;
+                float: left;
+                background: yellowgreen;
+            }
+        }
+        @media (min-width:1200px) and (max-width:1600px) {
+            .list>li{
+                width: 600px;
+                height: 12.5rem;
+                border:1px solid #000;
+                float: left;
+                background: #ccc;
+            }
+        }
+        @media (min-width:1600px) and (max-width:1900px) {
+            .list>li{
+                width: 800px;
+                height: 12.5rem;
+                border:1px solid #000;
+                float: left;
+                background: skyblue;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+</body>
+</html>

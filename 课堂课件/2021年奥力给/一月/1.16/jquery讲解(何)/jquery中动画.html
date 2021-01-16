@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div class="box" style="width: 200px;height: 200px;background:gold;"></div>
+    <script>
+        // $('.box').click(function(){
+        //     // JQuery自带动画
+        //     $(this).animate({
+        //         width:400,
+        //         height:400,
+        //         opacity:.3
+        //     })
+        // })
+
+        $('.box').hover(function(){
+            // JQuery自带动画
+            $(this).animate({
+                width:400,
+                height:400,
+                opacity:.3
+            })
+        },function(){
+            $(this).animate({
+                width:200,
+                height:200,
+                opacity:1
+            })
+        })
+
+    </script>
+</body>
+</html>

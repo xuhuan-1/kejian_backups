@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组方法</title>
+	</head>
+	<style>
+	</style>
+	<body>
+		<input type = "button" value = "关灯" id = "kg" />
+		<hr>
+		<button id = "big" onclick = "fangd()">放大</button>
+		<button id = "small" onclick = "suox()">缩小</button>
+		<p id = "textdd">曾今沧海难为水</p>
+		<script type="text/javascript">
+		//开关练习
+			var onoff = document.getElementById("kg");
+			onoff.onclick = function (){
+				if(onoff.value == "关灯"){
+					document.body.style.background = "black";
+					onoff.value = "开灯";
+				}else{
+					document.body.style.background = null;
+					onoff.value = "关灯";
+				}
+			}
+		//字体放大缩小练习
+			var fd = document.getElementById("big");
+			var sx = document.getElementById("small");
+			var msg = document.getElementById("textdd");
+			var i = 16;
+			/*写法一：直接操作点击事件
+			fd.onclick = function (){
+				//i = i + 2;
+				i += 2;
+				msg.style.fontSize = i+"px";
+			}
+			sx.onclick = function (){
+				//i = i - 2;
+				i -= 2;
+				if(i <= 12){
+					i = 12;
+				}
+				msg.style.fontSize = i+"px";
+			}*/
+			//写法二：必须结合标签内的 onclick = "函数名()"
+			function fangd(){
+				//i = i + 2;
+				i += 2;
+				msg.style.fontSize = i+"px";
+			}
+			function suox(){
+				//i = i - 2;
+				i -= 2;
+				if(i <= 12){
+					i = 12;
+				}
+				msg.style.fontSize = i+"px";
+			}
+		</script>
+	</body>
+</html>

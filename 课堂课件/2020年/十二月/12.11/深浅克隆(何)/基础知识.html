@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 浅克隆：
+         *    其实就是原来的数据复制一份，只是复制了值，地址没有变化
+         *    修改克隆之后的数据，能影响原来的数据
+         *    Object.create():浅克隆【对源对象的引用】
+         *    Object.assign():第一层数据深克隆，嵌套数据是浅克隆
+         *                     第一个参数是目标对象，第二个参数
+         *                     是原对象
+         *                  作用：将原对象赋值一份到目标对象中，返回目标对象
+         * 深克隆：
+         *    完全复制一份原数据，在内存中开辟一个新的内存空间，修改克隆之
+         *    后的数据，不会影响原数据
+         *    
+         *    最粗暴的深克隆：缺陷
+         *      JSON.parse(JSON.stringify(obj)):不能克隆undefined、function、Symbol、 BigInt()
+         *      JSON.parse(JSON.stringify(obj)):原数据中有NaN、+Infinity、-Infinity都会转成null
+         *      JSON.parse(JSON.stringify(obj)):原数据中有 Regexp 、 Error()，会被转换为空对象  {}
+         *      JSON.parse(JSON.stringify(obj)):如果原数据中有构造函数生成的数据，丢失当前构造函数的constructor
+         *      JSON.parse(JSON.stringify(obj)):如果原数据中有日期对象【Date】，则会转换成日期字符串
+        */
+
+            // throw new Error(err)
+        
+        // let obj ={
+        //     name:'zimo',
+        //     age:20,
+        //     fn:{
+        //         name:'jj',
+        //         fn:new Date(),
+        //         age:10,
+        //         un:undefined,
+        //         nu:null,
+        //         fn:() =>{},
+        //         [Symbol('A')]: 100
+        //     },
+        //     un:undefined,
+        //     nu:null
+        // }
+        // let a = JSON.parse(JSON.stringify(obj))
+        // a.fn.name = 'oo'
+        // console.log(a,obj)
+        // let s = Object.assign({},obj)
+        // s.name = '哈哈'
+        // s.fn.name = 'll'
+        // console.log(s,obj)
+
+
+        let obj = {
+            time:new Date()
+        }
+        let s = JSON.parse(JSON.stringify(obj))
+        s.time + 1;
+        console.log(s,obj)
+
+
+    
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wer worker</title>
+</head>
+<body>
+    <script>
+        // let worker = new Worker('./index.js');
+        // let result = {};
+        // worker.addEventListener('message',e=>{
+        //     console.log(e.data);
+        // });
+        // worker.postMessage(result);
+        //终止线程
+        //worker/terminate();
+
+
+
+
+
+
+
+
+        let worker = new Worker('./index.js');
+        let result = {};
+        worker.addEventListener('message',(e)=>{
+            console.log(e.data);
+        });
+        worker.postMessage(result);
+        //终止线程
+        worker.terminate();
+    </script>
+</body>
+</html>

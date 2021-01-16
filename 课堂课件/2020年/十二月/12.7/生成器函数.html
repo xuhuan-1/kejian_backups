@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封装生成器函数</title>
+</head>
+<body>
+    <script>
+        // function* gen(){
+        //     yield 10;
+        //     yield 20;
+        //     yield 30;
+        // }
+        // let g = gen();
+        // let a = g.next();
+        // let b = g.next();
+        // let c = g.next();
+        // let d = g.next();
+        // console.log(a,b,c,d);
+
+//封装生成器函数
+        // function createFun(items){
+        //     let index = 0;
+        //     return {
+        //         next(){
+        //             let done = (index >= items.length);
+        //             let value = !done?items[index++]:undefined;
+        //             return {
+        //                 value:value,
+        //                 down:done
+        //             }
+        //         }
+        //     }
+        // }
+
+        // let arr = [10,20,30,40,50];
+        // let a = createFun(arr);
+        // console.log(a.next());
+        // console.log(a.next());
+        // console.log(a.next());
+        // console.log(a.next());
+        // console.log(a.next());
+        // console.log(a.next());
+
+
+        // function createFun(items){
+        //     let index = 0;
+        //     return {
+        //         next(){
+        //             let down = (index >= items.length);
+        //             let value = !down?items[index++]:undefined;
+        //             return {
+        //                 value:value,
+        //                 down:down
+        //             }
+        //         }
+        //     }
+        // }
+        // let arr = [1,2,3,4,5,6,7];
+        // let a = createFun(arr);
+        // console.log(a.next());
+        // console.log(a.next());
+        // console.log(a.next());
+        // console.log(a.next());
+        // console.log(a.next());
+        // console.log(a.next());
+        // console.log(a.next());
+        // console.log(a.next());
+
+        function createFun(times){
+            let index = 0;
+            return {
+                next(){
+                    let down = (index >= times.length);
+                    let value = !down?times[index++]:undefined;
+                    return {
+                        value:value,
+                        down:down
+                    }
+                }
+            }
+        }
+        let s = createFun([1,2,3,4,5]);
+        console.log(s.next());
+        console.log(s.next());
+        console.log(s.next());
+        console.log(s.next());
+        console.log(s.next());
+        console.log(s.next());
+        
+        
+        
+
+
+    </script>
+</body>
+</html>

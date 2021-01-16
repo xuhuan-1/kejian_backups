@@ -1,0 +1,102 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>简单的轮播图</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			li{
+				list-style:none;
+			}
+			.box{
+				position:relative;
+				width:400px;
+				height:300px;
+				margin:0 auto;
+				overflow:hidden;
+			}
+			.box ul{
+				position:absolute;
+				width:2000px;
+			}
+			.box ul li{
+				float:left;
+			}
+			.but1{
+				position:absolute;
+				height:60px;
+				width:30px;
+				top:100px;
+				background:pink;
+			}
+			.but2{
+				position:absolute;
+				height:60px;
+				width:30px;
+				top:100px;
+				left:370px;
+				background:pink;
+			}
+		</style>
+	</head>
+	<body>
+		<button onclick="start()">开始</button>
+		<button onclick="stop()">停止</button>
+		<div class="box">
+			<ul>
+				<li><img src="img/1.jpg"/></li>
+				<li><img src="img/2.jpg"/></li>
+				<li><img src="img/3.jpg"/></li>
+				<li><img src="img/4.jpg"/></li>
+				<li><img src="img/5.jpg"/></li>
+			</ul>
+			<button onclick="dj1()" class="but1">《</button>
+			<button onclick="dj2()" class="but2">》</button>
+		</div>
+		<script>
+			var query = document.querySelector('ul');
+			var time = null;
+			var i = 0;
+			function start(){//'开始'按钮事件
+				clearInterval(time);
+				time = setInterval (function (){
+					
+					query.style.left = -400*i+'px';
+					i++;
+					if(i == 5){
+						i = 0;
+					}
+				},1000)
+			}
+			function stop(){//'停止'按钮事件
+				clearInterval(time);
+			}
+			var i1 = 0;
+			function dj1(){//'《'按钮事件
+				i1++;
+				if(i1 == 5){
+					i1 = 0;
+				}
+				query.style.left = -400*i1+'px';
+				//console.log(i1 + "<");
+			}
+			function dj2(){//'》'按钮事件
+				i1--;
+				if(i1 == -1){
+					i1 = 4;
+				}
+				query.style.left = -400*i1+'px';
+				//console.log(i1 + ">");
+			}
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

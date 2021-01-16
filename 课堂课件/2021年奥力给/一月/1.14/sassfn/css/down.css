@@ -1,0 +1,12 @@
+.public, #box .nav {
+  width: 100px;
+  height: 100px;
+  margin-top: 5px;
+  border: 1px solid;
+}
+
+#box .box3 {
+  height: 100px;
+  width: 100px;
+  border: 1px solid red;
+}

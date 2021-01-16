@@ -1,0 +1,377 @@
+html
+	什么是html? hype text markup lanuage
+		静态页面
+		超文本标记语言
+			标记=标签:作用：修饰文本语义
+				标签一般成对出现，不区分大小写，提倡小写
+				前一个成为开始标签(开放标签) 后一个成为结束标签(闭合标签)，结束标签要加/
+				html对空格和换行以及缩进 不敏感，他会将其转行成 一个空格 （空白折叠）
+		基本的结构
+			<html>
+				<head></head>
+				<body></body>
+			</html>
+		基本标签	
+			p、h标签 都是块元素:独占一行、可以设置宽度和高度
+			img、a...行内元素：不能独占一行，不可以设置宽度和高度
+		图片标签：
+			img 图片标签：单标签 <img 属性="属性值"/>
+				属性：
+					src 图片的路径
+						路径：
+							1、相对路径
+								同级查找
+								子集查找
+								上级查找
+							2、绝对路径
+								https://....... 
+								file:///........
+					width 宽度 不写单位
+					height 高度 不谢单位
+					title 鼠标悬停文本
+					alt	图片替换的文本	
+		超链接 
+			a 双标签 行内元素 <a>内容</a>
+				属性：
+					href 要跳转的页面路径 网址必须加上 https		
+					title 鼠标悬停文本
+					target 默认是在当前窗口中打开页面，将值设置为_blank就可以在新的窗口中打开页面
+			锚点的设置以及跳转
+				锚点的设置：
+					1、在对应的标签内部添加id属性，id属性值自定义，我们称属性值为 id名
+					2、在对应的标签上部添加a标签，并将href属性换成name属性，
+						name属性值自定义，我们将name属性值成为name名
+				锚点跳转：
+					使用超链接，将href值改为#id名/#name名
+		列表：
+			无序列表
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			有序列表
+				<ol>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ol>
+			自定义列表
+				<dl>
+					<dt>表头</dt>
+					<dd>内容</dd>
+					<dd>内容</dd>
+					<dd>内容</dd>
+					<dd>内容</dd>
+				</dl>
+		表格：
+			table	
+				th 表头	
+				tr 行
+				td 列
+			属性：
+				border 默认为0
+				cellspacing 单元格与单元格之间的距离
+				cellpadding 文本与单元格之间的距离
+				valign垂直对齐方式:middle垂直居中（默认） top顶部对齐 bottom底部对齐
+ 				align水平对齐方式：left左对齐 right右对齐 center水平居中
+			合并单元格:
+				colspan列合并   值是几就合并几个单元格
+				rowspan行合并	值是几就合并几个单元格
+		表单：
+			form表单 双标签 <form>内容</form>
+			表单元素：
+				input 单标签 <input />
+					属性：type 定义input类型
+								type属性值：
+									text 默认为
+									password 密码框
+									按钮：
+										button 普通按钮
+										submit 提交按钮
+										reset  重置按钮
+										image、src 图片按钮
+									单选框
+										radio  属性：checked
+									复选框
+										checkbox 属性：checked
+									文件域 file
+									email 检验是都符合邮箱格式
+									url   检验是否符合网址格式
+									number输入数值域中的某个数值
+										min最小值
+										max最大值
+										step数字间隔
+										value默认值
+									range 输入数值域中的某个数值:表现方式为滚动条
+									date  日期 年月日
+									month 日期 年月
+									week  周   年第几周
+									time  时间 时 分
+									datetime-local:年月日 时分
+									color 颜色
+									search 搜索框
+									tel   手机
+										
+						  name 初始名
+						  value	初始值
+						  size 初始宽度
+						  maxlength 最大输入字符数
+						H5新增表单属性
+						  placeholder 提示文本
+						  required 内容不能为空
+						  autofocus 自动获取焦点
+						  autocomplete 隐藏历史输入记录 off关闭历史，on默认 开启历史
+						  multiple 上传多文件
+						
+				textarea 文本域 双标签
+					属性：
+						rows控制行数
+						cols控制列
+						resize 文本域拖拽 设置none禁止拖拽
+							
+				select 下拉列表 双标签
+					属性：selected="selected" 默认选项
+				button 按钮 双标签
+css样式：
+	引入方式：
+		1、行内样式
+			在标签中的style属性中书写样式的生命
+		2、内部样式
+			写在head中的style标签中
+		3、外部样式
+			写在外部的css文件中，需要引入到相应的html页面中
+			引入方式：<link type="text/css" href="css文件的路径" rel="stylesheet" />
+		选择器：
+			标签选择器
+				语法：
+					标签{
+						样式的生命1;
+						样式的生命2;....
+					}
+			类选择器
+				语法：
+					.类名{
+						样式1;
+						样式2;....
+					}
+			id选择器
+				语法：
+					#id名{
+						样式1;
+						样式2;....
+					}
+			高级选择器：
+				并集选择器
+					语法：
+						选择器1,选择器2,....选择器N{
+							样式1;
+							样式2;....
+						}
+				交集选择器
+					语法：
+						选择器1选择器2...选择器N{
+							样式1;
+							样式2.....
+						}
+				后代选择器
+					语法：
+						选择器1 选择器2 ....选择器N{
+							样式1;
+							样式2.....
+						}
+	字体样式：
+		字体颜色: color:red;
+			颜色的取值方式：
+				1、颜色名词：red、pink....
+				2、RGB(0~255,0~255,0~255) RGB(255,255,255)
+				   rgba(255,0,0,.3)
+				3、十六进制取色：
+						三组两位十六进制的数组来表示颜色
+						0 1 2 3 4 5 6 7 8 9 a b c d e f 
+					color:#aabbcf;		
+			字体大小：
+				font-size:16px;
+			字体类型：
+				font-family:宋体,微软雅黑,sans-serif;
+				字体分类：
+					衬线字体
+						serif
+					非衬线字体
+						sans-serif
+					等宽字体
+						monospace
+					草书字体
+						cursive
+					虚幻字体
+						fantasy
+			字体粗细：font-weight
+					可选值：
+						lighter 更细 100
+						normal  正常 400
+						bold    加粗 700 
+						bolder	更粗 900
+			字体风格：
+				font-style:
+					可选值：
+						normal 正常
+						italic 斜体
+						oblique倾斜
+			简写：
+				font:字体粗细 字体风格 字体大小 字体类型;
+				font:900 italic 16px 宋体;
+	文本样式：
+		水平对齐方式：
+			text-align:
+				可选值：
+					left 左对齐
+					right 右对齐
+					center 居中对齐
+					justify 两端对齐
+		缩进 1em = 1font-size 
+			text-indent:2em;首行缩进
+			text-indent:16px;
+			
+			text-indent:-9999px;搜索引擎可以检索的到，但是用户不会看到
+		行高：行间距=行高-字体大小;
+			line-height:1.5;
+		字符间距：letter-spacing
+		单词间距：word-spacing
+		字母大小写:text-transform:
+			可选值：
+				none 默认
+				capitalize 首字母大写
+				uppercase 所有字母大写
+				lowercase 所有字母小写
+		vertical-align:
+			可选值：
+				top 顶部对齐
+				middle 垂直居中
+				bottom 底部对齐
+背景样式：
+	background-color:颜色; 			背景颜色
+	background-image:url(图片路径)  背景图片
+	background-position:x y;		背景图片的位置
+		取值：
+			x，y可以写数值px
+				background-position:100px 20px;
+			可以写 方位名词 left/right/center top/center/bottom
+				background-position:left bottom;	
+			可以写：百分比
+				background-position:30% 50%;	
+	background-repeat:repeat;		背景图片是否平铺 默认平铺
+		可选值：
+			默认 平铺 repeat	
+			不平铺 no-repeat
+			x轴平铺 repeat-x
+			y轴平铺 repeat-y
+	背景简写：
+		background:颜色 url(图片路径) x y 是否平铺; 
+		
+		列表样式：
+		list-style-type:none;没有样式
+			可选值：decimal数字
+					upper-alpha 大写ABC
+					lower-alpha 小写adc
+					upper-roman 大写I II III
+					lower-roman 小写i ii iii
+					square 方块
+					disc   实心圆
+					circle 空心圆
+		列表图片
+		list-style-image:url(图片路径);
+		列表样式以及图片的位置
+		list-style-position:outside(默认)/inside
+	伪类选择器：
+		a:link 未访问过的超链接样式
+		a:visited 访问过的超链接样式
+			以上两个只能用在超链接中，visited只能修改字体颜色，
+			其他样式不能修改，可以通过link来修改
+		a:hover 鼠标悬浮其上时超链接的样式
+		a:active鼠标单击未释放时超链接的样式
+			可以用在其他任意标签中
+			以上四个伪类的使用顺序：link visited hover active
+									L V O E
+		input:focus 表单获取焦点后的样式
+			用在表单中
+	鼠标样式
+		cursor
+			default 默认光标	
+			text	文本指示
+			pointer	超链接指针
+			wait	等待
+			help	帮助
+			crosshair	十字状
+	盒子：
+		标准盒模型
+			所有标签全部都是盒子：
+			内容区：
+				宽度：width
+				高度：height
+			内边距的设置方式：
+				padding-top:像素;
+				padding-right:像素;
+				padding-bottom:像素;
+				padding-left:像素;
+				
+				padding:10px 20px 30px 40px;
+				padding:10px 20px 30px;
+				padding:10px 20px;
+				padding:10px;
+			外边距	
+				margin-top:像素;
+				margin-right:像素;
+				margin-bottom:像素;
+				margin-left:像素;
+			
+				margin:10px 20px 30px 40px;
+				margin:10px 20px 30px;
+				margin:10px 20px;
+				margin:10px;
+				
+				注意：父元素和子元素垂直外边距重叠问题：当调整子元素的垂直外边距时，父元素会一起移动
+						因为浏览器分不清是谁的外边距。
+						1、为父元素添加边框
+			边框的设置：
+				border-top/right/bottom/left-width:1px;
+				border-top/right/bottom/left-color:red;
+				border-top/right/bottom/left-style:solid;
+				
+				border-top:1px red dashed;
+				border-right:1px red double;
+				border-bottom:1px red solid;
+				border-left:1px red dotted;
+	
+				border-width:10px 20px 30px 40px;
+				border-style:solid double;
+				border-color:red;
+	
+				border:1px red solid;
+		块元素垂直方向的外边距重叠：
+		行内元素的盒模型：
+			内容区：不能设置宽和高  大小被内容撑开
+			边框：可以设置。垂直方向的边框不影响页面布局
+			内边距: 可以设置 垂直方向不会影响页面布局
+			外边距：可以设置水平方向，垂直方向不可以设置
+				水平外边距重叠之后相互叠加
+		
+		属性：
+			overflow 处理内容溢出
+				可选值：
+					默认值 visible 不做任何处理
+					hidden 修剪
+					scroll 添加一个滚动条.不管内容是否溢出滚动条一直都在
+					auto   自动添加
+			
+			display:
+				none 元素隐藏（消失）
+				block 块元素 独占一行，可以设置宽和高
+				inline 行内元素 水平排列不可以设置宽和高
+				inline-block 行内块元素 不能独占一行，可以设置宽和高
+				
+				
+				
+				

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         *  async和await: 后面返回的是Promise对象或者值
+         *  
+         *  当事件循环执行的过程中，遇到await的时候，立马返回结果，然后之后的
+         *  同步代码都扔到微任务队列去，宏任务扔到下一个宏任务中去
+         * 
+         *  如果async中没有遇到await的时候，则当同步代码执行
+         * 
+        */
+// 案例一
+        // console.log('1');  
+        // async function async1(){
+        //     console.log('2')
+        //     await async2()
+        //     console.log('3')
+        //     setTimeout(() =>{ // 第二次执行的宏任务
+        //         console.log('10')
+        //     },10)
+        // }
+        // async function async2(){
+        //     console.log('4')
+        // }
+        // console.log('5')
+        // async1();
+        // setTimeout(function(){ // 第一次执行时的宏任务
+        //     console.log('6') 
+        // })  
+        
+        // new Promise(function(resolve){
+        //     console.log('7')
+        // resolve();
+        // }).then(function(){
+        //     console.log('8')
+        // })
+        // console.log('9')
+        //1 5 2 4 7 9 3 8 6 10
+
+        async function async1() {
+            console.log('1');
+            await async2();
+            console.log('2');
+            await async2();
+            console.log('3');
+        }
+        async function async2() {
+            console.log('4');
+        }
+        console.log('5');
+        setTimeout(function() {
+            console.log('6');
+        }, 0)
+        async1();
+        new Promise(function(resolve) {
+            console.log('7');
+            resolve();
+        }).then(function() {
+            console.log('8');
+        });
+        console.log('9');
+        //5 1 4 7 9 2 4 8 3 6
+
+
+
+
+
+
+
+
+         // 5  1  4  7  9  2  4  8  3  6
+    </script>
+</body>
+</html>

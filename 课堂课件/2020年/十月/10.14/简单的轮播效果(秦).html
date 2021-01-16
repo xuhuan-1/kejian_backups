@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+  		<title>简单的图片轮播</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			.box{
+				margin:125px auto 0;
+				position:relative;
+				overflow:hidden;
+			}
+			ul{
+				position:absolute;
+			}
+			li{
+				list-style:none;
+				float:left;
+			}
+		</style>
+ </head>
+ <body>
+	<button onclick = "begin()">开始</button>
+	<div class= "box">
+		<ul>
+			<li><img src = "img/1.jpg" /></li>
+			<li><img src = "img/2.jpg" /></li>
+			<li><img src = "img/3.jpg" /></li>
+			<li><img src = "img/4.jpg" /></li>
+			<li><img src = "img/5.jpg" /></li>
+		</ul>
+	</div>
+    <script type="text/javascript">
+		//获取元素
+		var box = document.querySelector(".box");
+		var ul_box = box.querySelector("ul");
+		var li_box = ul_box.querySelectorAll("li");
+		//声明定时器
+		var timers = null;
+		//获取图片宽度：offsetWidth
+		var box_liall = document.querySelector("img");
+		var width_img,height_img,i = 0;
+		window.onload = function (){//页面的DOM元素加载完成之后执行的事件
+			//获取图片宽度：400px图片高度：300px
+			width_img = box_liall.offsetWidth;
+			height_img = box_liall.offsetHeight;
+			//给最外层盒子设置宽高
+			box.style.width = width_img + "px";
+			box.style.height = height_img + "px";
+			//给ul设置宽度：400px*当前li的个数
+			ul_box.style.width = width_img * li_box.length + "px";
+		}
+		//定时器
+		timers = setInterval(function (){
+			i++;
+			if(i == li_box.length){
+				i = 0;
+			}
+			ul_box.style.left = -i*width_img+"px";
+		},1000)
+		
+	</script> 
+ </body>
+</html>

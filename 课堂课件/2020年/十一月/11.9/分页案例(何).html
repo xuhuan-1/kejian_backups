@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分页</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 为了拿后台返回的真实数据，然后渲染到页面上 -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #box {
+            width: 80%;
+            height: 600px;
+            margin: 0 auto;
+            padding-top: 40px;
+        }
+
+        .content {
+            width: 100%;
+            height: 566px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+
+        img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .list {
+            width: 100%;
+            height: 100%;
+        }
+
+        .btn-groups {
+            width: 100%;
+            height: 100px;
+            float: left;
+        }
+
+        .btns {
+            width: 80%;
+            height: 100px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        span {
+            line-height: 100px;
+        }
+
+        .page-size {
+            height: 30px;
+            display: flex;
+        }
+        .searchNum{
+            margin:0px 20px;
+            width:120px;
+            height:40px;
+        }
+        .num {
+            display: block;
+            width: 30px;
+            cursor: pointer;
+            height: 30px;
+            margin: 0px 6px;
+            line-height: 30px;
+            text-align: center;
+            border: 2px solid #ccc;
+        }
+
+        .prve {
+            cursor: pointer;
+        }
+
+        .next {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="content">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">分页实现</div>
+                <!-- Table -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>货物ID</td>
+                            <td>示例图</td>
+                            <td>名称</td>
+                            <td>价格</td>
+                            <td>描述</td>
+                        </tr>
+                    </thead>
+                    <!-- 动态数据，不能写死，根据后台数据变化而进行渲染页面 -->
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="btn-groups">
+            <div class="btns">
+                <span class="prve">上一页</span>
+                <!-- 分页按钮组合也必须是动态的，根据后台数据的多少进行自动分页数 -->
+                <span class="page-size">
+                    <!-- 根据后台数据动态创建页码 -->
+                </span>
+                <span class="next">下一页</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        /*
+          去node.js官网下载 
+          1、win + r 打开输入  cmd  按回车  输入node -v  有版本号就成功了
+          
+          createDocumentFragment()：创建一个DOM片段
+          分页分析：
+           需求：每页显示5条数据  所有的页码内数据条数加起来 <= 总数据  
+           1、页码点击功能，展示当前点击页码的数据
+           2、上一页功能，上一页结束条件，当到第一页的时候，则直接return
+           3、下一页功能，获取最后一个页码的innerText
+           4、默认显示第一页数据
+          
+        */
+
+        // ``：模板字符串
+        // var str = 'zimo';
+        // var newStr = `hello,${str}`;
+        
+
+        // 1、获取需要操作的元素
+        var tbody = document.querySelector('tbody'),
+            prve = document.querySelector('.prve'),
+            next = document.querySelector('.next'),
+            pageSize = document.querySelector('.page-size'),
+            num = 1;
+            getData(num);
+        function getData(page){
+            // http://localhost:3001/page?page=1
+            // http://localhost:3001/page?page=2
+            // http://localhost:3001/page?page=3
+            // http://localhost:3001/page?page=4
+            axios.get('http://localhost:3001/page?page='+page).then(res =>{
+                // 当前页所需要渲染的5条数据
+                var list = res.data.glist;
+                console.log(list);
+                // 总数据，用于动态创建渲染页码
+                var tatal = res.data.totleNum;
+            // 创建展示数据解构
+                for(var i=0;i<list.length;i++){
+                    var tr = document.createElement('tr');
+                    tr.innerHTML = `<td>${list[i].id}</td><td><img src='${list[i].goodimg}' /></td><td>${list[i].goodname}</td><td>${list[i].price}</td><td>${list[i].info}</td>`;
+                    tbody.appendChild(tr);       
+                }
+            // 创建页码       
+                // 创建DOM片段
+                var flagDom = document.createDocumentFragment();
+                for(var i = 0;i < Math.ceil(tatal/5);i++){
+                    var span = document.createElement('span');
+                    span.className = 'num';
+                    span.innerText = i +1;
+                    flagDom.appendChild(span);
+                }
+                pageSize.appendChild(flagDom);
+                
+            })
+        }
+    
+
+            
+    </script>
+</body>
+</html>

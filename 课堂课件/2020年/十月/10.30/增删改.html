@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>增删改</title>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<div id="add">
+			<div id="box_1">
+				<table border="2">
+					<tr><caption>用户注册信息</caption></tr>
+					<tr>
+						<td>用户名</td>
+						<td><input type="text" placeholder="请输入用户名"/></td>
+					</tr>
+					<tr>
+						<td>密码</td>
+						<td><input type="password" placeholder="请输入密码"/></td>
+					</tr>
+					<tr>
+						<td>籍贯</td>
+						<td>
+							<select>
+								<option selected="selected">请选择</option>
+								<option>淮北</option>
+								<option>合肥</option>
+								<option>阜阳</option>
+								<option>蚌埠</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>兴趣</td>
+						<td>
+							<input type="checkbox" value="篮球"/>篮球
+							<input type="checkbox" value="足球"/>足球
+							<input type="checkbox" value="书法"/>书法
+							<input type="checkbox" value="音乐"/>音乐
+							<br/>
+							<input type="checkbox" value="绘画"/>绘画
+							<input type="checkbox" value="散打"/>散打
+							<input type="checkbox" value="瑜伽"/>瑜伽
+							<input type="checkbox" value="其他"/>其他
+						</td>
+					</tr>
+					<tr>
+						<td>政治面貌</td>
+						<td>
+							<input type="radio" value="党员" name="1"/>党员
+							<input type="radio" value="团员" name="1"/>团员
+							<input type="radio" value="群众" name="1"/>群众
+						</td>
+					</tr>
+					<tr align="center">
+						<td colspan="2">
+							<input type="button" value="提交"/>
+							<input type="button" value="重置"/>
+							<input type="button" value="更新" id="gx"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<table border="2" id="table_2">
+				<thead>
+					<tr>
+						<td width="70">选中</td>
+						<td width="100">用户名</td>
+						<td width="100">密码</td>
+						<td width="100">籍贯</td>
+						<td width="270">兴趣</td>
+						<td width="100">政治面貌</td>
+						<td width="150">操作</td>
+					</tr>
+					<tr>
+						<td>全选
+							<input type="checkbox"/>
+						</td>
+						<td colspan="6" align="center">
+							<input type="button" value="选中删除"/>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+			</table>
+		</div>
+		<script>
+			function $(id){
+				return document.getElementById(id);
+			}
+			//更新按钮隐藏
+			$('gx').style.display = 'none';
+			var rowindex = null;
+			var get_select = null,get_hobby = '';
+			//下拉框
+			var allselect = $('box_1').querySelectorAll('option');
+			//复选框
+			var allcheckbox = $('box_1').querySelectorAll('input[type="checkbox"]');
+			//政治面貌
+			var allradio = $('box_1').querySelectorAll('input[type="radio"]');
+			$('add').addEventListener('click',(eve)=>{
+				var e = eve.event||window.event;
+				var now_Elemect = eve.target||eve.srcElement;
+				//政治面貌
+				get_radio = null;
+				//获取用户名
+				var get_name = $('box_1').querySelector('input[type="text"]').value;
+				//获取密码
+				var get_password = $('box_1').querySelector('input[type="password"]').value;
+				//获取籍贯
+				for(var i=0;i<allselect.length;i++){
+					if(allselect[i].selected){
+						get_select = allselect[i].value;
+					}
+				}
+				get_hobby = '';//爱好制空
+				//获取兴趣
+				for(var i=0;i<allcheckbox.length;i++){
+					if(allcheckbox[i].checked){
+						get_hobby += allcheckbox[i].value;
+					}
+				}
+				//获取政治面貌
+				for(var i=0;i<allradio.length;i++){
+					if(allradio[i].checked){
+						get_radio = allradio[i].value;
+					}
+				}
+				//提交按钮
+				if(now_Elemect.value == '提交'){
+					//创建
+					if(get_name == false||get_password == ''||allselect[0].selected == true||get_hobby == ''||get_radio == null){
+						alert('您的信息输入有误！');
+						return;
+					}
+					var create_tr = document.createElement('tr');
+					create_tr.innerHTML = '<td><input type="checkbox"/></td><td>'+get_name+'</td><td>'+get_password+'</td><td>'+get_select+'</td><td>'+get_hobby+'</td><td>'+get_radio+'</td><td><input type="button" value="删除"/><input type="button" value="修改"/></td>';
+					$('table_2').querySelector('tbody').appendChild(create_tr);
+					zk();//所以值制空方法
+				}
+				//删除按钮
+				if(now_Elemect.value == '删除'){
+					now_Elemect.parentNode.parentNode.remove();
+					zk();//所以值制空方法
+					//按钮显示
+					$('box_1').querySelectorAll('input[type="button"]')[0].style.display = 'inline-block';
+					$('box_1').querySelectorAll('input[type="button"]')[1].style.display = 'inline-block';
+				}
+				//修改按钮
+				if(now_Elemect.value == '修改'){
+					//更新按钮显示
+					$('gx').style.display = 'inline-block';
+					$('box_1').querySelector('caption').innerText = '用户修改信息';
+					rowindex = now_Elemect.parentNode.parentNode.rowIndex;
+					var now_td = now_Elemect.parentNode.parentNode.children;
+					//用户名
+					$('box_1').querySelector('input[type="text"]').value = now_td[1].innerText;
+					//密码
+					$('box_1').querySelector('input[type="password"]').value = now_td[2].innerText;
+					//籍贯
+					for(var i=0;i<allselect.length;i++){
+						if(allselect[i].value == now_td[3].innerText){
+							allselect[i].selected = true;
+						}
+					}
+					//兴趣
+					for(var i=0;i<allcheckbox.length;i++){
+						if(now_td[4].innerText.indexOf(allcheckbox[i].value) >= 0){
+							allcheckbox[i].checked = true;
+						}
+					}
+					//政治面貌
+					for(var i=0;i<allradio.length;i++){
+						if(allradio[i].value == now_td[5].innerText){
+							allradio[i].checked = true;
+						}
+					}
+					//按钮隐藏
+					$('box_1').querySelectorAll('input[type="button"]')[0].style.display = 'none';
+					//$('box_1').querySelectorAll('input[type="button"]')[1].style.display = 'none';
+				}
+				//更新按钮
+				if(now_Elemect.value == '更新'){
+					//更新后文本框等...内容不可以为空
+					if(get_name == false||get_password == ''||allselect[0].selected == true||get_hobby == ''||get_radio == null){
+						alert('您修改的信息有误！');
+						return;
+					}
+					$('box_1').querySelector('caption').innerText = '用户注册信息';
+					var sky = '';
+					var table_2 = $('table_2').querySelector('tbody').querySelectorAll('tr')[rowindex-2].querySelectorAll('td');
+					//用户名
+					table_2[1].innerText = $('box_1').querySelector('input[type="text"]').value;
+					//密码
+					table_2[2].innerText = $('box_1').querySelector('input[type="password"]').value;
+					//籍贯
+					for(var i=0;i<allselect.length;i++){
+						if(allselect[i].selected){
+							table_2[3].innerText = allselect[i].value;
+						}
+					}
+					//兴趣
+					for(var i=0;i<allcheckbox.length;i++){
+						if(allcheckbox[i].checked){
+							sky += allcheckbox[i].value;
+							table_2[4].innerText = sky;
+						}
+					}
+					//政治面貌
+					for(var i=0;i<allradio.length;i++){
+						if(allradio[i].checked){
+							table_2[5].innerText = allradio[i].value;
+						}
+					}
+					zk();//所以值制空方法
+					//按钮显示
+					$('box_1').querySelectorAll('input[type="button"]')[0].style.display = 'inline-block';
+					$('box_1').querySelectorAll('input[type="button"]')[1].style.display = 'inline-block';
+					//更新按钮隐藏
+					$('gx').style.display = 'none';
+				}
+				//重置按钮
+				if(now_Elemect.value == '重置'){
+					zk();//所以值制空方法
+				}
+				//选择删除后单选框值为空
+				var head_checkbox = $('table_2').querySelector('input[type="checkbox"]');
+				//选中删除按钮
+				if(now_Elemect.value == '选中删除'){
+					var a_tr = $('table_2').querySelector('tbody').querySelectorAll('input[type="checkbox"]');
+					for(var i=0;i<a_tr.length;i++){
+						if(a_tr[i].checked){
+							a_tr[i].parentNode.parentNode.remove();
+							zk();//所以值制空方法
+							//按钮显示
+							$('box_1').querySelectorAll('input[type="button"]')[0].style.display = 'inline-block';
+							$('box_1').querySelectorAll('input[type="button"]')[1].style.display = 'inline-block';
+							$('box_1').querySelectorAll('input[type="button"]')[2].style.display = 'none';
+						}
+					}
+					head_checkbox.checked = false;//单选框值为空
+				}
+				//全选按钮事件
+				var a_tr = $('table_2').querySelector('tbody').querySelectorAll('input[type="checkbox"]');
+				head_checkbox.addEventListener('click',()=>{
+					for(var i=0;i<a_tr.length;i++){
+						a_tr[i].checked = head_checkbox.checked?true:false;
+						//
+						a_tr[i].addEventListener('click',(e)=>{
+							e.event||window.event;
+							var now = e.target||e.srcElement;
+							now.checked == false?head_checkbox.checked = false:'';
+						})
+					}
+				})
+			})
+			//函数封装一个所以值制空方法
+			function zk(){
+				//用户名制空
+				var get_name = $('box_1').querySelector('input[type="text"]').value = null;
+				//密码制空
+				var get_password = $('box_1').querySelector('input[type="password"]').value = null;
+				//下拉框制空
+				for(var i=0;i<allselect.length;i++){
+					allselect[i].selected = false;
+				}
+				//兴趣制空
+				for(var i=0;i<allcheckbox.length;i++){
+					allcheckbox[i].checked = false;
+				}
+				//政治面貌制空
+				for(var i=0;i<allradio.length;i++){
+					allradio[i].checked = false;
+				}
+			}
+		</script>
+	</body>
+</html>

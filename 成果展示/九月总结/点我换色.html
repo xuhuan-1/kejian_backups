@@ -1,0 +1,54 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>点我换色</title>	
+	</head>
+	<body>
+		<button id="but" onclick="onc()">点我一哈页面换色</button><br/>
+		<input id="guan" type="button" onclick="off()" value="关灯">
+		<script>
+			//封装一个通过ID获取DOM元素方法
+			function ge(xc){
+				return document.getElementById(xc);
+			}
+			//封装一个随机颜色方法
+			function fun(){
+				var arr = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
+				var b = '#';
+				for(var i=0;i<6;i++){
+					b += arr[Math.floor(Math.random()*16)];
+				}
+				//document.body.style.background = b;
+				return b;//返回值
+			}
+			//按钮单击事件
+			var i = 30,i1 = 150,siz = 16;
+			function onc(){
+				i += 10;
+				i1 += 100;
+				siz += 5;
+				document.body.style.background = fun();//页面换色
+				ge('but').style.color = fun();//按钮换色
+				ge('but').style.height = i+"px";//高
+				ge('but').style.width = i1+"px";//宽
+				ge('but').style.fontSize = siz+"px";//按钮大小
+			}
+			//开关灯
+			function off(){
+				if(ge('guan').value == '关灯'){
+					document.body.style.background='black';
+					ge('guan').value = '开灯';	
+				}else{
+					document.body.style.background='#fff';
+					ge('guan').value = '关灯';
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+

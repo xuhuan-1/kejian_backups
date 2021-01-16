@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频2</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        .container{
+            position: relative;
+            width: 500px;
+            height: 490px;
+            margin: 0 auto;
+            margin-top: 30px;
+            /* border: 1px solid #cccccc; */
+        }
+        .bg-container{
+            height: 388px;
+            width: 100%;
+        }
+        .bj-container .imgs{
+            width: 100%;
+            height: 100%;
+            background-size: 100% 100%;
+        }
+        .controls{
+            position: relative;
+            width: 100%;
+            height: 100px;
+            background: #cccccc;
+            border: 1px solid #cccccc;
+            box-sizing: border-box;
+        }
+        .allTime{
+            width: 480px;
+            height: 10px;
+            margin: 0 auto;
+            margin-top: 20px;
+            background: #ffffff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .currentTime{
+            position: absolute;
+            left: 9px;
+            top: 23px;
+            width: 0px;
+            height: 4px;
+            background: #cc0033;
+            z-index: 99;
+            border-radius: 2px;
+        }
+        .control{
+            position: absolute;
+            bottom: 0px;
+            left: 10px;
+            width: 480px;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btns{
+            width: 100px;
+            height: 100%;
+            text-align: center;
+        }
+        .btns .btn {
+            width: 60px;
+            height: 90%;
+            background: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:focus,
+        .btn:active:focus,
+        .btn.active:focus,
+        .btn.focus,
+        .btn:active.focus,
+        .btn.active.focus{
+            outline:none;
+            border-color: transparent;
+            box-shadow: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bg-container">
+            <video class="video" src="../12.28/mp3/龙珠.mp4" width="500" height="400"></video>
+        </div>
+        <div class="controls" id="controls">
+            <!-- 总长度进度条 -->
+            <div class="allTime"></div>
+            <!-- 当前播放的进度条 -->
+            <div class="currentTime"></div>
+            <div class="control">
+                <div class="play-time">00:00</div>
+                <div class="btns">
+                    <button class="btn"></button>
+                </div>
+                <div class="all-time">5:00</div>
+                <button class="fullScreen btn">全屏</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 获取元素
+        //视频
+        let video = document.querySelector('.video'),
+        //当前播放的进度条
+        currentTime = document.querySelector('.currentTime'),
+        //播放暂停按钮的盒子
+        btns = document.querySelector('.btns'),
+        //播放暂停按钮
+        btn = document.querySelector('.btn'),
+        //当前播放时间
+        play_Time = document.querySelector('.play-time'),
+        //视频总长度进度条
+        all_Time = document.querySelector('.allTime'),
+        //视频总时间
+        allTimes = document.querySelector('.all-time'),
+        //全屏按钮
+        fullScreen = document.querySelector('.fullScreen'),
+        //最大的盒子
+        container = document.querySelector('.container');
+        // console.log(currentTime);
+        // 获取元素的样式函数
+        function getStyle(ele,attr){
+            return ele.currentStyle?ele.currentStyle[attr]:getComputedStyle(ele,null)[attr];
+        }
+        // 初始化播放按钮
+        btn.style.background = 'url(../12.28/images/播放.png)';
+        btn.style.backgroundSize = '100% 100%';
+        // 播放视频
+        btn.addEventListener('click',e=>{
+            if(video.paused){
+                video.play();
+                btn.style.background = 'url(../12.28/images/暂停.png)';
+                btn.style.backgroundSize = '100% 100%';
+            }else{
+                video.pause();
+                btn.style.background = 'url(../12.28/images/播放.png)';
+                btn.style.backgroundSize = '100% 100%';
+            }
+        })
+        // 总时长加载完成之后可获取总时长
+        video.ontimeupdate = function(){
+            allTimes.innerText = formateDate(video.duration);
+        }
+        // timeupdate是 audio 和 video独有的事件  一旦audio和video中当前播放时间触发，进行监听
+        video.addEventListener('timeupdate',updateProgress);
+        //监听视频是否播放完成
+        video.addEventListener('ended',reset);
+        // 总长度进度条
+        all_Time.onclick = function(e){
+            let FF = e.offsetX / parseInt(getStyle(all_Time,'width'));
+            video.currentTime = video.duration * FF;
+            updateProgress();
+        }
+        // 当前播放的进度条 可以快退
+        currentTime.onclick = function(e){
+            let FF = e.offsetX / parseInt(getStyle(all_Time,'width'));
+            video.currentTime = video.duration * FF;
+            updateProgress();
+        }
+
+        // 全屏事件
+        fullScreen.onclick = function(){
+            // if(fullScreen.innerText == '全屏'){
+            //     // let width = document.body.offsetWidth;
+            //     // let height = document.body.offsetHeight;
+            //     video.style.cssText = `width:1300px;height:800px;position:absolute;top:0px;left:-350px`;
+                
+            //     controls.style.cssText = 'position:absolute;left:0px;top:800px;';
+            //     fullScreen.innerText = '退出全屏';
+            // }else{
+            //     video.style.cssText = `width:500px;height:400px;position:absolute;top:0px;left:0px`;
+            //     controls.style.cssText = 'position:absolute;left:0px;top:385px;';
+            //     fullScreen.innerText = '全屏';
+            // }
+            //自带的全屏
+            if(video.requestFullScreen){
+                video.requestFullScreen();
+            }
+            else if(video.webkitRequestFullScreen){
+                video.webkitRequestFullScreen();
+            }
+            else if(video.mozRequestFullScreen){
+                video.mozRequestFullScreen();
+            }
+            else if(video.msRequestFullScreen){
+                video.msRequestFullScreen();
+            }
+        }
+
+        // 播放进度时间方法
+        function updateProgress(){
+            let value = (video.currentTime)/(video.duration);
+            currentTime.style.width = value * parseInt(getStyle(all_Time,'width')) + 'px';
+            play_Time.innerText = formateDate(video.currentTime);
+            console.log(value);
+        }
+        // 时间戳格式方法
+        function formateDate(time){
+            var time = parseInt(time);
+            //分钟
+            let minute = parseInt(time / 60);
+            //秒
+            let seconed = (time % 60);
+            if(minute == 0){
+                minute = '00';
+            }else if(minute < 10){
+                minute = '0' + minute;
+            }
+            if(seconed < 10){
+                seconed = '0' + seconed;
+            }
+            return minute + ':' + seconed;
+        }
+        // 重置方法
+        function reset(){
+            video.currentTime = 0;
+            video.pause();
+            btn.style.background = 'url(../12.28/images/播放.png)';
+            btn.style.backgroundSize = '100% 100%';
+        }
+        
+
+    </script>
+</body>
+</html>

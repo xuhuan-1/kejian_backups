@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 迭代器对象：是一种新的数据结构，迭代器对象可以被for of进行循环的对象 
+         *           可以被for of循环的对象是迭代器对象
+         * Symbol.iterator:是一个迭代器的接口，有了此属性则当前对象可以被for of循环
+         * 
+        */
+
+        // let arr = [2,3,4,6,7];  //4,6,7
+        // for(let key of arr){
+        //     console.log(key,arr[key])
+        // }
+
+        // let obj = {
+        //     name:'zimo',
+        //     age:20,
+        //     [Symbol.iterator]:Array.prototype[Symbol.iterator]
+        // }
+        // for(let {key,value} of obj){
+        //     console.log(key,value)
+        // }
+
+
+        let obj = {
+            num:100,
+            [Symbol('A')]:20,
+            [Symbol('B')]:40,
+        }             //获取Symbol值的方法
+        let [m,n] = Object.getOwnPropertySymbols(obj)
+        console.log(obj[m],obj[n])
+
+        
+        //  function* name() {
+        //     yield 10;
+        //     yield 20;
+        // }
+        // let n = name();
+        // console.log(n)
+        // console.log(n.next())
+        // console.log(n.next())
+        // console.log(n.next())
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽上传</title>
+    <style>
+        #box {
+            width: 600px;
+            height: 600px;
+            border: 1px solid;
+        }
+        img{
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+    <button id="btn">点击上传</button>
+    <script src="js/axios.min.js"></script>
+    <script src="js/qs.min.js"></script>
+    <script>
+        // 获取元素
+        let box = document.getElementById('box'),
+            btn = document.getElementById('btn');
+
+        // 延迟函数
+        function delay(time) {
+            var time = time || 2000;
+            return new Promise(resolve => {
+                return setTimeout(() => {
+                    resolve();
+                }, time);
+            })
+        }
+        // 获取本地文件
+        function fileReader(file) {
+            return new Promise(resolve => {
+                let reader = new FileReader;
+                reader.readAsDataURL(file);
+                reader.onload = (e) => {
+                    resolve(e.target.result);
+                }
+            })
+        }
+        // 获取后台数据
+        function postMessage(url, data, config) {
+            return axios.post(`http://localhost:8888/${url}`, data, config).then((res) => {
+                return res.data;
+            })
+        }
+        // 解决浏览器默认行为
+        document.ondragover = e=>{
+            e.preventDefault();
+        }
+        document.ondragend = e=>{
+            e.preventDefault();
+        }
+        document.ondrop = e=>{
+            e.preventDefault();
+        }
+
+        box.ondrop = async function(e){
+            let file = e.dataTransfer.files;
+            file = Array.from(file);
+            if(file.length == 0)return;
+            let newLoadList = [];
+            file.forEach((item,index)=>{
+                newLoadList[index] = {
+                    file:item,
+                    base64:null,
+                }
+            });
+            let frag = document.createDocumentFragment();
+            let BASE64 = await Promise.all(file.map(item=>fileReader(item)));
+            BASE64.forEach((item,index)=>{
+                newLoadList[index].base64 = item;
+                let create_Img = document.createElement('img');
+                create_Img.src = item;
+                frag.appendChild(create_Img);
+            })
+            console.log(newLoadList);
+            box.appendChild(frag);
+            btn.onclick = ()=>{
+                newLoadList.forEach(async(item,index)=>{
+                    let {
+                        base64, 
+                        file,
+                    } = item;
+                    let data = {
+                        chunk:base64,
+                        filename:file.name
+                    }
+                    let response = await postMessage('single2',Qs.stringify(data),{
+                        headers:{
+                            'Content-type':'application/x-www-form-urlencoded'
+                        }
+                    })
+                })
+                box.innerHTML = '上传完成';
+                console.log(box);
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

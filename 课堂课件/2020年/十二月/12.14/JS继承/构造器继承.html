@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造器继承</title>
+</head>
+<body>
+    <script>
+        // 无法继承原型方法，只能继承自身属性
+        function Parent(){
+            this.name = '张三';
+            this.age = 18;
+            this.sex = '男';
+            this.hobby = function(){
+                console.log('玩游戏');
+            }
+        }
+        Parent.prototype.a = '你好';
+        let s = new Parent();
+        function Son(){
+            Parent.call(this);
+        }
+        let f = new Son();
+        console.log(s);
+        console.log(f);
+    </script>
+</body>
+</html>

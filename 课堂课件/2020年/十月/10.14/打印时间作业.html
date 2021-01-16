@@ -1,0 +1,40 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>打印时间</title>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script>
+			setInterval(function (){
+				var myDate = new Date();
+				var a1 = myDate.getFullYear();
+				var a2 = myDate.getMonth()+1;
+				var a3 = myDate.getDate();
+				var a4 = myDate.getHours();
+				var a5 = myDate.getMinutes();
+				var a6 = myDate.getSeconds();
+				if(a4<10){a4 = '0'+a4}
+				if(a5<10){a5 = '0'+a5}
+				if(a6<10){a6 = '0'+a6}
+				box.innerHTML = (a1 + '-' + a2 + '-' + a3 + ' ' + a4 + '：' + a5 + '：' + a6);
+			},1000)
+		/*	var time = null;
+			var i = 0;
+			time = setInterval(function (){
+				i++;
+				a6 = i;
+				console.log(a6);
+			},1000)
+		*/
+		</script>
+	</body>
+</html>
+
+
+
+
+

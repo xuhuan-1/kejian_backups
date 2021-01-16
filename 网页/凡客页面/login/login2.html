@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录 注册-VJIA.COM</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		#wrap{
+			width: 780px;
+			height: 570px;
+			margin: 20px auto;
+		}
+		#login{
+			width: 780px;
+			height: 420px;
+			margin: 0 auto;
+			padding: 0 10px;
+		}
+		#title{
+			background:url(images/login/vjia.gif) no-repeat;
+			margin: 10px 20px;
+			border-bottom: #565662 1px solid;
+			text-indent: -99999px;
+		}
+		#footer{
+			width: 780px;
+			height: 150px;
+			background-color: red;
+			margin: 20px auto;
+		}
+		#loginform{
+			width: 380px;
+			height: 420px;
+			float: left;
+			
+		}
+		#registerfrom{
+			width: 380px;
+			height: 420px;
+			float: left;
+			margin: 0 10px;
+		}
+		#login #loginform ul li.current1{
+			
+			background-image:url(images/login/current.gif);
+			float: left;
+			width: 74px;
+			height: 24px;
+			cursor: pointer;
+			text-align: center;
+			line-height: 24px;
+			margin-right: 5px;
+			color: #fff;
+		}
+		.current2{
+			background: url(images/login/gray.gif) no-repeat;
+			float: left;
+			cursor: pointer;
+			width: 74px;
+			height: 24px;
+			text-align: center;
+			line-height: 24px;
+			color:#949494;
+			margin-right: 5px;
+		}
+		#login #loginform ul li{
+			display: inline;
+			float: left;
+		}
+		ul{
+			margin: 40px 0px 0px 20px; 
+			overflow: hidden;
+		}
+		#box1{
+			background-color: #fafafa;
+			height: 150px;
+			border-top: #a10000 solid 1px;
+			margin: 0 20px;
+			padding:15px 50px;
+		}
+		#box1 p{
+			margin: 10px auto;
+			line-height: 40px;
+		}
+		.loginbtn{
+			background:url(images/login/btn_bg.gif) no-repeat;
+			width: 80px;
+			height: 25px;
+			font-weight: bold;
+			color: #fff;
+			border:none;
+			margin-right: 10px;
+		}
+		.cooperation{
+			margin-left: 20px;
+			color: #999;
+			font-size:12px;
+			font-family: Arial,Helvetica, sans-serif;
+		}
+		.f_right{
+			text-align: right;
+		}
+		dl{
+
+			margin: 0 20px;
+			font-size: 14px;
+			font-weight: lighter;
+		}
+		dl dt{
+			color: #a10000;
+			line-height: 24px;
+			font-weight: bold;
+		}
+		a{
+			text-decoration: none;
+			font-size:12px;
+			color: #333;
+		}
+		dl dd{
+			text-indent:2em;
+			color:#999;
+			line-height: 22px;
+			font-size:12px;
+			font-family: Arial,Helvetica, sans-serif;
+		}
+		#title2{
+			background:url(images/login/pic_zc.gif) no-repeat;
+			margin: 10px 20px;
+			border-bottom: #565662 1px solid;
+			text-indent: -99999px;
+		}
+		#registerfrom input{
+			width: 170px;
+
+		}
+		#box2{
+			margin:40px 0px 0px 20px;
+		}
+		.plain1{
+			margin:2px 0 10px 158px;
+			color: #999;
+			font-size:12px;
+    		line-height: 22px;
+    		text-align: justify;
+		}
+		.plain2{
+			margin:2px 0 10px 100px;
+			color: #999;
+			font-size:12px;
+    		line-height: 22px;
+    		text-align: justify;
+		}
+		#box4{
+			margin: 40px 0px 0px 20px;
+			line-height: 35px;
+		}
+		#box5{
+			margin-left: 80px; 
+			line-height: 35px;
+		}
+		#box6{
+			margin-left: 50px; 
+			line-height: 35px;
+		}
+		#box7{
+			margin-left: 80px; 
+			line-height: 35px;
+		}
+		#box7 input{
+			width: 72px;
+		}
+		#box7 img{
+			vertical-align: middle;
+			
+		}
+		#box7 p{
+			text-align: right;
+			margin: 0px 40px 0px 0px;
+		}
+		#box8{
+			text-align: center;
+			color: #999;
+			font-size:12px;
+		}
+		#box8 p a{
+			color: #a10000;
+			text-decoration:underline;
+		}
+		.agret{
+			background:red url(images/btn_bg_l.gif) 0 0 no-repeat;
+			padding: 0px 100px;
+		}
+	</style>
+</head>
+<body>
+	<!-- 最大的盒子 -->
+	<div id="wrap">
+		<!-- 存放登录和注册表单的盒子 -->
+		<div id="login">
+			<!-- 存放登陆表单的盒子 -->
+			<div id="loginform">
+				<form action="">
+					<fieldset>
+						 <p id="title">登录VJIA.COM</p>
+						 <ul>
+						 	<li class="current1">Vjia用户</li>
+						 	<li class="current2">Vancl用户</li>
+						 </ul>
+						 <div id="box1">
+							<p>
+								<label>用户名：</label>
+								<input type="text">
+							</p>
+							<p>
+								<label>密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+								<input type="text">
+							</p>
+							<p>
+								<input type="button" value="登录" class="loginbtn" />
+								<a href="#">忘记密码了？</a>
+							</p>
+						 </div>
+						 <div class="cooperation">使用合作伙伴账号登录Vjia：<a href="#">
+						 	<img src="images/account_qq.gif" alt="" width="49" height="21"></a></div>
+						 <dl>
+							<dt>温馨提示：</dt>
+							<dd>如果还未注册VJIA用户，您可以使用VANCL用户名进行登录，登录后系统会自动为您注册一个与VANCL帐户相关联的VJIA帐户。帐户关联后您可共享VANCL的会员积分和消费金额。</dd>
+							<dd class="f_right">有任何疑问请点击<a href="#">帮助中心</a> 或 <a href="#">联系客服</a></dd>
+						 </dl>
+					</fieldset>
+				</form>
+			</div>
+			<!-- 存放注册表单的盒子 -->
+			<div id="registerfrom">
+				<form action="">
+					<fieldset>
+						<p id="title2">注册新用户</p>
+						<div id="box4">
+							<span>请填写您的Email地址:</span>	
+							<input type="text">
+							<p class="plain1">请填写有效的Email地址作为下次登录的用户名，同时我们也会给这个地址发送您的帐户信息、订单通知等。</p>
+						</div>
+						<div id="box5">
+							<label>请设定密码：</label>
+							<input type="password" >
+							<p class="plain2">密码请设为6-16位字母或数字</p>
+						</div>
+							
+						<div id="box6">
+							<label>请再次输入密码：</label>
+							<input type="password" >
+						</div>
+						<div id="box7">
+							<label>输入验证码：</label>
+							<input type="text">
+							<img src="images/code_img.gif" alt="">
+							<p><a href="#">看不清换一张</a></p>
+						</div>
+						<div id="box8">
+							<p>请阅读<a href="#">《"V+网站"服务条款》</a></p>
+							<p class="agret">同意以上条款</p>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			
+		</div>
+		<!-- 网页尾部盒子 -->
+		<div id="footer">
+
+		</div>
+	</div>
+</body>
+</html>

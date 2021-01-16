@@ -1,0 +1,40 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>for循环排序</title>
+	</head>
+	<body>
+		<script>
+			var arr = [2,1,4,6,3,8,7,9,5,10];
+			var a = null;
+			for(var i=arr.length-1;i>=0;i--){
+				for(var j=0;j<arr.length;j++){
+					if(arr[j]<arr[j+1]){
+						a = arr[j];
+						arr[j] = arr[j+1];
+						arr[j+1] = a;
+					}
+				}
+			}
+			console.log(arr);
+		/*	
+			for(var i=arr.length-1;i>=0;i--){
+				for(var j=0;j<arr.length;j++){
+					if(arr[j]>arr[j+1]){
+						a = arr[j];
+						arr[j] = arr[j+1];
+						arr[j+1] = a;
+					}
+				}
+			}
+		*/	
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

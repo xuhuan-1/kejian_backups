@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // requestAnimationFrame(); 浏览器提供的一个动画函数，性能好，启动了CPU加速计算
+        // 栈的进出规则：先进后出，后进先出（FILO：First In Last Out）
+        // 所有的JS都在栈的主线程执行
+        // 数组降维：数组扁平化【数据拍平】
+
+        // Symbol:基本数据类型
+
+        // 基本数据类型：Number Boolean Null String Undefined Symbol 
+        // 引用数据类型：Object Array Date() RegExp() Function 
+            // 区别：
+            //     基本数据类型存在栈里面  ：存值
+            //     引用数据类型存在堆里面  ：存址 【16进制的字符串】
+
+        /*
+          JS代码从上到下执行
+          JS代码是一块一块的执行
+          GO:浏览器的垃圾回收对象
+          eval: 浏览器提供的一个API【就是一个方法】，可以将字符串转换为对象，
+               不安全，不常用，性能非常不好
+               为什么不安全？
+               回答：他将JS代码执行两遍，第一遍先将字符串转换成浏览器可以访问的对象
+                     第二遍再进行预编译
+          
+          
+          JS执行环境：
+           有三种：
+               一、1、创建全局环境
+                   2、创建全局环境上下文(作用域)   EO （Execution Object）
+                   3、创建变量对象【死对象：此时的变量都是
+                      undefined或者null，此时不能操作对象】，就是VO （Variable Object）
+                   4、预编译：JS代码预编译【解析JS代码：先检查是不是JS代码，是的话，
+                      就开始检查语法是否有错误，如果没有错误，则开始变量提升，然后赋值,
+                     赋值之后，可操作，变成了活动对象，如果错误了，直接跳过，执行下一块代码】
+                       AO：（Active Object） 
+                      3 --> 4 :就是变量对象到活动对象的过程
+                    
+             二、局部环境
+                  1、创建局部环境
+                   2、创建局部环境上下文(作用域)   EO （Execution Object）
+                   3、创建局部变量对象【死对象：此时的变量都是
+                      undefined或者null，此时不能操作对象】，就是VO （Variable Object）
+                   4、预编译：JS代码预编译【解析JS代码：先检查是不是JS代码，是的话，
+                      就开始检查语法是否有错误，如果没有错误，则开始变量提升，然后赋值,
+                       赋值之后，可操作，变成了活动对象，如果错误了，直接跳过，执行下一块代码】
+                      AO：（Active Object） 
+                     3 --> 4 :就是变量对象到活动对象的过程
+               3、eval环境 【不常用】
+                   1、创建eval环境
+                   2、创建eval环境上下文(作用域)   EO （Execution Object）
+                   3、创建eval变量对象【死对象：此时的变量都是
+                      undefined或者null，此时不能操作对象】，就是VO （Variable Object）
+                   4、预编译：JS代码预编译【解析JS代码：先检查是不是JS代码，是的话，
+                      就开始检查语法是否有错误，如果没有错误，则开始变量提升，然后赋值,
+                       赋值之后，可操作，变成了活动对象，如果错误了，直接跳过，执行下一块代码】
+                       AO：（Active Object）
+                      3 --> 4 :就是变量对象到活动对象的过程
+        */
+
+        // var str = 'a-b-c-d-e-f';
+        // var s = str.split('-').join('.');
+
+
+        // console.log(s)  // >> a.b.c 
+
+        var arr = [[[[4]]]];
+        var s = arr.flat(4).join();
+        console.log(s);
+
+
+
+    </script>
+</body>
+</html>

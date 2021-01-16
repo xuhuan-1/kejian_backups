@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太极2</title>
+</head>
+<body>
+    <canvas id="Mycanvas" style="background: #ccc;" height="600" width="600"></canvas>
+    <script>
+        let cvs = document.getElementById('Mycanvas');
+        let pen = cvs.getContext('2d');
+        pen.fillStyle = 'white';
+        pen.beginPath();
+        // pen.arc(300,300,100,(Math.PI/180)*270,(Math.PI/180)*90);
+        pen.arc(300,300,100,1.5*Math.PI,.5*Math.PI,true);
+        pen.fill();
+
+        pen.fillStyle = 'black';
+        pen.beginPath();
+        pen.arc(300,300,100,1.5*Math.PI,0.5*Math.PI);
+        pen.fill();
+
+        pen.fillStyle = 'black';
+        pen.beginPath();
+        pen.arc(300,250,50,0,2*Math.PI);
+        pen.fill();
+
+        pen.fillStyle = 'white';
+        pen.beginPath();
+        pen.arc(300,350,50,0,2*Math.PI);
+        pen.fill();
+
+
+
+
+
+
+
+
+
+
+
+
+        // let cvs = document.getElementById('Mycanvas');
+        // // 画笔
+        // let pen = cvs.getContext('2d');
+        // pen.fillStyle = 'white';
+        // pen.beginPath();
+        // pen.arc(300,300,100,(Math.PI/180)*270,(Math.PI/180)*90);
+        // pen.fill();
+
+        // pen.fillStyle = 'black';
+        // pen.beginPath();
+        // pen.arc(300,300,100,(Math.PI/180)*270,(Math.PI/180)*90,true);
+        // pen.fill();
+
+        // pen.fillStyle = 'white';
+        // pen.beginPath();
+        // pen.arc(300,250,50,0,2*Math.PI);
+        // pen.fill();
+
+        // pen.fillStyle = 'black';
+        // pen.beginPath();
+        // pen.arc(300,350,50,0,2*Math.PI);
+        // pen.fill();
+
+        // pen.fillStyle = 'black';
+        // pen.beginPath();
+        // pen.arc(300,250,15,0,2*Math.PI);
+        // pen.fill();
+
+        // pen.fillStyle = 'white';
+        // pen.beginPath();
+        // pen.arc(300,350,15,0,2*Math.PI);
+        // pen.fill();
+        
+    </script>
+</body>
+</html>

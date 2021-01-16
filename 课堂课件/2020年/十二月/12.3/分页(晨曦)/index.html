@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分页</title>
+    <style>
+    *{
+        padding:0;
+        margin:0
+    }
+    table{
+        text-align:center;
+        line-height:30px;
+        margin:10px auto;
+        font-size: 14px;
+    }
+    #box{
+        margin:30px auto;
+        width: 880px;
+    }
+    .parent{
+        height: 600px;
+        border: 1px solid #000;
+    }
+    .ym{
+        display:inline-block;
+        width:20px;
+        height:20px;
+        margin-left:10px;
+        margin-right:10px;
+        border:1px solid #666;
+        text-align: center;
+        cursor: pointer;
+    }
+    .page{
+        cursor: pointer;
+    }
+    .bigpage{
+        margin-top: 50px;
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="parent">
+            <table>
+                <thead>
+                    <tr>
+                        <td width="120px">货物ID</td>
+                        <td width="150px">示例图</td>
+                        <td width="250px">名称</td>
+                        <td width="80px">价格</td>
+                        <td width="450px">描述</td> 
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+        </div>
+        <div class="bigpage">
+            <span class="page">上一页</span>
+            <span class="pages">
+
+            </span>
+            <span class="page">下一页</span>
+        </div>
+        
+        
+    </div>
+    <script src='ajax.js'></script>
+    <script>
+        let pages = document.querySelector('.pages'),
+            bigpage = document.querySelector('.bigpage');
+        let num = 1;
+        useAjax(num);
+        bigpage.addEventListener('click',(e)=>{
+            let target = e.target;
+            if(target.innerText == '上一页'){
+                if(num == 1){
+                    num = 1
+                }else{
+                    num--;
+                    useAjax(num);
+                }
+            }
+            if(target.innerText == '下一页'){
+                if(num == 5){
+                    num = 5
+                }else{
+                    num++;
+                    useAjax(num);
+                }
+            }
+            if(target.className == 'ym'){
+                num = target.innerText;
+                useAjax(num);
+            }
+        });
+        function useAjax(page){
+            ajax({
+                method:'get',
+                url:'http://localhost:3001/page',
+                data:{page:page},
+                success:function(res){
+                    pages.innerHTML = '';
+                    tbody.innerHTML = '';
+                    //总商品数
+                    let totla = res.totleNum;
+                    let domFrag = document.createDocumentFragment('');
+                    for(let i = 0 ; i < totla/5 ; i++){
+                        let span = document.createElement('span');
+                        span.innerText = i+1;
+                        span.className = 'ym';
+                        domFrag.appendChild(span);
+                    }
+                    pages.appendChild(domFrag);
+                    //一页商品数
+                    let list = res.glist;
+                    for(let i = 0 ; i < list.length ; i++){
+                        let tr = document.createElement('tr');
+                        tr.innerHTML = `<td>${list[i].id}</td>
+                                        <td><img src="${list[i].goodimg}" height="100px" /></td>
+                                        <td>${list[i].goodname}</td>
+                                        <td>${list[i].price}</td>
+                                        <td>${list[i].info}</td>`;
+                        tbody.appendChild(tr);
+                    }
+                }
+            })
+        }
+        
+    </script>
+</body>
+</html>

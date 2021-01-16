@@ -1,0 +1,174 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>获取网页中某个元素</title>
+		
+	</head>
+	<body>
+		<form>
+			文本框：<input id="va" type="text" name="as" value="" required="required" autocomplete="on"/>
+			<br/>
+			密码框：<input id="passwd" type="password" autofocus="autofucus" name="" value=""/>
+			<br/>
+			<p id="a1">我是一个p标签</p>
+			<!--按钮-->
+			<input type="button" value="普通按钮"/>
+			<br/>
+			<input type="submit" value="我是提交按钮"/>
+			<br/>
+			<input type="reset" value="我是重置按钮"/>
+			<br/>
+			<!--下拉框-->
+			<select>
+				<option>合肥</option>
+				<option>阜阳</option>
+				<option selected="selected">淮北</option>
+				<option>蚌埠</option>
+			</select>
+			<br/>
+			<!--单选框复选框-->
+			性别：<input id="man" type="radio" name="sex" value="男"/>男
+			<input type="radio" name="sex" value=""/>女
+			<input type="radio" name="sex" value="" disabled="disabled"/>人妖
+			<br/>
+			爱好：<input type="checkbox" name="hobby" value=""/>打游戏
+			<input type="checkbox" name="hobby" value=""/>看书
+			<input type="checkbox" name="hobby" value=""/>听歌
+			<input type="checkbox" name="hobby" value=""/>旅游
+			<br/>
+			<!--文本域-->
+			<textarea id="inp" value="1" style="resize:none;" cols="10" rows="5">你好，我是一个文本域</textarea>
+			<br/>
+			<input type="file" name="" value="" multiple="multiple"/>
+			<br/>
+			<input type="date"/>
+			<input type="time"/>
+			<input type="datetime-local"/>
+			<input type="week"/>
+			<a href="#">你好</a>
+			<a href="#">a</a>
+			<a href="#">你ssasd好</a>
+			<a href="#">你   好</a>
+			<a href="#">你asda好</a>
+		</form>
+		<script>
+		/*	//一、
+			var docall = document.all;
+			function getid(b){
+				for(var i= 0;i<docall.length;i++){
+					if(docall[i].id==b){
+						break;
+					}
+				}
+				return docall[i];
+			}
+			getid('inp');
+			//二、
+			var docall = document.all;
+			function ss(docId){
+				for(var i=0;i<docall.length;i++){
+					if(docall[i].id==docId){
+						break;
+					}
+				}
+				return docall[i];
+			}
+			console.log(ss('inp'));
+			//三、
+			var a = document.all;
+			function getid(docId){
+				for(var i=0;i<a.length;i++){
+					if(a[i].id == docId)break;
+				}
+				return a[i];
+			}
+			console.log(getid('va').value);
+			
+			//四、
+			var arr = document.all;
+			function han(docId){
+				for(var i=0;i<arr.length;i++){
+					if(arr[i].id == docId){
+						break;
+					}
+				}
+				return arr[i];
+			}
+			console.log(han('inp'));
+			
+			//五、
+			var arr = document.all;
+			function dun(xc){
+				for(var i=0;i<arr.length;i++){
+					if(arr[i].id == xc){
+						break;
+					}
+				}
+				return arr[i];
+			}
+			console.log(dun('va').value);
+			
+			
+			//六、
+			var arr = document.all;
+			function fun(xc){
+				for(var i=0;i<arr.length;i++){
+					if(arr[i].id == xc){
+						break;
+					}
+				}
+				return arr[i];
+			}
+			console.log(fun('man').value);
+			//七、
+			var arr = document.all;
+			function a(xc){
+				for(var i in arr){
+					if(arr[i].id == xc){
+						break;
+					}
+				}
+				return arr[i];
+			}
+		*/	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			var arr = document.all;
+			function fun(xc){
+				for(var i in arr){
+					if(arr[i].id == xc)break;
+				}
+				return arr[i];
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

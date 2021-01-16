@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			
+			ul{
+				list-style: none;
+
+			}
+			.box,.box1{
+				background-color: black;
+				text-align:center;
+				font-size:32px;
+				color:white;
+			}
+			.left,.left1{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				float: left;
+				line-height:200px;
+			}
+			.center,.center1{
+				width: 200px;
+				height: 200px;
+				background-color: green;
+				float: left;
+				line-height:200px;
+			}
+			.right,.right1{
+				width: 600px;
+				height: 200px;
+				background-color: blue;
+				float: left;
+				line-height:200px;
+			}
+			.other{
+				width: 200px;
+				height: 100px;
+				background-color: pink;
+			}
+			.clearfix:after{
+				content: ".";
+				display: block;
+				height: 0;
+				visibility: hidden;
+				clear: both;
+			}
+			.clearfix {
+				zoom: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box clearfix">
+			<div class="left">左</div>
+			<div class="center">中</div>
+			<div class="right">右</div>
+		</div>
+		<script type="text/javascript">
+		var divAll = document.querySelectorAll("div");
+		//获取
+		for(var i = 0;i < divAll.length;i++){
+			switch (divAll[i].className){
+				case "left":
+				divAll[i].onmouseover = function (){
+					this.style.backgroundColor = "yellow";
+				}
+				divAll[i].onmouseout = function (){
+					this.style.backgroundColor = "red";
+				}
+				break;
+				case "center":
+				divAll[i].onmouseover = function (){
+					this.style.backgroundColor = "red";
+				}
+				divAll[i].onmouseout = function (){
+					this.style.backgroundColor = "green";
+				}
+				break;
+				case "right":
+				divAll[i].onmouseover = function (){
+					this.style.backgroundColor = "green";
+				}
+				divAll[i].onmouseout = function (){
+					this.style.backgroundColor = "blue";
+				}
+				break;
+				default : ;
+			}
+		}
+		
+		//创建，添加
+		var box = document.getElementById("div1");
+		var para = document.createElement("p");
+		//创建一个节点：创建一个P标签
+		var node = document.createTextNode("还有两天考试");
+		//创建一个文本节点：还有两天考试
+		para.appendChild(node);
+		//向父级元素添加一个子元素，在这里para就是父级元素，node就是子元素：<p>还有两天考试</p>
+		document.body.appendChild(para);
+		document.querySelector
+		
+		</script>
+	</body>
+
+</html>

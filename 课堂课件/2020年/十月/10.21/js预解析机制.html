@@ -1,0 +1,35 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>js预解析机制</title>
+	</head>
+	<body>
+		<script>
+			/*	变量声明提升：使用关键字var
+				声明的变量，JS预解析机制会将创建的
+				变量名提升到script中第一行，
+				有这个变量名但是没有赋值
+			*/
+			console.log(a);//undefined 有这个变量名 但是没有赋值
+			var a = 1;
+			var b = 2;
+			var c = 3;
+			//函数声明提升：将函数整体提升到script中的第一行
+			function msg(){
+				var name = '张三';
+				var age = 18;
+				return '我是'+name+',今年'+age+'了';
+			}
+			console.log(msg());
+			
+			
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

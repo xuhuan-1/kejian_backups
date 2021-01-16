@@ -1,0 +1,46 @@
+AJAX：异步请求对象
+    概念：在不刷新页面的情况下，动态的局部刷新并获取数据
+    作用：前后端交互
+
+不管什么请求，传递数据的过程中，都必须是字符串，因为http请求是超文本传输协议
+注意：undefined无法传递到服务端   
+
+       中国：用友、软通、中软国际、文思海辉
+
+    ajax封装：
+        1、创建异步请求对象  【兼容性】
+            标准：XMLHttpRequest
+            IE：ActiveXObject
+        2、建立连接  open('请求方式','请求地址',true) //true代表异步请求
+
+        3、发送数据 send()    
+            get:
+                请求发送null对象就行 send(null) 
+                请求头：setRequestHeader('Content-Type','application/json;charset=utf-8')
+            post:
+                请求发送正常参数 send(params) 
+                请求头：setRequestHeader('Content-Type','application/x-www-form-urlencoded;charset=utf-8')
+        4、注册监听函数 onreadystatechange 
+            条件：
+                readyState:响应状态码，后台响应完成时，前端才可以获取数据并操作
+                    readytate : 4
+
+                status:http状态码
+                  200 <= status < 300 || status == 304
+
+                responseText:服务端响应成功的数据
+
+            onreadystatechange = function(){
+                
+            }
+
+
+
+            今晚：
+                1、整理http常用状态码 
+                2、整理：readyState响应码
+                3、整理ajax的优缺点
+
+
+            
+            

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习</title>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <script>
+// 克隆
+    // create()浅克隆
+        // let obj = {
+        //     name:'张三',
+        //     age:20,
+        //     sex:'男'
+        // }
+        // let s = Object.create(obj);
+        // obj.name = '你好'
+        // console.log(obj);
+        // console.log(s);
+    // assign()浅克隆
+        // let obj = {
+        //     name:'张三',
+        //     age:20,
+        //     sex:'男',
+        //     fn:{
+        //         a:1,
+        //         b:2,
+        //         c:3
+        //     }
+        // }
+        // let s = Object.assign({},obj);
+        // s.name = '你好';
+        // s.fn.a = 9999;
+        // console.log(obj);
+        // console.log(s);
+    // JSON.parse(JSON.stringify())深克隆
+        // let obj = {
+        //     name:'张三',
+        //     age:20,
+        //     sex:'男',
+        //     fn:{
+        //         a:1,
+        //         b:2,
+        //         c:3
+        //     }
+        // }
+        // let s = JSON.parse(JSON.stringify(obj));
+        // s.name = 'sdasd'
+        // console.log(obj);
+        // console.log(s);
+    // 递归实现深克隆
+        // function deepClone(obj){
+        //     if(typeof obj !== 'object')return obj;
+        //     if(obj == null) return obj;
+        //     if(obj.constructor === Date)return new Date();
+        //     if(obj.constructor === Symbol) return obj;
+        //     let newObj = Array.isArray(obj)?[]:{};
+        //     for(let key in obj){
+        //         newObj[key] = typeof obj[key] == 'object'?deepClone(obj[key]):obj[key];
+        //     }
+        //     return newObj;
+        // }
+        // let o = {
+        //     name:'zimo',
+        //     fn:{
+        //         name:'dds',
+        //         page:1,
+        //         num:100,
+        //         un:undefined,
+        //         nu:null,
+        //         fn:() =>{}
+        //     },
+        //     [Symbol('A')]:100,
+        //     time:new Date()
+        // }
+        // let s = deepClone(o);
+        // s.name = '张三';
+        // s.fn.num = 9999999;
+        // console.log(o);
+        // console.log(s);
+        // let sl = {};
+        // let pp = ({}).toString.call(sl);
+        // console.log(pp);
+// 检测数据类型
+    // typeof检测
+        // function(){} ==> function(){}
+        // {} ==> object
+        // [] ==> object
+        // new Date() ==> object
+        // Symbol ==> function
+        // /.png/ ==>object
+        // let s = /./;
+        // console.log(typeof s);
+// 构造函数实对象
+        // function Parent(){
+        //     this.name = '张三';
+        //     this.age = 18;
+        //     this.sex = '男';
+        // }
+        // let newObj = new Parent();
+        // console.log(newObj);
+// 返回指定的属性
+        // let obj = {
+        //     name:'张三',
+        //     age:18,
+        //     sex:'男',
+        //     toJSON(){
+        //         return name;
+        //     }
+        // }
+        // let userName = JSON.parse(JSON.stringify(obj))
+        // console.log(userName);
+// 封装ajax
+        function ajax(obj){
+            obj.url = obj.url ||'';
+            obj.method = obj.method ||'get';
+            obj.data = obj.data ||{};
+            obj.dataType = obj.dataType||'json';
+            obj.success = obj.success;
+            //创建异步请求对象
+            let xhr;
+            window.XMLHttpRequest?xhr = new XMLHttpRequest():xhr = new ActiveXObject('Microsoft.XMLHTTP');
+            //建立连接
+            function formate(o){
+                let arr = [];
+                for(let key in o){
+                    arr.push(key +'='+ o[key]);
+                }
+                return arr.join('&');
+            }
+            let params = formate(obj.data);
+            let url = obj.url +'?'+ params;
+            if(obj.method =='get'){
+                xhr.open(obj.method,url,true);
+            }else{
+                xhr.open(obj.method,obj.url,true);
+            }
+            //方式、请求数据
+            if(obj.method == 'get'){
+                xhr.setRequestHeader('Content-type','application/json;charset=utf-8');
+                xhr.send(null);
+            }else{
+                xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded,charset=utf-8');
+                xhr.send(params);
+            }
+            //注册监听函数
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200 && xhr.status < 300 || xhr.status == 304){
+                        if(obj.method == 'get'){
+                            obj.success && obj.success(JSON.parse(xhr.responseText));
+                        }else{
+                            obj.success && obj.success(xhr.responseText);
+                        } 
+                    }
+                }
+            }
+        }
+        btn.onclick = function () {
+            ajax({
+                url:'./a.js',
+                success:(res)=>{
+                    let s = JSON.parse(res)
+                    console.log(s);
+                }
+                // url:'http://localhost:3001/page',
+                // data:{page:2},
+                // success:(res)=>{
+                //     console.log(res);
+                // }
+            })
+        }
+
+// 封装cookie
+        // 依据document.cookie = "name=value[;expires=date]
+        // [;path=path-to-source][;domain=域名][;secure]";
+        // let cookie = {
+        //     set(o){
+        //         let cookieStr = document.cookie = o.name +'='+ JSON.stringify(o.value);
+        //         if(o.expires){
+        //             cookieStr += `;${o.expires}`;
+        //         }
+        //         if(o.path){
+        //             cookieStr += `;${o.path}`;
+        //         }
+        //         if(o.domain){
+        //             cookieStr += `;${o.domain}`;
+        //         }
+        //     },
+        //     get(name){
+        //         let arr = document.cookie.split(';');
+        //         for(let i=0;i<arr.length;i++){
+        //             let newArr = arr[i].split('=');
+        //             if(newArr[0] == name){
+        //                 return JSON.parse(newArr[1]);
+        //             }
+        //         }
+        //     },
+        //     remove(name,time){
+        //         let date = new Date();
+        //         date.setDate(date.getDate() + time);
+        //         this.set({
+        //             name,
+        //             expires:date
+        //         })
+        //     }
+        // }
+        // cookie.set({
+        //     name:'张三',
+        //     value:{
+        //         names:'张',
+        //         age:'19',
+        //         sex:'男'
+        //     }
+        // })
+        
+        // let s = cookie.get('张三');
+        // console.log(s);
+        // cookie.remove('张三',2);
+
+            // 依据document.cookie = "name=value[;expires=date]
+            // [;path=path-to-source][;domain=域名][;secure]";
+            // let cookie = {
+            //     set(o){
+            //         let cookieStr = document.cookie = o.name +'='+ JSON.stringify(o.value);
+            //         if(o.expires){
+            //             cookieStr += `;${o.expires}`;
+            //         }
+            //         if(o.path){
+            //             cookieStr += `;${o.path}`;
+            //         }
+            //         if(o.domain){
+            //             cookieStr += `;${o.domain}`;
+            //         }
+            //     },
+            //     get(name){
+            //         let arr = document.cookie.split(';');
+            //         for(let i=0;i<arr.length;i++){
+            //             let newArr = arr[i].split('=');
+            //             if(newArr[0] == name){
+            //                 return JSON.parse(newArr[1]);
+            //             }
+            //         }
+            //     },
+            //     remove(name,time){
+            //         let date = new Date();
+            //         date.setDate(date.getDate() + time);
+            //         this.set({
+            //             name,
+            //             expires:date
+            //         })
+            //     }
+            // }
+            // cookie.set({
+            //     name:'z',
+            //     value:[1,2,3,4,5,6]
+            // })
+            // // cookie.remove('z',-1);
+            // let s = cookie.get('z');
+            // console.log(s);
+
+
+            // function deepClone(o){
+            //     if(typeof o != 'object')return o;
+            //     if(o == null)return o;
+            //     if(o.constructor === Date)return new Date();
+            //     if(o.constructor === Symbol)return o
+            //     let newObj = Array.isArray(o)?[]:{}
+            //     for(let key in o){
+            //         newObj[key] = typeof o[key] == 'object'?deepClone(o[key]):o[key];
+            //     }
+            //     return newObj;
+            // }
+            // let obj = {
+            //     a:1,
+            //     b:2,
+            //     fn:function(){
+            //         console.log(this);
+            //     },
+            //     da:new Date(),
+            //     [Symbol('A')]:100,
+            // }
+            // let s = deepClone(obj);
+            // // console.log(obj);
+            // console.log(s);
+
+
+
+            
+
+    </script>
+</body>
+
+</html>

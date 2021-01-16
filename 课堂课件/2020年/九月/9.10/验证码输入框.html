@@ -1,0 +1,92 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>验证码输入框</title>
+		<style>
+			#a{
+				height:30px;
+				font-size:18px;
+				margin-bottom:50px;
+				outline:none;
+			}
+			#b{
+				height:30px;
+				font-size:18px;
+				outline:none;
+			}
+			#tj{
+				height:30px;
+				width:100px;
+				margin-top:50px;
+				margin-left:70px;
+			}
+		</style>
+	</head>
+	<body>
+		<form>
+			姓名：<input id="a" type="text" placeholder="请输入姓名"/><br/>
+			年龄：<input id="b" type="text" placeholder="请输入年龄"/><br/>
+			<input id="tj" onclick = "subtj()" type="submit" value="点击提交"/>
+		</form>
+	<script>
+	/*	一、
+		//获取DOM元素
+		var msg = document.getElementById('a');
+		console.log(msg);
+		var age = document.getElementById('b');
+		console.log(age);
+		var sub = document.getElementById('tj');
+		console.log(sub);
+		//
+		function subtj(){
+			if(msg.value == ''||msg.value == null||msg.value ==undefined||msg.value ==" "||msg.value ==NaN){
+				alert('请输入姓名');
+			}else if(age.value ==""||age.value ==null||age.value ==" "||age.value ==NaN){
+				alert('请输入正确的年龄');
+			}else{
+				alert('提交成功');
+			}
+		}
+		二、
+		var msg = document.getElementById('a');
+		console.log(msg);
+		var age = document.getElementById('b');
+		console.log(age);
+		var sub = document.getElementById('tj');
+		
+		function subtj(){
+			if(msg.value=='' || msg.value==null || msg.value==undefined || msg.value==NaN){
+				alert('请输入正确的姓名！');
+			}else if(age.value ==""||age.value ==null||age.value ==" "||age.value ==NaN){
+				alert('请输入正确的年龄！');
+			}else{
+				alert('登录成功');
+			}
+		}
+	*/	
+	
+		var msg = document.getElementById('a');
+		console.log(msg);
+		var age = document.getElementById('b');
+		console.log(age);
+		var sub = document.getElementById('tj');
+		console.log(sub);
+		function subtj(){
+			if(msg.value=='' || msg.value==' ' || msg.value==null || msg.value==undefined || msg==NaN){
+				alert('请输入正确的姓名！');
+			}else if(age.value=='' || age==' ' || age.value==null || age.value==NaN){
+				alert('请输入正确的年龄！');
+			}else{
+				alert('登录成功');
+			}
+		}	
+		
+	</script>
+	</body>
+</html>
+
+
+
+
+

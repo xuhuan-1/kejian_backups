@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 原型方法：是加在prototype的方法
+         * 静态方法：构造函数内部的方法，不能被继承，只能自己用【一般情况下】
+         *          通过函数名调用
+         *          不被实例化，静态方法也可以使用
+         * 
+         * Promise对象的静态方法：
+         *  race():可以接收一个数组作为参数，返回的是一个新的Promise对象，数组内是多个
+         *         promise实例，谁执行的快，最先得到结果，则race()执行结果就是那个Promise对象
+         *         举例：Promise.race([p1,p2,p3,p4])   ===>  p3的Promise对象 // {}
+         *  all():接收一个数组作为参数，结果返回一个数组，数组内是全部的Promise对象，每一个Promise
+         *         对象执行完毕才返回结果
+         *  resolve():成功的回调
+         *  reject():失败的回调
+         * Promise对象的原型方法：
+         *  then():成功的回调
+         *  catch():失败的回调
+         * 
+        */
+
+
+    //    class Promise{
+    //         getUserName(){
+    //             console.log('原型方法')
+    //         }
+    //         static race(){
+    //             console.log('静态方法')
+    //         }
+    //         static all(){
+    //             console.log('静态方法')
+    //         }
+    //         static resolve(){
+    //             console.log('静态方法')
+    //         }
+    //         static reject(){
+    //             console.log('静态方法')
+    //         }
+    //    }
+
+    //    Person.getNum();
+
+    //    let p = new Person()
+    //    console.log(typeof Person);
+    //    console.log(p.getUserName());
+    
+
+    // 举例：Promise.race([p1,p2,p3,p4])   ===>  p3的Promise对象 // {}
+
+    // let p1 = axios.get('url1').then(res =>{
+    //     let list = res;
+    // })
+    // let p2 = axios.get('url2').then(res =>{
+    //     let list = res;
+    // })
+    // let p3 = axios.get('url3').then(res =>{
+    //     let list = res;
+    // })
+    // let p4 = axios.get('url4').then(res =>{
+    //     let list = res;
+    // })
+
+// 批量请求数据
+    // Promise.all([p1,p2,p3,p4])  ==> [{},{},{},{}]
+
+    //    Promise.resolve('成功');
+    //    throw Promise.reject('失败');
+
+
+    // Promise.resolve('成功') == new Promise((resolve) =>{
+    //     resolve('成功')
+    // })
+
+    </script>
+</body>
+</html>

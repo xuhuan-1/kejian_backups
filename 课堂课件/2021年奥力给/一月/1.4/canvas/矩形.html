@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画图的两种方式</title>
+</head>
+<body>
+    <canvas id="Mycanvas" style="background: #cdcdcd;;" width=600; height=600;></canvas>
+    <script>
+    // 一、矩形
+        // let cvs = document.getElementById('Mycanvas');
+        // // 设置画笔
+        // let pen = cvs.getContext('2d');
+        // pen.lineWidth = 10;
+        // // 设置矩形的颜色
+        // pen.fillStyle = 'red';
+        // // 画矩形的方法
+        // // pen.fillRect(100,100,200,200);//参数:x轴，y轴，宽，高
+        // // pen.clearRect(101,101,198,198);//参数:x轴，y轴，宽，高
+        
+        // pen.fillRect(100,100,200,200);
+        // // pen.strokeStyle = 'red';
+        // pen.strokeRect(100,100,200,200);
+        
+        // // pen.fill();
+
+        // let cvs = document.getElementById('Mycanvas');
+        // let pen = cvs.getContext('2d');
+        // pen.lineWidth = 10;
+        
+        // pen.fillStyle = 'pink';
+        // pen.fillRect(100,100,200,200);
+
+        // pen.strokeStyle = 'red';
+        // pen.strokeRect(100,100,200,200);
+        
+        // pen.clearRect(110,110,180,180);
+
+
+    // 二、路径【填充路径】
+        let cvs = document.getElementById('Mycanvas');
+        let pen = cvs.getContext('2d');
+        // //开始画图
+        // pen.beginPath();
+        // //设置笔头粗细
+        // pen.lineWidth = 1;
+        // // 
+        // pen.strokeStyle = 'red';
+        // //起始坐标
+        // pen.moveTo(50,50);
+        // pen.lineTo(75,0);
+        // pen.lineTo(100,50);
+        // pen.lineTo(150,50);
+        // pen.lineTo(100,75);
+        // pen.lineTo(125,125);
+        // pen.lineTo(75,85);
+        // pen.lineTo(50,135);
+        // pen.lineTo(50,85);
+        // pen.lineTo(10,75);
+        // pen.closePath();
+        // pen.stroke();
+        
+        // 创建一条路径
+        pen.beginPath();
+        // 定义线的宽度
+        pen.lineWidth = 5;
+        // 线的颜色
+        pen.strokeStyle = 'green';
+        // 定义先的开始坐标
+        pen.moveTo(100,200);
+        // 定义线条走过的坐标
+        pen.lineTo(400,200);
+        pen.lineTo(170,360);
+        pen.lineTo(250,80);
+        pen.lineTo(360,345);
+        pen.closePath();
+        // 通过填充路径来绘制图形轮廓
+        pen.stroke();
+
+        // pen.beginPath();
+        // pen.lineWidth = 5;
+        // pen.strokeStyle = 'pink';
+        // pen.moveTo(250,80);
+        // pen.lineTo(170,360);
+        // pen.stroke();
+
+        // pen.beginPath();
+        // pen.lineWidth = 5;
+        // pen.strokeStyle = 'red';
+        // pen.moveTo(250,80);
+        // pen.lineTo(350,355);
+        // pen.stroke();
+
+        // pen.beginPath();
+        // pen.lineWidth = 5;
+        // pen.strokeStyle = 'blue';
+        // pen.moveTo(100,200);
+        // pen.lineTo(350,355);
+        // pen.stroke();
+
+        // pen.beginPath();
+        // pen.lineWidth = 5;
+        // pen.strokeStyle = 'yellow';
+        // pen.moveTo(400,200);
+        // pen.lineTo(170,360);
+        // pen.stroke();
+
+    </script>
+</body>
+</html>

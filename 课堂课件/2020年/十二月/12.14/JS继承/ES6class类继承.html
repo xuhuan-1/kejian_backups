@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class类继承</title>
+</head>
+<body>
+    <script>
+        // class Parent{
+        //     constructor(){
+        //         this.name = '张三';
+        //         this.age = 19;
+        //         this.sex = '男';
+        //         // console.log(this,111);
+        //     }
+        //     //静态方法
+        //     static a(){
+        //         console.log('年前');
+        //     }
+        //     //原型方法
+        //     b(){
+        //         console.log('年后');
+        //     }
+        // }
+        // class Son extends Parent{
+        //     constructor(name,age){
+        //         super(name,age);
+        //         // console.log(this,222);
+        //     }
+        //     static sss(){
+        //         super.a();
+        //     }
+        // }
+        // let p = new Parent();
+        // let s = new Son();
+        // Son.sss();
+
+        // // console.log(p);
+        // // console.log(s);
+
+
+
+
+
+
+
+
+
+
+            // class Parent{
+            //     constructor(){
+            //         this.name = '张三';
+            //         this.age = 19;
+            //         this.sex = '女';
+            //     }
+            //     static a(){
+            //         console.log('静态方法');
+            //     }
+            //     b(){
+            //         console.log('原型方法');
+            //     }
+            // }
+            // class Son extends Parent{
+            //     constructor(name,age,sex){
+            //         super(name,age,sex);
+            //     }
+            //     static za(){
+            //         super.a();
+            //     }
+            //     zb(){
+            //         super.b();
+            //     }
+            // }
+            // let p = new Parent();
+            // let s = new Son();
+            // s.zb();
+            // console.log(p);
+            // console.log(s);
+
+
+
+        // class Parent{
+        //     constructor(){
+        //         this.name = '张三';
+        //         this.age = 20;
+        //         this.sex = '男'
+        //     }
+        //     static a(){
+        //         let p = '你好'
+        //         console.log(p);
+        //     }
+        //     b(){
+        //         let x = '不好';
+        //         console.log(x);
+        //     }
+        // }
+        // class Son extends Parent{
+        //     constructor(name,age,sex){
+        //         super(name,age,sex);
+        //         this.name = '李四';
+        //     }
+        //     static a1(){
+        //         super.a();
+        //     }
+        //     a2(){
+        //         super.b();
+        //     }
+        // }
+        // let p = new Parent();
+        // let s = new Son();
+        // Son.a1();
+        // s.a2()
+        // console.log(p);
+        // console.log(s);
+
+
+
+
+        class Parent{
+            constructor(){
+                this.name = '张三';
+                this.age = 19;
+                this.sex = '男';
+            }
+            static a1(){
+                console.log('静态方法');
+            }
+            a2(){
+                console.log('原型方法');
+            }
+        }
+        class Son extends Parent{
+            constructor(name,age,sex){
+                super(name,age,sex);
+                console.log(this.sex);
+            }
+        }
+        let p = new Parent();
+        let s = new Son();
+        console.log(p);
+        console.log(s);
+
+
+    </script>
+</body>
+</html>

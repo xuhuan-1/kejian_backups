@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * generator函数 === 生成器函数
+         * generator函数中的*  代表的是async   
+         * yield:是打断执行，就是停止，如果想继续向下执行，必须调用next() 函数
+         * yield就是await 
+         * 
+         * generator函数执行返回一个迭代器对象 { value:值/undefined,done:false/true }
+         *    当done为true时，则说明当前generator函数执行完毕了，否则当前函数没有执行完成
+         *    当done为true时，则value为undefined
+         *    
+         * next():下调指针，执行下一步函数
+         * return():一旦调用，则立马结束当前生成器函数
+         * throw():汇集错误信息的   不用
+        */
+
+        // function* gen(){
+        //     yield 10;
+        //     yield 20;
+        //     yield 30;
+        // }
+        // let g = gen();
+        // let a = g.next();
+        // let b = g.next();
+        // let f = g.return();
+        // let c = g.next();
+        // let d = g.next();
+        // console.log(g,a,b,c,d)
+
+    // 封装生成器函数
+        let index = 0;
+        function createFun(items){
+            let done = (index++ > items.length);
+            let value = !done ? items[index] : undefined;
+            return {
+                value: value,
+                done:done
+            }
+        }
+        let arr = [20,30,40,50];
+        console.log(createFun(arr));
+        console.log(createFun(arr));
+        console.log(createFun(arr));
+        console.log(createFun(arr));
+
+        
+
+        
+
+
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box" style="height: 100px;width: 59px;"></div>
+    <script>
+        // function fn(){
+        //     let arr = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
+        //     let b = '#';
+        //     for(let i=0;i<6;i++){
+        //         b += arr[Math.floor(Math.random()*16)];
+        //     }
+        //     console.log(b);
+        //     return b;
+        // }
+        // console.log(document.head);
+        // document.head.style.background = fn();
+
+        // let arr = [1,2,3].map(parseInt);
+        // console.log(arr);
+        // parseInt(1,0,[1,2,3])//1
+        // parseInt(2,1,[1,2,3])//NaN
+        // parseInt(3,2,[1,2,3])//NaN
+
+
+        // let s = 0.1 + 0.2
+        // let a = parseFloat(s.toFixed(1));
+        // console.log(a);
+    // 函数生成器
+        // let arr = [
+        //     "Undefined",
+        //     "Null",
+        //     "Boolean",
+        //     "String",
+        //     "Number",
+        //     "Symbol",
+        //     "BigInt",
+        //     "Array",
+        //     "Object",
+        //     "Function",
+        //     "Date",
+        //     "RegExp",
+        // ];
+        // function isType(type){
+        //     return function(obj){
+        //         return ({}).toString.call(obj).includes(type);
+        //     }
+        // }
+        // let fn = {};
+        // arr.forEach(item=>{
+        //     fn['is'+ item] = isType(item);
+        // })
+        // let s = fn.isNumber(545);
+        // console.log(s);
+
+        
+        // let obj = {
+        //     name:'张三'
+        // }
+        // Object.defineProperty(obj,'_name',{
+        //     get(){
+        //         return `你好：${this.name}`;
+        //     },
+        //     set(val){
+        //         this.name = `哈喽${val}`;
+        //     }
+        // })
+        // obj._name = '李四'
+        // console.log(obj._name);
+        // console.log(obj.name);
+
+
+
+        let obj = {
+            name:'张三',
+            age:18
+        }
+        Object.defineProperty(obj,'_name',{
+            get(){
+                return `你好：${this.name}`
+            },
+            configurable:true,
+            writable:true,
+            enumerable:true
+        })
+        delete obj._name;
+        console.log(obj);
+    </script>
+</body>
+
+</html>

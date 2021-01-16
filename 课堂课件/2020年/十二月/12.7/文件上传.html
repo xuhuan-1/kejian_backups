@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件上传</title>
+</head>
+<body>
+    <form action="">
+        <input id="inp" type="file" multiple/>
+        <img src="" id="ig"/>
+    </form>
+    <script>
+        //一、
+        // function fileReader(file){
+        //     return new Promise(resolve=>{
+        //         let files = new FileReader;
+        //         files.readAsDataURL(file);
+        //         files.onload = (e)=>{
+        //             resolve(e.target.result);
+        //         }
+        //     })
+        // }
+        // inp.onchange = async function(){
+        //     let file = this.files[0];
+        //     if(!file)return
+        //     console.log(file);
+        //     let s = await fileReader(file);
+        //     //console.log(s);
+        // }
+
+
+        //二、
+        // function fileReader(file){
+        //     return new Promise((resolve)=>{
+        //         let files = new FileReader;
+        //         files.readAsDataURL(file);
+        //         files.onload = e=>{
+        //             resolve(e.target.result);
+        //         }
+        //     })
+        // }
+        // inp.onchange = async function(){
+        //     let file = this.files[0];
+        //     console.log(file);
+        //     if(!file)return;
+        //     let s = await fileReader(file);
+        //     console.log(s);
+        // }
+
+
+        //三、
+        // function fileReader(file){
+        //     return new Promise((resolve)=>{
+        //         let files = new FileReader;
+        //         files.readAsDataURL(file);
+        //         files.onload = e=>{
+        //             resolve(e.target.result);
+        //         }
+        //     })
+        // }
+        // inp.onchange = async function(){
+        //     let file = this.files[0];
+        //     console.log(file);
+        //     if(!file)return;
+        //     let s = await fileReader(file);
+        //     console.log(s);
+        // }
+
+
+            function fileReader(file){
+                return new Promise(resolve=>{
+                    let files = new FileReader;
+                    files.readAsDataURL(file);
+                    files.onload = e=>{
+                        resolve(e.target.result);
+                    }
+                })
+            }
+
+            inp.onchange = async function(e){
+                let file = e.target.files[0];
+                //let file = this.files[0];
+                console.log(file);
+                ig.src = await fileReader(file);
+                
+            }
+
+    </script>
+</body>
+</html>

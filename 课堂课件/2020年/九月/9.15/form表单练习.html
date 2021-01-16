@@ -1,0 +1,63 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>form表单练习</title>
+		<style>
+			textarea{
+				white-space:nowrap;
+				overflow:hidden;
+				text-overflow:ellipsis;
+			}
+		</style>
+	</head>
+	<body>
+		<form>
+			文本框：<input type="text" name="as" value="" required="required" autocomplete="on"/>
+			<br/>
+			密码框：<input type="password" autofocus="autofucus" name="" value=""/>
+			<br/>
+			<!--按钮-->
+			<input type="button" value="普通按钮"/>
+			<br/>
+			<input type="submit" value="我是提交按钮"/>
+			<br/>
+			<input type="reset" value="我是重置按钮"/>
+			<br/>
+			<!--下拉框-->
+			<select>
+				<option>合肥</option>
+				<option>阜阳</option>
+				<option selected="selected">淮北</option>
+				<option>蚌埠</option>
+			</select>
+			<br/>
+			<!--单选框复选框-->
+			性别：<input type="radio" name="sex" value=""/>男
+			<input type="radio" name="sex" value=""/>女
+			<input type="radio" name="sex" value="" disabled="disabled"/>人妖
+			<br/>
+			爱好：<input type="checkbox" name="hobby" value=""/>打游戏
+			<input type="checkbox" name="hobby" value=""/>看书
+			<input type="checkbox" name="hobby" value=""/>听歌
+			<input type="checkbox" name="hobby" value=""/>旅游
+			<br/>
+			<!--文本域-->
+			<textarea style="resize:none;" cols="10" rows="5">你好，我是一个文本域</textarea>
+			<br/>
+			<input type="file" name="" value="" multiple="multiple"/>
+			<br/>
+			<input type="date"/>
+			<input type="time"/>
+			<input type="datetime-local"/>
+			<input type="week"/>
+			
+			
+		</form>
+	</body>
+</html>
+
+
+
+
+

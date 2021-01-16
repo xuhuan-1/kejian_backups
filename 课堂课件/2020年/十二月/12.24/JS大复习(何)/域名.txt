@@ -1,0 +1,23 @@
+域名：
+    组成：协议、域名、子域名、端口号【子域名可以没有】
+
+    端口号：80端口
+    服务端：443端口
+
+买域名：
+    1、万网
+    2、景安
+
+
+    获取完整域名：window.location.origin
+    获取域名中协议：window.location.protocol
+    获取主域名：window.location.hostname   
+    获取域名加端口号：window.location.host
+    获取全部url全路径：window.location.href
+    获取路径：window.location.pathname
+    获取端口号：window.location.port
+    获取路径携带参数：window.location.search
+    获取路径中hash值：window.location.hash
+
+
+    www.baidu.com/admin/#/index 

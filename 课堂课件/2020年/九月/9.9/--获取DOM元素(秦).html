@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>for</title>
+		<style>
+			div{
+				height:40px;
+			}
+		</style>
+		<script>
+			
+		</script>
+	</head>
+	<body>
+		<div class = "top" id = "head">
+		<p>我是头部内容标签为网页主体的元素或者节点,element：元素,节点</p>
+		</div>
+		<form>
+			<input id = "firstText" type = "text" value = "我是一个文本框"/>
+		</form>
+		<script>
+		var topDiv = document.getElementsByClassName("top");
+		var headDiv = document.getElementById("head");
+		var firstDiv = document.getElementsByTagName("div");
+		var firstText = document.getElementById("firstText");
+			console.log(headDiv.innerHTML);
+			console.log(topDiv);
+			console.log(firstText.value);
+		/*
+		//通过ID名获取DOM元素
+		1、document.getElementById("ID名")
+		//通过class名获取DOM元素
+		2、document.getElementsByClassName("class名")
+		//通过标签名获取DOM元素
+		3、document.getElementsByTagName("标签名")
+	必须是在页面的<body>标签中可以找到对应的有ID名字的标签
+	并且<script>标签必须在标签的下方，否则找不到对应的元素
+		
+		//标识符.innerHTML：获取对应元素的所有内容
+		//标识符.innerText：获取对应元素的文本内容
+		//标识符.value：获取对应元的value值
+		*/
+		</script>
+	</body>
+</html>

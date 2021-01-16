@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>热带作业5</title>
+		<style>
+			body{
+				background:#333;
+			}
+			.map{
+				position:relative;
+				height:617px;
+				width:747px;
+				background:url(map.png) no-repeat;
+				margin:0 auto;
+			}
+			.city{
+				position:absolute;
+				top:220px;
+				left:550px;
+			}
+			.dian{
+				width:10px;
+				height:10px;
+				background:red;
+				border-radius:50%;
+			}
+			.city div[class^="aperture"]{
+				position:absolute;
+				top:50%;
+				left:50%;
+				transform:translate(-50%,-50%);
+				height:10px;
+				width:10px;
+				border-radius:50%;
+				box-shadow:0 0 5px 3px red;
+				animation:aa 1.5s infinite linear;
+			}
+			.city div.aperture2{
+				animation-delay:0.4s;
+			}
+			.city div.aperture3{
+				animation-delay:0.8s;
+			}
+			@keyframes aa{
+				50%{
+					width:30px;
+					height:30px;
+				}
+				100%{
+					width:60px;
+					height:60px;
+				}
+			}
+			.tb{
+				top:500px;
+				left:650px;
+			}
+			.gz{
+				top:530px;
+				left:560px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="map">
+			<div class="city">
+				<div class="dian"></div>
+				<div class="aperture1"></div>
+				<div class="aperture2"></div>
+				<div class="aperture3"></div>
+			</div>
+			<div class="city tb">
+				<div class="dian"></div>
+				<div class="aperture1"></div>
+				<div class="aperture2"></div>
+				<div class="aperture3"></div>
+			</div>
+			<div class="city gz">
+				<div class="dian"></div>
+				<div class="aperture1"></div>
+				<div class="aperture2"></div>
+				<div class="aperture3"></div>
+			</div>
+		<div>
+	</body>
+</html>
+
+

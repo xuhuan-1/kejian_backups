@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>学成在线</title>
+		<style>
+			body{
+				background:#F3F5F7;
+			}
+			*{
+				margin:0;
+				padding:0;
+			}
+			/*第一行开始*/
+			.box1bj{
+				width:1250px;
+				height:120px;
+				background:#F3F5F7;
+				margin:0 auto;
+			}
+			.logo1{
+				line-height:140px;
+				float:left;
+			}
+			.lb1 li{
+				list-style:none;
+				float:left;
+				line-height:100px;
+				padding-left:60px;
+				font-size:17px;
+			}
+			input{
+				float:left;
+				width:210px;
+				height:35px;
+				margin-top:30px;
+				margin-left:100px;
+				border:2px solid #00A4FF;
+			}
+			button{
+				width:48px;
+				height:39px;
+				margin-top:30px;
+				background-image:url(btn.png);	
+				float:left;
+				border:none;
+			}
+			.user1{
+				float:left;
+				line-height:110px;
+				margin-left:120px;
+			}
+			/*第一行结束*/
+			/*第二行开始*/
+			.dabox2{
+				width:100%;
+				height:420px;
+				background:#1C036B;
+			}
+			.box2bj{
+				width:1250px;
+				height:420px;
+				background-image:url(banner2.png);
+				margin:0 auto;
+			}
+			.bj2{
+				width:210px;
+				height:420px;
+				background:#14024B;
+				float:left;
+				margin-left:-190px;
+			}
+			.lb2{
+				list-style:none;
+				line-height:52px;
+				margin-left:20px;
+				color:#fff;
+				
+			}
+			.lb2 li a{
+				text-decoration:none;
+				color:#fff;
+			}
+			.lb2 span{
+				margin-left:100px;
+			}
+			.kcb{
+				width:220px;
+				height:320px;
+				background:#fff;
+				float:right;
+				margin-right:120px;
+				margin-top:40px;
+				
+			}
+			.kcb dt{
+				width:220px;
+				height:40px;
+				background:#9BCEEA;
+				line-height:40px;
+				color:#fff;
+				text-align:center;
+				font-size:20px;	
+			}
+			.a1{
+				font-size:18px;
+				font-weight:700;
+				line-height:35px;
+				margin-left:20px;
+				margin-top:10px;
+				border-bottom:1px solid;
+				width:187px;
+				
+			}
+			.a1 span{
+				font-size:13px;
+				font-weight:400;
+				display:block;
+				margin-top:-5px;
+			}
+			.b1{
+				color:#00A4FF;
+				text-align:center;
+				line-height:30px;
+				border:2px solid #00A4FF;
+				width:130px;
+				height:30px;
+				margin-left:50px;
+				margin-top:10px;
+				
+			}
+			/*第二行结束*/
+			/*第三行开始*/
+			.box3bj{
+				width:1250px;
+				height:75px;
+				background:#fff;
+				margin:0 auto;
+			}
+			.kc li{
+				float:left;
+				list-style:none;
+				
+				margin-left:55px;
+			}
+			.kc li::after{
+				content:"|";
+				margin-left:20px;
+			}
+			.kc span{
+				color:#00A4FF;
+				font-weight:600;
+				font-size:20px;
+			}
+			.kc a{
+				text-decoration:none;
+				
+				margin-left:290px;
+				color:#00A4FF;
+			}
+			/*第三行结束*/
+			/*第四行开始*/
+			.box4bj{
+				width:1250px;
+				height:90px;
+				background:#F3F5F7;
+				margin:0 auto;
+			}
+			.jptj h3{
+				float:left;
+				line-height:90px;
+				margin-left:-155px;
+				font-size:23px;
+			}
+			.jptj a{
+				line-height:90px;
+				text-decoration:none;
+				font-size:14px;
+				margin-left:1000px;
+				color:#A5A5A5;
+			}
+			/*第四行结束*/
+			/*第五行开始*/
+			.box5bj{
+				width:1250px;
+				margin:0 auto;
+			}
+			.bk ul{
+				list-style:none;	
+			}		
+			.bk ul li{
+				float:left;
+				width:233px;
+				height:270px;
+				background:#fff;
+				margin-right:13px;
+				margin-bottom:15px;
+				margin-left:4px;
+			}
+			.bk ul li h5{
+				padding:15px;
+			}
+			.s1 p{
+				margin-left:15px;
+			}
+			.s1 p span{
+				font-size:13px;
+				color:red;
+			}
+			.clearfix::after{
+				display:block;
+				content:"";
+				clear:both;
+				visibility:hidden;
+				height:0;
+			}
+			.clearfix{
+				*zoom:1;
+			}
+			/*第五行结束*/
+			/*第六行开始*/
+			.dabox6{
+				width:100%;
+				background:#fff;
+			}
+			.box6bj{
+				width:1250px;
+				height:250px;
+				margin:0 auto;
+				margin-top:-5px;
+			}
+			.xczx{
+				float:left;
+				list-style:none;
+			}
+			.xczx li img{
+				margin-top:40px;
+			}
+			.xczx li p{
+				margin-top:30px;
+				font-size:13px;
+				margin-bottom:25px;
+			}
+			.xczx li a{
+				text-decoration:none;
+				border:2px solid #00A4FF;
+				display:block;
+				line-height:35px;
+				text-align:center;
+				width:110px;
+				height:35px;
+				color:#00A4FF;
+			}
+			.s2{
+				float:right;
+				list-style:none;
+				margin-top:40px;
+				margin-right:80px;
+			}
+			.s2 h5{
+				margin-bottom:20px;
+				font-weight:500;
+				font-size:16px;
+			}
+			.s2 li{
+				font-size:13px;
+			}
+			/*第六行结束*/
+		</style>
+	</head>
+	<body>
+	<!--第一行开始-->
+		<div class="dabox1">
+			<div class="box1bj">
+				<div class="logo1">
+					<img src="logo.png">
+				</div>
+				<div>
+					<ul class="lb1">
+						<li>首页</li>
+						<li>课程</li>
+						<li>职业规划</li>
+					</ul>
+				</div>
+				<div>
+					<input type="text" name="" value="" placeholder="请输入提示信息">
+					<button></button>
+				</div>
+				<div class="user1">
+					<img src="user.png">
+					<span>李雷</span>
+				</div>
+			</div>
+		</div>
+	<!--第一行结束-->
+	<!--第二行开始-->
+		<div class="dabox2">
+			<div class="box2bj">
+				<div class="bj2">
+					<ul class="lb2">
+						<li><a href="#">前端开发</a><span>&gt;</span></li>
+						<li><a href="#">前端开发</a><span>&gt;</span></li>
+						<li><a href="#">前端开发</a><span>&gt;</span></li>
+						<li><a href="#">前端开发</a><span>&gt;</span></li>
+						<li><a href="#">前端开发</a><span>&gt;</span></li>
+						<li><a href="#">前端开发</a><span>&gt;</span></li>
+						<li><a href="#">前端开发</a><span>&gt;</span></li>
+						<li><a href="#">前端开发</a><span>&gt;</span></li>
+					</ul>
+				</div>
+				<div>
+					<dl class="kcb">
+						<dt>我的课程表</dt>
+							<dd class="a1">继续学习 程序语言设计
+								<span>正在学习-使用对象</span>
+							</dd>
+							<dd class="a1">继续学习 程序语言设计
+								<span>正在学习-使用对象</span>
+							</dd>
+							<dd class="a1">继续学习 程序语言设计
+								<span>正在学习-使用对象</span>
+							</dd>
+							<p class="b1">全部课程</P>	
+					</dl>
+				</div>
+			</div>
+		</div>
+	<!--第二行结束-->
+	<!--第三行开始-->
+		<div class="box3bj">
+			<ul class="kc">
+				<li><span>精品课程</span></li>
+				<li>jQuery</li>
+				<li>jQuery</li>
+				<li>jQuery</li>
+				<li>jQuery</li>
+				<li>jQuery</li>
+				<a href="#">修改兴趣</a>
+			</ul>
+		</div>
+	<!--第三行结束-->
+	<!--第四行开始-->
+		<div class="box4bj">
+			<div class="jptj">
+				<h3>精品推荐</h3>
+				<a href="#">查看全部</a>
+			</div>
+		</div>
+	<!--第四行结束-->
+	<!--第五行开始-->
+		<div class="box5bj">
+			<div class="bk">
+				<ul class="clearfix">
+					<li class="s1">
+						<img src="pic.png">
+						<h5>Think PHP 5.0博客系统实战项目演练</h5>
+						<p><span>高级</span> •1125人在学习</p>
+					</li>
+					<li class="s1">
+						<img src="pic.png">
+						<h5>Think PHP 5.0博客系统实战项目演练</h5>
+						<p><span>高级</span> •1125人在学习</p>
+					</li>
+					<li class="s1">
+						<img src="pic.png">
+						<h5>Think PHP 5.0博客系统实战项目演练</h5>
+						<p><span>高级</span> •1125人在学习</p>
+					</li>
+					<li class="s1">
+						<img src="pic.png">
+						<h5>Think PHP 5.0博客系统实战项目演练</h5>
+						<p><span>高级</span> •1125人在学习</p>
+					</li>
+					<li class="s1">
+						<img src="pic.png">
+						<h5>Think PHP 5.0博客系统实战项目演练</h5>
+						<p><span>高级</span> •1125人在学习</p>
+					</li>
+					<li class="s1">
+						<img src="pic.png">
+						<h5>Think PHP 5.0博客系统实战项目演练</h5>
+						<p><span>高级</span> •1125人在学习</p>
+					</li>
+					<li class="s1">
+						<img src="pic.png">
+						<h5>Think PHP 5.0博客系统实战项目演练</h5>
+						<p><span>高级</span> •1125人在学习</p>
+					</li>
+					<li class="s1">
+						<img src="pic.png">
+						<h5>Think PHP 5.0博客系统实战项目演练</h5>
+						<p><span>高级</span> •1125人在学习</p>
+					</li>
+					<li class="s1">
+						<img src="pic.png">
+						<h5>Think PHP 5.0博客系统实战项目演练</h5>
+						<p><span>高级</span> •1125人在学习</p>
+					</li>
+					<li class="s1">
+						<img src="pic.png">
+						<h5>Think PHP 5.0博客系统实战项目演练</h5>
+						<p><span>高级</span> •1125人在学习</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	<!--第五行结束-->
+	<!--第六行开始-->
+		<div class="dabox6">
+			<div class="box6bj">
+				<ul class="xczx">
+					<li><img src="logo.png"></li>
+					<li><p>学成在线致力于普及中国最好的教育它与中国一流大学和机构合作提供在线课程。<br/>
+							© 2017年XTCG Inc.保留所有权利。-沪ICP备15025210号
+						</p>
+					</li>
+					<li><a href="#">下载APP</a></li>
+				</ul>
+				<ul class="s2">
+					<li><h5>关于学成网</h5></li>
+					<li>关于</li>
+					<li>管理团队</li>
+					<li>工作机会</li>
+					<li>客户服务</li>
+					<li>帮助</li>
+				</ul>
+				<ul class="s2">
+					<li><h5>关于学成网</h5></li>
+					<li>关于</li>
+					<li>管理团队</li>
+					<li>工作机会</li>
+					<li>客户服务</li>
+					<li>帮助</li>
+				</ul>
+				<ul class="s2">
+					<li><h5>关于学成网</h5></li>
+					<li>关于</li>
+					<li>管理团队</li>
+					<li>工作机会</li>
+					<li>客户服务</li>
+					<li>帮助</li>
+				</ul>
+			</div>	
+		</div>
+	<!--第六行结束-->
+	</body>
+</html>

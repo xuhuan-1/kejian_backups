@@ -1,0 +1,23 @@
+accept:允许上传文件的类型
+multiple:允许多文件上传
+MIME:文件类型
+FileList:当前文件对象 【集合】
+    0:第一个文件对象
+    1:第二个文件对象
+        name:当前文件名
+        size:当前文件大小 【字节】
+        type:上传文件的类型  image/png|jpg|jpeg|svg|gif|webp
+    length:选取的文件数量
+
+FileReader:读取本地文件的一个构造函数 
+    function fileReader(file){
+        return new Promise(resolve =>{
+            let reader = new FileReader;
+            reader.readAsDataURL(file);
+            reader.onload = ev =>{
+                resolve(ev.target.result);
+            }
+        })
+    }
+
+

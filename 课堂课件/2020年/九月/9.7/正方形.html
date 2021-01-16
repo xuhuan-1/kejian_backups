@@ -1,0 +1,141 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>三角形</title>
+		<script>
+		/*
+			var start = '';
+				for(var i=0;i<10;i++){
+					for(var j=0;j<10;j++){
+						start += '+ ';
+					}
+					start += '\n';
+				}
+				console.log(start);
+		
+			var start = '';
+				for(var i=1;i<10;i++){
+					for(j=i;j<10;j++){
+						start += ' *';
+					}
+					start += '\n';
+				}console.log(start);
+				
+			for(i = 1; i <= 10;i++){
+				for(t = 1;t <=i;t++){
+					document.write('*');
+				}
+				document.write('<br/ >');
+			}
+			一、
+			for(var i=10;i>=1;i--){
+				for(var t=1; t<=i;t++){
+					document.write('*');
+				}
+				document.write('<br/ >');
+			}
+			二、
+			
+			for(var i=1;i<=5;i++){
+				for(var t=5; t>=i;t--){
+					document.write('* ');
+				}
+				document.write('<br/ >');
+			}
+			
+			for(var i=1;i<=5;i++){
+				for(var k=4;k>=i;k--){
+					document.write('&nbsp;');
+				}
+				for(var x=1;x<=i;x++){
+					document.write('*');
+				}
+				document.write('<br/ >');
+			}
+			
+			for(var i=1;i<=5;i++){
+				for(var j=5;j>=i;j--){
+					document.write('*');
+				}
+				document.write('<br/ >');
+			}
+		
+		
+		
+			for(var i=1;i<=5;i++){
+				for(var k=4;k>=i;k--){
+					document.write('1');
+				}
+				for(var x=1;x<=i;x++){
+					document.write('*');
+				}
+				document.write('<br/ >');
+			}
+			
+
+			for(var i=1;i<=5;i++){//规定5行
+				for(var k=4;k>=i;k--){//空格三角
+					document.write('-');
+				}
+				for(var x=1;x<=2*i-1;x++){//i=1的时候，循环一次
+					if(x==1 || x==2*i-1 || i==5){
+						document.write('*');
+					}else{
+						document.write('-');
+					}
+						
+				}
+				document.write('<br/ >');
+			}
+			空心三角形 一
+			for(var i=1;i<=5;i++){//规定折行5行
+				for(var k=4;k>=i;k--){//空格三角
+					document.write('-');
+				}
+				for(var x=1;x<=2*i-1;x++){
+					if(x==1 || x==2*i-1 || i==5){
+						document.write('s');
+					}else{
+						document.write('-');
+					}
+				}
+				document.write('<br/ >');
+			}
+		
+			空心三角形 二
+			for(var i=1;i<=10; i++){
+				for(var k=9;k>=i;k--){
+					document.write('-');
+				}
+				for(var x=1;x<=2*i-1;x++){
+					if(x==1||x==2*i-1||i==10){
+						document.write('*');
+					}else{
+					  document.write('-'); 
+					}
+				}
+				document.write('<br/ >');
+			}
+		*/
+			var count = 20;
+			for(var i=1;i<=count;i++){
+				for(var k=count-1;k>=i;k--){
+					document.write('&nbsp;&nbsp;');
+				}
+				for(var x=1;x<=i*2-1;x++){
+					if(x==1||x==i*2-1||i==count){
+						document.write('$');
+					}else{
+						document.write('&nbsp;&nbsp;');
+					}
+					
+				}
+				document.write('<br/ >');
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

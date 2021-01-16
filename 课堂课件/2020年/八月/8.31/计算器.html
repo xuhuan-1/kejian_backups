@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="sr" value="" />
+		<select id="select">
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+		</select>
+		<input type="text" id="sr1" value="" />
+		<input type="button" id="dy" value="=" />
+		<input type="text" id="jg" value="" readonly="readonly"/>
+		<script type="text/javascript">
+			var dy=document.getElementById("dy");
+			dy.onclick=function(){
+				var sr=document.getElementById("sr");
+				var sr1=document.getElementById("sr1");
+				var jg=document.getElementById("jg");
+				var s=document.getElementById("select");
+				switch(s.value){
+					case "+":
+					document.getElementById("jg").value=parseFloat(sr.value)+parseFloat(sr1.value);
+					break;
+					case "-":
+					document.getElementById("jg").value=parseFloat(sr.value)-parseFloat(sr1.value);
+					break;
+					case "*":
+					document.getElementById("jg").value=parseFloat(sr.value)*parseFloat(sr1.value);
+					break;
+					case "/":
+					document.getElementById("jg").value=(parseFloat(sr.value)/parseFloat(sr1.value)).toFixed(3);
+					break;
+				}
+			}
+			
+		</script>
+	</body>
+</html>

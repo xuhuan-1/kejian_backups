@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>存储数据</title>
+</head>
+<body>
+    
+</body>
+    <script>
+        let a = {
+            name:'张三'
+        };
+        localStorage.setItem('shuju',JSON.stringify(a));
+        //localStorage.removeItem('shuju');
+        //let c = localStorage.getItem('shuju')
+        let c = localStorage.getItem('shuju');
+        console.log(c);
+    </script>
+</html>

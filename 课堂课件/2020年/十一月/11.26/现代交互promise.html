@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>现代交互promise</title>
+    <script src="./现代交互(何)/js/axios.min.js"></script>
+</head>
+<body>
+    <button id="btn">点击获取</button>
+    <script>
+        function postMessage(url,data,config){
+            return axios.get(url,data,config).then((res)=>{
+                return res.data;
+            })
+        }
+        //异步延迟处理函数
+        function delay(timer){
+            var timer = timer || 3000;
+            return new Promise(ss=>{
+                setTimeout(()=>{
+                    ss();
+                },timer);
+            })
+        }
+        btn.onclick = function(){
+        //一、
+            // axios.get('http://localhost:3001/allData').then((res)=>{
+            //     console.log(res.data);
+            // })
+
+
+        //二、
+            async function getData(){
+                await delay();
+                let list = await axios.get('http://localhost:3001/allData');
+                console.log(list);
+            }
+            getData()
+        }
+    </script>
+</body>
+</html>

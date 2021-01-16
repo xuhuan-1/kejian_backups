@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>简单的轮播图2</title>
+        <meta charset="utf-8">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+			#box{
+				width:400px;
+				margin:0 auto;
+				position:relative;
+			}
+			#box ul{
+				width:2000px;
+				position:absolute;
+			}
+			#box ul li{
+				list-style:none;
+				float:left;
+			}
+        </style>
+    </head>
+    <body>
+		<input type="button" value="开始" onclick="dj1()"/>
+		<input type="button" value="停止" onclick="dj2()"/>
+        <div id="box">
+			<ul>
+				<li><img src="img/1.jpg"/></li>
+				<li><img src="img/2.jpg"/></li>
+				<li><img src="img/3.jpg"/></li>
+				<li><img src="img/4.jpg"/></li>
+				<li><img src="img/5.jpg"/></li>
+			</ul>
+		</div>
+        <script>
+			var query = document.querySelector('ul');
+			var time = null;
+			var a = 0;
+            function dj1(){
+				time = setInterval (function(){
+					a++;
+					query.style.left = -400*a + 'px';
+					if(){
+						
+					}
+				},1000)
+			}
+        </script>
+    </body>
+</html>

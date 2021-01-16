@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽2</title>
+    <style>
+        .container {
+            height: 800px;
+            width: 200px;
+            border: 2px solid;
+            float: left;
+            
+        }
+
+        #box_1,
+        #box_2,
+        #box_3,
+        #box_4,
+        #box_5,
+        #box_6,
+        #box_7,
+        #box_8,
+        #box_9,
+        #box_10,
+        #box_11,
+        #box_12{
+            height: 100px;
+            width: 100px;
+            float: left;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"></div>
+    <div id="box_1" style="background: red;" draggable="true">1</div>
+    <div id="box_2" style="background: pink;" draggable="true">2</div>
+    <div id="box_3" style="background: blue;" draggable="true">3</div>
+    <div id="box_4" style="background: black;" draggable="true">4</div>
+    <div id="box_5" style="background: yellow;" draggable="true">5</div>
+    <div id="box_6" style="background: rgb(185, 31, 190);" draggable="true">6</div>
+    <div id="box_7" style="background: red;" draggable="true">7</div>
+    <div id="box_8" style="background: pink;" draggable="true">8</div>
+    <div id="box_9" style="background: blue;" draggable="true">9</div>
+    <div id="box_10" style="background: black;" draggable="true">10</div>
+    <div id="box_11" style="background: yellow;" draggable="true">11</div>
+    <div id="box_12" style="background: rgb(185, 31, 190);" draggable="true">12</div>
+    <script>
+        // 获取元素
+        let container = document.querySelector('.container'),
+            box_1 = document.querySelector('#box_1'),
+            box_2 = document.querySelector('#box_2'),
+            box_3 = document.querySelector('#box_3'),
+            box_4 = document.querySelector('#box_4'),
+            box_5 = document.querySelector('#box_5'),
+            box_6 = document.querySelector('#box_6');
+
+        box_1.ondragstart = function (e) {
+            e.dataTransfer.setData('text', e.target.id);
+        }
+        box_2.ondragstart = function(e){
+            e.dataTransfer.setData('text',e.target.id);
+        }
+        box_3.ondragstart = function(e){
+            e.dataTransfer.setData('text',e.target.id);
+        }
+        box_4.ondragstart = function (e) {
+            e.dataTransfer.setData('text', e.target.id);
+        }
+        box_5.ondragstart = function(e){
+            e.dataTransfer.setData('text',e.target.id);
+        }
+        box_6.ondragstart = function(e){
+            e.dataTransfer.setData('text',e.target.id);
+        }
+        box_7.ondragstart = function (e) {
+            e.dataTransfer.setData('text', e.target.id);
+        }
+        box_8.ondragstart = function(e){
+            e.dataTransfer.setData('text',e.target.id);
+        }
+        box_9.ondragstart = function(e){
+            e.dataTransfer.setData('text',e.target.id);
+        }
+        box_10.ondragstart = function (e) {
+            e.dataTransfer.setData('text', e.target.id);
+        }
+        box_11.ondragstart = function(e){
+            e.dataTransfer.setData('text',e.target.id);
+        }
+        box_12.ondragstart = function(e){
+            e.dataTransfer.setData('text',e.target.id);
+        }
+
+
+        container.ondragover = function (e) {
+            e.preventDefault();
+            return false;
+        }
+        container.ondrop = function (e) {
+            let data = e.dataTransfer.getData('text');
+            console.log(data);
+            e.target.appendChild(document.getElementById(data));
+            console.log(e.target);
+        }
+    </script>
+</body>
+
+</html>

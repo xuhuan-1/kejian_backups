@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>增删改查</title>
+</head>
+<style>	
+    #div_id1{
+        margin-left:160px;
+    }
+    #div_id2{
+        margin:0 auto;
+		width:750px;
+    }
+	#tab_id{
+		width:800px;
+	}
+	#addnew{
+		float:right;
+	}
+	.handle{
+		width:150px;
+		margin-right:30px;
+	}
+</style>
+<body>
+	<div id = "box">
+		<div id="newperson">
+			<h1>添加用户</h1>
+			姓名<input type="text" msg = 'name' value="" placeholder = "请输入正确的姓名"/>
+			性别：男<input type="radio" value="男" name = '1'/>女<input type="radio" value="女" name = '1'/>
+			电话<input type="text" msg = 'tel'  value="" placeholder = "请输入正确的联系方式"/>
+			爱好:吃<input type="checkbox" value="吃" />喝<input type="checkbox" value="喝" />服务<input type="checkbox" value="服务" />花钱<input type="checkbox" value="花钱" />
+			<p>
+				<input type="button" value="提交"/>
+				<input type="button" value="更新"/>
+			</p>
+			<hr>
+		</div>
+		<table border=2px id="userinfo">
+			<thead>
+				<caption >用户信息<button id = "addnew">添加用户</button></caption>
+				<tr>
+					<td style = "width:80px;">姓名</td>
+					<td style = "width:200px;">性别</td>
+					<td style = "width:120px;">电话</td>
+					<td style = "width:220px;">爱好</td>
+					<td style = "text-align:center;">操作</td>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>	
+    <script>
+		function $(eleID){
+			return document.getElementById(eleID)
+		}
+		var rowindex;
+		var hobby = $('box').querySelectorAll('input[type="checkbox"]');
+		var sexy =  $('box').querySelectorAll('input[type="radio"]');
+		$('box').addEventListener('click',(e)=>{
+			//解决兼容问题
+			var e = e || window.event;
+			var now_target = e.target || e.srcElement;
+			var new_sex = null,new_like = '';
+			var new_name = $('newperson').querySelector('input[msg="name"]').value;
+			var new_tel = $('newperson').querySelector('input[msg="tel"]').value;
+			for(var i = 0;i<sexy.length;i++){
+				if(sexy[i].checked){
+					new_sex = sexy[i].value;
+				}
+			}
+			for(var i = 0;i<hobby.length;i++){
+				if(hobby[i].checked){
+					new_like += hobby[i].value
+				}
+			}
+			if(now_target.value == '提交'){
+				var new_tr = document.createElement('tr');
+				new_tr.innerHTML = '<td style = "width:80px;">'+new_name+'</td><td style = "width:200px;">'+new_sex+'</td><td style = "width:120px;">'+new_tel+'</td><td style = "width:220px;">'+new_like+'</td><td style = "text-align:center;"><input type = "button" value = "删除"><input type = "button" value = "修改"></td>'
+				//判断当前性别/判断爱好
+				if(new_name == '' || new_sex == null || new_tel == '' || new_like == ''){
+					alert('请输入选择正确的完整信息')
+					return
+				}
+				$('userinfo').querySelector('tbody').appendChild(new_tr);
+				for(var i = 0;i<hobby.length;i++){
+					hobby[i].checked = false;
+				}
+				for(var i = 0;i<sexy.length;i++){
+					sexy[i].checked = false;
+				}
+				$('newperson').querySelector('input[msg="name"]').value = '';
+				$('newperson').querySelector('input[msg="tel"]').value = '';
+			}
+			if(now_target.value == '删除'){
+				now_target.parentNode.parentNode.remove()
+			}
+			if(now_target.value == '修改'){
+				rowindex =now_target.parentNode.parentNode.rowIndex;
+				var now_tralltd = now_target.parentNode.parentNode.children;
+				$('newperson').querySelector('input[msg="name"]').value= now_tralltd[0].innerHTML;
+				for(var i = 0;i<sexy.length;i++){
+					if(sexy[i].value == now_tralltd[1].innerHTML){
+						sexy[i].checked = true;
+					}
+				}
+				$('newperson').querySelector('input[msg="tel"]').value= now_tralltd[2].innerHTML;
+				for(var i = 0;i<hobby.length;i++){
+					if(now_tralltd[3].innerHTML.indexOf(hobby[i].value )>=0){
+						hobby[i].checked = true;
+					}
+				}
+			}
+			if(now_target.value == '更新'&&rowindex){
+				var now_like = '';
+				var order_tr = $('userinfo').querySelector('tbody').querySelectorAll('tr')[rowindex];
+				order_tr.querySelectorAll('td')[0].innerHTML = $('newperson').querySelector('input[msg="name"]').value
+				order_tr.querySelectorAll('td')[2].innerHTML = $('newperson').querySelector('input[msg="tel"]').value
+				for(var i = 0;i<sexy.length;i++){
+					if(sexy[i].checked){
+						order_tr.querySelectorAll('td')[1].innerHTML = sexy[i].value;
+					}
+				}
+				for(var i = 0;i<hobby.length;i++){
+					if(hobby[i].checked){
+						now_like += hobby[i].value;
+					}
+				}
+				if(now_like == ''){
+					alert('请选择正确的爱好！')
+					return
+				}
+				order_tr.querySelectorAll('td')[3].innerHTML = now_like
+				
+			}
+		})
+    </script>
+</body>
+</html>

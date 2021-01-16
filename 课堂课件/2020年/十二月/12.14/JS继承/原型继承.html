@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型继承</title>
+</head>
+<body>
+    <script>
+        // 无法继承自身属性，构造器的constructor指向父级
+        function Parent(){
+            this.name = '张三';
+            this.age = 19;
+            this.sex = '男';
+            this.fn = function(){
+                console.log('玩游戏');
+            }
+        }
+        Parent.prototype.a = '你好'
+        function Son(){
+            Parent.call(this);
+        }
+        Son.prototype = Parent.prototype;
+        let s = new Parent();
+        let f = new Son();
+        f.name = '李某某'
+        console.log(s);
+        console.log(f);
+    </script>
+</body>
+</html>

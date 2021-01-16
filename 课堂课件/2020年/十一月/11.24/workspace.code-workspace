@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"path": "..\\11.13"
+		},
+		{
+			"path": "..\\11.16"
+		},
+		{
+			"path": "..\\11.17"
+		},
+		{
+			"path": "..\\11.18"
+		},
+		{
+			"path": "..\\11.19"
+		},
+		{
+			"path": "..\\11.20"
+		},
+		{
+			"path": "..\\11.23"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "11.24"
+	}
+}

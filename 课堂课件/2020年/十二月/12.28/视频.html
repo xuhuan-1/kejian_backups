@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        .container{
+            position: relative;
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            margin-top: 30px;
+            border: 1px solid #cccccc;
+        }
+        .bg-container{
+            height: 400px;
+            width: 100%;
+        }
+        .bj-container .imgs{
+            width: 100%;
+            height: 100%;
+            background-size: 100% 100%;
+        }
+        .controls{
+            position: relative;
+            width: 100%;
+            height: 100px;
+            background: #cccccc;
+            border: 1px solid #cccccc;
+            box-sizing: border-box;
+        }
+        .allTime{
+            width: 480px;
+            height: 10px;
+            margin: 0 auto;
+            margin-top: 20px;
+            background: #ffffff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .currentTime{
+            position: absolute;
+            left: 9px;
+            top: 23px;
+            width: 0px;
+            height: 4px;
+            background: #cc0033;
+            z-index: 99;
+            border-radius: 2px;
+        }
+        .control{
+            position: absolute;
+            bottom: 0px;
+            left: 10px;
+            width: 480px;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btns{
+            width: 100px;
+            height: 100%;
+            text-align: center;
+        }
+        .btns .btn {
+            width: 60px;
+            height: 90%;
+            background: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:focus,
+        .btn:active:focus,
+        .btn.active:focus,
+        .btn.focus,
+        .btn:active.focus,
+        .btn.active.focus{
+            outline:none;
+            border-color: transparent;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bg-container">
+            <video class="video" src="./mp3/龙珠.mp4" width="500" height="400" controls="control"></video>
+        </div>
+        <div class="controls" id="controls">
+            <!-- 总长度进度条 -->
+            <div class="allTime"></div>
+            <!-- 当前播放的进度条 -->
+            <div class="currentTime"></div>
+            <div class="control">
+                <div class="play-time">00:00</div>
+                <div class="btns">
+                    <button class="btn"></button>
+                </div>
+                <div class="all-time">5:00</div>
+                <button class="fullScreen btn">全屏</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function $(ele){
+            return document.getElementsByClassName(ele)[0];
+        }
+        //获取元素
+        let video = $('video'),
+        currentTime = $('currentTime'),
+        btns = $('btns'),
+        btn = $('btn'),
+        playTime = $('play-time'),
+        allTime = $('all-time'),
+        allTimes = $('allTime'),
+        fullScreen = $('fullScreen'),
+        bg_container = $('bg-container'),
+        container = $('container');
+        // 总时长加载完成之后可获取总时长
+        video.ontimeupdate = function (){
+            allTime.innerText = formateDate(video.duration);
+        }
+        // timeupdate是 audio 和 video独有的事件  一旦audio和video中当前播放时间触发，进行监听
+        video.addEventListener('timeupdate',updateProgress);
+        // 监听音频是否播放完成
+        video.addEventListener('ended',reset);
+        // 初始化播放按钮
+        btn.style.background = 'url(./images/播放.png)';
+        btn.style.backgroundSize = '100% 100%';
+
+        // 播放视频
+        btns.addEventListener('click',(e)=>{
+            //如果是暂停状态
+            if(video.paused){
+                video.play();
+                btn.style.background = 'url(./images/暂停.png)';
+                btn.style.backgroundSize = '100% 100%';
+            }else{//播放
+                video.pause();
+                btn.style.background = 'url(./images/播放.png)';
+                btn.style.backgroundSize = '100% 100%';
+            }
+        })
+        // 重置的方法
+        function reset(){
+            video.currentTime = 0;
+            video.pause();
+            btn.style.background = 'url(./images/播放.png)';
+            btn.style.backgroundSize = '100% 100%';
+        }
+
+        // 点击到指定位置播放  e.offsetX:指的是当前鼠标点击的X坐标距离当前元素最左侧的像素距离
+        allTimes.onclick = function(e){//总长度进度条
+            let rote = e.offsetX / parseInt(currentStyle(allTimes,'width'));
+            video.currentTime = video.duration * rote;
+            // updateProgress();
+        }
+        //当前播放的进度条  可以快退的
+        currentTime.onclick = function(e){
+            let rote = e.offsetX / parseInt(currentStyle(allTimes,'width'));
+            video.currentTime = video.duration * rote;
+            updateProgress();
+        }
+        // 播放进度时间
+        function updateProgress(){
+            let value = (video.currentTime)/(video.duration);
+            currentTime.style.width = value * parseInt(currentStyle(allTimes,'width')) + 'px';
+            playTime.innerText = formateDate(video.currentTime);
+        }
+        // 获取样式
+        function currentStyle(ele,attr){
+            return ele.currentStyle?ele.currentStyle[attr]:getComputedStyle(ele,null)[attr];
+        }
+        // 时间戳格式化
+        function formateDate(time){
+            var time = parseInt(time);
+            let minute = parseInt(time / 60);
+            let seconed = (time % 60);
+            if(minute == 0){
+                minute = '00'
+            }else if(minute < 10){
+                minute = '0' + minute;
+            }
+            if(seconed < 10){
+                seconed = '0' + seconed;
+            }
+            // console.log(minute,seconed);
+            return minute + ':' + seconed;
+        }
+        // 全屏状态
+        fullScreen.onclick = function(){
+            let width = document.body.offsetWidth;
+            let height = document.body.offsetHeight;
+            video.style.cssText = `width:${width}px;height:${height}px;position:absolute;top:0px;left:-700px;padding:0px`;
+            controls.style.display = 'none';
+            container.style.border = 'none';
+        }
+    </script>
+</body>
+</html>

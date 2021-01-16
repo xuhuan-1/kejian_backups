@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		function getJson(){
+			$.ajax({
+				type:'get',
+				url:'./user.json',
+				dataType:'json',
+				success:function(data){
+					console.log(data)
+				}
+			})
+		}
+		getJson();
+	</script>
+</body>
+</html>

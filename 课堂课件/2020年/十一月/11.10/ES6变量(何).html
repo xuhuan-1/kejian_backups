@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * let:声明变量的，有独立作用域，不存在变量提升,不允许重复声明
+         * const:声明常量的，有独立作用域，不存在变量提升，不允许重复声明
+         * 闭包：
+         *  函数嵌套函数，内部函数可以访问外部函数的变量，外部函数不能访问内部
+         *  函数的变量，形成了一个独立的作用域空间【安全气泡】
+         * 闭包作用：
+         *   1、保存：保存变量的值
+         *   2、保护：把变量保护起来，不让其他人访问，避免了全局环境污染
+         * 缺点：
+         *   闭包使用过多，造成变量不能被浏览器垃圾回收机制【GO】回收，造成
+         *   内存占用过多，容易堆栈溢出
+         * JS中哪些是闭包？
+         *  自执行函数，匿名函数，函数嵌套函数
+         * 
+         * 
+         * 
+        */
+
+        // var num
+        // console.log(num)  //  undefined
+        // num = 100;
+        // console.log(num) // 100
+        // console.log(num)//暂时性死区 ，let是有块级作用域，不存在变量提升
+        // let num = 100;
+        // const num = 200;
+        // console.log(num)
+    
+        for(var i=0;i<5;i++){
+            // 每次 i + 1，加完之后，setTimeout异步任务【等着】
+            (function(i){
+                setTimeout(()=>{
+                    console.log(i)  //  0 1 2 3 4
+                })
+            })(i)
+        }
+    
+    
+
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,15 @@
+.aa1{
+	width:500px;
+	height:500px;
+	background:yellow;
+	margin:auto;
+	position:relative;
+	top:50px;
+}
+.aa2{
+	width:100px;
+	height:100px;
+	background:blue;
+	position:absolute;
+	left:900px;
+}

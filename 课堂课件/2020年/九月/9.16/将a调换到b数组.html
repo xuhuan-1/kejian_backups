@@ -1,0 +1,39 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>将a数组调换到b数组</title>
+		<script>
+			var a = [1,6,1,2,'大',3,3,4,3,'威',5,7,5,'天',6,'龙',7,8,9];
+			var b = [];
+			var c = [];
+		/*
+			for(var i=0;i<a.length;i++){
+				if(isNaN(a[i]) == false){
+					b.push(a[i]);
+				}
+			}
+		*/
+		
+			for(var i=0;i<a.length;i++){
+				if(isNaN(a[i])==false){
+					b.push(a[i]);
+				}else{
+					c.push(a[i]);
+				}
+			}
+			console.log(b);
+			console.log(c);
+		
+		
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>购物车</title>
+	</head>
+	<style type="text/css">
+		h1{
+			text-align: center;
+		}
+		table{
+			margin: 0 auto;
+		}
+		body{
+			font-size: larger;
+			color: purple;
+		}
+		table th,table td{
+			
+		}
+	</style>
+	<body >
+		<h1>双十一</h1>
+		<table border="1" >
+			<tr>
+				<!--文本th-->
+				<th>商品</th>
+				<th>单价</th>
+				<th>颜色</th>
+				<th>库存</th>
+				<th>好评率</th>
+				<th>操作</th>
+			</tr>
+			<tr>
+				<td>豪华轿车</td>
+				<td>150</td>
+				<td>白色</td>
+				<td>10</td>
+				<td>88%</td>
+				<td align="center">
+					<input type="button" value="加入购物车" onclick="add_shoppingcar(this)"/>
+				</td>
+			</tr>
+			<tr>
+				<td>迪拜别墅</td>
+				<td>350</td>
+				<td>白色</td>
+				<td>16</td>
+				<td>82%</td>
+				<td align="center">
+					<input type="button" value="加入购物车" onclick="add_shoppingcar(this)"/>
+				</td>
+			</tr>
+			<tr>
+				<td>RPG</td>
+				<td>150</td>
+				<td>黑色</td>
+				<td>9</td>
+				<td>75%</td>
+				<td align="center">
+					<input type="button" value="加入购物车" onclick="add_shoppingcar(this)"/>
+				</td>
+			</tr>
+			<tr>
+				<td>私人飞机</td>
+				<td>120</td>
+				<td>黑色</td>
+				<td>5</td>
+				<td>80%</td>
+				<td align="center">
+					<input type="button" value="加入购物车" onclick="add_shoppingcar(this)"/>
+				</td>
+			</tr>
+		</table>
+		<h1> 结算：准备剁手吧</h1>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>商品</th>
+					<th>单价</th>
+					<th>数量</th>
+					<th>金额</th>
+					<th>删除</th>
+				</tr>
+			</thead>
+			<tbody id="goods">
+				
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3" align="center" >总计</td>
+					<td id="total"></td>
+					<td>元</td>
+				</tr>
+			</tfoot>
+		</table>
+	</body>
+	<script type="text/javascript">
+		function $(theid){return document.getElementById(theid)}
+		var tab1 = document.querySelectorAll("table")[0];
+		var tab1_tr = tab1.querySelectorAll("tr");
+		function add_shoppingcar(btn){
+			var tr=btn.parentNode.parentNode;
+			var tds=tr.getElementsByTagName("td");
+			var name=tds[0].innerHTML;
+			var price=tds[1].innerHTML;
+			var tbody_tr = $("goods").querySelectorAll("tr");
+			for(var i = 0;i<tbody_tr.length;i++){
+				var gloa_name = tbody_tr[i].querySelector("td");
+				if(name == gloa_name.getAttribute("names")){
+					if(tds[3].innerHTML == 0)return
+					tds[3].innerHTML--;
+					var the_tr = $("goods").querySelectorAll("tr")[i];
+					addseconed(the_tr,price);
+					return
+				}
+			}
+			tds[3].innerHTML--;
+			create(name,price);
+		}
+		function create(name,price){
+			var row=$("goods").insertRow();//insertRow表格开头插入新行
+			row.innerHTML="<tr><td names = "+name+">"+name+"</td><td>"+price+"</td><td align='center'><input type='button' value='-' id='jian' onclick='change(this,-1)'/><input id='text' type='text' size='1' value='1' readonly='readonly'/><input type='button' value='+' id='add' onclick='change(this,1)' /></td><td>"+price+"</td><td align='center'><input type='button' value='X' onclick='del(this)'/></td></tr>"
+			total();
+		}
+		//增加减少数量，用n正负1来表示点击了加减按钮
+		function change(btn,n){
+			var tr = btn.parentNode.parentNode;
+			var inputs = btn.parentNode.getElementsByTagName("input");
+			var amount = parseInt(inputs[1].value);
+			//当amount=1时不能再点击"-"符号
+			//用n<0来表示点击了减button
+			if(amount<=1 && n<0)return;
+			var tds = tr.getElementsByTagName("td");
+			for(var i=1;i<tab1_tr.length;i++){
+				if(tab1_tr[i].querySelectorAll("td")[0].innerHTML == tds[0].innerHTML){
+					if(tab1_tr[i].querySelectorAll("td")[3].innerHTML == 0 && n>0)return;
+					tab1_tr[i].querySelectorAll("td")[3].innerHTML = tab1_tr[i].querySelectorAll("td")[3].innerHTML*1-n;
+				}
+			}
+			inputs[1].value = amount + n;
+			amount = inputs[1].value;
+			var tds = tr.getElementsByTagName("td");
+			var price = parseFloat(tds[1].innerHTML);
+			tds[3].innerHTML = price * amount;
+			total();
+		}
+		function total(){
+			var trs=$("goods").getElementsByTagName("tr");
+			var sum=0;
+			for(var i=0;i<trs.length;i++){
+				var m=trs[i].getElementsByTagName("td")[3].innerHTML;
+				sum += parseFloat(m);
+			}
+			var total=$("total");
+			total.innerHTML = sum;
+		}
+		function addseconed(thetr,prc){
+			prc = parseFloat(prc);
+			var tds=thetr.getElementsByTagName("td");
+			tds[2].querySelector("input[type = text]").value++;
+			tds[3].innerHTML = tds[2].querySelector("input[type = text]").value*prc;
+			total();
+		}
+		function del(i){
+			var tr=i.parentNode.parentNode;
+			stock(tr);			
+			tr.remove(tr);
+			total();
+		}
+		function stock(dom_tr){
+			var now_num = dom_tr.getElementsByTagName("td")[2].querySelector("input[type=text]").value*1;
+			for(var i=1;i<tab1_tr.length;i++){
+				if(tab1_tr[i].querySelectorAll("td")[0].innerHTML == dom_tr.getElementsByTagName("td")[0].innerHTML){
+					tab1_tr[i].querySelectorAll("td")[3].innerHTML = tab1_tr[i].querySelectorAll("td")[3].innerHTML*1+now_num;
+				}
+			}
+		}
+	</script>
+</html>

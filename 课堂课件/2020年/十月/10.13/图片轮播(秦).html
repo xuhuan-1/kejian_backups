@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		ul li{
+			list-style: none;
+		}
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			margin: 20px auto;
+			width: 768px;
+			height: 432px;
+			position: relative;
+			overflow: hidden;
+		}
+		#ig{
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		#box ul li{
+			float: left;
+		}
+		#box ul li img{
+			width: 768px;
+			height: 432px;
+		}
+		#dian{
+			position: absolute;
+			width: 160px;
+			height: 30px;
+			left: 50%;
+			margin-left: -80px;
+			bottom: 20px;
+			background: rgba(255,255,255,0.4);
+			border-radius: 30px;
+		}
+		#dian ul li{
+			float: left;
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			background: purple;
+			margin: 8px 8px;
+		}
+		#dian ul li:hover{
+			background: pink;
+		}
+		#l,#r{
+			display: none;
+			line-height:80px;
+		}
+		#l:hover,#r:hover{
+			cursor: pointer;
+		}
+		#l{
+			position: absolute;
+			width: 40px;
+			height: 80px;
+			left: 10px;
+			top: 50%;
+			font-size: 48px;
+			color: #FFFFFF;
+			text-align: center;
+			margin-top: -40px;
+			background: rgba(255,255,255,0.4);
+			border-radius: 30px;
+		}
+		#r{
+			position: absolute;
+			width: 40px;
+			height: 80px;
+			right: 10px;
+			top: 50%;
+			text-align: center;
+			font-size: 48px;
+			color: #FFFFFF;
+			margin-top: -40px;
+			background: rgba(255,255,255,0.4);
+			border-radius: 30px;
+		}
+		#dian ul li{
+			background: purple;
+		}
+		#dian ul .dong{
+			background: pink;
+		}
+		#dian ul .dong:hover{
+			background: pink;
+		}
+	</style>
+	<body>
+		<div id="box">
+			<div id="ig">
+				<ul>
+					<li><img src="imgs/1.jpg" alt="" /></li>
+					<li><img src="imgs/2.jpg" alt="" /></li>
+					<li><img src="imgs/3.jpg" alt="" /></li>
+					<li><img src="imgs/4.jpg" alt="" /></li>
+					<li><img src="imgs/5.jpg" alt="" /></li>
+				</ul>
+			</div>	
+			<div id="l" onclick = "to_left()"><</div>
+			<div id="r" onclick = "to_right()">></div>
+			<div id="dian">
+				<ul></ul>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var ig=document.getElementById("ig");
+			var box=document.getElementById("box");
+			var l=document.getElementById("l");
+			var r=document.getElementById("r");
+			var ig_li=document.querySelectorAll("#ig li");
+			var dian_ul=document.querySelector("#dian ul");
+			var dian_li;
+			var ig_w=ig_li[0].offsetWidth;
+			var timer=null;
+			var ig_a=0;
+			window.onload = function (){
+				change();
+				for(var i=0;i<ig_li.length;i++){
+					var new_li=document.createElement("li");
+					new_li.setAttribute("name",i);
+					new_li.setAttribute("onclick","toThere(this)");
+					if(i==0){
+						new_li.setAttribute("class","dong");
+					}
+					dian_ul.appendChild(new_li);
+				}
+				dian_li=document.querySelectorAll("#dian li");
+			}
+			box.onmouseover=function(){
+				l.style.display="block";
+				r.style.display="block";
+				clearInterval(timer);
+			}
+			box.onmouseout=function(){
+				l.style.display="none";
+				r.style.display="none";
+				clearInterval(timer);
+				change();
+			}
+			//定时器
+			function change(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					toRight();
+				},800)	
+			}
+			//去右
+			function toRight(){
+				ig_a++;
+				if(ig_a>ig_li.length-1){
+					ig_a=0;
+				}
+				for(var i=0;i<dian_li.length;i++){
+					if(i==ig_a){
+						dian_li[i].className="dong";
+					}else{
+						dian_li[i].className="";
+					}
+				}
+				ig.style.left= -ig_w*ig_a+"px";
+			}
+			//去左
+			function toLeft(){
+				ig_a--;
+				if(ig_a<0){
+					ig_a=ig_li.length-1;
+				}
+				for(var i=0;i<dian_li.length;i++){
+					if(i==ig_a){
+						dian_li[i].className="dong";
+					}else{
+						dian_li[i].className="";
+					}
+				}
+				ig.style.left= -ig_w*ig_a+"px";
+			}
+			//向右边走
+			function to_right(){
+				toRight();
+			}
+			//向左边走
+			function to_left(){
+				toLeft();
+			}
+			//
+			function toThere(val){
+				var li_val=val.attributes.name.value;
+				ig_a = li_val;
+				ig.style.left= -ig_w*li_val+"px";
+				for(var i=0;i<dian_li.length;i++){
+					if(i==ig_a){
+						dian_li[i].className="dong";
+					}else{
+						dian_li[i].className="";
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

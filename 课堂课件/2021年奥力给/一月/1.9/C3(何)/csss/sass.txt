@@ -1,0 +1,21 @@
+
+css预编译语言有三种：
+    sass、less、stylus
+    
+sass:css预编译语言，通过、sass编写的css有一下特点
+
+sass是基于Ruby语言的，电脑需要安装ruby环境 
+
+    ruby官网:http://www.ruby-lang.org/en/downloads/
+
+    检查：ruby -v
+
+    
+
+优点：
+    1、编译快，解析快
+    2、可以写嵌套语法【书写快，写css很快】
+    3、可以写变量【公共变量】
+    4、混合宏  【函数】 
+        具体：函数、继承、占位符、循环等
+    

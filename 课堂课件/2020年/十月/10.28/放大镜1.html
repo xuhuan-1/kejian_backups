@@ -1,0 +1,88 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>放大镜1</title>
+		<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		#parent{
+			width:500px;
+			height:700px;
+			background:pink;
+			position:relative;
+			margin-left:800px;
+		}
+		#child{
+			width:100px;
+			height:100px;
+			background:#fff;
+			opacity:0.3;
+			position:absolute;
+			top:0px;
+			left:0px;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="parent">
+			<div id="child">
+				
+			</div>
+		</div>
+		<script>
+			function $(id){
+				return document.getElementById(id);
+			}
+			//大盒子宽度
+			var par_w = $('parent').offsetWidth;
+			//大盒子高度
+			var par_h = $('parent').offsetHeight;
+			//大盒子头部距离
+			var par_top = $('parent').offsetTop;
+			//大盒子左边距离
+			var par_left = $('parent').offsetLeft;
+			//小盒子头部距离
+			var child_left = $('child').offsetTop;
+			//小盒子的宽度
+			var child_w = $('child').offsetWidth;
+			//小盒子的高度
+			var child_h = $('child').offsetWidth;
+			
+			$('parent').addEventListener('mousemove',(e)=>{
+				//event兼容
+				var a = e.event||window.event;
+				//鼠标x坐标
+				var mouse_x = a.pageX;
+				//鼠标y坐标
+				var mouse_y = a.pageY;
+				$('child').style.left = mouse_x-850 +'px';
+				$('child').style.top = mouse_y-50 +'px';
+				if(mouse_y<=child_h/2){
+					$('child').style.top = '0px';
+				}
+				if(mouse_x<=par_left+child_w/2){
+					$('child').style.left = '0px';
+					
+				}
+				if(mouse_y>=par_h-child_h/2){
+					$('child').style.top = par_h-child_h+'px';
+				}
+				if(mouse_x>=par_left+par_w-child_w/2){
+					$('child').style.left = par_w-child_w+'px';
+				}
+				
+			})
+			
+			
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

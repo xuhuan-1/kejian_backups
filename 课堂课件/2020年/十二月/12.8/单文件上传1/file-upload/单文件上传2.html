@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单文件上传2</title>
+    <!-- IMPORT CSS -->
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="uploadBox">
+        <div class="handle">
+            <input type="file" class="upLoad" accept="image/*">
+            <a href="javascript:;" class="submit">上传文件</a>
+        </div>
+        <div class="detail">
+            您选取的文件 「<span>xxx.png</span>」 正在上传中
+            <i class="loading"></i>
+        </div>
+        <div class="abbre">
+            <img src="" alt="">
+        </div>
+    </div>
+
+    <!-- 引入前后端交互的库 -->
+    <script src="js/axios.min.js"></script>
+    <!-- qs：包含了序列化和反序列化 -->
+    <script src="js/qs.min.js"></script>
+    <script>
+        //获取后台数据的方法
+        function postMassage(url,data,config){
+            return axios.post(`http://localhost:8888/${url}`,data,config).then(res=>{
+                return res.data;
+            })
+        }
+
+        //获取本地文件函数
+        function fileReader(file){
+            return new Promise(resolve=>{
+                let reader = new FileReader;
+                reader.readAsDataURL(file);
+                reader.onload = e=>{
+                    resolve(e.target.result);
+                }
+            })
+        }
+        //延迟函数
+        function delay(timer){
+            var timer = timer || 2000
+            return new Promise(resolve=>{
+                setTimeout(()=>{
+                    resolve();
+                },timer)
+            })
+        }
+        //获取DOM元素
+        let upLoad = document.querySelector('.upLoad'),
+        submit = document.querySelector('.submit'),
+        detail = document.querySelector('.detail'),
+        detailSpan = detail.querySelector('span'),
+        abbre = document.querySelector('.abbre'),
+        abbreImg = abbre.querySelector('img');
+
+        submit.onclick = function(){
+            if(this.className.includes == 'disable')return;
+            upLoad.click();
+        }
+        upLoad.onchange = async e=>{
+            let file = e.target.files[0];
+            if(!file)return;
+            detailSpan.innerText = file.name;
+            detail.style.display = 'block';
+            submit.className = 'submit disable';
+
+            await delay(3000);
+            let base64 = await fileReader(file);
+            let data = {
+                chunk:base64,
+                filename:file.name
+            }
+            let response = await postMassage('single2',Qs.stringify(data),{
+                headers:{
+                    'Content-Type':'application/x-www-form-urlencoded'
+                }
+            })
+            if(response.code == 0){
+                abbreImg.src = response.path;
+                detail.style.display = 'none';
+                abbre.style.display = 'block';
+                submit.className = 'submit';
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

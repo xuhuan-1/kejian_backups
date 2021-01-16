@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缓存(何)</title>
+</head>
+<body>
+    <script>
+        /**
+         * Web Storage:   5种
+         * 
+         * localStorage:
+         * sessionStorage:
+         * cookies:交互，在请求中携带着cookie
+         * indexedDB:
+         * Web SQL:
+         *
+         * //缓存的优点：
+         *  1、减少不必要的数据传输，节省带宽
+         *  2、减少服务器的负担，提升网站性能
+         *  3、加快了客户端加载网页的速度
+         *  4、用户体验友好
+         * 
+         * //缺点
+         * 资源如果有更改，但是客户端不及时更新会造成用户获取信息滞后。
+         * 
+         * 前端存储分为两种：
+         *  不管什么缓存，都是由服务端控制，【 response headers 】响应的字段决定
+         * 
+         *  强缓存：强缓存状态码：200
+         *     直接缓存到本地，哪里需要当前数据，直接在本地获取即可，
+         *     不用和服务端进行交互了【不用商量】
+         *      
+         *     immutable:冻结数据，把数据冻结了，不让你做任何操作
+         *  
+         *     immutable.js【框架】:冻结数据，Object.freeze() 冻结数据的 方法
+         * 
+         *     字段:  主要就两个字段 Expires 和 Cache-Control
+         *            Cache-Control的优先级高于Expires优先级
+         *         cache-control: max-age=xxxx， public 公共的     xxxx：代表的是秒
+         *         cache-control：max-age=xxxx， private 私密的 只让客户端【前端】缓存资源
+         *         cache-control: max-age=xxxx，immutable
+         *         cache-control: no-cache  跳过了强缓存
+         *         cache-control: no-store  没有任何缓存
+         *      
+         *  协商缓存：
+         *     直接缓存到本地，根据一些过期时间等等的字段判断后台数据是否有更新，
+         *     如果有更新，则前端浏览器获取后台返回的最新字段，根据字段更新前端
+         *     缓存数据，然后可以使用了
+         *      
+         *      服务端：
+         *          etag和last-modified是服务端返回给前端的，文件变化了，hash变化
+         *          last-modified记录最后修改的时间
+         *      前端：
+         *          前端请求头【 request headers 】里面携带着etag和last-modified字段
+         *          和服务端最新的etag和last-modified字段进行对比，如果一样，则没有变化
+         *          直接从本地获取数据，如果有变化，则说明数据有变化，则需要更新，更新之后
+         *          从本地拿数据
+         *                
+         *      
+         *      字段：
+         *          etag:每个文件有唯一值，一旦文件有修改，则说明数据变化了，etag值跟着
+         *               变化，每次值都是不一样的，hash值：5c20abbd-e2e8
+         *          last-modified：记录文件最后修改的时间，精确到秒
+         *  
+         *          expires:过期时间
+         *  
+         *      协商缓存过程：
+         *      200：发请求-》对比，资源是否过期 -》过期 -》再次请求服务器 -》
+         *           变化更新 -》 前端本地获取最新数据
+         *  
+         *      304:发请求-》对比，资源是否过期 -》没有过期 -》 没有变化 -》 前端本地获取数据
+        */
+        //冻结
+        // let arr = [3,4,5,6];
+        // Object.freeze(arr)
+        // console.log(arr)
+    </script>
+</body>
+</html>

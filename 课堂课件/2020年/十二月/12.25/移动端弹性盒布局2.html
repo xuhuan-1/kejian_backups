@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹性盒布局2</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        .container{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .top{
+            height: 80px;
+            width: 100%;
+            background-color: red;
+            flex: 1;
+        }
+        .content{
+            width: 100%;
+            background-color: rgba(255, 192, 203, 0.295);
+            flex: 1;
+            overflow-y: auto;
+        }
+        .bottom{
+            height: 80px;
+            width: 100%;
+            background-color: yellow;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="top"></header>
+        <section class="content">
+            结论：
+        1、+:如果两端的都是Number数据类型，进行加减运算，如果有一个是字符串
+            则进行拼接
+        2、NaN、''、0、undefined、null转换成布尔值都为false
+        3、NaN和任何值都不相等
+        4、如果+两端有一个是字符串，则两端都直接转成字符串执行
+        5、== 两边对比，首先算==右边的值，一旦遇到布尔值，则==左边直接转成布尔值
+        6、所有的数据类型中，不管对象中是否为空，则都会转换成 '[object Object]'
+        7、{}、[]转成布尔值都是true
+        8、减法运算，都必须转换成number类型进行运算
+        9、true转number为1，false转number为0
+        10、[]和{}计算是必须先调用toString()转字符串，如果两边对比的值不一样，则最
+            终必须转为number值为止，然后对比
+        11、+特殊，可以和number进行加减计算又可以进行拼接，其余- * / %都进行数学运算
+            只要有number值，都必须转成number值进行计算
+        12、开头是数字的字符串，使用强类型转换，只有parseInt可以转换成number类型，其余都会
+            转换成NaN
+    
+        数据类型转换：
+        强类型：
+            Number
+            String 
+            Boolean 
+            parseInt
+            parseFloat
+    
+            结论：
+            1、+:如果两端的都是Number数据类型，进行加减运算，如果有一个是字符串
+                则进行拼接
+            2、NaN、''、0、undefined、null转换成布尔值都为false
+            3、NaN和任何值都不相等
+            4、如果+两端有一个是字符串，则两端都直接转成字符串执行
+            5、== 两边对比，首先算==右边的值，一旦遇到布尔值，则==左边直接转成布尔值
+            6、所有的数据类型中，不管对象中是否为空，则都会转换成 '[object Object]'
+            7、{}、[]转成布尔值都是true
+            8、减法运算，都必须转换成number类型进行运算
+            9、true转number为1，false转number为0
+            10、[]和{}计算是必须先调用toString()转字符串，如果两边对比的值不一样，则最
+                终必须转为number值为止，然后对比
+            11、+特殊，可以和number进行加减计算又可以进行拼接，其余- * / %都进行数学运算
+                只要有number值，都必须转成number值进行计算
+            12、开头是数字的字符串，使用强类型转换，只有parseInt可以转换成number类型，其余都会
+                转换成NaN
+        
+            数据类型转换：
+            强类型：
+                Number
+                String 
+                Boolean 
+                parseInt
+                parseFloat
+        
+                结论：
+                1、+:如果两端的都是Number数据类型，进行加减运算，如果有一个是字符串
+                    则进行拼接
+                2、NaN、''、0、undefined、null转换成布尔值都为false
+                3、NaN和任何值都不相等
+                4、如果+两端有一个是字符串，则两端都直接转成字符串执行
+                5、== 两边对比，首先算==右边的值，一旦遇到布尔值，则==左边直接转成布尔值
+                6、所有的数据类型中，不管对象中是否为空，则都会转换成 '[object Object]'
+                7、{}、[]转成布尔值都是true
+                8、减法运算，都必须转换成number类型进行运算
+                9、true转number为1，false转number为0
+                10、[]和{}计算是必须先调用toString()转字符串，如果两边对比的值不一样，则最
+                    终必须转为number值为止，然后对比
+                11、+特殊，可以和number进行加减计算又可以进行拼接，其余- * / %都进行数学运算
+                    只要有number值，都必须转成number值进行计算
+                12、开头是数字的字符串，使用强类型转换，只有parseInt可以转换成number类型，其余都会
+                    转换成NaN
+            
+                数据类型转换：
+                    强类型：
+                    Number
+                    String 
+                    Boolean 
+                    parseInt
+                    parseFloat
+        </section>
+        <footer class="bottom">
+            <div class="box">哈</div>
+            <div class="box">喽</div>
+            <div class="box">你</div>
+            <div class="box">好</div>
+        </footer>
+    </div>
+</body>
+</html>

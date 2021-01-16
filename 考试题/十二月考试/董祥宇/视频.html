@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        .container{
+            height: 490px;
+            width: 500px;
+            margin: 0 auto;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .bg-container{
+            height: 388px;
+            width: 100%;
+        }
+        .video{
+            height: 400px;
+            width: 500px;
+        }
+        .controls{
+            height: 100px;
+            width: 500px;
+            background: #cccccc;
+        }
+        .btn{
+            height: 50px;
+            width: 50px;
+            border: none;
+            cursor: pointer;
+        }
+        .current-bar{
+            height: 10px;
+            width: 100%;
+            background: #ffffff;
+            cursor: pointer;
+        }
+        .box2{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .box1{
+            display: flex;
+            width: 100%;
+            height: 20px;
+            position: relative;
+            margin-top: 20px;
+        }
+        .all-bar{
+            width: 100%;
+            height: 10px;
+            border-radius: 10px;
+            background: #fff;
+            cursor: pointer;
+        }
+        .current-bar{
+            width: 0px;
+            height: 5px;
+            background: red;
+            position: absolute;
+            top: 3px;
+            left: 1px;
+            border-radius: 10px;
+        }
+        .btn:focus{
+            outline:none;
+            border-color: transparent;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bg-container">
+            <video src="./MP3/龙珠.mp4" class="video"></video>
+        </div>
+        <div class="controls">
+            <div class="box1">
+                <!-- 总长度进度条 -->
+                <div class="all-bar"></div>
+                <!-- 当前播放进度条 -->
+                <div class="current-bar"></div>
+            </div>
+            <div class="box2">
+                <!-- 当前播放时间 -->
+                <div class="play-Time">00:00</div>
+                <!-- 播放暂停按钮 -->
+                <button class="btn"></button>
+                <!-- 视频总时间 -->
+                <div class="all-Time">5:00</div>
+                <!-- 全屏按钮 -->
+                <button class="fullScreen">全屏</button>
+            </div>
+        </div>
+    </div>
+    <script>
+    // 获取元素
+        //视频标签
+        let video = document.querySelector('.video'),
+        //总进度条
+        all_bar = document.querySelector('.all-bar'),
+        //当前播放进度条
+        current_bar = document.querySelector('.current-bar'),
+        //播放暂停按钮
+        btn = document.querySelector('.btn'),
+        //当前播放时间
+        current_Time = document.querySelector('.play-Time'),
+        //视频总时间
+        all_Time = document.querySelector('.all-Time'),
+        //全屏按钮
+        fullScreen = document.querySelector('.fullScreen'),
+        //进度条的盒子
+        box1 = document.querySelector('.box1'),
+        //控制台盒子
+        controls = document.querySelector('.controls');
+
+    // 获取元素属性方法
+        function getStyle(ele,attr){
+            return ele.currentStyle?ele.currentStyle[attr]:getComputedStyle(ele,null)[attr];
+        }
+    // 初始化按钮
+        btn.style.background = 'url(./images/播放.png)';
+        btn.style.backgroundSize = '100% 100%';
+    //播放按钮事件
+        btn.onclick = function(){
+            if(video.paused){
+                video.play();
+                btn.style.background = 'url(./images/暂停.png)';
+                btn.style.backgroundSize = '100% 100%';
+            }else{
+                video.pause();
+                btn.style.background = 'url(./images/播放.png)';
+                btn.style.backgroundSize = '100% 100%';
+            }
+        }
+    // 加载视频之后显示视频总时间
+        video.ontimeupdate = function(){
+            all_Time.innerText = formateDate(video.duration);
+        }
+    // 监听进度条
+        video.addEventListener('timeupdate',updateProgress);
+    // 监听视频是否播放完成 完成了就重置
+        video.addEventListener('ended',reset);
+    // 进度条点击事件
+        box1.addEventListener('click',(e)=>{
+            let eve = e.event || window.event;
+            let now_Element = e.target || e.srcElement;
+            if(now_Element.className == 'all-bar'){
+                let FF = e.offsetX / parseInt(getStyle(all_bar,'width'));
+                video.currentTime = FF * video.duration;
+                updateProgress();
+            }
+            if(now_Element.className == 'current-bar'){
+                let FF = e.offsetX / parseInt(getStyle(all_bar,'width'));
+                video.currentTime = FF * video.duration;
+                updateProgress();
+            }
+        })
+    // 全屏事件
+        fullScreen.onclick = function(){
+            if(fullScreen.innerText == '全屏'){
+                video.style.cssText = `width:1300px; height:800px; position:relative; right:400px;`;
+                controls.style.cssText = `width:1068px; position:relative; top:410px; right:284px;`;
+                updateProgress();
+                fullScreen.innerText = '退出全屏';
+            }else{
+                video.style.cssText = `width:500px; height:400px;`;
+                controls.style.cssText = `width:500px;`;
+                updateProgress();
+                fullScreen.innerText = '全屏';
+            }
+        }
+
+
+    // 进度条方法
+        function updateProgress(){
+            let value = (video.currentTime) / (video.duration);
+            current_bar.style.width = value * parseInt(getStyle(all_bar,'width')) + 'px';
+            current_Time.innerText = formateDate(video.currentTime);
+        }
+    // 时间戳方法
+        function formateDate(time){
+            var time = parseInt(time);
+            let minute = parseInt(time / 60);
+            let sec = parseInt(time % 60);
+            if(minute == 0){
+                minute = '00';
+            }else if(minute < 10){
+                minute = '0' + minute;
+            }
+            if(sec < 10){
+                sec = '0' + sec;
+            }
+            return minute +':'+ sec;
+        }
+    // 重置方法
+        function reset(){
+            video.currentTime = 0;
+            btn.style.background = 'url(./images/播放.png)';
+            btn.style.backgroundSize = '100% 100%';
+        }
+        
+    </script>
+</body>
+</html>

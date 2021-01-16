@@ -1,0 +1,82 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>...</title>
+		<style>
+			div{
+				height:200px;
+				width:200px;
+				border:1px solid;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<button id="but" onclick="change()">点击换色放大</button>
+		<button id="butx" onclick="xiao()">点击换色缩小</button>
+		<p id="text">hello,world</p>
+		<script>
+		/*
+			function ss(xc){//封装通过ID获取元素
+				return document.getElementById(xc);
+			}
+			
+			function fun(){//封装随机换色
+				var arr = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+				var b = '#';
+				for(var i=0;i<6;i++){
+					b += arr[Math.floor(Math.random()*16)];
+				}
+				return b
+			}
+			//放大/缩小按钮框
+			var i = 20;
+			var b = 100;
+			function change(){
+				i += 20;
+				b += 20;
+				ss('but').style.width = b +'px';
+				ss('but').style.height = i +'px';
+				if(i>200,b>300){
+					i=200;
+					b=300;
+				}
+			}
+		*/	
+		
+			
+		/*	一、
+			function change(){//封装通过点击事件...
+				return document.body.style.background = fun();
+			}
+			
+			function change(){//封装通过点击事件...
+				return ss('but').style.background = fun();
+			}
+		*/
+		/*	//放大/缩小字体
+			var i = 16;
+			function change(){
+				ss('text').style.fontSize=i+"px";
+				i += 4;
+				return ss('text').style.color=fun();
+			}
+			function xiao(){
+				ss('text').style.fontSize=i+"px";
+				i -= 4;
+				return ss('text').style.color=fun();
+			}
+		*/
+		/*	二、
+			function change(){//封装通过点击事件...
+				return document.body.style.background = fun()	
+			}
+		
+			function change(){//封装通过点击事件...
+				return ss('text').style.color = fun()
+			}
+		*/	
+		</script>
+	</body>
+</html>

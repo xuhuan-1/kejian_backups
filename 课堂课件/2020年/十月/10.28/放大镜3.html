@@ -1,0 +1,92 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>放大镜3</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				position:relative;
+			}
+			#img_1{
+				position:absolute;
+				left:0px;
+				top:0px;
+			}
+			#img_2{
+				position:absolute;
+				left:0px;
+				top:0px;
+				opacity:0.5;
+				width:100px;
+				height:100px;
+				background:#fff;
+			}
+			#box1{
+				position:relative;
+				margin-left:450px;
+				width:400px;
+				height:400px;
+				overflow:hidden;
+			}
+			#fangda{
+				position:absolute;
+				left:0px;
+				top:0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img id="img_1" src="img/1.jpg"/>
+			<p id="img_2"/></p> 
+		</div>
+		<div id="box1">
+			<img id="fangda" src="img/1.jpg"/>
+		</div>
+		<script>
+			function $(id){
+				return document.getElementById(id);
+			}
+			var img1_w,img1_h,img2_w,img2_h,box_left;
+			window.onload = function(){
+				//大盒子的left距离
+				box_left = $('box').offsetLeft;
+				//背景图的宽度
+				img1_w = $('img_1').offsetWidth;
+				//背景图的高度
+				img1_h = $('img_1').offsetHeight;
+				//方块的宽
+				img2_w = $('img_2').offsetWidth;
+				//方块的高
+				img2_h = $('img_2').offsetHeight;
+				$("fangda").style.width = $("fangda").offsetWidth*4+"px";
+			}
+			$('box').addEventListener('mousemove',(eve)=>{
+					var e = eve.event||window.event;
+					var page_x = e.pageX;
+					var page_y = e.pageY;
+					$('img_2').style.left = page_x-box_left-img2_w/2+'px';
+					$('img_2').style.top = page_y-img2_h/2+'px';
+					//右
+					page_x<=box_left+img2_w/2?$('img_2').style.left = '0px':'';
+					//上
+					page_y<=img2_h/2?$('img_2').style.top = '0px':'';
+					//下
+					page_y>=img1_h-img2_h/2?$('img_2').style.top = img1_h-img2_h+'px':'';
+					//右
+					page_x>=box_left+img1_w-img2_w/2?$('img_2').style.left = img1_w-img2_w +'px':'';
+					$('fangda').style.left = -parseFloat($('img_2').style.left)*4+'px';
+					$('fangda').style.top = -parseFloat($('img_2').style.top)*4+'px';
+				})
+		</script>
+	</body>
+</html>
+
+
+
+
+

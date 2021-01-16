@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取url地址栏域名</title>
+</head>
+<body>
+<script>
+                //http://127.0.0.1:5500/%E8%8E%B7%E5%8F%96url%E5%9C%B0%E5%9D%80%E6%A0%8F%E5%9F%9F%E5%90%8D.html
+        // location.href:获取地址栏全路径
+                //5500
+        // location.port:获取地址栏的端口号
+                //http:
+        // location.protocol:获取地址栏协议
+                //127.0.0.1:5500
+        // location.host:获取域名+端口号
+                //127.0.0.1
+        // location.hostname:获取域名
+                //http://127.0.0.1:5500
+        // location.origin:获取完整的域名
+                //%E8%8E%B7%E5%8F%96url%E5%9C%B0%E5%9D%80%E6%A0%8F%E5%9F%9F%E5%90%8D
+        // location.pathname:获取完整路径
+                //?page=1&username=zimo&pwd=123
+        // location.search:获取地址栏的参数  【?后面的数据叫做参数】
+        
+        location.href   
+
+        console.log(location);//是一个对象
+        console.log(location.href);//获取地址栏 全路径
+        console.log(location.port);//获取地址栏 端口号
+        console.log(location.protocol);//获取地址栏 协议
+        console.log(location.host);//获取地址栏 域名和端口号
+        console.log(location.hostname);//获取地址栏 域名
+        console.log(location.origin);//获取地址栏 完整域名
+        console.log(location.pathname);//获取完整 路径
+        //console.log(location.search);//获取地址栏 参数【?后面的数据叫参数】
+        //console.log(location.hash);/哈希值
+    //获取参数：
+        // let s = 'http://127.0.0.1:5500/admin/index.html?page=1&username=zimo&pwd=123'
+        // console.log(location.search); // ?page=1&username=zimo&pwd=123
+
+        
+    </script>
+</body>
+</html>

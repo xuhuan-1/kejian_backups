@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise的方法</title>
+</head>
+<body>
+    <script>
+        class Promise{
+            getUserName(){
+                console.log('原型对象');
+            };
+            static race(){
+                console.log('race静态方法');
+            };
+            static all(){
+                console.log('all静态方法');
+            };
+            static resolve(){
+                console.log('resolve静态方法');
+            };
+            static reject(){
+                console.log('reject静态方法');
+            }
+        }
+        //静态方法
+        console.log(Promise.race());
+        //原型方法
+        let p = new Promise();
+        console.log(p.getUserName());
+    </script>
+</body>
+</html>

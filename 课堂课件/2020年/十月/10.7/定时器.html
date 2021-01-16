@@ -1,0 +1,33 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>计时器</title>
+	</head>
+	<body>
+		<input type="button" onclick="dj()" value="点击"/>
+		<script>
+			//封装一个通过ID获取DOM元素方法
+			function get(xc){
+				return document.getElementById(xc);
+			}
+			//封装一个随机颜色方法
+			function fun(){
+				var arr = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
+				var b = '#';
+				for(var i=0;i<6;i++){
+					b += arr[Math.floor(Math.random()*16)];
+				}
+				document.body.style.background = b;
+				clearTimeout(t);
+				var t = setTimeout('fun()',1000);
+				return b;
+			}fun();
+		</script>
+	</body>
+</html>
+
+
+
+
+

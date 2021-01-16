@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>结构伪类选择器</title>
+		<style>
+		
+			div p:first-of-type{
+				color:red;
+			}
+			div p:last-of-type{
+				color:blue;
+			}
+		
+			div p:nth-of-type(-n+3){
+				color:#FC6E42;
+			}
+			div h3:first-of-type{
+				color:blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h3>我是标题</h3>
+			<h3>我也是标题</h3>
+			<p>1我是一个p标签</p>
+			<p>2我是一个p标签</p>
+			<p>3我是一个p标签</p>
+			<p>4我是一个p标签</p>
+			<p>5我是一个p标签</p>
+			<p>6我是一个p标签</p>
+			<p>7我是一个p标签</p>
+			<p>8我是一个p标签</p>
+			<p>9我是一个p标签</p>
+			<p>10我是一个p标签</p>
+		</div>
+	</body>
+</html>

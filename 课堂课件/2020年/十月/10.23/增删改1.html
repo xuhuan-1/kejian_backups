@@ -1,0 +1,109 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>增删改</title>
+		<style>
+			#box2{
+				text-align:center;
+				display:none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box1">
+			<table align="center" border="3" id="tab">
+				<caption>用户信息<input type="button" value="添加用户" onclick="add()"/>
+				</caption>
+				<tbody>
+					<td width="100px" align="center">姓名</td>
+					<td width="100px" align="center">年龄</td>
+					<td width="200px" align="center">电话</td>
+					<td width="300px" align="center">操作</td>
+				</tbody>
+			</table>
+		</div>
+		<div id="box2">
+			<h3>添加用户</h3>
+			姓名：<input type="text" id="nam"/>
+			年龄：<input type="text" id="age"/>
+			电话：<input type="text" id="tel"/>
+			<p id="p1">
+				<input type="button" value="提交" onclick="sub()"/>
+				<input type="button" value="更新" onclick="upd()"/>
+			</p>
+		</div>
+		<script>
+			function $(id){
+				return document.getElementById(id);
+			}
+		//添加用户事件
+			function add(){
+				$('box2').style.display = 'block';
+				$('box1').style.display = 'none';
+				$('p1').querySelectorAll('input')[1].style.display = 'none';
+			}
+		//提交按钮事件
+			function sub(){
+				//姓名
+				var nam = $('nam').value;
+				//年龄
+				var age = $('age').value;
+				//电话
+				var tel = $('tel').value;
+				if(nam == false && age == false && tel == false){
+					alert('请填写信息！！！');
+					return;
+				}
+				//创建tr
+				var create_tr = document.createElement('tr');
+				create_tr.innerHTML = '<td class="td_1">'+nam+'</td><td class="td_2">'+age+'</td><td class="td_3">'+tel+'</td><td><button onclick="delet(this)">删除</button><button onclick="alter(this)">修改</button></td>'
+				//将创建的tr放到tbody里
+				$('box1').querySelector('tbody').appendChild(create_tr)
+				//value值清空
+				$('nam').value = null;
+				$('age').value = null;
+				$('tel').value = null;
+				$('box1').style.display = 'block';
+				$('box2').style.display = 'none';
+			}
+		//删除按钮事件
+			function delet(val){
+				val.parentNode.parentNode.remove();
+			}
+		//修改按钮事件
+		var dd = null;
+		function alter(val){
+			$('box1').style.display = 'none';
+			$('box2').style.display = 'block';
+			$('box2').querySelector('h3').innerText = '修改用户';
+			$('p1').querySelectorAll('input')[1].style.display = 'inline-block';
+			$('p1').querySelectorAll('input')[0].style.display = 'none';
+			var xg = val.parentNode.parentNode.querySelectorAll('td');
+			$('nam').value = xg[0].innerText;
+			$('age').value = xg[1].innerText;
+			$('tel').value = xg[2].innerText;
+			dd = val.parentNode.parentNode.rowIndex;
+		}
+		//更新按钮事件
+		function upd(val){
+			$('box1').style.display = 'block';
+			$('box2').style.display = 'none';
+			var mm = $('tab').querySelectorAll('tr');
+			mm[dd].querySelector('.td_1').innerText = $('nam').value;
+			mm[dd].querySelector('.td_2').innerText = $('age').value;
+			mm[dd].querySelector('.td_3').innerText = $('tel').value;
+			$('p1').querySelectorAll('input')[0].style.display = 'inline-block';
+			$('nam').value = null;
+			$('age').value = null;
+			$('tel').value = null;
+		}
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

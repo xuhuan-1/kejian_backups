@@ -1,0 +1,309 @@
+*{
+	margin:0;
+	padding:0;
+}
+.w{
+	width:1200px;
+	margin:auto;
+}
+li{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+}
+body{
+	background-color:#F3F5F7;
+}
+.clearfix::after{
+	content:"";
+	display:block;
+	clear:both;
+	height:0;
+	visibility:hidden;
+}
+.clearfix{
+	zoom:1;
+}
+.header{
+	height:42px;
+	margin:30px auto;
+}
+.logo{
+	float:left;
+	margin-right:70px;
+}
+.nav{
+	float:left;
+	width:360px;
+	height:42px;
+	
+}
+.nav ul li{
+	float:left;
+	height:42px;
+	line-height:42px;
+	margin:0 15px;
+}
+.nav ul li a{
+	display:block;
+	height:42px;
+	padding:0 10px;
+	font-size:18px;
+	color:#050505;
+}
+.nav ul li a:hover{
+	border-bottom:2px #00A4FF solid;
+	color:#00A4FF;
+}
+.search{
+	float:left;
+	width:415px;
+	height:42px;
+	
+}
+ .sh-input{
+	float:left;
+	width:360px;
+	height:40px;
+	line-height:40px;
+	padding-left:15px;
+	border:1px solid #00A4FF;
+	border-right:none;
+	font-size:14px;
+	color:#666;
+}
+.sh-but{
+	float:left;
+	width:50px;
+	height:40px;
+	border:0;
+}
+.user{
+	float:right;
+	height:42px;
+	margin-right:30px;
+	line-height:42px;
+}
+.user img{
+	vertical-align:middle;
+}
+.banner{
+	height:420px;
+	background:#1C036C;
+}
+.banner .w{
+	width:1200px;
+	height:420px;
+	background:url(../images/banner2.png) top center no-repeat;
+}
+.subnav{
+	float:left;
+	width:190px;
+	height:420px;
+	background:rgba(0,0,0,0.3);
+}
+.subnav ul li {
+	height:45px;
+	padding:0 20px;
+	line-height:45px;
+}
+.subnav ul li a{
+	color:#fff;
+	font-size:14px;
+}
+.subnav ul li a span{
+	float:right;
+}
+.course{
+	float:right;
+	height:300px;
+	width:230px;
+	margin-top:50px;
+	background:#fff;
+}
+.course h2{
+	height:50px;
+	line-height:50px;
+	background-color:#9BCEEA;
+	font-size:18px;
+	color:#fff;
+	text-align:center;
+}
+.course div{
+	padding:0 20px;
+}
+.course div ul li{
+	padding:15px 0;
+	border-bottom:1px solid #bbb;
+}
+.course div ul li h4{
+	font-size:16px;
+	color:#4e4e4e;
+}
+.course div ul li p{
+	color:#666;	
+	font-size:12px;
+}
+.course div a{
+	display:block;
+	height:36px;
+	margin-top:5px;
+	border:1px #00A4FF solid;
+	line-height:36px;
+	text-align:center;
+	color:#00A4FF;
+	font-size:16px;
+	font-weight:700;
+}
+.box{
+	height:60px;
+	margin-top:10px;
+	background:#fff;
+	/*
+		盒子阴影：css3新增属性：
+			box-show：h-shadow v-shadow blur spread color inset;
+				h-shadow	水平阴影的位置，允许负值
+				v-shadow	垂直阴影的位置，允许负值
+				blur		可选，模糊距离
+				spread		可选，阴影尺寸
+				color		可选，阴影的颜色
+				inset		可选，将外部阴影（outset）改为内部阴影。 
+			注意：默认值是outset，不可以写outset,如果写了outset会失效
+				  盒子阴影不占用空间，不会影响其他盒子的排列。
+		文本阴影：css3新增属性：	
+			text-shadow:h-shadow v-shadow blur color ;
+				h-shadow	水平阴影的位置，允许负值
+				v-shadow	垂直阴影的位置，允许负值
+				blur		可选，模糊距离
+				color		可选，阴影的颜色
+	*/
+	box-shadow:0px 2px 5px 5px rgba(0,0,0,0.2);
+	line-height:60px;
+}
+.box h3{
+	float:left;
+	
+	margin:0 30px;
+	color:#00A4FF;
+	font-size:16px;
+}
+.box ul{
+	float:left;
+	
+}
+.box ul li{
+	float:left;
+}
+.box ul li a{
+	height:20px;
+	line-height:20px;
+	margin:20px 0px 20px 30px;
+	padding-left:30px;
+	border-left:1px solid #aaa;
+	font-size:16px;
+	color:#000;
+}
+.box a{
+	float:right;
+	margin-right:30px;
+	color:#00A4FF;
+	font-size:14px;
+}
+.core{
+	margin-top:30px;
+	
+}
+
+.core-ch h2{
+	float:left;
+	height:50px;
+}
+.core-ch a{
+	float:right;
+	height:50px;
+	margin-right:30px;
+}
+.core-cb{
+	width:1300px;
+}
+.core-cb ul li{
+	position:relative;
+	float:left;
+	height:270px;
+	width:228px;
+	margin-right:15px;
+	background:#fff;
+}
+.core-cb ul li>img{
+	width:100%;
+}
+.core-cb ul li h4{
+	padding:25px 20px 10px;
+	font-size:14px;
+}
+.core-cb ul li div{
+	padding:10px 20px 0;
+	font-size:12px;
+	color:#666;
+}
+.core-cb ul li div span{
+	color:#ff7c2d;
+}
+.core-cb ul li em img{
+	position:absolute;
+	top:4px;
+	right:-4px;
+	
+}
+
+.footer{
+	height:523px;
+	margin-top:15px;
+	background-color:#fff;
+}
+.footer .w{
+	height:415px;
+}
+.copyright{
+	float:left;
+	width:435px;
+	height:415px;
+}
+.copyright img{
+	padding:30px 0;
+}
+.copyright p{
+	margin-bottom:20px;
+	font-size:12px;
+	color:#666;
+}
+.copyright a{
+	display:block;
+	width:80px;
+	padding:10px 20px;
+	border:1px solid #00A4FF;
+	text-align:center;
+	color:#00A4FF;
+}
+.links{
+	float:right;
+}
+.links dl{
+	float:right;
+	margin:30px 0 0 100px;
+}
+.links dl dt{
+	line-height:25px;
+}
+.links dl dt a{
+	color:#000;
+	font-size:16px;
+}
+.links dl dd{
+	line-height:18px;
+}
+.links dl dd a{
+	color:#000;
+	font-size:12px;
+}

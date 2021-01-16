@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>随机抽奖</title>
+	</head>
+	<style>
+		div{
+			margin-top:200px;
+			text-align:center;
+			line-height:30px;
+			color:#fff;
+		}
+		div p{
+			font-size:30px;
+			color:black;
+		}
+		button{
+			width:100px;
+			height:30px;
+			font-size:16px;
+		}
+		span{
+			color:red;
+		}
+	</style>
+	<body>
+		<div>
+			<p id="text">恭喜&nbsp;<span id="name"></span>&nbsp;获得一包辣条</p>
+			<button onclick="best()">点击抽奖</button>
+		</div>
+		<!--JS代码-->
+		<script>
+			var person = ['秦老师','董翔宇','宋晨曦','殷丽丽','易道民','邢壮','王葳蕤','李路遥','陈卓','陈坤',
+						'陈辰锐','吴凯','孙一杰','张苏佩','兰天翔','高宇豪','汪煜祺','周世文','邓剑明','谢贵鹏'];
+			
+			function best(){
+				var i = Math.floor(Math.random()*person.length)//获取随机下标
+				var span = document.getElementById("name");
+				
+				span.innerText = person[i];//将随机选中的元素的写入到span标签中
+				var p = document.getElementById("text");
+				if(person.length == 0){
+					p.innerText="抽奖结束，感谢参与";
+				}
+				person.splice(i,1);//将随机选中的下标对应元素从数组中删除
+				//封装随机色
+				function change(){
+					var color = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
+					var x = '#';
+					for(var i=1;i<=6;i++){
+						x += color[Math.floor(Math.random()*16)];
+					}
+					return x
+				}
+				document.body.style.background = change()
+			
+			}
+			
+		</script>
+	</body>
+</html>

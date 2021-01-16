@@ -1,0 +1,64 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>九九乘法表</title>
+		<script>
+		/*	一、
+			var str = '';
+			for (var i = 1; i <= 9; i++) {
+				for (var j = i; j <=9; j++) {
+    				str += i + ' * ' + j + ' = ' + i * j + '\t';
+ 				}
+ 					 str += '\n';
+			}
+			console.log(str);
+			二、
+			var s = '';
+			for(var i=1;i<=9;i++){
+				for(var j=1;j<=i;j++){
+					s += j+'*'+i +'='+ j*i+'\t';
+				}
+					s += '\n';
+			}console.log(s);
+			三、
+			var s = '';
+			for(var i=1;i<=9;i++){
+				for(var j=1;j<=i;j++){
+					s += j + '*'+i+'='+j*i+'\t';
+				}
+				s += '\n';
+			}console.log(s);
+			
+			for(var i=9;i>=1;i--){
+				for(var a=1;a<=i;a++){
+					document.write(a+'*'+i+'='+i*a+ '&nbsp;&nbsp;');
+				}
+				document.write('<br/ >');
+			}
+		*/
+		
+		
+			//正序九九乘法表
+			for(var i=1;i<=9;i++){
+				for(var j=1;j<=i;j++){
+					document.write(j+'*'+i+'='+j*i+'&nbsp;&nbsp;');
+				}
+				document.write('<br/ >');
+			}
+				document.write('<br/ >');
+			//倒序九九乘法表
+			for(var i=9;i>=1;i--){
+				for(var t =1;t<=i;t++){
+					document.write(t+'*'+i+'='+i*t+'&nbsp;&nbsp;&nbsp;');
+				}
+				document.write('<br/ >');
+			}
+		
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

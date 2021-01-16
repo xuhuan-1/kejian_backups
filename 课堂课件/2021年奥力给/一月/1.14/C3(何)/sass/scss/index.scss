@@ -1,0 +1,53 @@
+@import './background.scss';
+// $colors:red green gold purple pink skyblue;
+// 适配移动端函数
+// 375   750 //以苹果6为标准的宽度
+// $baseFontSize:37.5;或者$baseFontSize:32;
+$baseFontSize:37.5;
+@function rem($px){
+    @return $px/$baseFontSize + 'rem';
+}
+
+
+%w{
+    width:rem(100);
+}
+$basecolor:red;
+@mixin class2{
+    width:800px;
+}
+@mixin basecolor{
+    background:gold;
+};
+.container1{
+    .nav{
+        @extend .class1;
+        background: red;
+        margin:4px;
+    }
+    .nav.nav2{
+        @extend %w;
+        background-color:$nav2;
+    }
+    .nav.nav3{
+        @extend .class1;
+        background-color:$nav3;
+    }
+    .nav.nav4{
+        @include class2;
+        background-color:$nav4;
+    }
+    .nav.nav5{
+        @extend .class1;
+        @include basecolor;
+        // background-color:$nav5;
+    }
+    // @for $num from 1 through 5 {
+    //     .nav.nav#{$num}{
+    //         // width:100px * $num;
+    //         // height:100px * $num;
+    //         background-color: $nav#{$num};
+    //     }
+    // }
+}
+

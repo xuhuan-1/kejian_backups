@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>web-socket2</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="websocket">
+        <div class="receive">
+            <p>服务端返回的消息</p>
+            <div id="receive-box"></div>
+        </div>
+        <div class="send">
+            <textarea type="text" id="msg-need-send"></textarea>
+            <p>
+                <button id="send-btn">点击发消息给服务端</button>
+            </p>
+        </div>
+        <button id="exit-1">连接</button>
+        <button id="exit">关闭连接</button>
+    </div>
+    <!-- <script src="./websocket.js"></script> -->
+    <script>
+        // 获取DOM元素
+        //服务端返回信息
+        let receive = document.getElementById('receive-box'),
+            //文本域
+            textArea = document.getElementById('msg-need-send'),
+            //点击发送按钮
+            send_btn = document.getElementById('send-btn'),
+            //关闭连接按钮
+            exit_btn = document.getElementById('exit'),
+            //连接按钮
+            exit_1 = document.getElementById('exit-1');
+        
+        exit_1.onclick = function(){
+            let ws = new WebSocket('ws://localhost:3004/websocket/test');
+            // 监听是否连接成功
+            ws.onopen = ()=>{
+                if(ws.readyState == 1){
+                    // 监听传输数据
+                    ws.addEventListener('message',(e)=>{
+                        let message = e.data;
+                        receive.innerHTML += `<p>${message}</p>`;
+                        receive.scrollTo({
+                            top:receive.scrollHeight,
+                            behavior:'smooth'
+                        });
+                    })
+                }
+            }
+            //点击发送事件
+            send_btn.onclick = function(){
+                ws.send(textArea.value);
+            }
+            // 监听关闭
+            ws.onclose = ()=>{
+                console.log('您的连接已经关闭');
+            }
+            exit_btn.onclick = function(){
+                ws.close();
+            }
+            
+        }
+    </script>
+</body>
+
+</html>

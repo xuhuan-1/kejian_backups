@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <style>
+        *{
+    margin: 0;
+    padding:0;
+        }
+        html,body{
+            width:100%;
+            height: 100vh;
+            background: #AAAAAA;
+        }
+        .container{
+            width:1235px;
+            height: 450px;
+            margin: 20px 0px 0px 60px;
+            position: relative;
+        }
+        .wrap{
+            width: 100%;
+            height:100%;
+        }
+        .wrap li{
+            list-style: none;
+            position: absolute;
+            /* background-size: 100% 100%; */
+        }
+        .wrap li img{
+            width: 100%;
+            height:100%;
+        }
+        .prev,.next{
+            width:80px;
+            height:80px;
+            font: 80px/80px "微软雅黑";
+            position: absolute;
+            z-index: 20;
+            top: 30%;
+            color: #fff;
+            cursor: pointer;
+            display: none;
+        }
+        .prev{
+            left:30px;
+        }
+        .next{
+            right:30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">      
+        <ul class="wrap">
+            <li><img src="./images/banner1.jpeg" /></li>
+            <li><img src="./images/banner2.jpeg" /></li>
+            <li><img src="./images/banner3.jpeg" /></li>
+            <li><img src="./images/banner4.jpeg" /></li>
+            <li><img src="./images/banner5.jpeg" /></li>
+        </ul>
+        <div class="btn-wrap">
+            <div class="prev"><</div>
+            <div class="next">></div>
+        </div>
+    </div>
+    <script src="./animate.js"></script>
+    <script>
+        /**
+         * 旋转木马轮播图 
+         *  位置的样式都是固定的，当我的图片轮播到当前位置时，则使用当前位置的样式
+         *  需要将每个位置的固定写好，都有width、opacity、left top z-index
+        */
+        var arr = [
+            {
+                width: 400,
+                top: 20,
+                left: 50,
+                opacity: 0.2,
+                zIndex: 2
+            },//0
+            {
+                width: 550,
+                top: 70,
+                left: 0,
+                opacity: 0.8,
+                zIndex: 3
+            },//1
+            {
+                width: 800,
+                top: 150,
+                left: 200,
+                opacity: 1,
+                zIndex: 4
+            },//2
+            {
+                width: 550,
+                top: 70,
+                left: 650,
+                opacity: 0.8,
+                zIndex: 3
+            },//3
+            {
+                width: 400,
+                top: 20,
+                left: 750,
+                opacity: 0.2,
+                zIndex: 2
+            },//4
+        ];
+    // 封装动画 改变css样式  width、height、opacity、left top z-index
+        // 获取元素的当前样式
+    function getStyle(ele,attr){
+        return ele.currentStyle ? ele.currentStyle[attr] : getComputedStyle(ele,null)[attr];
+    }
+    // 动画  
+    // ele :代表运动的元素
+    // json :传进来的属性
+    function animate(ele,json,fn){
+        clearInterval(ele.timer);
+        ele.timer = setInterval(() => {
+            var flag = true;
+            for(var key in json){
+                // 分三种情况去处理
+                //  1、处理有像素的属性
+                //  2、处理 透明度
+                //  3、处理层级 zIndex
+                if(key == 'zIndex'){
+                    ele.style[key] = json[key];
+                }else if(key == 'opacity'){
+                    // 步长  (目标值-当前值)/10;
+                    var current = parseInt(getStyle(ele,key)*100);
+                    var step = (json[key]*100 - current)/10;
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    ele.style[key] = (current + step)/100;
+                }else{
+                    // 步长  (目标值-当前值)/10;
+                    var current = parseInt(getStyle(ele,key));
+                    var step = (json[key] - current)/10;
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    ele.style[key] = current + step + 'px';
+                    if(json[key] != current){
+                        // 永远改变成false
+                        flag = false;
+                    }
+                }
+            }
+            // 代表的是上一次执行完成
+            if(flag){
+                clearInterval(ele.timer)
+                fn && fn();
+            }
+        }, 20);
+    }
+    // 获取元素的函数
+        function getElement(ele){
+            return document.getElementsByClassName(ele);
+        }
+        var container = getElement('container')[0];
+        var nextBtn = getElement('next')[0];
+        var prevBtn = getElement('prev')[0];
+        var lis = getElement('wrap')[0].children; 
+
+        timer = setInterval(next,2000);
+        // 开关，默认打开
+        var flag = true;
+        // 图片归为
+        function flower(){
+            for(var i=0;i<lis.length;i++){
+                animate(lis[i],arr[i],() => {
+                    flag = true;
+                });
+            }
+        }
+        // 初始化调用
+        flower();
+        // 逆时针
+        function next(){
+            if(flag){
+                arr.push(arr.shift());
+                flower();
+                flag = false
+            }
+        }
+        // 顺时针
+        function prev(){
+            if(flag){
+                arr.unshift(arr.pop());
+                flower();
+                flag = false
+            }
+        }
+        nextBtn.onclick = function(){
+            next();
+            clearInterval(timer)
+        }
+        prevBtn.onclick = function(){
+            prev();
+            clearInterval(timer)
+        }
+        container.onmouseover = function(){
+            nextBtn.style.display = 'block';
+            prevBtn.style.display = 'block';
+            clearInterval(timer);
+        }
+        container.onmouseout = function(){
+            nextBtn.style.display = 'none';
+            prevBtn.style.display = 'none';
+            timer = setInterval(next,2000);
+        }
+    </script>
+</body>
+</html>
+
+
+

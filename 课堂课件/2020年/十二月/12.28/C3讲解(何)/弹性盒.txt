@@ -1,0 +1,36 @@
+弹性盒：
+    CSS3中新出的一种布局方式，可以很灵活的进行布局，多用于移动端
+    flex-box：弹性盒
+
+    弹性盒里面的元素叫做项目
+
+    弹性盒内部有默认的主轴：横轴 row
+
+    给项目父元素设置弹性布局：display:flex;当前元素就成了弹性盒
+
+    控制项目的布局解构，弹性属性必须设置在父元素上【设置在弹性盒上】
+
+    flex-direction:row; 可以设置主轴的方向,默认为row，可以设置为column，column纵轴
+
+    flex-wrap：控制是否转行，默认值为nowrap不转行，wrap是转行
+
+    flex-flow：flex-direction和flex-wrap的综合写法，可以控制元素的主轴方向，
+                和是否转行进行排列，默认值为row nowrap
+
+    justify-content：主轴方向上的排列方式
+        flex-start:从开头排列
+        flex-end：从尾部开始排列
+        space-around:平分排列
+        space-between:从两端开始排列
+        center:居中排列
+    aligin-items:非主轴的排列方式
+        flex-start:从开头排列
+        flex-end：从尾部开始排列
+        center:居中排列
+    flex:可以设置number值,分比例
+
+    order:是弹性盒中的调整顺序属性，接收number属性值，默认是0
+
+
+今晚作业：
+    整理弹性盒所有的知识点

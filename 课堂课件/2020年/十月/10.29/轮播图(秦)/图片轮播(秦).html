@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		ul li{
+			list-style: none;
+		}
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box .clear{
+			clear:both;
+		}
+		
+		#box{
+			margin: 20px auto;
+			width: 768px;
+			height: 432px;
+			position: relative;
+			overflow: hidden;
+		}
+		#ig{
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		#box ul li{
+			float: left;
+		}
+		#box ul li img{
+			width: 768px;
+			height: 432px;
+		}
+		#dian{
+			position: absolute;
+			height: 30px;
+			left: 50%;
+			bottom: 20px;
+			background: rgba(255,255,255,0.4);
+			border-radius: 30px;
+		}
+		#dian ul li{
+			float: left;
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			background: purple;
+			margin: 8px 8px;
+		}
+		#dian ul li:hover{
+			background: pink;
+		}
+		#l,#r{
+			display: none;
+			line-height:80px;
+		}
+		#l:hover,#r:hover{
+			cursor: pointer;
+		}
+		#l{
+			position: absolute;
+			width: 40px;
+			height: 80px;
+			left: 10px;
+			top: 50%;
+			font-size: 48px;
+			color: #FFFFFF;
+			text-align: center;
+			margin-top: -40px;
+			background: rgba(255,255,255,0.4);
+			border-radius: 30px;
+		}
+		#r{
+			position: absolute;
+			width: 40px;
+			height: 80px;
+			right: 10px;
+			top: 50%;
+			text-align: center;
+			font-size: 48px;
+			color: #FFFFFF;
+			margin-top: -40px;
+			background: rgba(255,255,255,0.4);
+			border-radius: 30px;
+		}
+		#dian ul li{
+			background: purple;
+		}
+		#dian ul .dong{
+			background: pink;
+		}
+		#dian ul .dong:hover{
+			background: pink;
+		}
+	</style>
+	<body>
+		<div id="box">
+			<div id="ig">
+				<ul>
+					<li><img src="imgs/1.jpg" alt="" /></li>
+					<li><img src="imgs/2.jpg" alt="" /></li>
+					<li><img src="imgs/3.jpg" alt="" /></li>
+					<li><img src="imgs/4.jpg" alt="" /></li>
+					<li><img src="imgs/5.jpg" alt="" /></li>
+					<li><img src="imgs/1.jpg" alt="" /></li>
+					<li><img src="imgs/2.jpg" alt="" /></li>
+					<li><img src="imgs/3.jpg" alt="" /></li>
+					<li><img src="imgs/4.jpg" alt="" /></li>
+					<li><img src="imgs/5.jpg" alt="" /></li>
+				</ul>
+				
+			</div>
+			<div class = 'clear'><</div>
+			<div id="l" onclick = "toLeft()"><</div>
+			<div id="r" onclick = "toRight()">></div>
+			<div id="dian">
+				<ul>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript">
+			function $(oo){
+				return document.getElementById(oo);
+			}
+			var ig=$("ig");
+			var box=$("box");
+			var l=$("l");
+			var r=$("r");
+			var ig_li=document.querySelectorAll("#ig li");
+			var dian_ul=document.querySelector("#dian ul");
+			var dian_li;
+			var ig_w=ig_li[0].offsetWidth;
+			var timer=null;
+			var ig_a=0;
+			for(var i=0;i<ig_li.length;i++){
+				var new_li=document.createElement("li");
+				new_li.setAttribute("name",i);
+				if(i==0){
+					new_li.setAttribute("class","dong");
+				}
+				dian_ul.appendChild(new_li);
+			}
+			window.onload = function (){
+				dian_li=document.querySelectorAll("#dian li");	
+				$('dian').style.marginLeft = -dian.offsetWidth/2 + "px";
+				change();
+			}
+			//当鼠标移入当前元素
+			box.addEventListener("mouseenter",()=>{
+				l.style.display="block";
+				r.style.display="block";
+				clearInterval(timer);
+			})
+			//当鼠标移出当前元素
+			box.addEventListener("mouseleave",()=>{
+				l.style.display="none";
+				r.style.display="none";
+				clearInterval(timer);
+				change();
+			})
+			//定时器
+			function change(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					toRight();
+				},800)	
+			}
+			//去右
+			function toRight(){
+				ig_a++;
+				if(ig_a>ig_li.length-1){
+					ig_a=0;
+				}
+				for(var i=0;i<dian_li.length;i++){
+					if(i==ig_a){
+						dian_li[i].className="dong";
+					}else{
+						dian_li[i].className="";
+					}
+				}
+				ig.style.left= -ig_w*ig_a+"px";
+			}
+			//去左
+			function toLeft(){
+				ig_a--;
+				if(ig_a<0){
+					ig_a=ig_li.length-1;
+				}
+				for(var i=0;i<dian_li.length;i++){
+					if(i==ig_a){
+						dian_li[i].className="dong";
+					}else{
+						dian_li[i].className="";
+					}
+				}
+				ig.style.left= -ig_w*ig_a+"px";
+			}
+			/*function toThere(val){
+				//attributes对应元素的属性集合
+				//对应元素.attributes.属性名.value
+				var li_val=val.getAttribute('name');
+				ig_a = li_val;
+				console.log(ig_a)
+				ig.style.left= -ig_w*ig_a+"px";
+				for(var i=0;i<dian_li.length;i++){
+					if(i==ig_a){
+						dian_li[i].className="dong";
+					}else{
+						dian_li[i].className="";
+					}
+				}
+			}*/
+			$('dian').addEventListener('click',(e)=>{
+				var e = e || window.event;
+				var order_ele = e.target || e.srcElement;
+				console.log(order_ele)
+				if(order_ele.tagName == "LI"){
+					var li_val=order_ele.getAttribute("name")*1;
+					ig_a = li_val;
+					ig.style.left= -ig_w*ig_a+"px";
+					for(var i=0;i<dian_li.length;i++){
+						if(i==ig_a){
+							dian_li[i].className="dong";
+						}else{
+							dian_li[i].className="";
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

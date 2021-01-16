@@ -1,0 +1,147 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>作业二</title>
+		<script>
+		/*
+			一//
+			var year = prompt('请输入年份：');
+			if(isNaN(year) == false && year !== ""){
+				if(year %4 == 0 && year %100 != 0 || year %400 == 0){
+					console.log('今年是闰年');	
+					var month = prompt('请输入月份：');
+					switch (month){
+						case "1":document.write('这个月有“31”天');break
+						case "2":document.write('这个月有”29天“');break
+						case "3":document.write('这个月有“31”天');break
+						case "4":document.write('这个月有”30天“');break
+						case "5":document.write('这个月有“31”天');break
+						case "6":document.write('这个月有”30天“');break
+						case "7":document.write('这个月有“31”天');break
+						case "8":document.write('这个月有”31天“');break
+						case "9":document.write('这个月有“30”天');break
+						case "10":document.write('这个月有”31天“');break
+						case "11":document.write('这个月有“30”天');break
+						case "12":document.write('这个月有”31天“');break
+						default :document.write('请输入正确的月份“');
+					}
+				}else{
+					console.log('今年是平年');
+					var month = prompt('请输入月份：');
+					switch (month){
+						case "1":document.write('这个月有“31”天');break
+						case "2":document.write('这个月有”28天“');break
+						case "3":document.write('这个月有“31”天');break
+						case "4":document.write('这个月有”30天“');break
+						case "5":document.write('这个月有“31”天');break
+						case "6":document.write('这个月有”30天“');break
+						case "7":document.write('这个月有“31”天');break
+						case "8":document.write('这个月有”31天“');break
+						case "9":document.write('这个月有“30”天');break
+						case "10":document.write('这个月有”31天“');break
+						case "11":document.write('这个月有“30”天');break
+						case "12":document.write('这个月有”31天“');break
+						default :document.write('请输入正确的月份“');
+					}
+				}
+			}else{
+				alert('请输入正确的年份！');
+			}
+		
+			//二
+			var month = prompt('请输入月份');
+				switch (month){
+					case '1':document.write('这个月有“31”天');break;
+					case '2':var year = prompt('请输入年份：');
+						if(year %4 == 0 && year %100 != 0 || year %400 == 0){
+							document.write('这个月有“29”天');
+						}else if(year %100 == 0){
+							docunmet.write('这个月有“28”天');
+						}
+						else{
+							document.write('请输入正确的年份！');
+						}break;
+					case '3':document.write('这个月有“31”天');break;
+					case '4':document.write('这个月有“30”天');break;
+					case '5':document.write('这个月有“31”天');break;
+					case '6':document.write('这个月有“30”天');break;
+					case '7':document.write('这个月有“31”天');break;
+					case '8':document.write('这个月有“31”天');break;
+					case '9':document.write('这个月有“30”天');break;
+					case '10':document.write('这个月有“31”天');break;
+					case '11':document.write('这个月有“30”天');break;
+					case '12':document.write('这个月有“31”天');break;
+					default:document.write('请输入正确的月份！');
+				}
+			
+
+			//三
+			var month = prompt('请输入月份：');
+			switch(month){
+				case '1' :document.write('这个月有“31”天');break;
+				case '2' :
+					var year = prompt('请输入年份：');
+					if(year %4 ==0 && year %100 != 0 || year %400 == 0){
+						document.write('这个月有”29天“');
+					}else{
+						document.write('这个月有”28天“');
+					}break;
+				case '3':document.write('这个月有“31天”');break;
+				case '4':document.write('这个月有“30”天');break;
+				case '5':document.write('这个月有“31”天');break;
+				case '6':document.write('这个月有“30”天');break;
+				case '7':document.write('这个月有“31”天');break;
+				case '8':document.write('这个月有“31”天');break;
+				case '9':document.write('这个月有“30”天');break;
+				case '10':document.write('这个月有“31”天');break;
+				case '11':document.write('这个月有“30”天');break;
+				case '12':document.write('这个月有“31”天');break;
+				default :document.write('请输入正确的月份！');
+			}
+		*/	
+			var month = prompt('请输入月份：');
+			switch(month){
+				case '1':
+				case '3':
+				case '5':
+				case '7':
+				case '8':
+				case '10':
+				case '12':document.write('这个月有“31”天');break;
+				case '4':
+				case '6':
+				case '9':
+				case '11':document.write('这个月有“30”天');break;
+				case '2':
+					var year = prompt('请输入年份：');
+					if(year %4 ==0 & year %100 != 0 || year %400 ==0){
+						document.write('这个月有“29”天');
+					}
+					else{
+						document.write('这个月有“28”天');
+					}
+				break;
+				default :document.write('请输入正确的月份！');
+				
+			}
+			
+			
+		
+		
+		
+		
+		
+		</script>
+			
+		
+	</head>
+	<body>
+		
+	</body>
+</html>
+
+
+
+
+

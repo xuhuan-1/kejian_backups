@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC端布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100vh;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+        }
+        .top{
+            height: 80px;
+            width: 100%;
+            background: pink;
+        }
+        .content{
+            width: 100%;
+            height: calc(100vh - 80px);
+            /* background: red; */
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .left{
+            width: 304px;
+            height: 100%;
+            background: yellow;
+        }
+        .cont{
+            height: calc(100% - 28px);
+            background: blue;
+            padding: 14px;
+            flex: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="top">头部</header>
+        <section class="content">
+            <aside class="left">
+                左侧导航
+            </aside>
+            <section class="cont">
+                右侧内容
+            </section>
+        </section>
+    </div>
+</body>
+</html>

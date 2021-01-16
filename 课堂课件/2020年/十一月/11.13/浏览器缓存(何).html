@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href='./reset.css' />
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+    <img src="./images/zimo.png" alt="">
+    <!-- <script src="js/judgeLogin.js?t=' + new Date().getTime() + '"><\/script> -->
+    <script>
+        window.onload = function () {
+            var el = document.createElement('script')
+            var el_html = document.querySelector('html')
+            var timetemp = new Date().getTime()
+            el.type = 'text/javascript'
+            el.src = './cache.js?timetemp=' + timetemp
+            el_html.appendChild(el)
+        }
+        /**
+         * 1、前端所有的资源都是静态资源
+         * 2、前端所有的静态资源都从后台请求过来的
+         *    304:304状态码：是在一定时间内，内容没有变化，则缓存下来，返回304
+         *        每次都向服务器请求，获取最新数据，然后浏览器解析并渲染页面
+         *    阻止浏览器缓存：时间戳、随机数、让变量随时变化
+         * 3、Connection：keep-alive，Connection保持连接的意思，一旦数据传递完毕，
+         *    则断开连接，keep-alive前端缓存
+         *    vue中：keep-alive，缓存组件【缓存页面、js、css、图片、数据】
+         * 4、cache:前后端交互时，缓存的字段
+         * 5、本地缓存【WEB Storage】：【5种】
+         *      存储特点：存的都是字符串
+         *      浏览器想要获取本地存储中的数据，必须反序列化【JSON.parse()】
+         * 
+         *      localStorage():长期缓存，只要不手动清除，则一直存在
+         *          
+         *      sessionStorage():会话存储，打开浏览器则进行缓存，关闭浏览器窗口则缓存消失
+         * 
+         *          setItem():存数据，第一个参数是存储名，第二个参数是需要存储的数据【序列化之后的】
+         *          getItem():获取数据，只有一个参数，存进去时的存储名
+         * 
+         *       localStorage和sessionStorage：每一条数据都可以存储5MB，一种可以存20条，不和后台
+         *        进行交互
+         *      
+         *      cookie:本地缓存，可以设置过期时间等等，存储的数据大小 4KB，和服务端进行交互
+         * 
+         * 
+         * 主要是为了减轻服务器压力，为了开发方便
+         * 
+         * html css js img都是静态资源
+         * 前端的html css js img都是从后台请求过来的 
+         * 
+        */
+        var arr = [
+            {username:'任我行',age:20},
+            {username:'丁春秋',age:21},
+            {username:'五毒老祖',age:22},
+            {username:'令狐冲',age:23}
+        ];
+
+        localStorage.setItem('userInfo',JSON.stringify(arr));
+        sessionStorage.setItem('userInfo',JSON.stringify(arr));
+        
+        let s = JSON.parse(localStorage.getItem('userInfo'))
+        console.log(s);
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax实现分页</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            
+        }
+        .box_1{
+            height: 700px;
+            width: 1400px;
+            border:1px solid #cdcdcd;
+            margin: auto;
+        }
+        .p1{
+            line-height: 50px;
+            width: 100%;
+            background-color: #cccccc;
+        }
+        .page span{
+            line-height: 20px;
+            width: 20px;
+            text-align: center;
+            display: inline-block;
+            border: 1px solid #cccccc;;
+            margin-left:5px ;
+            margin-right:5px ;
+            cursor: pointer;
+        }
+        .page{
+            display: inline-block;
+        }
+        .up{
+            display: inline-block;
+            cursor: pointer;
+        }
+        .down{
+            display: inline-block;
+            cursor: pointer;
+        }
+        .anniu{
+            line-height: 50px;
+            width: 500px;
+            text-align: center;
+            margin: auto;
+        }
+        img{
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box_1">
+            <h4 class="p1">分页实现</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <td width="100px">货物ID</td>
+                        <td width="200px">示例图</td>
+                        <td  width="300px">名称</td>
+                        <td width="200px">价格</td>
+                        <td>描述</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="anniu">
+            <p class="up">上一页</p>
+            <p class="page">
+                <!-- <span>1</span>
+                <span>2</span>
+                <span>3</span> -->
+            </p>
+            <p class="down">下一页</p>
+        </div>
+    </div>
+    <script>
+        //封装AJAX
+        function ajax(obj){
+            //处理参数
+            obj.url = obj.url || '';
+            obj.method = obj.method || 'get';
+            obj.data = obj.data || {};
+            obj.dataType = obj.dataType || 'json';
+            obj.success || obj.success;
+            //创建异步请求对象
+            let xhr;
+            //兼容
+            window.XMLHttpRequest?xhr = new XMLHttpRequest():xhr = new ActiveXObject('Microsoft.XMLHTTP');
+            //建立连接
+            function formate(o){
+                let arr = [];
+                for(let key in o){//name='张三'&age=18
+                    arr.push(key +'='+ o[key]);
+                }
+                return arr.join('&');
+            }
+            let params = formate(obj.data);
+            //处理get请求的url
+            let url = obj.url +'?'+ params;
+            if(obj.method == 'get'){
+                xhr.open(obj.method,url,true);
+            }else{
+                xhr.open(obj.method,obj.url,true);
+            }
+            //发送、请求数据
+            if(obj.method == 'get'){
+                xhr.setRequestHeader('Content-type','application/json;charset=utf-8');
+                xhr.send(null);
+            }else{
+                xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded,charset=utf-8');
+                xhr.send(params);
+            }
+            //注册监听函数
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200 && xhr.status < 300 || xhr.status == 304){
+                        if(obj.method == 'get'){
+                            obj.success && obj.success(JSON.parse(xhr.responseText));
+                        }else{
+                            obj.success && obj.success(xhr.responseText);
+                        }
+                    }
+                }
+            }
+        }
+        //获取元素
+        let tbody = document.querySelector('tbody'),
+        up = document.querySelector('.up'),
+        down = document.querySelector('.down'),
+        page = document.querySelector('.page'),
+        anniu = document.querySelector('.anniu');
+        let num = 1;
+        getDate(num);
+        function getDate(pg){
+            ajax({
+                url:'http://localhost:3001/page',
+                data:{
+                    page:pg
+                },
+                success:(res)=>{
+                    console.log(res);
+                    page.innerHTML = null;
+                    tbody.innerHTML = null;
+                    let list = res.glist,
+                    totle = res.totleNum;
+                    let frag = document.createDocumentFragment();
+                    for(let i=0;i<list.length;i++){
+                        let tr = document.createElement('tr');
+                        tr.innerHTML = `<td>${list[i].id}</td>
+                                        <td>
+                                            <img src="${list[i].goodimg}"/>
+                                        </td>
+                                        <td>${list[i].goodname}</td>
+                                        <td>${list[i].price}</td>
+                                        <td>${list[i].info}</td>`;
+                        frag.appendChild(tr);
+                    }
+                    tbody.appendChild(frag);
+                    for(let i=0;i<Math.ceil(totle / 5);i++){
+                        let span = document.createElement('span');
+                        span.innerText = i+1;
+                        span.setAttribute('class','liang');
+                        frag.appendChild(span);
+                    }
+                    page.appendChild(frag);
+                    //颜色
+                    let all_span = page.querySelectorAll('span');
+                    for(let i=0;i<all_span.length;i++){
+                        if(num == all_span[i].innerText){
+                            all_span[i].style.background = 'pink';
+                        }
+                    }
+                }
+            })
+        }
+        //监听事件
+        anniu.addEventListener('click',(e)=>{
+            let eve = e.event || window.event,
+            now_element = e.target || srcElement;
+            //下一页
+            if(now_element.className == 'down'){
+                let lastChild = page.lastElementChild;
+                if(num >= lastChild.innerText * 1){
+                    num = lastChild.innerText;
+                    getDate(num);
+                    alert('没有商品了');
+                }else{
+                    num++;
+                    getDate(num);
+                }
+            }
+            //上一页
+            if(now_element.className == 'up'){
+                let firstChile = page.firstElementChild;
+                if(num <= firstChile.innerText){
+                    num = firstChile.innerText;
+                    getDate(num);
+                    alert('已经是第一页了');
+                }else{
+                    num--;
+                    getDate(num);
+                }
+            }
+            //底部按钮
+            if(now_element.className == 'liang'){
+                num = now_element.innerText;
+                getDate(num);
+            }
+        })
+    </script>
+</body>
+</html>

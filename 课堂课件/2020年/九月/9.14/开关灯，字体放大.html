@@ -1,0 +1,100 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>开关灯,字体放大缩小</title>
+		<script>
+			
+		</script>
+		<style>
+			p{
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+	<!--
+		<input id="onoff" type="button" value="关灯">
+		<br/>
+		<hr/>
+		<button id="da">放大</button>
+		<button id="xiao">缩小</button>
+		<p id="zi">风萧萧兮易水寒</p>
+		<script>
+			//开关灯
+			var kg = document.getElementById('onoff');
+			kg.onclick = function(){
+				if(kg.value=='关灯'){
+					document.body.style.background="black";
+					kg.value = '开灯';
+				}else{
+					document.body.style.background=null;
+					kg.value = '关灯';
+				}
+				
+			}
+
+			//字体放大缩小
+			var a = document.getElementById('da');
+			var b = document.getElementById('xiao');
+			var c = document.getElementById('zi');
+			var i = 16;
+			a.onclick = function(){
+				i += 3;
+				zi.style.fontSize=i+"px";
+			}
+			b.onclick = function(){
+				if(i<=12){
+					i = 12;
+				}
+				i -= 3;
+				zi.style.fontSize=i+"px";
+			}
+		</script>
+	-->
+	
+	
+	
+	
+	
+	
+	
+	
+		<input id="fangda" type="button" value="放大"/>
+		<input id="suoxiao" type="button" value="放大"/>
+		<p id="p">风萧萧兮易水寒</p>
+		<hr/>
+		
+		<input id="onoff" type="button" value="关灯"/>
+		
+	<script>
+		var da = document.getElementById('fangda');
+		var xiao = document.getElementById('suoxiao');
+		var a = document.getElementById('p');
+		var i = 16;
+		da.onclick = function(){
+			i += 5;
+			p.style.fontSize=i+"px";
+		}
+		xiao.onclick = function(){
+			i -= 5;
+			if(i<5){
+				i = 5;
+			}
+			p.style.fontSize=i+"px";
+		}
+
+		var k = document.getElementById('onoff');
+		k.onclick = function(){
+			if(k.value=='关灯'){
+				document.body.style.background="black";
+				k.value = '开灯';
+			}else{
+				document.body.style.background=null;
+				k.value = '关灯';
+			}
+		}
+	</script>
+	</body>
+</html>
+

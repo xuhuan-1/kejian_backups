@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>递归函数</title>
+</head>
+<body>
+    <script>
+    /*    //1-100相加和
+        function a(num){
+            let all = 0;
+            if(num == 1){
+                return 1;
+            }else{
+                all = a(num - 1) + num;
+            }
+            return all;
+        }
+        console.log(a(100));
+    */
+    /*
+        //1-100相乘的和
+        function str(num){
+            let all = 0;
+            if(num == 1){
+                return 1;
+            }else{
+                all = str(num-1) * num;
+            }
+            return all;
+        }
+        console.log(str(10));
+    */
+    /*  计算斐波那契数列：1 1 2 3 5 8 13
+        function a(i){
+            if(i == 1 || i == 2){
+                return 1;
+            }
+            else{
+                return a(i-1) + a(i-2);
+            }
+        }
+        console.log(a(20));
+    */
+    /*  //递归数组降维
+        //一、
+        let arr = [1,2,3,4,[1,23,[1,23,],4,5],5,6,7,8,9]
+        function flat(array){
+            let newArr = []
+            array.map((item)=>{
+                Array.isArray(item)?newArr = newArr.concat(flat(item)):newArr.push(item);
+            })
+            return newArr;
+        }
+        console.log(flat(arr));
+      //二、
+        let arr = [12,23,3,64,[41,2,4,5],50,6,7,38,29];
+        function flat(array){
+            let newArr = [];
+            array.map((item)=>{
+                Array.isArray(item)?newArr = newArr.concat(flat(item)):newArr.push(item);
+            })
+            return newArr;
+        }
+        console.log(flat(arr));
+      //三、
+        let arr = [12,23,3,64,[41,2,4,5],50,6,7,38,29];
+        function flat(array){
+            let newArr = [];
+            array.map((item)=>{
+                Array.isArray(item)?newArr = newArr.concat(flat(item)):newArr.push(item);
+            })
+            return newArr;
+        }
+        console.log(flat(arr));
+      */  //reduce递归数组降维
+        let arr = [12,23,3,64,[41,2,4,5],50,6,7,38,29];
+        function flat(array){
+            return array.reduce((newArr,current)=>{
+                return newArr = newArr.concat(Array.isArray(current)?flat(current):current);
+            },[]);
+        }
+        console.log(flat(arr));
+      //flat：Infinity最大值降维
+        // let arr = [12,23,3,64,[41,2],2,[4,5],50,6,7,38,29];
+        // let s = arr.flat(Infinity);
+        // console.log(s);
+        
+    </script>
+</body>
+</html>

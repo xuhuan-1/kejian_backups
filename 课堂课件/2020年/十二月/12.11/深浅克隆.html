@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深浅克隆</title>
+</head>
+<body>
+    <script>
+    // Object.assign()克隆
+        // let obj = {
+        //     name:'张三',
+        //     age:19,
+        //     sex:'男',
+        //     fn:{
+        //         a:1,
+        //         b:2,
+        //         c:3,
+        //         sss:function(){},
+        //         nu:null,
+        //         un:undefined
+        //     },
+        // }
+        // let s = Object.assign({},obj);
+        // s.fn.a = 1000;
+        // console.log(obj);
+        // console.log('克隆', s);
+
+    // Object.create()克隆
+        let obj = {
+            name:'张三',
+            age:19,
+            sex:'男',
+            fn:{
+                a:1,
+                b:2,
+                c:3
+            }
+        }
+        let s = Object.create(obj);
+        s.name = '000';
+        console.log(obj);
+        
+        console.log('克隆',s);
+        
+    //JSON.parse(JSON.stringiy())克隆
+        // let obj = {
+        //     name:'张三',
+        //     age:19,
+        //     sex:'男',
+        //     nu:null,
+        //     un:undefined,
+        //     fn:{
+        //         a:1,
+        //         b:2,
+        //         c:3
+        //     },
+        //     ssss:function(){}
+        // }
+        // let s = JSON.parse(JSON.stringify(obj));
+        // console.log(obj);
+        // console.log('克隆',s);
+    </script>
+</body>
+</html>

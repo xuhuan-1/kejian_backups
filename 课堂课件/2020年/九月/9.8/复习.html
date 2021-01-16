@@ -1,0 +1,106 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>复习</title>
+		<script>
+			/*	打印：
+					*****
+					****
+					***
+					**
+					*
+				for(var i=1;i<=5;i++){
+					for(var x=5;x>=i;x--){
+						document.write('*');
+					}
+					document.write('<br/ >');
+				}
+				打印：
+					*
+					**
+					***
+					****
+					*****
+				for(var i=1;i<=5;i++){
+					for(var x=1;x<=i;x++){
+						document.write('*');
+					}
+					document.write('<br/ >');
+				}
+				打印：
+					    *
+					   **
+					  ***
+					 ****
+					*****
+				
+				for(var i=1;i<=5;i++){
+					for(var k=4;k>=i;k--){
+						document.write('-');
+					}
+					for(var x=1;x<=i;x++){
+						document.write('*');
+					}
+					document.write('<br/ >');
+				}
+			
+				打印：
+					*****
+					 ****
+					  ***
+					   **
+					    *
+			
+				for(var i=1;i<=5;i++){
+					for(var k=1;k<=i;k++){
+						document.write('-');
+					}
+					for(var x=5;x>=i;x--){
+						document.write('*');
+					}
+					document.write('<br/ >');
+				}
+			
+				打印：九九乘法口诀
+				for(var i=1;i<=9;i++){
+					for(var t=1; t<=i;t++){
+						document.write(t+'*'+i+'='+t*i+'&nbsp;&nbsp');
+					}
+					document.write('<br/ >');
+				}
+			*/	//心型
+			
+				var num = 10;
+				for(var i=num;i>=1;i--){
+					for(var k=i;k<=num;k++){
+						document.write('-');
+					}
+					for(var x=1;x<=i;x++){
+						if(x==5 || x==6){
+								document.write('-');
+							}else{
+								document.write(' *');
+							}
+						
+					}
+					document.write('<br/ >');
+				}
+				
+			
+			
+			
+				
+		</script>
+				
+		
+	</head>
+	<body>
+		
+	</body>
+</html>
+
+
+
+
+

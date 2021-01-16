@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax分页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            height: 600px;
+            width: 1300px;
+            border: 2px solid #cccccc;
+            margin: 0 auto;
+        }
+
+        #p1 {
+            height: 50px;
+            background: #cccccc;
+            line-height: 50px;
+        }
+
+        img {
+            width: 80px;
+            height: 80px;
+        }
+        #box2{
+            text-align: center;
+        }
+        .ym{
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+            border: 1px solid pink;
+            cursor: pointer;
+            margin: 10px 10px 10px 0px;
+        }
+        #up,#down{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <p id="p1">分页实现</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td width="100px">货物ID</td>
+                    <td width="200px">示例图</td>
+                    <td width="300px">名称</td>
+                    <td width="100px">价格</td>
+                    <td>描述</td>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <div id="box2">
+        <span id="up">上一页</span>
+        <span id="sp">
+
+        </span>
+        <span id="down">下一页</span>
+    </div>
+    <script>
+        function ajax(obj) {
+            obj.url = obj.url || '';
+            obj.method = obj.method || 'get';
+            obj.data = obj.data || {};
+            obj.dataType = obj.dataType || 'json';
+            obj.success = obj.success;
+
+            let xhr;
+            window.XMLHttpRequest ? xhr = new XMLHttpRequest() : xhr = new ActiveXObject('Microsoft.XMLHTTP');
+
+            function formate(o) {
+                let arr = [];
+                for (let key in o) {
+                    arr.push(key + '=' + o[key]);
+                }
+                return arr.join('&');
+            }
+            let params = formate(obj.data);
+            let url = obj.url + '?' + params;
+            if (obj.method == 'get') {
+                xhr.open(obj.method, url, true);
+            } else {
+                xhr.open(obj.method, obj.url, true);
+            }
+
+            if (obj.method == 'get') {
+                xhr.setRequestHeader('Content-type', 'application/json;charset = utf-8');
+                xhr.send(null);
+            } else {
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded,charset = utf-8');
+                xhr.send(params);
+            }
+
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200 && xhr.status < 300 || xhr.status == 304) {
+                        if (obj.method == 'get') {
+                            obj.success && obj.success(JSON.parse(xhr.responseText));
+                        } else {
+                            obj.success && obj.success(xhr.responseText);
+                        }
+                    }
+                }
+            }
+        }
+        box2.addEventListener('click',(e)=>{
+            let target = e.target;
+            if(target.innerText == '下一页'){
+                if(num == 5){
+                    num = 5;
+                }else{
+                    num++;
+                    paging(num);
+                }
+            }
+            if(target.innerText == '上一页'){
+                if(num == 1){
+                    return num = 1;
+                }else{
+                    num--;
+                    paging(num);
+                }
+            }
+            if(target.className == 'ym'){
+                num = target.innerText;
+                paging(num);
+            }
+        })
+        let tbody = document.querySelector('tbody');
+        let num = 1;
+        paging(num);
+        function paging(page) {
+            ajax({
+                url: 'http://localhost:3001/page',
+                data:{page:page},
+                success: (res) => {
+                    sp.innerHTML = '';
+                    tbody.innerHTML = '';
+                    console.log(res);
+                    //需要渲染的5条数据
+                    let list = res.glist;
+                    //总商品数
+                    let allNum = res.totleNum;
+                    let createDompd = document.createDocumentFragment();
+                    for (let i = 0; i < list.length; i++) {
+                        let tr = document.createElement('tr');
+                        tr.innerHTML =
+                            `<td>${list[i].id}</td><td><img src="${list[i].goodimg}"/></td><td>${list[i].goodname}</td><td>${list[i].price}</td><td>${list[i].info}</td>`
+                        createDompd.appendChild(tr);
+                    }
+                    tbody.appendChild(createDompd);
+                    for(let i=0;i<allNum/5;i++){
+                        let span = document.createElement('span');
+                        span.innerText = i+1;
+                        span.setAttribute('class','ym');
+                        createDompd.appendChild(span);
+                    }
+                    sp.appendChild(createDompd);
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

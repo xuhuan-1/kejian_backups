@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>作业1</title>
+		<style>
+		
+			.box{
+				position:relative;
+				width:200px;
+				height:200px;
+				rerspective:500px;
+				transform-style:preserve-3d;
+				transition:all 1s;
+				
+			}
+			.box:hover{
+				transition:all 1s;
+				transform:rotateY(180deg);
+				
+			}
+			.box1{
+				position:absolute;
+				top:0px;
+				left:0px;
+				height:200px;
+				width:200px;
+				background:blue;
+				border-radius:50%;
+				transform:translateZ(0.5px);
+				text-align:center;
+				line-height:200px;
+			}
+			.box2{
+				position:absolute;
+				left:0px;
+				top:0px;
+				height:200px;
+				width:200px;
+				background:red;
+				border-radius:50%;
+				text-align:center;
+				line-height:200px;
+				transform:rotateY(180deg);
+			}
+	
+			
+		
+			
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="box1">正</div>
+			<div class="box2">反</div>
+		</div>
+	</body>
+</html>
+

@@ -1,0 +1,101 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>监听器</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				height:100px;
+				width:100px;
+				background:pink;
+			}
+			#box1{
+				height:100px;
+				width:100px;
+				background:red;
+			}
+			#box1_1{
+				height:100px;
+				width:100px;
+				
+			}
+			#box1_1_1{
+				height:100px;
+				width:100px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<div id="box1">
+			<div id='box1_1'>
+				<div id='box1_1_1'></div>
+			</div>
+		</div>
+		<script>
+			
+		/*	
+			//冒泡、捕获事件	true捕获 false冒泡
+			var box1 = document.getElementById('box1');
+			var box1_1 = document.getElementById('box1_1');
+			var box1_1_1 = document.getElementById('box1_1_1');
+			box1.addEventListener('mouseover',function(val){
+				alert('我是爷');
+				console.log(val);
+			},true)
+			box1_1.addEventListener('mouseover',function(val){
+				alert('我是爸');
+				console.log(val);
+			},true)
+			box1_1_1.addEventListener('mouseover',function(val){
+				alert('我是儿子');
+				console.log(val);
+			},true)
+			
+		
+		
+			//冒泡、捕获事件	true捕获 false冒泡
+			box1.addEventListener('click',function (){
+				alert("box1");
+			})	
+			box1_1.addEventListener('click',function (){
+				alert("box1_1");
+			})	
+			box1_1_1.addEventListener('click',function (){
+				alert("box1_1_1");
+			})			
+		*/
+		
+		/*
+			var div = document.querySelector('div');
+			//鼠标移入事件
+			div.onmouseover = function(event){
+				alert(event+'你好');
+			}
+			//监听事件
+			div.addEventListener('mouseover',function (event){
+				alert(event+'1');
+			})
+			div.addEventListener('mouseover',function (event){
+				alert(event+'2');
+			})
+			//移除监听事件
+			div.removeEventListener('mouseover',function (event){
+				
+			})
+		*/	
+		</script>
+	</body>
+</html>
+
+
+
+
+

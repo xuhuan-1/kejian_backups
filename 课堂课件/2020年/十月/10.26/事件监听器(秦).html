@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Event</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			li{
+				list-style:none;
+			}
+			table{
+				border:1px solid black;
+				border-collapse: collapse;
+				text-align:center;
+				margin:0 auto;
+				
+			}
+			tr{
+				width:600px;
+				height:40px;
+			}
+			td{
+				height:40px;
+				border:1px solid #000000;
+			}
+			input{
+				margin-left:20px;
+				padding-left:10px;
+				border:3px solid black;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="parent1">
+			<div id="child1" style="height:200px;background:#0cc">
+			冒泡
+			</div>
+			<form action = "#">
+				<input type = "submit" id = "inp"/>
+				<button>走你</button>
+			</form>
+		</div>
+		<div id="parent2">
+			<div id="child2" style="height:200px;background:red">
+			捕获
+			</div>
+		</div>
+		<script>
+			/*
+			DOM 0级事件（原始事件模型）
+			
+			第一种点击事件的写法
+			行内对应元素需要有：onclick = "paopao(this)"
+			function paopao(val){
+				console.log(val)
+			}
+			第二种点击事件的写法
+			var child1 = document.getElementById("child1");
+			child1.onclick = function (){
+				console.log(this)
+			}
+			//匿名函数的调用：child1.onclick()
+			*/
+			var child1 = document.getElementById("child1");
+			/*child1.onclick  = function (k){
+				console.log(k.target)
+			}
+			child1.onclick  = function (k){
+				console.log("你好，世界！")
+			}*/
+			var inp = document.getElementById("inp");
+			inp.onclick  = function (event){
+				//获取事件对象的兼容性写法
+				var event = event || window.event;
+				//获得target兼容型写法 
+				event.target||event.srcElement
+				//阻止默认事件的兼容性写法
+				event.preventDefault ? event.preventDefault() : (event.returnValue = false);
+				//阻止冒泡写法 
+				event.stopPropagation ? event.stopPropagation() : (event.cancelBubble = true);
+			}
+			//addEventListener()：添加事件监听方法
+			//区别于on事件：可以同时给同一元素添加相同的事件，意为可以给单一元素添加多个相同事件
+			child1.addEventListener("click",function (a){
+				//回调函数
+				console.log(a)
+				var a = a || window.event;
+			})
+			/*child1.addEventListener("mouseout",function (){
+				alert("你好，世界！")
+			})
+			child1.removeEventListener("click",function (){
+				alert("你好，世界！")
+			})*/
+		</script>
+		
+	</body>
+</html>

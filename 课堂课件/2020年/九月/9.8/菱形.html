@@ -1,0 +1,90 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>菱形</title>
+		<script>
+		/*
+				for(var i=1;i<=10;i++){//上面10行
+					for(var k=9;k>=i;k--){//空格
+						document.write('&nbsp;&nbsp;');
+					}
+					for(var x=1;x<=i;x++){
+						document.write('😊');
+					}
+					document.write('<br/ >');
+				}
+				for(var i1=1;i1<=9;i1++){//下面10行
+					for(var k1=1;k1<=i1;k1++){//下面的空格
+						document.write('&nbsp;&nbsp;');
+					}
+					for(var x1=9;x1>=i1;x1--){
+						document.write('😊');
+					}
+					document.write('<br/ >');
+				}
+				
+				var num = 15;
+				for(var i =1;i<=num;i++){
+					for(var k=num-1;k>=i;k--){
+						document.write('-');
+					}
+					for(var x=1;x<=i*2-1;x++){
+						document.write('*');
+					}
+					document.write('<br/ >');
+				}
+				for(var i =num-1;i>=1;i--){
+					for(var k=num-1;k>=i;k--){
+						document.write('-');
+					}
+					for(var x=1;x<=i*2-1;x++){
+						document.write('*');
+					}
+					document.write('<br/ >');
+				}
+				打印空心菱形
+		*/
+				var count = 10;
+				for(var i=1;i<=count;i++){//折行
+					for(var k=count-1;k>=i;k--){//空格
+						document.write('&nbsp;&nbsp;');
+					}
+					for(var x=1;x<=i*2-1;x++){//输出*
+						if(x==1||x==i*2-1){//当x==1||x==i*2-1输出*
+							document.write('☺');
+						}else{
+							document.write('&nbsp;&nbsp;');
+						}
+					}
+					document.write('<br/ >');
+				}
+				//底下的
+				for(var i=count;i>=1;i--){//折行
+					for(var k=count-1;k>=i;k--){//空格
+						document.write('&nbsp;&nbsp;');
+					}
+					for(var x=1;x<=i*2-1;x++){//输出*
+						if(x==1||x==i*2-1){//当x==1||x==i*2-1输出*
+							document.write('☺');
+						}else{
+							document.write('&nbsp;&nbsp;');
+						}
+					}
+					document.write('<br/ >');
+				}
+		
+				
+		</script>
+				
+		
+	</head>
+	<body>
+		
+	</body>
+</html>
+
+
+
+
+

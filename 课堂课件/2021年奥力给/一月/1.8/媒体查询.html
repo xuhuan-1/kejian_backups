@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒体查询</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        head,body{
+            height: 100vh;
+            width: 100vw;
+        }
+        .container{
+            width: 100%;
+            height: 800px;
+            background: #cccccc;
+        }
+        .list>li{
+            height: 75px;
+            width: 150px;
+            background: red;
+            margin-right: 10px;
+            float: left;
+            border: 5px solid;
+        }
+        @media all and (min-width: 800px) and (max-width: 1300px){
+            .container{
+                background: black;
+            }
+            .list>li{
+                background: blue;
+                height: 150px;
+                width: 250px;
+            }
+        }
+        @media all and (min-width: 1300px){
+            .container{
+                background: yellow;
+            }
+            .list>li{
+                background: pink;
+                width: 500px;
+                height: 300px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="list">
+            <li>1</li>
+            <li>2</li>
+        </ul>
+    </div>
+</body>
+</html>

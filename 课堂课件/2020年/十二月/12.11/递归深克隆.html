@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>递归深克隆</title>
+</head>
+
+<body>
+    <script>
+    // 一、
+        // function deepClone(obj){
+        //     if(typeof obj != 'object')return obj;
+        //     if(obj == null)return obj;
+        //     if(obj.constructor === Date)return new Date();
+        //     if(obj.constructor === Symbol)return obj;
+        //     //if(obj.constructor === RegExp) return new RegExp();
+        //     // 设置变量接收
+        //     // let newObj = new obj.constructor == Array ? []:{};
+        //     // let newObj = obj instanceof Array ? []:{};
+        //     let newObj = Array.isArray(obj)?[]:{};
+        //     for(let key in obj){
+        //         newObj[key] = typeof obj[key] == 'object'?deepClone(obj[key]):obj[key];
+        //     }
+        //     return newObj;
+        // }
+        // let o = {
+        //     name:'张三',
+        //     age:18,
+        //     sex:'男',
+        //     fn:{
+        //         a:1,
+        //         b:2,
+        //         fn:()=>{},
+        //         un:undefined,
+        //         nu:null
+        //     },
+        //     [Symbol('A')]:100,
+        //     time:new Date()
+        // }
+        // let s = deepClone(o);
+        // console.log(o);
+        // console.log('克隆',s);
+
+    // 二、
+        // function deepClone(obj){
+        //     if(obj.constructor != Object)return obj;
+        //     if(obj == null)return;
+        //     if(obj.constructor === Date)return new Date();
+        //     if(obj.consturctor === Symbol)return obj;
+        //     let newObj = Array.isArray(obj)?[]:{};
+        //     for(let key in obj){
+        //         newObj[key] = obj[key].constructor == Object?deepClone(obj[key]):obj[key];
+        //     }
+        //     return newObj;
+        // }
+
+        // let o = {
+        //     a:1,
+        //     b:2,
+        //     c:3,
+        //     fn:function(){
+        //         let a = 10,
+        //         b = 20
+        //     }
+        // }
+        // let s = deepClone(o);
+        // s.a = 10000;
+        // console.log(o);
+        // console.log('克隆',s);
+        
+
+    // 三、
+        // function deepClone(obj){
+        //     if(obj.constructor != Object)return;
+        //     if(obj == null)return;
+        //     if(obj.constructor === Date)return new Date();
+        //     if(obj.constructor == Symbol)return obj;
+        //     let newObj = Array.isArray(obj)?[]:{};
+        //     for(let key in obj){
+        //         newObj[key] = obj[key].constructor == Object?deepClone(obj[key]):obj[key];
+        //     }
+        //     return newObj;
+        // }
+
+        // let o = {
+        //     a: 1,
+        //     b: 2,
+        //     c: 3,
+        //     fn: function () {
+        //         let a = 10,
+        //             b = 20
+        //     }
+        // }
+        // let s = deepClone(o);
+        // console.log(o);
+        // console.log('克隆',s);
+
+    // 四、
+        // function deepClone(obj){
+        //     if(obj.constructor != Object)return obj;
+        //     if(obj == null)return obj;
+        //     if(obj.constructor === Date)return new Date();
+        //     if(obj.constructor === Symbol)return obj;
+        //     let newObj = Array.isArray(obj)?[]:{};
+        //     for(let key in obj){
+        //         newObj[key] = obj[key].consturctor == Object? deepClone(obj[key]):obj[key];
+        //     }
+        //     return newObj;
+        // }
+        // let o = {
+        //     name:'张三',
+        //     age:18,
+        //     sex:'男',
+        //     fn:{
+        //         a:1,
+        //         b:2,
+        //         fn:()=>{},
+        //         un:undefined,
+        //         nu:null
+        //     },
+        //     [Symbol('A')]:100,
+        //     time:new Date()
+        // }
+        // let s = deepClone(o);
+        // console.log(o);
+        // console.log('克隆',s.time);
+    
+    // 五、
+        // function deepClone(obj){
+        //     if(obj.constructor != Object)return obj;
+        //     if(obj == null)return obj;
+        //     if(obj.constructor === Date)return new Date();
+        //     if(obj.constructor === Symbol)return obj;
+        //     let newObj = Array.isArray(obj)?[]:{};
+        //     for(let key in obj){
+        //         newObj[key] = obj[key].constructor == Object?deepClone(obj[key]):obj[key];
+        //     }
+        //     return newObj;
+        // }
+        
+        // let o = {
+        //     a:1,
+        //     b:2,
+        //     c:3,
+        //     fn:{
+        //         a:10,
+        //         b:20,
+        //         c:30
+        //     },
+        //     [Symbol('A')]:10086,
+        //     fff:function(){},
+        //     time:new Date(),
+        // }
+        // let s = deepClone(o);
+        // console.log(o);
+        // console.log('克隆',s);
+
+
+            function deepClone(obj){
+                if(obj.constructor != Object)return obj;
+                if(obj == null)return obj;
+                if(obj.constructor === Date)return new Date();
+                if(obj.constructor === Symbol)return obj;
+                let newObj = Array.isArray(obj)?[]:{};
+                for(let key in obj){
+                    newObj[key] = obj[key].constructor == Object?deepClone(obj[key]):obj[key];
+                }
+                return newObj;
+            }
+
+        let o = {
+            a:1,
+            b:2,
+            c:3,
+            fn:{
+                a:10,
+                b:20,
+                c:30
+            },
+            [Symbol('A')]:10086,
+            fff:function(){},
+            time:new Date(),
+        }
+        let s = deepClone(o);
+        console.log(o);
+        console.log('克隆',s);
+
+    </script>
+</body>
+
+</html>

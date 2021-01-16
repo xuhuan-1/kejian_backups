@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组练习</title>
+	</head>
+	<style>
+	</style>
+	<body>
+
+		<input id = "jjj"  type = "button" value = "点击抽奖" />
+		<script type="text/javascript">
+		/*
+		1.	var arr = [100,12,34,67,23,16,6,9,24,79,2,90,33,69,1,34,-2,0,666,1000];
+将该数组前10位升序排序，后十位降序排序，并生成新的数组打印到控制台
+		var arr = [100,12,34,67,23,16,6,9,24,79,2,90,33,69,1,34,-2,0,666,1000];
+		var headarr = arr.slice(0,10).sort(function (a,b){return a-b});
+		var endarr = arr.slice(10).sort(function (a,b){return b-a});
+		var arrlast = [].concat(headarr,endarr);
+		console.log(headarr,endarr,arrlast)*/
+		/*2.一个学生的一门课10个时间段分数：90, 100, 10, 20, 30, 40, 50, 60, 70, 80;利用函数封装的方法写出：分数排序，最高分，最低分，总分，平均分并打印到控制台
+		*/
+		var arr = [90, 100, 10, 20, 30, 40, 50, 60, 70, 80];
+		//分数排序
+		function fnSort(arrfn){//arrfn为形参
+			return arrfn.sort(function (a,b){return a-b})
+			//return 只执行一次，之后的代码就不执行了
+		}
+		//最大值
+		function fnMax(arrfn){
+			return arrfn.sort(function (a,b){return a-b})[arrfn.length-1]
+		}
+		//最小值
+		function fnMin(arrfn){
+			return arrfn.sort(function (a,b){return a-b})[0]
+		}
+		//总分
+		function fnAll(arrfn){
+			var num = 0;
+			for (var i = 0;i < arrfn.length;i++){
+				num += arrfn[i]
+			}
+			return num
+		}
+		//平均分
+		function fnAverage(arrfn){
+			var num = 0;
+			for (var i = 0;i < arrfn.length;i++){
+				num += arrfn[i]
+			}
+			return num/arrfn.length
+		}
+		</script>
+	</body>
+</html>

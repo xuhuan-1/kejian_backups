@@ -1,0 +1,31 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>圣诞</title>
+	</head>
+	<body>
+		<p id="p1">
+			
+		</p>
+		<script>
+			time = setInterval(function (){
+				var myDate = new Date();
+				var christmas = new Date('2020-12-25 00:00:00');
+				var a1 = christmas.getTime() - myDate.getTime();//圣诞毫秒-当前毫秒
+				var b_day = Math.floor(a1/1000/60/60/24);//天
+				var b_hour = Math.floor(a1/1000/60/60%24);//小时
+				var b_minute = Math.floor(a1/1000/60%60);//分
+				var b_s = Math.floor(a1/1000%60);//秒
+				if(b_s<10){b_s = '0' + b_s}//秒补0
+				if(b_minute<10){b_minute = '0' + b_minute}//分补0
+				p1.innerHTML = ('距离圣诞节（2020-12-25）还有：'+b_day+'天'+b_hour+'小时：'+b_minute+'分：'+b_s+'秒');
+			},1000)
+		</script>
+	</body>
+</html>
+
+
+
+
+

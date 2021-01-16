@@ -1,0 +1,109 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>秒表</title>
+		<style>
+			#box{
+				height:400px;
+				width:300px;
+				background:pink;
+				margin:0 auto;
+				overflow:hidden;
+			}
+			form{
+				text-align:center;
+			}
+			form input{
+				height:50px;
+				width:50px;
+				border-radius:50%;
+				background:#fff;
+			}
+			#p1{
+				text-align:center;
+				color:#fff;
+			}
+			span{
+				display:inline-block;
+				height:50px;
+				line-height:50px;
+				width:60px;
+				font-size:30px;
+				background:blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<p id="p1">
+				<span id="sp1">00</span><span id="sp2">00</span><span id="sp3">00</span>
+			</p>
+			<form>
+				<input type="button" onclick="begin()" value="开始"/>
+				<input type="button" onclick="stop()" value="暂停"/>
+				<input type="button" onclick="reset1()" value="重置"/>
+			</form>
+		</div>
+		<script>
+			//封装一个通过ID获取DOM元素方法
+			function get(xc){
+				return document.getElementById(xc);
+			}
+			var time1 = null;
+			var time2 = null;
+			var time3 = null;
+			var ms = 0;//毫秒
+			var s = 0;//秒
+			var min = 0;//分
+			//开始事件
+			function begin(){
+				clearInterval(time1);
+				time1 = setInterval(function (){
+					ms++;
+					get('sp3').innerText = ms;
+					if(ms==99){
+						ms = 0;
+					}
+				},10);
+				clearInterval(time2);
+				time2 = setInterval(function (){
+					s++;
+					get('sp2').innerText = s;
+					if(s == 59){
+						s = 0;
+					}
+				},1000);
+				clearInterval(time3);
+				time3 = setInterval(function (){
+					min++;
+					get('sp1').innerText = min;
+				},60000);
+			}
+			//暂停事件
+			function stop(){
+				clearInterval(time1);
+				clearInterval(time2);
+				clearInterval(time3);
+			}
+			//重置事件
+			function reset1(){
+				clearInterval(time1);
+				clearInterval(time2);
+				clearInterval(time3);
+				ms = 0;//毫秒
+				s = 0;//秒
+				min = 0;//分
+				get('sp3').innerText = '00';
+				get('sp2').innerText = '00';
+				get('sp1').innerText = '00';
+			}
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

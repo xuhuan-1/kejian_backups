@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+  		<title></title>
+ </head>
+ <body>
+		<div id = "box"></div>
+    <script type="text/javascript">
+		/*
+			JS:运行在客户端的基于对象的解释性脚本语言
+			JS核心：ECMAScript语法标准
+			JS三部分：1.ECMAScript语法标准
+					  2.BOM（浏览器对象模型）
+					  3.DOM（文档对象模型）
+			window对象：全局对象，最大的对象
+			三大弹窗：1.警告弹出窗alert()
+					  2.确认取消框confirm()
+					  3.页面输入框prompt()
+			量：内存存储数据，变量/常量
+			标识符：变量名/常量名/函数名/参数名/属性名
+			变量声明：var ES6:let/const
+			全局变量/局部变量
+			代码阻断
+			数据类型：简单的数据类型（5）
+					  引用数据类型（复杂数据类型）
+					  Array/Object
+			简单的数据类型:String/Number/Boolean/undefined/null
+			数据类型转换：
+			isNaN:是不是非数字
+			运算符：一目（一元）运算符 
+					算数运算符
+					比较运算符  
+					赋值运算符  
+					逻辑运算符  与或非
+			运算符优先级：
+			语句/表达式
+			程序语法结构：顺序结构/分支结构/循环结构
+			
+			引用数据类型：
+			数组：数组的创建（声明）
+				  数组的属性:length属性可以获取到数组的长度
+				  数组的元素获取：
+						通过下标来获取arr[index]
+						index:索引下标
+				  数组的替换：
+				  数组的遍历：
+				  数组检测：constructor
+							Object.prototype.toString.call()||({}).toString.call()
+				  数组的常用方法:数组转字符串
+			函数：
+			函数的创建
+			函数的调用
+		*/
+		//n-m的累加
+		function getadd(n,m){
+			var num = 0;
+			for(var i = n;i <= m;i++){
+				num += i
+			}
+			return num
+		}
+		getadd(600,60000)
+		/*
+	//乘法口诀
+		for(var n = 1; n <= 9; n++){
+			for(var m = 1; m <= n; m++){
+				document.write(n+"*"+m+"="+m*n+"&nbsp;&nbsp;&nbsp");
+			}
+			document.write("<br />");
+		}
+	//空心等腰三角形
+	
+	for(var a = 1; a <= 10; a++){
+		for(var b = 1; b <= 10-a; b++){
+			document.write("😡");
+		}
+		for(var c = 1; c <= 2*a-1; c++){
+			if(c == 1 || c == 2*a-1 || a == 10){
+				document.write("🌚");
+			}else{
+			
+				document.write("🤢");
+			}
+		}
+		document.write("<br />");
+	}*/
+    </script> 
+ </body>
+</html>

@@ -1,0 +1,35 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>练习题1</title>
+		<script>
+			var month = prompt('请输入月份：');
+			if(!isNaN(month)){
+				if(month >= 3 && month <= 5){
+					alert('这个月是：春季');
+				}else if(month >= 6 && month <= 8){
+					alert('这个月是：夏季');
+				}else if(month >= 9 && month <= 11){
+					alert('这个月是：秋季');
+				}else if(month == 12 || month <= 2 && month != 0){
+					alert('这个月是：冬季');
+				}else{
+					alert('弄啥勒！请输入正确的月份');
+				}
+			}else{
+				alert('请输入正确的月份');
+			}	
+		</script>
+			
+		
+	</head>
+	<body>
+		
+	</body>
+</html>
+
+
+
+
+

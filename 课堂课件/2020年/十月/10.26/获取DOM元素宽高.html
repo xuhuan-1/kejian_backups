@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>获取DOM元素宽高</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			li{
+				list-style:none;
+			}
+			table{
+				border:1px solid black;
+				border-collapse: collapse;
+				text-align:center;
+				margin:0 auto;
+				
+			}
+			tr{
+				width:600px;
+				height:40px;
+			}
+			td{
+				height:40px;
+				border:1px solid #000000;
+			}
+		</style>
+		
+	</head>
+	<body>
+		
+		<ol class = "libai" style = "color:#a11b26;font-size:32px;maxwidth:200px;" start = "10" >
+			<li><a href = "#" style = "color:#c3ac8d;text-decoration:none;">李白</a></li>
+			<li><a>床前明月光</a></li>
+			<li><a style = "color:#c3ac8d;">疑是地上霜</a></li>
+			<li><a>举头望明月</a></li>
+			<li><a>低头思故乡</a></li>
+		</ol>
+		<dl >
+			<dt><img src ="./wode.jpg" alt = "杀手不太冷" style = "margin-top:20px;" title = "这是一个杀手"/></dt>
+			<dd>杀手不太冷</dd>
+		</dl>
+		<input type = "text" />
+		<div class = "box" style = "letter-spacing:20px;">
+			<p class = "ss">曾经沧海<span >是否</span>难为水</p>
+		</div>
+		<div style = "font-size: 36px;text-indent:2em;">我的中国心</div>
+		<script>
+		/*
+			var log = console.log;
+			var ol = document.querySelector(".libai");
+			var ol_li = ol.children;
+			for(var i=0;i<ol_li.length;i++){
+				ol_li[i].onclick = function (){
+					if(this.innerText == "李白"){
+						log("若果能重来，我要做"+this.innerText)
+					}
+				}
+			}
+			var dl = document.querySelector("dl");
+			var dl_img = dl.querySelector("img");
+			dl_img.setAttribute("border","10px solid black")
+			var img_w = dl_img.offsetWidth;
+			var img_h = dl_img.offsetHeight;
+			var img_t = dl_img.offsetTop;
+		*/
+			var ol = document.querySelector('.libai');
+			var ol_li = ol.children;
+			for(var i=0;i<ol_li.length;i++){
+				ol_li[i].onclick = function(){
+					if(this.innerText == '李白'){
+						alert('李白');
+					}
+				}
+			}
+			console.log(ol_li);
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

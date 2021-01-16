@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 为了前后端交互，解决了ajax不能解决的问题【地狱回调】，异步解决方案
+         * 
+         *  只不过把地狱回调编程链式回调，没有完全解决地狱回调问题
+         * 
+         *   Promise():是一个对象，也是一个构造函数，接收一个回调函数作为参数
+         *             这个函数叫做函数解析器，就是executor
+         *              executor接收两个参数，一个是成功的回调函数，一个是失败的
+         *              回调函数
+         *  三个状态：
+         *      pending：准备状态
+         *      resolved：成功状态
+         *      rejected：失败状态
+         *  不可逆：
+         *      只能从准备状态到成功，或者只能从准备状态到失败
+         * 
+         *  then 和 catch为了可以链式调用？
+         *      因为then 和 catch的函数内部都返回的是新的Promise对象
+         * 
+         *  Promsie对象，如果给成功的回调函数传的是字符串，而不是一个函数的话，则会发生
+         *  值穿透现象
+         *      
+         * 
+        */
+    // 源码解析
+        function Promise(executor){
+            this.status = 'pending';
+            this.cheng = undefined;
+            this.shi = undefined;
+            // 成功的回调
+            this.resolved = null;
+            // 失败的回调
+            this.rejected = null;
+            this.data = undefined;
+
+            executor()
+        }
+        // 成功的回调函数
+        Promise.prototype.then = function(res){
+            return new Promise((resolved) =>{
+                if(this.status == 'pending'){
+                    this.status = '成功';
+                    this.cheng = this.status;
+                    this.data = res;
+                    this.resolved = resolved();
+                }
+            })
+        }
+        // 失败的回调函数
+        Promise.prototype.catch = function(err){
+            return new Promise((resolved) =>{
+                if(this.status == 'pending'){
+                    this.status = '失败';
+                    this.shi = this.status;
+                    this.data = undefined;
+                    this.resolved = resolved(err);
+                }
+            })
+        }
+
+        let p = new Promise((resolved,rejected) =>{});
+
+        p.then(res =>{
+            // res :成功返回的数据
+        })
+        .then(res =>{})
+
+
+    // 手写Promise对象？  80%
+        function Promise(executor){
+            this.status = 'pending';
+            this.data = undefined;
+            this.resolved = null;
+            this.rejected = null;
+            executor(resolved,rejected);
+        }
+        Promise.prototype.then = function(value){
+            return new Promise((resolved) =>{
+                if(this.status == 'pending'){
+                    this.status = '成功';
+                    this.data = res;
+                    this.resolved = resolved();
+                }
+            })
+        }
+        Promise.prototype.catch = function(value){
+            return new Promise((rejected) =>{
+                if(this.status == 'pending'){
+                    this.status = '失败';
+                    this.data = undefined;
+                    this.rejected = rejected();
+                }
+            })
+        }
+        
+        
+        let p = new Promise((resolved,rejected) =>{});
+
+
+
+
+
+    </script>
+</body>
+</html>

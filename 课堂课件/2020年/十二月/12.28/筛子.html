@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>筛子</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        /* 属性选择器 */
+        div[class*="container"]{
+            margin-top: 10px;
+        }
+    /* 1 */
+        .container{
+            height: 180px;
+            width: 180px;
+            background-color: #E7E7E7;
+            border-radius: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+            height: 50px;
+            width: 50px;
+            background-color: black;
+            border-radius: 50%;
+        }
+    /* 2 */
+        .container2{
+            height: 180px;
+            width: 180px;
+            background-color: #e7e7e7;
+            border-radius: 10%;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-between;
+        }
+        .box2{
+            height: 50px;
+            width: 50px;
+            background-color: black;
+            border-radius: 50%;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+        .box2:nth-child(2){
+            align-self: flex-end;
+            margin-bottom: 10px;
+            margin-right: 10px;
+        }
+    /* 3 */
+        .container3{
+            height: 180px;
+            width: 180px;
+            background-color: #e7e7e7;
+            border-radius: 10%;
+            display: flex;
+            flex-flow: column nowrap;
+        }
+        .box3{
+            height: 50px;
+            width: 50px;
+            background-color: black;
+            border-radius: 50%;
+        }
+        .box3:nth-child(2){
+            align-self: center;
+            margin-top: 15px;
+        }
+        .box3:nth-child(3){
+            align-self: flex-end;
+            margin-top: 15px;
+        }
+    /* 4 */
+        /* .container4{
+            height: 180px;
+            width: 180px;
+            background-color: #e7e7e7;
+            border-radius: 10%;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+        }
+        .box4{
+            height: 50px;
+            width: 50px;
+            background-color: black;
+            border-radius: 50%;
+            margin-left: 15px;
+            margin-top: 20px;
+        }
+        .box4:nth-child(2n){
+            margin-right: 15px;
+        } */
+    /* 4 */
+    .container4{
+        height: 180px;
+        width: 180px;
+        background-color: #e7e7e7;
+        border-radius: 10%;
+        display: flex;
+        justify-content: space-around;
+    }
+    .column{
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-around;
+    }
+    .item{
+        height: 50px;
+        width: 50px;
+        background-color: black;
+        border-radius: 50%;
+    }
+    /* 5 */
+    .container5{
+        height: 180px;
+        width: 180px;
+        background-color: #e7e7e7;
+        border-radius: 10%;
+        display: flex;
+        flex-flow: wrap;
+        align-items: center;
+    }
+    .column5{
+        display: flex;
+        flex-basis: 100%;
+    }
+    .item5{
+        height: 50px;
+        width: 50px;
+        background-color: black;
+        border-radius: 50%;
+    }
+
+    .column5:nth-child(2){
+        justify-content: center;
+    }
+    .column5:nth-child(2n+1){
+        justify-content: space-around;
+    }
+    /* 6 */
+    .container6{
+        height: 180px;
+        width: 180px;
+        background-color: #e7e7e7;
+        border-radius: 10%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction:column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .item6{
+        height: 50px;
+        width: 50px;
+        background-color: black;
+        border-radius: 50%;
+        color: red;
+    }
+    </style>
+</head>
+<body>
+<!-- 1 -->
+    <div class="container">
+        <div class="box">
+            
+        </div>
+    </div>
+<!-- 2 -->
+    <div class="container2">
+        <div class="box2">
+            
+        </div>
+        <div class="box2">
+            
+        </div>
+    </div>
+<!-- 3 -->
+    <div class="container3">
+        <div class="box3">
+            
+        </div>
+        <div class="box3">
+            
+        </div>
+        <div class="box3">
+            
+        </div>
+    </div>
+<!-- 4 -->
+    <!-- <div class="container4">
+        <div class="box4">
+        
+        </div>
+        <div class="box4">
+        
+        </div>
+        <div class="box4">
+        
+        </div>
+        <div class="box4">
+        
+        </div>
+    </div> -->
+<!-- 4 -->
+    <div class="container4">
+        <div class="column">
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+        <div class="column">
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+    </div>
+<!-- 5 -->
+    <div class="container5">
+        <div class="column5">
+            <div class="item5"></div>
+            <div class="item5"></div>
+        </div>
+        <div class="column5">
+            <div class="item5"></div>
+        </div>
+        <div class="column5">
+            <div class="item5"></div>
+            <div class="item5"></div></div>
+        </div>
+    </div>
+    <div class="container6">
+        <div class="item6"></div>
+        <div class="item6"></div>
+        <div class="item6"></div>
+        <div class="item6"></div>
+        <div class="item6"></div>
+        <div class="item6"></div>
+    </div>
+</body>
+</html>

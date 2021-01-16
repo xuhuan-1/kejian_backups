@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>结构伪类选择器</title>
+		<style>
+			ul li{
+				height:30px;
+			}
+			.a li:first-child{
+				background:red;
+			}
+			.b li:last-child{
+				background:blue;
+			}
+			.c li:nth-child(2n){
+				background:yellow;
+			}
+			.d li:nth-child(2n-1){
+				background:black;
+			}
+			.e li:nth-child(-n+2){
+				background:#A86128;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="a">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<ul class="b">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<ul class="c">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<ul class="d">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<ul class="e">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</body>
+</html>
